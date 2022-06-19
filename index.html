@@ -1,707 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+</head>
+<body class="w3-content" style="max-width:1200px">
 
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-        <meta name="google-site-verification" content="EyGHDO_9tYN_OK8KjDphjA8JPagYRFY8iayd22IunnM" />
-    <meta charset=utf-8>
-    <title>Tubes and Channels | Ferro — Grupo Ferpinta</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="google-site-verification" content="">
-    <meta name="description" content="Circular, square, rectangular or irregularly welded sections.">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="author" content="burocratik.com">
-    <link rel="author" href="humans.txt">
-    <link rel="alternate" hreflang="en" href="https://ferro.pt/en/products/tubes-and-channels/">
-    <link rel="alternate" hreflang="pt" href="https://ferro.pt/produtos/tubos-e-calhas/">
-    <link rel="alternate" hreflang="fr" href="https://ferro.pt/fr/Produits/tubes-et-profiles/">
-    <link rel="alternate" hreflang="x-default" href="https://ferro.pt/en/products/tubes-and-channels/">
-    <link rel="canonical" href="https://ferro.pt/en/products/tubes-and-channels/">
-
-
-    <!-- Sharing -->
-    <meta property="og:title" content="Tubes and Channels | Ferro — Grupo Ferpinta">
-    <meta property="og:url" content="https://ferro.pt/en/products/tubes-and-channels/">
-    <meta property="og:image" content="https://ferro.pt//public/uploads/2018/10/social-tubos-calhas.jpg">
-    <meta property="og:site_name" content="Tubes and Channels | Ferro — Grupo Ferpinta">
-    <meta property="og:description" content="Circular, square, rectangular or irregularly welded sections.">
-
-    <meta name="twitter:card" value="summary_large_image">
-    <meta name="twitter:title" content="Tubes and Channels | Ferro — Grupo Ferpinta">
-    <meta name="twitter:description" content="Circular, square, rectangular or irregularly welded sections.">
-    <meta name="twitter:image" content="https://ferro.pt//public/uploads/2018/10/social-tubos-calhas.jpg">
-
-    <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/imgs/id/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/imgs/id/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/imgs/id/favicon-16x16.png">
-    <link rel="manifest" href="/public/imgs/id/site.webmanifest">
-    <link rel="mask-icon" href="/public/imgs/id/safari-pinned-tab.svg" color="#000000">
-    <link rel="shortcut icon" href="/public/imgs/id/favicon.ico">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="/public/imgs/id/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    
-
-                       <link rel="stylesheet" href="/public/scripts/styles.min.css">
-                
-    <script src="/public/scripts/css_browser_selector.min.js"></script>
-
-  </head>
-
-
-<body class="js-byrefresh js-no-ajax    " data-menu-page="false">
-    
-
-  <header id="header-main" class="row expanded align-middle" role="banner">
-      <a href="https://ferro.pt/en" class="only-not-windows no-barba" aria-label="Link to Homepage">
-      <span class="main-logo"></span>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide"><b>LOGO</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <a href="#" class="w3-bar-item w3-button">Shirts</a>
+    <a href="#" class="w3-bar-item w3-button">Dresses</a>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Jeans <i class="fa fa-caret-down"></i>
     </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
+      <a href="#" class="w3-bar-item w3-button">Relaxed</a>
+      <a href="#" class="w3-bar-item w3-button">Bootcut</a>
+      <a href="#" class="w3-bar-item w3-button">Straight</a>
+    </div>
+    <a href="#" class="w3-bar-item w3-button">Jackets</a>
+    <a href="#" class="w3-bar-item w3-button">Gymwear</a>
+    <a href="#" class="w3-bar-item w3-button">Blazers</a>
+    <a href="#" class="w3-bar-item w3-button">Shoes</a>
+  </div>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+</nav>
 
-    <a href="https://ferro.pt/en" class="only-windows" aria-label="Link to Homepage">
-      <svg class="main-logo" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.12 22.26"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M0,22V.29H15.83V5.54H6.13V9.32h8.08v5H6.13V22Z"/><path class="cls-1" d="M28.42,22.26c-6.7,0-10.91-4.35-10.91-11C17.51,4.1,22.39,0,27.9,0c5.91,0,9.2,3.89,9.28,10.26,0,.76,0,2-.12,2.79H23.26c.56,2.41,2.34,4.05,6,4.05a10.52,10.52,0,0,0,6.9-2.37h.16v5.2A13.22,13.22,0,0,1,28.42,22.26Zm3.49-13.6a3.8,3.8,0,0,0-4.09-3.8A4.57,4.57,0,0,0,23.3,8.91h8.61Z"/><path class="cls-1" d="M82.06,22.26c-6.49,0-11-4.65-11-11.11A10.86,10.86,0,0,1,82.18,0c6.49,0,10.94,4.56,10.94,11.11A10.72,10.72,0,0,1,82.06,22.26Zm.12-17c-3,0-5.25,2.53-5.25,5.87,0,3.59,2.36,5.83,5.21,5.83,3.13,0,5.13-2.53,5.13-5.83S85.3,5.28,82.18,5.28Z"/><polygon class="cls-1" points="40.35 0.3 40.35 21.98 46.35 21.98 46.35 5.55 53.96 5.55 53.96 0.28 40.35 0.28 40.35 0.3"/><polygon class="cls-1" points="70.15 0.28 56.54 0.28 56.54 0.3 56.54 21.98 62.54 21.98 62.54 5.55 70.15 5.55 70.15 0.28"/></svg>
-    </a>
-    
-  <button class="hamburguer" role="button" aria-label="Hamburguer Menu">
-    <span></span>
-    <span></span>
-  </button>
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
-<section class="fake-container">
-  <div class="bar top"></div>
-  <div class="bar bottom"></div>
-  <div class="bar left"></div>
-  <div class="bar right"></div>
-  <div class="fake-wrapper">
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    
-    
-    <div class="background-image-wrapper block-bg-cover home-menu-image">
-      <img class="element-cover" src="/public/imgs/menu/menu-home-image.jpg" alt="Home Page Picture">
-    </div>
-    <div class="background-image-wrapper block-bg-cover about-menu-image">
-      <picture>
-        <source srcset="/public/imgs/menu/about-menu@2x.webp 2x, /public/imgs/menu/about-menu.webp 1x" type="image/webp">
-        <source srcset="/public/imgs/menu/about-menu@2x.jpg 2x, /public/imgs/menu/about-menu.jpg 1x" type="image/jpeg">
-        <img class="element-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzIDInPjwvc3ZnPg==" alt="About Page Picture">
-      </picture>
-    </div>
-    <div class="background-image-wrapper block-bg-cover locations-menu-image">
-      <img class="element-cover" src="/public/imgs/menu/locations-menu.jpg" alt="Locations Page Picture" />
-    </div>
-    <div class="background-image-wrapper block-bg-cover tubos-calhas-image">
-      <img class="element-cover" src="/public/imgs/menu/tubos-calhas-cover.jpg" alt="Products Page Picture">
-    </div>
-  </div>
-</section>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:250px">
 
-<div class="overlay-phone">
-  <svg viewBox="0 0 53.75 28.94" class="arrow-phone">
-    <path d="M51.75,2,26.87,26.16,2,2"/>
-  </svg>  
-</div>
-
-
-<nav role="navigation" class="en">
-  <div class="background"></div>
-  <div class="row expanded align-middle main-pages-container">
-    <div class="language-wrapper">
-      <span class="choose-language">Change<br>Language</span>
-      <span class="separator"></span>
-      <ul>
-                  <li class="">
-            <a class="no-barba" href="https://ferro.pt/" ><span class="abreviation-lang">pt</span><span class="full-lang">Português</span></a>
-          </li>
-                  <li class="active">
-            <a class="no-barba" href="https://ferro.pt/en/" ><span class="abreviation-lang">en</span><span class="full-lang">English</span></a>
-          </li>
-                  <li class="">
-            <a class="no-barba" href="https://ferro.pt/fr/" ><span class="abreviation-lang">fr</span><span class="full-lang">Français</span></a>
-          </li>
-              </ul>
-    </div>
-    <div class="xxlarge-5 xlarge-6 xxlarge-offset-2 xlarge-offset-1 medium-offset-1 xsmall-15 columns">
-      <div class="main-pages-wrapper">
-        <ul class="main-pages">
-          <li class="js-show main-link js-hover" data-class="home-menu-image"><a href="https://ferro.pt/en/" class="home-and-menu-title link" data-transition="menu-to-home" >Home</a></li>
-          <li class="js-show main-link js-hover" data-class="about-menu-image"><a href="https://ferro.pt/en/about/" class="home-and-menu-title link" data-transition="menu-to-about">About</a></li>
-          <li class="products-link js-show main-link js-hover" data-class="tubos-calhas-image"><a href="https://ferro.pt/en/products/" data-transition="menu-to-products" class="home-and-menu-title link">Products</a>
-            <ul class="sub-categories-container">
-                              <li class="active js-hover" data-class="tubes-and-channels-image"><a href="https://ferro.pt/en/products/tubes-and-channels/" data-transition="menu-to-product">Tubes and Channels</a></li>
-                                <li class=" js-hover" data-class="sheets-image"><a href="https://ferro.pt/en/products/sheets/" data-transition="menu-to-product">Sheets</a></li>
-                                <li class=" js-hover" data-class="plates-image"><a href="https://ferro.pt/en/products/plates/" data-transition="menu-to-product">Plates</a></li>
-                                <li class=" js-hover" data-class="beams-image"><a href="https://ferro.pt/en/products/beams/" data-transition="menu-to-product">Beams</a></li>
-                                <li class=" js-hover" data-class="rebars-and-electro-welded-wire-mesh-image"><a href="https://ferro.pt/en/products/rebars-and-electro-welded-wire-mesh/" data-transition="menu-to-product">Rebars and Electro-welded Wire Mesh</a></li>
-                                <li class=" js-hover" data-class="merchant-bars-image"><a href="https://ferro.pt/en/products/merchant-bars/" data-transition="menu-to-product">Merchant Bars</a></li>
-                              
-            </ul>
-          </li>
-          <li class="js-show main-link js-hover" data-class="locations-menu-image"><a href="https://ferro.pt/en/locations/" data-transition="menu-to-locations" class="home-and-menu-title link">Locations</a></li>
-          
-        </ul>
-        <div class="social-wrapper">
-          <ul>
-            <li class="youtube">
-              <a href="" target="_blank">
-                <svg viewBox="0 0 39.5 28">
-                  <path d="M38.7 4.4c-.5-1.7-1.8-3.1-3.5-3.5C32.1 0 19.8 0 19.8 0S7.4 0 4.3.8c-1.7.5-3 1.8-3.5 3.5C0 7.5 0 14 0 14s0 6.5.8 9.6c.5 1.7 1.8 3.1 3.5 3.5 3.1.9 15.5.9 15.5.9s12.4 0 15.4-.8c1.7-.5 3-1.8 3.5-3.5.8-3.1.8-9.6.8-9.6s0-6.6-.8-9.7zM15.8 20V8l10.3 6-10.3 6z"/>
-                </svg>
-              </a>
-            </li>
-            <li class="facebook">
-              <a href="" target="_blank">
-                <svg viewBox="0 0 16 32">
-                  <path d="M10.6 32H3.5V18H0v-6.2h3.5V8.1C3.5 3 5.5 0 11.2 0H16v6.2h-3c-2.2 0-2.4.9-2.4 2.5v3.1H16l-.6 6.2h-4.7v14z"/>
-                </svg>
-              </a>
-            </li>
-            <li class="linkedin">
-              <a href="https://www.linkedin.com/company/ferro-grupo-ferpinta/" target="_blank" rel="noreferrer">
-                <svg viewBox="0 0 32 32">
-                  <path d="M29.6 0H2.4C1.1 0 0 1 0 2.3v27.4C0 31 1.1 32 2.4 32h27.3c1.3 0 2.4-1 2.4-2.3V2.3C32 1 30.9 0 29.6 0zM9.5 27.3H4.7V12h4.8v15.3zM7.1 9.9c-1.5 0-2.8-1.2-2.8-2.8 0-1.5 1.2-2.8 2.8-2.8 1.5 0 2.8 1.2 2.8 2.8 0 1.6-1.3 2.8-2.8 2.8zm20.2 17.4h-4.7v-7.4c0-1.8 0-4-2.5-4s-2.8 1.9-2.8 3.9v7.6h-4.7V12H17v2.1h.1c.6-1.2 2.2-2.5 4.5-2.5 4.8 0 5.7 3.2 5.7 7.3v8.4z"/>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="grupo-ferpinta-logo-wrapper">
-          <a href="http://www.ferpinta.pt/index.php?lang=2" target="_blank" rel="noreferrer">
-            <svg viewBox="0 0 1645.49 279.54">
-              <defs>
-                <clipPath id="a">
-                  <path fill="none" d="M0 0h1645.49v279.55H0z"/>
-                </clipPath>
-              </defs>
-              <path class="fill-red" d="M666.59 0h978.9v279.54h-978.9z"/>
-              <g clip-path="url(#a)">
-                <path d="M1503.51 146.93l31 .1-15.24-51.76-15.78 51.66m-671.8-75.16V104H774v22.39h57.7v32.23H774v49.13h-34.3v-136zm104.48 0V104H876v18.89h60.21v32.3H876v20.32h60.21v32.23h-94.5v-136zm73.55 0c10.54.16 18.54 1.21 24 3.27 8.23 3.18 13.94 8.67 16.86 16.49a50.57 50.57 0 0 1 3.08 16.73c-.13 9.91-2.63 18.39-7.59 25.47a31.71 31.71 0 0 1-22.26 13.63l-7.59.8 42.08 59.64h-42.74l-33.69-56.22.13 56.22h-34.3v-136zM982 104v27h19c6.15 0 10.45-.8 12.88-2.57 3.63-2.54 5.41-6.45 5.46-11.79-.15-8.45-5.84-12.67-16.89-12.67zm142.7-32.23a139 139 0 0 1 20.64 1.4c19.85 3.2 29.79 16.61 30 40.23-.13 16.29-4.86 29.72-14.29 40.26-5.46 6.13-11.43 10-18 11.66-4.41 1.15-11.66 1.68-21.69 1.68h-21.47v40.78h-34.32v-136zm-24.83 66.37h18l8.39-.22a13.82 13.82 0 0 0 11-5.94 19.73 19.73 0 0 0 3.88-12.25c.06-9.12-4.61-14.14-13.88-15.24-2.83-.26-5.91-.45-9.37-.45h-18zM1187 71.77h34.3v136H1187zm99.68 0l32.83 82.5v-82.5h34.27v136h-43.31l-39.47-91.9.07 91.9h-34.2v-136zm77.77 0H1468V104h-34.61v103.78h-34.3V104h-34.71zm128.23 0h54.81l39.88 136h-37.09l-8.1-28.49H1496l-7.81 28.45h-35.44z" class="fill-white"/>
-                <path d="M519.83 141.78q0 20.1 6.6 29.09c4.45 6 11.31 9 20.74 9 10.48-.1 18-4.19 22.49-12.23 3.08-5.55 4.7-14.38 4.73-26.35a71.3 71.3 0 0 0-1.84-17.46C569.46 110.68 561 104 547 103.86c-18.07.25-27.18 12.83-27.18 37.92m-34.36-4.38c0-23.6 5-40.74 14.77-51.54a47.73 47.73 0 0 1 22.37-13.79 90 90 0 0 1 49 0 48.9 48.9 0 0 1 22.26 13.79q14.72 16.38 14.84 51.35a127.84 127.84 0 0 1-4.83 35.35 53.57 53.57 0 0 1-20.49 29.15c-8.8 6.16-20.19 9.21-34.42 9.18-11.18 0-20.67-1.37-28.55-4.16a42 42 0 0 1-18.67-13.11 59.37 59.37 0 0 1-11.4-21.06 124.43 124.43 0 0 1-4.86-35.15m-82.6.72h18l8.38-.22a13.84 13.84 0 0 0 11-5.93 20 20 0 0 0 3.84-12.23c.06-9.11-4.54-14.16-13.88-15.24-2.73-.26-5.9-.38-9.33-.38h-18zm24.84-66.4a130 130 0 0 1 20.71 1.5q29.67 4.77 29.91 40.11-.09 24.57-14.19 40.3c-5.49 6.13-11.49 10-18 11.71q-6.67 1.65-21.69 1.65h-21.58v40.87h-34.24V71.72zm-149.28 0v81.49a55.89 55.89 0 0 0 .29 8.93c1 8.82 7.75 13.36 20.06 13.56 7.15 0 12.42-1.91 15.82-6 2.76-3.24 4.25-8.7 4.38-16.51V71.72h34.3v72.56l-.35 18.8c-.9 15.59-6.33 27.66-16.42 36.07-9.24 7.91-21.91 11.75-38 11.72q-32.39 0-45.35-17.72c-6.1-8.38-9.08-24.71-9-48.87V71.72zm-118 32.4v27h18.92c6.26 0 10.54-.85 13-2.54 3.62-2.58 5.37-6.48 5.5-11.81-.26-8.51-5.88-12.61-16.93-12.61zm27.82-32.4c10.54.16 18.48 1.28 23.94 3.34 8.23 3.14 13.88 8.6 16.89 16.41a48.93 48.93 0 0 1 3 16.74q-.09 15-7.49 25.49a31.48 31.48 0 0 1-22.3 13.56l-7.52.89 42.07 59.67H194l-33.66-56.27.07 56.27h-34.25V71.72zm-109 67.48h34.3v43l-4.6 6.26A62.7 62.7 0 0 1 98.2 199.2c-9.94 7.75-21.85 11.66-35.86 11.72a61.86 61.86 0 0 1-24.16-4.36 50.89 50.89 0 0 1-17.88-11.85C6.7 181.34 0 162.51 0 138.28q0-31.34 15.24-49.61c11.08-13.27 26.92-19.91 47.35-20 16.23.13 30 4.67 41.15 13.59l4.54 4.06V122q-13.62-12.86-25.4-16.26A49.37 49.37 0 0 0 69 103.86c-11.46 0-20.29 3.72-26.33 11.18q-8.28 10.14-8.38 27.72c-.1 10.95 2.07 19.46 6.45 25.47 5.59 7.75 13.18 11.65 22.92 11.65 4.93.07 10.16-1.55 15.59-4.89z" class="fill-black"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-        <ul class="legal-privacy-wrapper">
-          <li class="js-show"><a href="">Política de Privacidade</a></li>
-          <li class="js-show"><a href="">Legal</a></li>
-          <li class="js-show"><a href="https://www.burocratik.com" target="_blank" rel="noreferrer">Made by Büro</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="xxlarge-1 xxlarge-offset-8 xsmall-16 xsmall-offset-0">
-      <div class="sub-nav"></div>
-    </div>
-    <div class="turn-sound" id="global-sound"></div>
-  </div>
-</nav>
-  <div class="scroll-content-wrapper" id="container-wrapper" data-buroScrollbar>
-   
-
-<!-- ============= CONTENT ============= -->
-<div class="page-main page-current" data-namespace="product" data-name-product="tubes-and-channels">
-  <div class="page-toload product-page" data-bodyClass="product">
-    <header class="page-header">
-              <div class="video-container block-bg-cover">
-          <video class="element-cover" loop muted poster="https://ferro.pt//public/uploads/2018/10/tubos-calhas-cover.jpg">
-            <source data-src="https://ferro.pt//public/uploads/2018/10/tubos-calhas.mp4" type="video/mp4">
-            <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
-            Your browser does not support HTML5 video.
-          </video>
-        </div>
-         
-      <div class="row expanded">
-        <div class="xxlarge-5 xxlarge-offset-1 large-7 xsmall-14 columns align-middle product-info">
-          <svg viewBox="0 0 52.69 47.02">
-				  <path d="M32.19 34.55l20.5-20.47-.69-.71-18.8 18.78v-.16a3.71 3.71 0 0 0-3.38-3.69L52.69 5.45 52 4.74 43.73 13 30 26.75a3.56 3.56 0 0 0-3.54-4.13L48.12.9l-.7-.7-20.66 20.65v-.16A3.73 3.73 0 0 0 23.05 17h-.15L39.19.71 38.48 0 20.59 17.88a3.73 3.73 0 0 0-.78 1 3.71 3.71 0 0 0-3.2-1.88h-.18L32.71.71 32 0 14.12 17.88a3.71 3.71 0 0 0-.76.94 3.65 3.65 0 0 0-.59-.8A3.72 3.72 0 0 0 10 17L26.28.71l-.7-.71L7.69 17.88c-.06.05-.13.09-.19.15a3.69 3.69 0 0 0-.5 4.58 3.73 3.73 0 0 0-3.72 3.72 3.68 3.68 0 0 0 .57 2h-.13a3.72 3.72 0 0 0 0 7.44h.05a3.69 3.69 0 0 0-.55 1.92 3.73 3.73 0 0 0 3.72 3.72H7a3.68 3.68 0 0 0-.57 2 3.71 3.71 0 0 0 6.94 1.83 3.69 3.69 0 0 0 6.44 0 3.69 3.69 0 0 0 5.79.85l27.09-27.16-.69-.71-25.24 25.22v-.15a3.68 3.68 0 0 0-.57-2h.07a3.7 3.7 0 0 0 2.74-1.2l23.69-23.61-.69-.7-22 22v-.15a3.68 3.68 0 0 0-.55-1.92h.05a3.7 3.7 0 0 0 2.69-1.16zm0-2.55a2.72 2.72 0 1 1-2.72-2.72A2.72 2.72 0 0 1 32.22 32zm-9.17 2.72A2.72 2.72 0 1 1 25.77 32a2.72 2.72 0 0 1-2.72 2.72zm-9.67-4.55l-.03-.17h.14zm3.22-.89A2.72 2.72 0 1 1 13.89 32a2.73 2.73 0 0 1 2.72-2.73zm-.07-1l.07-.13.07.13h-.14zM19.76 30h.14l-.07.13zm-6.32 3.88h-.1l.05-.09zm3.17 1.8h.05l-.05.09-.05-.09zm3.22-1.89l.05.09h-.1zM26.21 30h.14l-.07.13zm-3.15-1.77H23l.07-.13.07.13zm-3.23.77a2.72 2.72 0 1 1 2.72-2.72A2.72 2.72 0 0 1 19.83 29zM23 24.41h.09v.09zm-3.17-1.81v-.09.09zm-3.22 1.9v-.09h.09zm-6.44 0v-.09h.1zm3.22-.89a2.72 2.72 0 1 1-2.72 2.72 2.73 2.73 0 0 1 2.72-2.73zm0-1v-.08.08h-.09zm-3.11 5.67h-.18l.07-.13zm-3.34 1.89L6.87 30H7zm3.22-.89A2.72 2.72 0 1 1 7.44 32a2.73 2.73 0 0 1 2.72-2.73zM7 33.92h-.1l.05-.09zm3.17 1.8h.05l-.05.09-.05-.09zm3.22-.81a2.72 2.72 0 1 1-2.72 2.72 2.72 2.72 0 0 1 2.72-2.72zm-3.16 4.67h-.13l.07-.12zm3.16 1.77h.07l-.07.12-.07-.12zm3.22-1.89l.07.12h-.13zm6.44 0l.07.12H23zm-3.22.89a2.72 2.72 0 1 1 2.72-2.72 2.72 2.72 0 0 1-2.72 2.73zm.07 1l-.07.12-.07-.12h.13zm3.1-5.64h.1l-.05.09zm3.27-1.89l.05.09h-.1zM29 26.33a2.72 2.72 0 1 1-2.72-2.72A2.72 2.72 0 0 1 29 26.33zM23.05 18a2.72 2.72 0 1 1-2.72 2.72A2.73 2.73 0 0 1 23.05 18zm-6.44 0a2.72 2.72 0 1 1-2.72 2.72A2.73 2.73 0 0 1 16.61 18zm-8.37.8a2.72 2.72 0 1 1-.8 1.93 2.7 2.7 0 0 1 .8-1.96zm-1.3 4.8a2.72 2.72 0 1 1-2.72 2.72 2.73 2.73 0 0 1 2.72-2.72zM1 32a2.72 2.72 0 1 1 2.72 2.72A2.73 2.73 0 0 1 1 32zm3.22 5.64a2.72 2.72 0 1 1 2.72 2.72 2.72 2.72 0 0 1-2.72-2.73zM10.16 46a2.72 2.72 0 1 1 2.72-2.72A2.72 2.72 0 0 1 10.16 46zm6.44 0a2.72 2.72 0 1 1 2.72-2.72A2.72 2.72 0 0 1 16.61 46zm3.72-2.72A2.72 2.72 0 1 1 23.05 46a2.73 2.73 0 0 1-2.72-2.7zm5.94-2.94A2.72 2.72 0 1 1 29 37.63a2.72 2.72 0 0 1-2.73 2.73z"/>
-				</svg>          <h1 class="home-and-menu-title gradient-type">Tubes and Channels</h1>
-        </div>            
-      </div>
-      <div class="sidebar align-right collapse">
-        <!-- <div class="xxlarge-2 columns">           -->
-          <a href="https://ferro.pt/en/products/sheets/" data-transition="product-header-change">      
-            <div class="next-prod-poster block-bg-cover">
-                            <picture> 
-                <source srcset="https://ferro.pt//public/uploads/fly-images/676/chapa-em-formatos-cover-2000x1333-c.jpg 2x, https://ferro.pt//public/uploads/fly-images/676/chapa-em-formatos-cover-2000x1333-c.jpg 1x" type="image/jpeg" media="(min-width: 1025px)">
-                <source srcset="https://ferro.pt//public/uploads/fly-images/676/chapa-em-formatos-cover-2000x1333-c.jpg" type="image/jpeg" media="(max-width: 1024px)">
-                <img class="element-cover" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Sheets">
-              </picture>  
-            </div>
-            <div class="next-product-title">
-              <div class="header-product-icon"><svg viewBox="0 0 52.61 46.75">
-				  <path d="M28.5 42.25L41.64 29.1h11v-1h-10A17 17 0 0 0 17.8 5l-13 13A17 17 0 0 0 17 46.75h35.61v-1h-30a17 17 0 0 0 5.82-3.53zm-10-36.58a16 16 0 0 1 22.58 22.58l-8.81 8.81A16.93 16.93 0 0 0 9.69 14.48zM1 29.79a16 16 0 1 1 16 16 16 16 0 0 1-16-16zm16-14.47a14.47 14.47 0 1 0 14.44 14.47A14.49 14.49 0 0 0 17 15.32zm0 27.94a13.47 13.47 0 1 1 13.44-13.47A13.49 13.49 0 0 1 17 43.26zm0-25.48a12 12 0 1 0 12 12 12 12 0 0 0-12-12.01zm0 23a11 11 0 1 1 11-11A11 11 0 0 1 17 40.8zm0-20.38a9.37 9.37 0 1 0 9.37 9.37A9.38 9.38 0 0 0 17 20.41zm0 17.74a8.37 8.37 0 1 1 8.37-8.37A8.38 8.38 0 0 1 17 38.16zm0-15.07a6.69 6.69 0 1 0 6.69 6.69A6.7 6.7 0 0 0 17 23.09zm0 12.39a5.69 5.69 0 1 1 5.69-5.69A5.7 5.7 0 0 1 17 35.48zm0-9.74a4 4 0 1 0 4 4 4.05 4.05 0 0 0-4-3.98zm0 7.09a3 3 0 1 1 3-3 3 3 0 0 1-3 3.02z"/>
-				</svg></div>
-              <h2 class="home-and-menu-title">Sheets</h2>
-            </div>
-              <button class="next-prod-link" role="button">
-                <span class="next-prod-text-wrapper">
-                  Next                </span>
-                <span class="arrow">
-                  <svg viewBox="0 0 13.2 8.8">                  
-                    <path d="M1.3 4.5h9.8M8.5 1.7l2.9 2.8M8.5 7.3l2.9-2.8"/>
-                  </svg>
-                </span>
-              </button> 
-          </a> 
-
-          <div class="overlay"></div>
-        <!-- </div> -->
-      </div> 
-    </header>
-
-    <main class="page-content" role="main">
-      <div class="scroll-helper">
-        <div class="scroll-helper-inner">
-          <span></span>
-        </div>
-        <strong>Scroll</strong>
-      </div>
-      <div class="row expanded">
-        <div class="xxlarge-11 small-16 xsmall-14">
-          <div class="intro intro-red-block">            
-              <h3 class="intro-red-block-title">Circular, square, rectangular or irregularly welded sections.
-</h3>
-              <p class="intro-red-block-text">The control and manufacturing process of our tubes allows us to adapt to the specificities and requirements of each of our customers, providing solutions that are adapted to the different needs of each one – from high strength, ductility and tenacity to the finish of the surface.</p>
-          </div>          
-        </div>
-        <div class="xxlarge-9 xxlarge-offset-6 small-16 small-offset-0 columns nopadd">
-          <div class="prod-image-container">
-            <div class="block-bg-cover prod-image js-image" data-friction="1" data-caption="right">
-              <picture>
-                <source srcset="https://ferro.pt//public/uploads/fly-images/680/20180528_BURO_FERPINTA_OVAR_094-2000x1333-c.jpg 2x, https://ferro.pt//public/uploads/fly-images/680/20180528_BURO_FERPINTA_OVAR_094-2000x1333-c.jpg 1x" type="image/jpeg" media="(min-width: 1025px)">
-                <source srcset="https://ferro.pt//public/uploads/fly-images/680/20180528_BURO_FERPINTA_OVAR_094-1000x666-c.jpg" type="image/jpeg" media="(max-width: 1024px)">
-                <img class="element-cover" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Ferro Mangualde - Square Tubes">
-              </picture>
-            </div>
-            <div class="image-caption-wrapper">
-              <div class="image-caption-inner">
-                <h3 class="image-caption"><span>Ferro Mangualde</span> / Square Tubes</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row used-in expanded">
-        <div class="technical-draw">
-                          <img src="https://ferro.pt//public/uploads/2018/10/technical-draw-tubos-bottom.svg" alt="Technical Draw">
-                      </div>
-        <div class="xxlarge-3 xxlarge-offset-2 large-4 large-offset-1 medium-16 medium-offset-0 xsmall-14 xsmall-offset-0 columns">
-          <span class="used-general-title">Used in</span>
-        </div>      
-        <div class="xxlarge-10 xxlarge-offset-1 medium-14 medium-offset-1 xsmall-14 xsmall-offset-1 columns">        
-          <div class="row xxlarge-up-3 large-up-2 medium-up-2 xsmall-up-1">
-                       
-              <div class="column">
-                <svg viewBox="0 0 82.08 102.22">
-  <path d="M30.57 61.24H51.5v20.93H30.57z"/>
-  <path d="M36.62 61.24h8.84v8.84h-8.84zM81.08 91.8a9.42 9.42 0 0 1-9.42 9.42H10.42a9.42 9.42 0 0 1 0-18.84h61.24a9.42 9.42 0 0 1 9.42 9.42zM9.24 91.8h63.61M46.11 34.05l11.27 6.89L53.9 55.1l-3.17-.91.41-10.79-6.61-1.28M35.97 34.05L24.7 40.94l3.48 14.16 3.17-.91-.41-10.79 6.61-1.28"/>
-  <path d="M43.93 45.16h-5.78l-.6-3.04-1.58-8.07-.71-3.61h11.56l-2.89 14.72zM41.04 30.44V17.4M32.63 1h16.81v16.4H32.63z"/>
-</svg>
-                <div class="used-title">
-                  <div class="number">
-                    <span>01</span>
-                  </div>
-                  Industry                </div>
-                <div class="used-content">
-                  Automotive, Furniture, tool development, bicycles, chemical and petroleum                </div>
-              </div>
-                         
-              <div class="column">
-                <svg viewBox="0 0 87.63 98.22">
-  <path d="M40.47 41.52a4.88 4.88 0 1 1-4.88-4.88v-5.05"/>
-  <path d="M42.49 25.67l-6.9 5.92-6.9-5.92v-7.25h13.8v7.25zM35.59 18.42V1"/>
-  <path transform="rotate(-10.18 46.60189987 85.3430807)" d="M6.87 80.48H86.4v9.79H6.87z"/>
-  <path transform="rotate(-10.18 40.9836956 76.63857081)" d="M1.24 71.78h79.53v9.79H1.24z"/>
-  <path d="M12.52 76.92l23.09-30.3L67.8 67"/>
-</svg>                <div class="used-title">
-                  <div class="number">
-                    <span>02</span>
-                  </div>
-                  Construction                </div>
-                <div class="used-content">
-                  Metal structures, homes, industrial and domestic fluid-conducting networks, fire safety systems, extinguishers, scaffolding                </div>
-              </div>
-                         
-              <div class="column">
-                <svg viewBox="0 0 107.85 81.74">
-<circle cx="25.92" cy="55.81" r="24.92"/>
-  <circle cx="91.79" cy="69.47" r="11.27"/>
-  <circle cx="91.79" cy="69.47" r="2.57"/>
-  <circle cx="25.92" cy="55.81" r="3.55"/>
-  <path d="M57.36 55.81a31.46 31.46 0 0 0-36-31.1M91.79 37.06l-19.91-2.91v-.82L62 1H28.49v23.49a31.44 31.44 0 0 1 27.83 39.35h19.89a16.4 16.4 0 0 1 30.64-1.39c-.73-15.92-4.85-23.87-15.06-25.39zM41.59 1H22.38M71.88 34.15v29.69M80 35.34V14.08"/>
-</svg>                <div class="used-title">
-                  <div class="number">
-                    <span>03</span>
-                  </div>
-                  Agriculture                </div>
-                <div class="used-content">
-                  Production of agricultural machinery, irrigation and wells<br />
-                </div>
-              </div>
-                         
-              <div class="column">
-                <svg viewBox="0 0 84.2 98.76">
-  <path d="M42.08 37.31v4.21M48.52 37.31H35.64L39.17 1h5.81l3.54 36.31zM33.9 51.53l3.91-2.26M30.68 45.96l6.44 11.15L3.9 72.2 1 67.17l29.68-21.21zM50.3 51.5l-3.94-2.27M47.08 57.08l6.44-11.15L83.2 67.14l-2.9 5.03-33.22-15.09z"/>
-  <circle cx="42.08" cy="46.57" r="5.05"/>
-  <path d="M16.01 91.81h52.18v5.95H16.01zM44.33 51.09l4.19 40.72M35.68 91.81l4.19-40.7"/>
-</svg>                <div class="used-title">
-                  <div class="number">
-                    <span>04</span>
-                  </div>
-                  Energy                </div>
-                <div class="used-content">
-                  Construction of hydroelectric and thermoelectric power plants                </div>
-              </div>
-                         
-              <div class="column">
-                <svg viewBox="0 0 64.5 85">
-  <path d="M63.5 39.33V1M42.67 38.33V1M21.83 17.23V1M1 39.33V1M32.25 38.33v-21.1H1V84h62.5V38.33H32.25zM1 8.33h62.5"/>
-  <path d="M10.81 65.84H22.1v11.29H10.81zM42.41 65.84H53.7v11.29H42.41zM10.81 45.28H22.1v11.29H10.81zM42.41 45.28H53.7v11.29H42.41zM10.81 24.72H22.1v11.29H10.81z"/>
-</svg>                <div class="used-title">
-                  <div class="number">
-                    <span>05</span>
-                  </div>
-                  Engineering and Architecture                </div>
-                <div class="used-content">
-                  Large architectural projects, handrails                </div>
-              </div>
-                          
-          </div>
-        </div>
-      </div>
-
-      <div class="row subcategoria-produtos collapse">
-        <div class="xxlarge-8 xsmall-16 columns sub-cats">
-          <div class="overlay"></div>
-          <div class="row">
-            <div class="xxlarge-12 xxlarge-offset-4 medium-offset-2 xsmall-14 xsmall-offset-1">
-              <div class="section-title">product subcategories</div>
-              <ul>
-                                  <li class="main-categories js-hide" data-id="0" >
-                    <h3>
-                      Steel Tubes for Precision Applications                    </h3>
-                    <div class="subcategorias-content">
-                      <p><strong>Our knowledge and experience in producing precision tubes allows us to be at the forefront of new product development and to offer a huge variety of formats. </strong></p>
-<p>When dimensional accuracy and surface finish are the priority, circular, square or rectangular tube sections for general use can be used.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Furniture</li>
-<li>Metal structures </li>
-<li>Bicycles </li>
-<li>Automotive industry </li>
-<li>Tool development </li>
-</ul>
-<p>Steel is available in the following formats: Cold Rolled Steel, Hot Rolled Pickled and Oiled Steel and Galvanized Steels</p>
-<p>Standard</p>
-<ul>
-<li>EN 10305-5</li>
-</ul>
-                    </div>
-                    <span class="line"></span>
-                    <div class="arrow">
-                      <svg viewBox="0 0 24.04 14.63">
-                        <path d="M.38,14.58,12.11.77l11.73,13.8" transform="translate(-0.1 -0.19)"/>
-                      </svg>
-                    </div>
-                  </li>
-                                    <li class="main-categories js-hide" data-id="1" >
-                    <h3>
-                      Cold Formed Welded Structural Hollow Sections                    </h3>
-                    <div class="subcategorias-content">
-                      <p><strong> The use of welded structural hollow sections in metallic or composite structures is of great added value to the construction industry. </strong></p>
-<p>Due to their relatively low weight and ease of maintenance, they are widely used in large projects. Production of these sections is carried under several resistance categories according to the EC3 Standard.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Automotive Industry, Furniture Industry </li>
-<li>Tool Development </li>
-<li>Metal Construction </li>
-</ul>
-<p>Standard</p>
-<ul>
-<li>EN 10219-1/2</li>
-</ul>
-                    </div>
-                    <span class="line"></span>
-                    <div class="arrow">
-                      <svg viewBox="0 0 24.04 14.63">
-                        <path d="M.38,14.58,12.11.77l11.73,13.8" transform="translate(-0.1 -0.19)"/>
-                      </svg>
-                    </div>
-                  </li>
-                                    <li class="main-categories js-hide" data-id="2" >
-                    <h3>
-                      Steel Tubes Suitable For Welding And Threading                    </h3>
-                    <div class="subcategorias-content">
-                      <p><strong>With a proven reliability lasting several years, products conforming to the EN 10255 standard are suitable for a wide range of end uses. </strong></p>
-<p>All our products are subject to Hydrostatic Testing in accordance with standard pressures and Non-destructive Testing (Eddy Current testing ECT) during the production process. This rigorous control process guarantees meticulous structural design and complete traceability.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Industrial or domestic fluid-conducting networks </li>
-<li>Fire safety system, extinguishers </li>
-</ul>
-<p>Standards</p>
-<ul>
-<li>EN10255</li>
-<li>EN10240 A1 e A2</li>
-</ul>
-                    </div>
-                    <span class="line"></span>
-                    <div class="arrow">
-                      <svg viewBox="0 0 24.04 14.63">
-                        <path d="M.38,14.58,12.11.77l11.73,13.8" transform="translate(-0.1 -0.19)"/>
-                      </svg>
-                    </div>
-                  </li>
-                                    <li class="main-categories js-hide" data-id="3" >
-                    <h3>
-                      Special Sections                    </h3>
-                    <div class="subcategorias-content">
-                      <p><strong>Our special sections are tubes that are welded lengthways and cold formed.</strong></p>
-<p>They can be applied to various fields, given the variety of geometric shapes in which they are produced.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Handrails </li>
-<li>Architecture </li>
-<li>Construction Industry </li>
-</ul>
-<p>Types available: Handrails, Miscellaneous W.O., Various Section Shapes (Oval, Elliptical, flat sided oval, semi-flat sided oval, semi-trapezoidal section, semi-oblique section), and Decorative Tubes</p>
-<p>Standard</p>
-<ul>
-<li>EN 10305</li>
-</ul>
-                    </div>
-                    <span class="line"></span>
-                    <div class="arrow">
-                      <svg viewBox="0 0 24.04 14.63">
-                        <path d="M.38,14.58,12.11.77l11.73,13.8" transform="translate(-0.1 -0.19)"/>
-                      </svg>
-                    </div>
-                  </li>
-                                </ul>
-            </div>
-          </div>
-        </div>
-        <div class="xxlarge-6 xxlarge-offset-1 medium-6 medium-offset-1 xsmall-14 columns align-middle"> 
-          <div class="sub-cat-content-wrapper">
-                          <div class="sub-cat-content" data-id="0">
-                <p><strong>Our knowledge and experience in producing precision tubes allows us to be at the forefront of new product development and to offer a huge variety of formats. </strong></p>
-<p>When dimensional accuracy and surface finish are the priority, circular, square or rectangular tube sections for general use can be used.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Furniture</li>
-<li>Metal structures </li>
-<li>Bicycles </li>
-<li>Automotive industry </li>
-<li>Tool development </li>
-</ul>
-<p>Steel is available in the following formats: Cold Rolled Steel, Hot Rolled Pickled and Oiled Steel and Galvanized Steels</p>
-<p>Standard</p>
-<ul>
-<li>EN 10305-5</li>
-</ul>
-              </div>
-                            <div class="sub-cat-content" data-id="1">
-                <p><strong> The use of welded structural hollow sections in metallic or composite structures is of great added value to the construction industry. </strong></p>
-<p>Due to their relatively low weight and ease of maintenance, they are widely used in large projects. Production of these sections is carried under several resistance categories according to the EC3 Standard.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Automotive Industry, Furniture Industry </li>
-<li>Tool Development </li>
-<li>Metal Construction </li>
-</ul>
-<p>Standard</p>
-<ul>
-<li>EN 10219-1/2</li>
-</ul>
-              </div>
-                            <div class="sub-cat-content" data-id="2">
-                <p><strong>With a proven reliability lasting several years, products conforming to the EN 10255 standard are suitable for a wide range of end uses. </strong></p>
-<p>All our products are subject to Hydrostatic Testing in accordance with standard pressures and Non-destructive Testing (Eddy Current testing ECT) during the production process. This rigorous control process guarantees meticulous structural design and complete traceability.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Industrial or domestic fluid-conducting networks </li>
-<li>Fire safety system, extinguishers </li>
-</ul>
-<p>Standards</p>
-<ul>
-<li>EN10255</li>
-<li>EN10240 A1 e A2</li>
-</ul>
-              </div>
-                            <div class="sub-cat-content" data-id="3">
-                <p><strong>Our special sections are tubes that are welded lengthways and cold formed.</strong></p>
-<p>They can be applied to various fields, given the variety of geometric shapes in which they are produced.</p>
-<p><em>Applications</em></p>
-<ul>
-<li>Handrails </li>
-<li>Architecture </li>
-<li>Construction Industry </li>
-</ul>
-<p>Types available: Handrails, Miscellaneous W.O., Various Section Shapes (Oval, Elliptical, flat sided oval, semi-flat sided oval, semi-trapezoidal section, semi-oblique section), and Decorative Tubes</p>
-<p>Standard</p>
-<ul>
-<li>EN 10305</li>
-</ul>
-              </div>
-                        </div>
-        </div>
-      </div>
-
-      <div class="ficha-tecnica">
-        <div class="row collapse">
-          <div class="xxlarge-9 xxlarge-offset-1 small-10 xsmall-15 xsmall-offset-1 columns left-col">
-            <div class="left-col-image block-bg-cover js-image" data-friction="1.5" data-caption="left">
-                             <picture> 
-                <source srcset="https://ferro.pt//public/uploads/fly-images/674/20180528_BURO_FERPINTA_BRAGA-15-2000x1333-c.jpg 2x, https://ferro.pt//public/uploads/fly-images/674/20180528_BURO_FERPINTA_BRAGA-15-2000x1333-c.jpg 1x" type="image/jpeg" media="(min-width: 1025px)">
-                <source srcset="https://ferro.pt//public/uploads/fly-images/674/20180528_BURO_FERPINTA_BRAGA-15-1000x666-c.jpg" type="image/jpeg" media="(max-width: 1024px)">
-                <img class="element-cover" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Tube Storage">
-              </picture>   
-            </div>
-            <div class="image-caption-wrapper">
-              <div class="image-caption-inner">
-                <h3 class="image-caption"><span>Ferro Setúbal</span> / Tube Storage</h3>
-              </div>
-            </div>
-            
-            <div class="overlay"></div>
-          </div>
-
-          <div class="xxlarge-7 xxlarge-offset-5 medium-10 medium-offset-3 xsmall-15 xsmall-offset-0 columns mid-col">
-            <div class="block-content-title ficha-tecnica-title">
-              <h3>Technical Information</h3>
-            </div>
-            <div class="ficha-tecnica-content">
-              <p>For more information about this product range, please see the technical data sheet. </p>
-            </div>
-
-                      </div>
-
-          <div class="xxlarge-3 xxlarge-offset-5 columns btn-col">
-            
-          </div>
-
-          <div class="xxlarge-7 xxlarge-offset-8 xsmall-16 xsmall-offset-0 columns right-col">
-            <div class="right-col-image block-bg-cover js-image" data-friction="-1" data-caption="right">
-                             <picture> 
-                <source srcset="https://ferro.pt//public/uploads/fly-images/581/20180528_BURO_FERPINTA_OVAR_095-2-1-2000x1333-c.jpg 2x, https://ferro.pt//public/uploads/fly-images/581/20180528_BURO_FERPINTA_OVAR_095-2-1-2000x1333-c.jpg 1x" type="image/jpeg" media="(min-width: 1025px)">
-                <source srcset="https://ferro.pt//public/uploads/fly-images/581/20180528_BURO_FERPINTA_OVAR_095-2-1-1000x666-c.jpg" type="image/jpeg" media="(max-width: 1024px)">
-                <img class="element-cover" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Round Tubes">
-              </picture>  
-            </div>
-            
-            <div class="image-caption-wrapper">
-              <div class="image-caption-inner">
-                <h3 class="image-caption"><span>Ferro Ovar</span> / Round Tubes</h3>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="contactos row expanded align-bottom">
-        <div class="technical-draw block-bg-cover">
-                          <img class="element-cover" src="https://ferro.pt//public/uploads/2018/10/custom.svg" alt="Technical Draw">
-                      </div>
-        <div class="xxlarge-5 xxlarge-offset-3 medium-6 medium-offset-1 small-12 small-offset-1 xsmall-14 columns">
-          <div class="contacts-title block-content-title">
-            <h3>Made-to-measure Solutions</h3>
-          </div>
-          <div class="contacts-content">
-            <p class="block-content-text">If you don’t find what you’re looking for here, contact us. Our Solutions team loves a challenge. </p>
-          </div>
-        </div>
-        <div class="xxlarge-4 xxlarge-offset-1 large-offset-1 medium-6 small-8 small-offset-1 xsmall-14 columns">
-          <a href="mailto:ferro@ferpinta.pt">
-            <button class="button-ferro" role="button">
-              <span>
-                  <svg viewBox="0 0 300 300">
-                    <path d="M296.7 50.8c-2-1.1-4.5-1-6.4.3L150 142.6 16.2 57.5c3.5-4.7 9.1-7.5 15-7.5h231.2c3.5 0 6.2-2.8 6.2-6.2s-2.8-6.2-6.2-6.2H31.2C14 37.5 0 51.5 0 68.8v162.5c0 17.3 14 31.2 31.2 31.2h237.5c17.3 0 31.2-14 31.2-31.2v-175c.1-2.3-1.2-4.5-3.2-5.5zm-9.2 180.4c0 10.4-8.4 18.8-18.8 18.8H31.2c-10.4 0-18.8-8.4-18.8-18.8V69.9l104.7 66.6-65.3 65.3c-2.5 2.4-2.6 6.4-.2 8.8 2.4 2.5 6.4 2.6 8.8.2l.2-.2 67.3-67.3 18.7 11.9c2.1 1.3 4.7 1.3 6.8 0l18.5-12 67.5 67.5c2.5 2.4 6.4 2.3 8.8-.2 2.3-2.4 2.3-6.3 0-8.7l-65.6-65.6 104.9-68.5v163.5z"/>
-                  </svg>
-                </span>
-              Explain us what you need              
-            </button>      
-          </a>              
-        </div>
-      </div>
-
-      <a href="https://ferro.pt/en/products/sheets/" data-transition="product-change">
-        <div class="next-prod-section row expanded">
-          <p class="show-mobile">Touch to explore the next product</p>
-          <p class="hide-mob">Scroll to explore the next product</p>
-          <div class="next-product-wrapper block-bg-cover">
-            <img class="element-cover js-set-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzIDInPjwvc3ZnPg==" data-src="https://ferro.pt//public/uploads/2018/10/chapa-em-formatos-cover.jpg" alt="Sheets" />
-            <span class="fade"></span>
-            <span class="overlay-scroll"></span>
-            <div class="row expanded">
-              <div class="xxlarge-6 xxlarge-offset-1 xsmall-14 columns align-middle">
-                <div class="next-title">
-                  <svg viewBox="0 0 52.61 46.75">
-				  <path d="M28.5 42.25L41.64 29.1h11v-1h-10A17 17 0 0 0 17.8 5l-13 13A17 17 0 0 0 17 46.75h35.61v-1h-30a17 17 0 0 0 5.82-3.53zm-10-36.58a16 16 0 0 1 22.58 22.58l-8.81 8.81A16.93 16.93 0 0 0 9.69 14.48zM1 29.79a16 16 0 1 1 16 16 16 16 0 0 1-16-16zm16-14.47a14.47 14.47 0 1 0 14.44 14.47A14.49 14.49 0 0 0 17 15.32zm0 27.94a13.47 13.47 0 1 1 13.44-13.47A13.49 13.49 0 0 1 17 43.26zm0-25.48a12 12 0 1 0 12 12 12 12 0 0 0-12-12.01zm0 23a11 11 0 1 1 11-11A11 11 0 0 1 17 40.8zm0-20.38a9.37 9.37 0 1 0 9.37 9.37A9.38 9.38 0 0 0 17 20.41zm0 17.74a8.37 8.37 0 1 1 8.37-8.37A8.38 8.38 0 0 1 17 38.16zm0-15.07a6.69 6.69 0 1 0 6.69 6.69A6.7 6.7 0 0 0 17 23.09zm0 12.39a5.69 5.69 0 1 1 5.69-5.69A5.7 5.7 0 0 1 17 35.48zm0-9.74a4 4 0 1 0 4 4 4.05 4.05 0 0 0-4-3.98zm0 7.09a3 3 0 1 1 3-3 3 3 0 0 1-3 3.02z"/>
-				</svg>                  <h3 class="home-and-menu-title">Sheets</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </main>
-  </div>
-</div>
-
-<div class="page-main page-next" aria-hidden="true"></div>
-<div class="page-main page-prev" aria-hidden="true"></div>
-
-
-<footer class="footer" role="contentinfo">
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
   
-</footer>
+  <!-- Top header -->
+  <header class="w3-container w3-xlarge">
+    <p class="w3-left">Jeans</p>
+    <p class="w3-right">
+      <i class="fa fa-shopping-cart w3-margin-right"></i>
+      <i class="fa fa-search"></i>
+    </p>
+  </header>
 
-</div><!--scroll-content-wrapper-->
+  <!-- Image header -->
+  <div class="w3-display-container w3-container">
+    <img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%">
+    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
+      <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
+      <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
+      <h1 class="w3-hide-small">COLLECTION 2016</h1>
+      <p><a href="#jeans" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p>
+    </div>
+  </div>
 
-<!-- TRANSITION -->
-<div id="loading-page" class="js-loading-page" aria-hidden="true"></div>
+  <div class="w3-container w3-text-grey" id="jeans">
+    <p>8 items</p>
+  </div>
 
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-  }
-</script>
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="/w3images/jeans1.jpg" style="width:100%">
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="/w3images/jeans2.jpg" style="width:100%">
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+    </div>
 
-<!-- outdated browser  -->
-<div id="outdated"> 
-  <span>Your browser is out of date!</span>
-  <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
-  <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-<!-- end #outdated browser  -->
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container">
+          <img src="/w3images/jeans2.jpg" style="width:100%">
+          <span class="w3-tag w3-display-topleft">New</span>
+          <div class="w3-display-middle w3-display-hover">
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="/w3images/jeans3.jpg" style="width:100%">
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="/w3images/jeans3.jpg" style="width:100%">
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+      <div class="w3-container">
+        <div class="w3-display-container">
+          <img src="/w3images/jeans4.jpg" style="width:100%">
+          <span class="w3-tag w3-display-topleft">Sale</span>
+          <div class="w3-display-middle w3-display-hover">
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="/w3images/jeans4.jpg" style="width:100%">
+        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="/w3images/jeans1.jpg" style="width:100%">
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribe section -->
+  <div class="w3-container w3-black w3-padding-32">
+    <h1>Subscribe</h1>
+    <p>To get special offers and VIP treatment:</p>
+    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+    <div class="w3-row-padding">
+      <div class="w3-col s4">
+        <h4>Contact</h4>
+        <p>Questions? Go ahead.</p>
+        <form action="/action_page.php" target="_blank">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
+          <button type="submit" class="w3-button w3-block w3-black">Send</button>
+        </form>
+      </div>
+
+      <div class="w3-col s4">
+        <h4>About</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">We're hiring</a></p>
+        <p><a href="#">Support</a></p>
+        <p><a href="#">Find store</a></p>
+        <p><a href="#">Shipment</a></p>
+        <p><a href="#">Payment</a></p>
+        <p><a href="#">Gift card</a></p>
+        <p><a href="#">Return</a></p>
+        <p><a href="#">Help</a></p>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <h4>Store</h4>
+        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+        <h4>We accept</h4>
+        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+        <br>
+        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+        <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
+        <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
+        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+      </div>
+    </div>
+  </footer>
+
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+  <!-- End page content -->
 </div>
 
-<!-- ============= SCRIPTS ============= -->
-<!--[if lt IE 9]>
-    <script src="public/scripts/jquery-1.8.min.js"></script>
-<![endif]-->
-<!--[if (gte IE 9) | (!IE)]><!-->
-    <script src="/public/scripts/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/public/scripts/jquery.min.js"><\/script>')</script>
-    <!-- <script src="/public/js/plugins_default/jquery-migrate/jquery-migrate.min.js"></script> -->
-<!--<![endif]-->
+<!-- Newsletter Modal -->
+<div id="newsletter" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-center">
+      <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+      <h2 class="w3-wide">NEWSLETTER</h2>
+      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
 
-        <script src="/public/scripts/buro-workers.min.js"></script>
-      <script src="/public/scripts/main-engine.min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD89FnwtWXp7nUwQrsZW75Hp7bWaNT7xoo" type="text/javascript"></script>
-
-<!-- ANALYTICS -->
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-127660174-1', 'auto');
-  ga('send', 'pageview');
+// Accordion 
+function myAccFunc() {
+  var x = document.getElementById("demoAcc");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// Click on the "Jeans" link on page load to open the accordion for demo purposes
+document.getElementById("myBtn").click();
+
+
+// Open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
 </script>
 
-<!-- end #ANALYTICS -->
 </body>
-</html> 
+</html>
