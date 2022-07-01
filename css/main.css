@@ -1260,7 +1260,7 @@
   .show > .btn-primary.dropdown-toggle,
   .show > .btn-primary.dropdown-toggle:focus,
   .show > .btn-primary.dropdown-toggle:hover {
-    background-color: #0CB4E8; /* amir */
+    background-color: #007FFF; /* amir */
     color: #FFFFFF;
     box-shadow: none; }
   .btn-primary:hover {
@@ -2040,10 +2040,10 @@ textarea.form-control {
   .progress-container.progress-primary .progress {
     background: rgba(5, 71, 91, 0.4); } /* amir */
   .progress-container.progress-primary .progress-bar {
-    background: #0C40E8; } /* amir */
+    background: #007FFF; } /* amir */
   .progress-container.progress-primary .progress-value,
   .progress-container.progress-primary .progress-badge {
-    color: #0C40E8; } /* amir */
+    color: #007FFF; } /* amir */
   .progress-container.progress-info .progress {
     background: rgba(44, 168, 255, 0.3); }
   .progress-container.progress-info .progress-bar {
