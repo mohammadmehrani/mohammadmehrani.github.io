@@ -545,7 +545,7 @@
   .datepicker.dropdown-menu:before {
     display: none; }
   .datepicker.datepicker-primary {
-    background-color: #378C3F; }
+    background-color: #0080FF; } /* amir: #378C3F */
     .datepicker.datepicker-primary th,
     .datepicker.datepicker-primary .day div,
     .datepicker.datepicker-primary table tr td span {
