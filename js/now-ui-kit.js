@@ -8,7 +8,7 @@
  * Copyright 2017 Creative Tim (http://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md)
 
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
+ * Designed by mohammad mehrani
 
  =========================================================
 
@@ -235,7 +235,3 @@ function debounce(func, wait, immediate) {
         if (immediate && !timeout) func.apply(context, args);
     };
 };
-
-//By me a Coffee
-
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="m.mehrani" data-description="Support me on Buy me a coffee!" data-message="Donate" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
