@@ -5280,3 +5280,8 @@ a.credit {
 /* Common Style */
 .section {
   padding-bottom: 0; }
+
+#bmc-wbtn {
+    right: auto !important;
+    left: 20px !important; */ /* Adjust this value to set the horizontal position */
+}  

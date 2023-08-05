@@ -1,22 +1,40 @@
-creative-cv
-v1.1.0
-Update Date: January 8, 2021
-
-License - FREE
 
 License Terms
 -------------
+hello my name is mohammad mehrani and this is my personal website
+i am a web developer and i want to share some useful information about me in order for people who
 
-Under free license, you can use the template in personal (non-commercial) projects with credit. For credit, you need to keep the link to templateflip.com from the site footer.
+1. Content and Copyright:
+   All content published on this website, including articles, projects, photos, and videos, belongs to you or has been obtained with legal permission. Copying and reproducing any content from this site without written authorization from you is strictly prohibited.
 
-You can buy a premium license to be allowed to remove the footer link and  to use the item in commercial projects (or for clients).
+2. Content Responsibility:
+   As the owner of this website, you are responsible for all the content published on this site. User comments, suggestions, and other contributions will be reviewed, and you reserve the right to remove inappropriate, offensive, or unlawful content.
 
-Download & Buy - https://templateflip.com/templates/creative-cv/
-Demo - https://templateflip.com/demo/templates/creative-cv/
+3. User Comments:
+   If allowing user comments on projects or other materials, users are responsible for their own comments and commit not to post any insulting, threatening, or illegal content.
 
-Compare licenses - https://templateflip.com/licenses/
-Terms - https://templateflip.com/terms/
-FAQ - https://templateflip.com/faq/
+4. Privacy Policy:
+   This website is committed to safeguarding user privacy. User information, such as names, emails, and other personal details, will be kept confidential and used only for specified purposes. User information will not be shared with external parties without their explicit consent.
+
+5. Software and Plugins:
+   Ensure that software and plugins used on this website are sourced from reliable and up-to-date providers. Users are responsible for any issues arising from the installation or use of third-party software and plugins.
+
+6. Communication with Users:
+   Endeavor to respond to all messages and inquiries from users. Customer-oriented communication and timely responses demonstrate support and value for website visitors.
+
+7. Changes to Rules:
+   These rules may be revised or improved due to legal changes or website objectives. Any modifications to the website rules will be communicated in an appropriate section.
+
+8. Liability and Commitments:
+   This website is provided "as is" without any warranties regarding the accuracy or performance of the content or services offered. The website will not be liable for any damages resulting from the use of information or software.
+
+9. Intellectual Property Rights:
+   This website shall not transfer any intellectual or financial property rights to users, and users shall not make any claims regarding content or services provided on this website.
+
+10. Changes to Rules:
+    Any changes or amendments to these rules will be determined by the website and will take effect from the date of their publication.
+
+These rules should be as simple and clear as possible, informing users about the objectives and limitations of your website. It's best to place these rules on a dedicated page of your website, ensuring easy access for users. Additionally, any events such as rule changes, privacy breaches, or legal disputes should be managed with care and, if necessary, with the assistance of legal advisors.
 
 
 Prohibitions
