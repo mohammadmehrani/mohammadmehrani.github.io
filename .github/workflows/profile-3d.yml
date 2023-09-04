@@ -17,8 +17,8 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
       - name: Commit & Push
         run: |
-          git config user.name FranzKafka
-          git config user.email franzkafkayu@gmail.com
+          git config user.name mohammadmehrani
+          git config user.email mehrani1992@gmail.com
           git add -A .
           git commit -m "generated"
           git push
