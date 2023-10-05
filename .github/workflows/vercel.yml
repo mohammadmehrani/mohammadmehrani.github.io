@@ -1,43 +1,55 @@
-name: Deploy PR to Preview
+name: Deploy to Vercel
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 on:
   workflow_dispatch:
-  pull_request:
-    branches-ignore:
-      - revert-logger
+  release:
+    types: [published]
+  push:
+    # this will deploy data files only when no release is created
+    branches:
+      - main
     paths:
-      - "**.js"
+      - "data/**"
+      - "pages/docs/**"
 
 jobs:
   deploy:
+    if: github.repository == 'mohammadmehrani/mohammadmehrani.github.io'
     runs-on: ubuntu-latest
-    outputs:
-      url: ${{ steps.deploy-preview.outputs.url }}
     steps:
       - uses: actions/checkout@v3
       - name: install Vercel CLI
         run: npm install --global vercel@latest
       - name: pull Vercel environment information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: build project artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      - name: deploy preview
-        id: deploy-preview
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: deploy project artifacts to Vercel
         run: |
-          du --inodes -d 5 .vercel/output
-          ls -l .vercel/output/functions
-          preview_url="$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
-          echo "url=$preview_url" >> $GITHUB_OUTPUT
-          echo "deployed to $preview_url"
+          OUTPUT=$(du --inodes -d 5 .vercel/output)
+          echo "$OUTPUT"
+          LAST=$(echo "$OUTPUT" | tail -n 1)
+          PERCENTAGE=$(echo "$LAST" | awk 'BEGIN {maxtotal=15000} { printf "%.2f%%", ($1/maxtotal*100) }')
+          echo "Vercel file usage percentage" >> $GITHUB_STEP_SUMMARY
+          echo "$PERCENTAGE" >> $GITHUB_STEP_SUMMARY
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
   load-data:
     runs-on: ubuntu-latest
     needs: deploy
     steps:
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            data:
+              - 'data/**'
       - name: load json files
-        run: curl -L -f ${{ needs.deploy.outputs.url }}/api/system/reload?secret=${{ secrets.mohammadmehrani_API_SECRET_PREVIEW }}
-      - name: load testimonial files
-        run: curl -L -f ${{ needs.deploy.outputs.url }}/api/system/testimonials-forms?secret=${{ secrets.mohammadmehrani_API_SECRET_PREVIEW }}
+        if: steps.changes.outputs.data == 'true'
+        run: curl -L -f https://mohammadmehrani.github.io/?secret=${{ secrets.BIODROP_API_SECRET }}
+      - name: load testimonials json files for db managed profiles
+        if: steps.changes.outputs.data == 'true'
+        run: curl -L -f https://mohammadmehrani.github.io/?secret=${{ secrets.BIODROP_API_SECRET }}
