@@ -1,912 +1,277 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mohammad Mehrani</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/aos.css?ver=1.1.0" rel="stylesheet">
-    <link href="css/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
-    <link href="css/main.css?ver=1.1.0" rel="stylesheet">
-    <noscript>
-      <style type="text/css">
-        [data-aos] {
-            opacity: 1 !important;
-            transform: translate(0) scale(1) !important;
-        }
-      </style>
-    </noscript>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mohammad Mehrani | DevOps Engineer, Cloud & Platform Specialist" />
+  <meta name="theme-color" content="#0e1a2b" />
+  <title>Mohammad Mehrani | DevOps Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/modern.css" rel="stylesheet" />
+
+  <link rel="icon" href="favicon.ico" />
 </head>
+<body>
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
 
-<body id="top">
-    <header>
-        <div class="profile-page sidebar-collapse">
-            <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
-                <div class="container">
-                    <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip">Mohammad Mehrani</a>
-                        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+  <header>
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home">M.Mehrani</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
         </div>
-    </header>
-    <div class="page-content">
-        <div>
-            <div class="profile-page">
-                <div class="wrapper">
-                    <div class="page-header page-header-small" filter-color="blue">
-                        <div class="page-header-image" data-parallax="true" style="background-image: url('images/rainbow.svg')"></div>
-                        <div class="container">
-                            <div class="content-center">
-                                <div class="cc-profile-image">
-                                    <a href="#"><img src="images/mehrani.jpg" alt="Image" /></a>
-                                </div>
-                                <div class="h2 title">Mohammad Mehrani</div>
-                                <p class="category text-white">Python Programmer, Windows and Linux Systems Admin (SysOps) and Full Stack WP Developer.</p>
-                                <a class="btn btn-primary smooth-scroll mr-2" href="#contact" target="_blank" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a>
-                          <!-- <a class="btn btn-primary" href="pdf/TNZOil.pdf" target="_blank" data-aos="zoom-in" data-aor-anchor="data-aos-anchor">COE</a> -->
-                                <a class="btn btn-primary smooth-scroll mr-2" href="pdf/M.Mehrani.pdf" target="_blank" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Resume</a>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <div class="container">
-                                <div class="button-container"><a class="btn btn-default btn-round btn-lg btn-icon" href="https://fb.com/mohammad.mehrani" rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon"
-                                        href="https://twitter.com/m_mehrani" rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="https://www.linkedin.com/in/mohammadmehrani/"
-                                        rel="tooltip" title="Follow me on LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                    <a class="btn btn-default btn-round btn-lg btn-icon" href="https://instagram.com/mehmet.mehrani" rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="about">
-                <div class="container">
-                    <div class="card" data-aos="fade-up" data-aos-offset="10">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card-body">
-                                    <div class="h4 mt-0 title">About</div>
-                                    <p>"I am Mohammad, a skilled DevOps professional with extensive experience in optimizing software development and deployment processes. Proficient in managing various operating systems, automating tasks, configuring CI/CD pipelines, containerization, infrastructure provisioning, and working in cloud environments. Eager to learn, collaborative, proactive, and committed to delivering high-quality work and excellent customer service. I believe my skills and experience make me a valuable asset to any team</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card-body">
-                                    <div class="h4 mt-0 title">Basic Information</div>
-                                    <div class="row">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-                                        <div class="col-sm-8">1992</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                                        <div class="col-sm-8">mohammad.mehrani@parspack.com</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                                        <div class="col-sm-8">+989124403164</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-                                        <div class="col-sm-8">West Town, Tehran, Iran</div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                                        <div class="col-sm-8">English, Spanish, Persian</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="skill">
-                <div class="container">
-                    <div class="h4 text-center mb-4 title">Professional Skills</div>
-                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">DevOps Engineering</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Python</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">javascript</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">ASP.NET</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Operating Systems: UNIX, Linux, MS DOS Windows</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Version Control Systems: Git, Github</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">VCS Hosting</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Containers: Docker, Container d</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Networking, Security and Protocols</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Cloud Providers: AWS, AZURE,Google Console</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Serverless: Cloudflare, Vercel, Netlify</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Configuration Management:Ansible, Puppet</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Infrastructure Provisioning: Terraform</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Secret Management: SOPS, Vault</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Infrastructure Monitoring: Prometheus, Datadog </span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Application Monitoring: Datadog</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Logs Management: Splunk</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Container Orchestration: Kubernetes</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">HashiCorp</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Artifact Management</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Service Mesh</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">CI/CD Tool: GitHub Actions</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Linux LDAP</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Cloud Design Pattern</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Web Servers</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Firewall, Load Balancer</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div><span class="progress-value">65%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Forward Proxy, Reverse Proxy, VPN</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="progress-container progress-primary"><span class="progress-badge">Azure Active directory</span>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="portfolio">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto">
-                            <div class="h4 text-center mb-4 title">Portfolio</div>
-                            <div class="nav-align-center">
-                                <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Photography" role="tablist"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-content gallery mt-5">
-                        <div class="tab-pane active" id="web-development">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="http://iranipex.com/" target="_blank">
-                                                <figure class="cc-effect"><img src="images/1.png" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">iranipex</div>
-                                                        <p>#web-development</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="https://en.tnzoil.com/" target='_blank'>
-                                                <figure class="cc-effect"><img src="images/2.png" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">tnzoil.com</div>
-                                                        <p>#web-development</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="https://fealef.ir/" target="_blank">
-                                                <figure class="cc-effect"><img src="images/3.png" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">FE - ALEF Legal Consultancy</div>
-                                                        <p>#web-development</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="https://sheydabar.com/" target="_blank">
-                                                <figure class="cc-effect"><img src="images/4.png" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">sheydabar.com</div>
-                                                        <p>#web-development</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="graphic-design" role="tabpanel">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="images/flow01.jpeg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Workspace</div>
-                                                        <p>Workflow</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="images/flow02.jpeg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Web Development</div>
-                                                        <p>Workflow</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="images/flow03.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Linux Adminstration</div>
-                                                        <p>Workflow</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="images/flow04.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Linux Adminstration</div>
-                                                        <p>Workflow</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#graphic-design">
-                                                <figure class="cc-effect"><img src="images/flow05.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Python Development</div>
-                                                        <p>Workflow</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="Photography" role="tabpanel">
-                            <div class="ml-auto mr-auto">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#MCSA">
-                                                <figure class="cc-effect"><img src="images/cert-001.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">MCSA PACK</div>
-                                                        <p>Microsoft Active Directory</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#MTCNA">
-                                                <figure class="cc-effect"><img src="images/cert-002.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">MTCNA</div>
-                                                        <p>Microtik</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#CEH.V10">
-                                                <figure class="cc-effect"><img src="images/cert-003.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">CEH V.10</div>
-                                                        <p>Cybersecurity</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#SQL SERVER 2017">
-                                                <figure class="cc-effect"><img src="images/cert-004.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">SQL SERVER 2017</div>
-                                                        <p>Microsoft</p>              
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#Python">
-                                                <figure class="cc-effect"><img src="images/cert-005.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Python</div>
-                                                        <p>Programming</p>              
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#ASP.NET">
-                                                <figure class="cc-effect"><img src="images/cert-007.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">WORDPRESS</div>
-                                                        <p>Wordpress FullStack Developer</p>              
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#Wordpress">
-                                                <figure class="cc-effect"><img src="images/cert-006.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">ASP.NET</div>
-                                                        <p>C# Programming</p>              
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                                            <a href="#Photoshop">
-                                                <figure class="cc-effect"><img src="images/cert-008.jpg" alt="Image" />
-                                                    <figcaption>
-                                                        <div class="h4">Photoshop</div>
-                                                        <p>Adobe Photoshop</p>              
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section" id="experience">
-                    <div class="container cc-experience">
-                        <div class="h4 text-center mb-4 title">Work Experience</div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>May 2023 - Present</p>
-                                        <div class="h5">Technical Support</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Infrastructure Technical Support</div>
-                                        <p>PARSPACK. Tehran, Iran</p>
-                                        <p><a href="parspack.com">PARSPACK(ABRHA)</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>June 2018 - March 2023</p>
-                                        <div class="h5">Full Stack Developer</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Full Stack Developer</div>
-                                        <p>TNZ Oil Co. Tehran, Iran</p>
-                                        <p><a href="https://tnzoil.com">TNZ Oil</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>February 2019 - April 2020</p>
-                                        <div class="h5">Full Stack Programmer</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Support and Maitenance Services</div>
-                                        <p>Enermonde Co., Tehran, Iran</p>
-                                        <p><a href="https://www.enermonde.com/">Enermonde</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>June 2018 - November 2019</p>
-                                        <div class="h5">Software Development</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Software Technical Expert</div>
-                                        <p>Sama Samaneh Co, Tehran, Iran.</p>
-                                        <p><a href="https://samasoft.net/en/">Sama Samaneh</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>April 2018 - October 2019</p>
-                                        <div class="h5">Web Development</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Web Master</div>
-                                        <p>Co. Tehran, Iran.</p>
-                                        <p><a href=></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>January 2017 - July 2017</p>
-                                        <div class="h5">SysOps</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Python Developer</div>
-                                        <p>shatelmobile Co. Tehran, Iran.</p>
-                                        <p><a href="https://shatelmobile.ir/">Shatel Mobile</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-experience-header">
-                                        <p>June 2016 - Present</p>
-                                        <div class="h5">CCTV</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">CCTV Marketer & Installer</div>
-                                        <p>Union of Electronics and Electrotechnics Co. Tehran, Iran.</p>
-                                        <p><a href="https://etet.ir/">Union of Electronics and Electrotechnics</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="container cc-education">
-                        <div class="h4 text-center mb-4 title">Education</div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-education-header">
-                                        <p>Since 2023</p>
-                                        <div class="h5">Master's Degree</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Master's Degree in Computer Science</div>
-                                        <p class="category">Institute/University</p>
-                                        <p><a href="https://faran.ac.ir/">Faran Mehr University</a></p>
-                                        <p>Branch: Computer Networks</p>
-                                        <p>GPA: 18</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-education-header">
-                                        <p>2017-2023</p>
-                                        <div class="h5">Bachelor's degree</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Bachelor's degree in Computer Science</div>
-                                        <p class="category">Institute/University</p>
-                                        <p><a href="https://faran.ac.ir/">Faran Mehr University</a></p>
-                                        <p>Branch: Software</p>
-                                        <p>GPA: 15</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body cc-education-header">
-                                        <p>2008-2009</p>
-                                        <div class="h5">Diploma</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                                    <div class="card-body">
-                                        <div class="h5">Diploma in Science</div>
-                                        <p class="category">Institute/School</p>
-                                        <p><a href="http://kashiha.ir/">Rayan Kashiha</a></p>
-                                        <p>GPA: 13</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section" id="reference">
-                    <div class="container cc-reference">
-                        <div class="h4 mb-4 text-center title">References</div>
-                        <div class="card" data-aos="zoom-in">
-                            <div class="carousel slide" id="cc-Indicators" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-target="#cc-Indicators" data-slide-to="0"></li>
-                                    <li data-target="#cc-Indicators" data-slide-to="1"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/ref.svg" alt="Image" />
-                                                <p class="category">CEO / WEBM</p>
-                                            </div>
-                                            <div class="col-lg-10 col-md-9">
-                                                <div class="h5 pt-2">Dr. Saeed Farokhi</div>
-                                                <p>Member of the Borad of Faran University.</p><br><p>dr.farokhi@faran.ac.ir</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/ref.svg" alt="Image" />
-                                                <p class="category">CEO / Webnote</p>
-                                            </div>
-                                            <div class="col-lg-10 col-md-9">
-                                                <div class="h5 pt-2">Dr. Hamidreza Moghassemi</div>
-                                                <p>Member of the Borad of Faran University.</p><br><p>hamid.moghassemi@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section" id="reference">
-                    <div class="container cc-reference">
-                        <div class="h4 mb-4 text-center title">Donate</div>
-                        <div class="card" data-aos="zoom-in">
-                            <div class="carousel slide" id="cc-Indicators" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-target="#cc-Indicators" data-slide-to="0"></li>
-                                    <li data-target="#cc-Indicators" data-slide-to="1"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/bmc.linkm.mehrani.png" alt="Image" />
-                                               
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/ton.png" alt="Image" />
-                                                <p class="category">My Ton Wallet</p>
-                                            </div>
-                                            <div class="col-lg-10 col-md-9">
-                                                <div class="h5 pt-2">My Ton Wallet</div>
-                                                <p><a href="EQAtswCttjVk_yR8SF3V5jv0RY3xDUT-j_zJlMstem-VKkPK"> Donate </a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section" id="contact">
-                <div class="cc-contact-information" style="background-image: url('images/staticmap.png');">
-                <div class=" container ">
-                  <div class="cc-contact ">
-                    <div class="row ">
-                      <div class="col-md-9 ">
-                        <div class="card mb-0 " data-aos="zoom-in ">
-                          <div class="h4 text-center title ">Contact Me</div>
-                          <div class="row ">
-                            <div class="col-md-6 ">
-                              <div class="card-body ">
-                                <form action="https://formspree.io/f/mwkyjjza" method="POST">
-                                    <div class="p pb-3"><strong>Feel free to contact me</strong></div>
-                                    <div class="row mb-3">
-                                      <div class="col">
-                                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                          <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <div class="col">
-                                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                                          <input class="form-control" type="text" name="subject" placeholder="Subject" required="required"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <div class="col">
-                                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                          <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <div class="col">
-                                        <div class="form-group">
-                                          <textarea class="form-control" name="message_body" placeholder="Your Message" required="required"></textarea>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col">
-                                        <button class="btn btn-primary" type="submit">Send</button>
-                                      </div>
-                                    </div>
-                                  </form>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ">
-                              <div class="card-body ">
-                                <p class="mb-0 "><strong>Address </strong></p>
-                                <p class="pb-2 ">West Town, Tehran, Iran</p>
-                                <p class="mb-0 "><strong>Phone</strong></p>
-                                <p class="pb-2 "></p>
-                                <p class="mb-0 "><strong>Email</strong></p>
-                                <p>admin@m-mehrani.ir</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div></div>
-  <!---start GOFTINO code--->
-<script type="text/javascript">
-    !function(){var i="kWrYfy",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
-  </script>
-  <!---end GOFTINO code--->
-    </div>
-    <footer class="footer ">
-      <div class="container text-center "><a class="cc-facebook btn btn-link " href="https://fb.com/mohammad.mehrani "><i class="fa fa-facebook fa-2x " aria-hidden="true "></i></a><a class="cc-twitter btn btn-link " href="https://twitter.com/m_mehrani
-                        "><i class="fa fa-twitter fa-2x " aria-hidden="true "></i></a><a class="cc-google-plus btn btn-link " href="https://www.linkedin.com/in/mohammadmehrani/"><i class="fa fa-linkedin fa-2x " aria-hidden="true "></i></a><a class="cc-instagram
-                        btn btn-link " href="https://instagram.com/madi_mehrani "><i class="fa fa-instagram fa-2x " aria-hidden="true "></i></a></div>
-      <div class="h4 title text-center ">Mohammad Mehrani</div>
-      <div class="text-center text-muted ">
-        <p>&copy; Designed by Mohammad Mehrani</p>
       </div>
-    </footer>
-    <script src="js/core/jquery.3.2.1.min.js?ver=1.1.0 "></script>
-    <script src="js/core/popper.min.js?ver=1.1.0 "></script>
-    <script src="js/core/bootstrap.min.js?ver=1.1.0 "></script>
-    <script src="js/now-ui-kit.js?ver=1.1.0 "></script>
-    <script src="js/aos.js?ver=1.1.0 "></script>
-    <script src="scripts/main.js?ver=1.1.0 "></script>
-  </body>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section-pad">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <p class="eyebrow reveal">DevOps Engineer | Platform & Cloud</p>
+            <h1 class="display-title reveal delay-1">I build fast, secure, and reliable cloud platforms.</h1>
+            <p class="lead reveal delay-2">
+              Mohammad Mehrani with hands-on experience in CI/CD, Kubernetes, infrastructure automation,
+              observability, and production-grade Linux environments.
+            </p>
+            <div class="hero-actions reveal delay-3">
+              <a class="btn btn-accent" href="pdf/M.Mehrani.pdf" target="_blank" rel="noopener">Download Resume</a>
+              <a class="btn btn-outline-light" href="#contact">Hire Me</a>
+            </div>
+            <div class="hero-meta reveal delay-4">
+              <span><i class="bi bi-geo-alt"></i> Tehran, Iran</span>
+              <span><i class="bi bi-translate"></i> English | Spanish | Persian</span>
+              <span><i class="bi bi-envelope"></i> admin@m-mehrani.ir</span>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="profile-card reveal delay-2">
+              <img src="images/mehrani.jpg" alt="Portrait of Mohammad Mehrani" loading="eager" />
+              <div class="profile-chip">
+                <i class="bi bi-shield-check"></i>
+                <span>Available for remote contracts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-pad">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-7 reveal">
+            <div class="panel">
+              <h2>About Me</h2>
+              <p>
+                I focus on improving software delivery quality by designing dependable deployment workflows,
+                secure infrastructure, and scalable cloud services. My core strengths include automation,
+                cross-team collaboration, and incident-resistant platform design.
+              </p>
+              <p>
+                I have practical experience with Linux systems, GitOps-style workflows, container platforms,
+                and infrastructure as code across modern cloud environments.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-5 reveal delay-1">
+            <div class="panel list-panel">
+              <h3>Quick Facts</h3>
+              <ul>
+                <li><span>Role</span><strong>DevOps Engineer</strong></li>
+                <li><span>Experience</span><strong>Production Platforms</strong></li>
+                <li><span>Focus</span><strong>CI/CD, K8s, Cloud, Security</strong></li>
+                <li><span>Phone</span><strong>+98 912 440 3164</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section-pad">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Core Skills</h2>
+          <p>Tools and capabilities used in real-world delivery pipelines.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-head"><span>DevOps Engineering</span><strong>90%</strong></div>
+            <div class="meter"><span data-level="90"></span></div>
+          </article>
+          <article class="skill-card reveal delay-1">
+            <div class="skill-head"><span>Kubernetes & Containers</span><strong>85%</strong></div>
+            <div class="meter"><span data-level="85"></span></div>
+          </article>
+          <article class="skill-card reveal delay-2">
+            <div class="skill-head"><span>CI/CD Pipelines</span><strong>88%</strong></div>
+            <div class="meter"><span data-level="88"></span></div>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-head"><span>Cloud (AWS / Azure / GCP)</span><strong>82%</strong></div>
+            <div class="meter"><span data-level="82"></span></div>
+          </article>
+          <article class="skill-card reveal delay-1">
+            <div class="skill-head"><span>Terraform / IaC</span><strong>84%</strong></div>
+            <div class="meter"><span data-level="84"></span></div>
+          </article>
+          <article class="skill-card reveal delay-2">
+            <div class="skill-head"><span>Monitoring & Observability</span><strong>80%</strong></div>
+            <div class="meter"><span data-level="80"></span></div>
+          </article>
+        </div>
+
+        <div class="tag-cloud reveal delay-2">
+          <span>Linux</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span>
+          <span>Ansible</span><span>Prometheus</span><span>Datadog</span><span>Vault</span>
+          <span>Cloudflare</span><span>Nginx</span><span>Python</span><span>Networking</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-pad">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Selected Work</h2>
+          <p>Snapshots of infrastructure and engineering delivery work.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <article class="project-card">
+              <img src="images/flow01.jpeg" alt="Project visual 1" loading="lazy" />
+              <div>
+                <h3>Cloud Migration Pipeline</h3>
+                <p>Multi-stage deployment with quality gates, rollback strategy, and audit trails.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal delay-1">
+            <article class="project-card">
+              <img src="images/flow03.jpg" alt="Project visual 2" loading="lazy" />
+              <div>
+                <h3>Container Platform Hardening</h3>
+                <p>Security policy enforcement, runtime controls, and image scanning integration.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal delay-2">
+            <article class="project-card">
+              <img src="images/flow05.jpg" alt="Project visual 3" loading="lazy" />
+              <div>
+                <h3>Observability Stack</h3>
+                <p>Metrics, logs, alerts, and dashboards to reduce MTTR and improve reliability.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="section-pad">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Certifications</h2>
+          <p>Recent certifications and training records.</p>
+        </div>
+        <div class="cert-grid">
+          <img class="reveal" src="images/cert-001.jpg" alt="Certificate 1" loading="lazy" />
+          <img class="reveal delay-1" src="images/cert-002.jpg" alt="Certificate 2" loading="lazy" />
+          <img class="reveal delay-2" src="images/cert-003.jpg" alt="Certificate 3" loading="lazy" />
+          <img class="reveal" src="images/cert-004.jpg" alt="Certificate 4" loading="lazy" />
+          <img class="reveal delay-1" src="images/cert-005.jpg" alt="Certificate 5" loading="lazy" />
+          <img class="reveal delay-2" src="images/cert-006.jpg" alt="Certificate 6" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6 reveal">
+            <div class="panel contact-panel">
+              <h2>Contact</h2>
+              <p>For collaboration, consulting, or full-time opportunities, send a message.</p>
+
+              <form action="https://formspree.io/f/mwkyjjza" method="POST" class="contact-form" novalidate>
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" required />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="_replyto" required />
+                </label>
+                <label>
+                  <span>Subject</span>
+                  <input type="text" name="subject" required />
+                </label>
+                <label>
+                  <span>Message</span>
+                  <textarea name="message_body" rows="5" required></textarea>
+                </label>
+                <button class="btn btn-accent" type="submit">Send Message</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal delay-1">
+            <div class="panel contact-side">
+              <h3>Reach Me</h3>
+              <ul class="contact-list">
+                <li><i class="bi bi-envelope"></i><a href="mailto:admin@m-mehrani.ir">admin@m-mehrani.ir</a></li>
+                <li><i class="bi bi-telephone"></i><a href="tel:+989124403164">+98 912 440 3164</a></li>
+                <li><i class="bi bi-geo-alt"></i><span>West Town, Tehran, Iran</span></li>
+              </ul>
+
+              <div class="socials">
+                <a href="https://github.com/mohammadmehrani" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/mohammadmehrani/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://t.me/mohammad_mehrani" target="_blank" rel="noopener" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                <a href="https://instagram.com/madi_mehrani" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              </div>
+
+              <div class="donate-box">
+                <h4>Support</h4>
+                <p>TON Wallet</p>
+                <code>EQAtswCttjVk_yR8SF3V5jv0RY3xDUT-j_zJlMstem-VKkPK</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Â© <span id="year"></span> Mohammad Mehrani</p>
+      <a href="#home" class="to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="scripts/modern.js" defer></script>
+</body>
 </html>
+
