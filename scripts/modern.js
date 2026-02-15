@@ -38,15 +38,15 @@
       skill_5: "Terraform / IaC",
       skill_6: "Monitoring & Observability",
       exp_title: "Work Experience",
-      exp_desc: "Work history from previous project versions.",
+      exp_desc: "Professional history in infrastructure, support, and software delivery.",
       exp_1_period: "May 2023 - Present",
       exp_1_company: "ParsPack",
       exp_1_role: "Infrastructure Technical Support",
       exp_1_text: "PARSPACK (ABRHA), Tehran, Iran - technical support for infrastructure services and cloud operations.",
       exp_2_period: "June 2018 - March 2023",
-      exp_2_company: "TNZ Oil",
+      exp_2_company: "Tajhiz Niroo Zangan (TNZ Oil)",
       exp_2_role: "Full Stack Developer",
-      exp_2_text: "TNZ Oil Co., Tehran, Iran - full stack development and platform delivery.",
+      exp_2_text: "Tajhiz Niroo Zangan (TNZ Oil), Tehran, Iran - full stack development and platform delivery.",
       exp_3_period: "February 2019 - April 2020",
       exp_3_company: "Enermonde",
       exp_3_role: "Support and Maintenance Services",
@@ -56,7 +56,7 @@
       exp_4_role: "Software Technical Expert",
       exp_4_text: "Sama Samaneh Co., Tehran, Iran - software development and technical operations.",
       edu_title: "Education",
-      edu_desc: "Academic background from previous project versions.",
+      edu_desc: "Academic background and formal education records.",
       edu_1_period: "Since 2023",
       edu_1_school: "Faran Mehr University",
       edu_1_degree: "Master's Degree in Computer Science",
@@ -91,6 +91,8 @@
       ph_subject: "Subject",
       ph_message: "Write your message",
       reach_title: "Reach Me",
+      map_title: "Tehran Map (Shahrak Gharb)",
+      map_open: "Open Map",
       support_title: "Support",
       support_wallet: "TON Wallet"
     },
@@ -132,15 +134,15 @@
       skill_5: "Terraform / IaC",
       skill_6: "\u0645\u0627\u0646\u06cc\u062a\u0648\u0631\u06cc\u0646\u06af \u0648 \u0645\u0634\u0627\u0647\u062f\u0647 \u067e\u0630\u06cc\u0631\u06cc",
       exp_title: "\u0633\u0648\u0627\u0628\u0642 \u0634\u063a\u0644\u06cc",
-      exp_desc: "\u0633\u0648\u0627\u0628\u0642 \u0634\u063a\u0644\u06cc \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0634\u062f\u0647 \u0627\u0632 \u0646\u0633\u062e\u0647 \u0642\u0628\u0644\u06cc \u067e\u0631\u0648\u0698\u0647.",
+      exp_desc: "\u0633\u0648\u0627\u0628\u0642 \u062d\u0631\u0641\u0647 \u0627\u06cc \u062f\u0631 \u062d\u0648\u0632\u0647 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u060c \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0648 \u062a\u0648\u0633\u0639\u0647 \u0646\u0631\u0645 \u0627\u0641\u0632\u0627\u0631.",
       exp_1_period: "\u0645\u06cc \u06f2\u06f0\u06f2\u06f3 \u062a\u0627 \u06a9\u0646\u0648\u0646",
       exp_1_company: "\u067e\u0627\u0631\u0633 \u067e\u06a9",
       exp_1_role: "\u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u0641\u0646\u06cc \u0632\u06cc\u0631\u0633\u0627\u062e\u062a",
       exp_1_text: "\u067e\u0627\u0631\u0633 \u067e\u06a9 (\u0622\u0628\u0631\u0647\u0627)\u060c \u062a\u0647\u0631\u0627\u0646 - \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0641\u0646\u06cc \u0633\u0631\u0648\u06cc\u0633 \u0647\u0627\u06cc \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u06cc \u0648 \u0639\u0645\u0644\u06cc\u0627\u062a \u06a9\u0644\u0648\u062f.",
       exp_2_period: "\u0698\u0648\u0626\u0646 \u06f2\u06f0\u06f1\u06f8 \u062a\u0627 \u0645\u0627\u0631\u0633 \u06f2\u06f0\u06f2\u06f3",
-      exp_2_company: "TNZ Oil",
+      exp_2_company: "\u062a\u062c\u0647\u06cc\u0632 \u0646\u06cc\u0631\u0648 \u0632\u0646\u06af\u0627\u0646 (TNZ Oil)",
       exp_2_role: "\u062a\u0648\u0633\u0639\u0647 \u062f\u0647\u0646\u062f\u0647 \u0641\u0648\u0644 \u0627\u0633\u062a\u06a9",
-      exp_2_text: "TNZ Oil \u062a\u0647\u0631\u0627\u0646 - \u062a\u0648\u0633\u0639\u0647 \u0641\u0648\u0644 \u0627\u0633\u062a\u06a9 \u0648 \u062a\u062d\u0648\u06cc\u0644 \u067e\u0644\u062a\u0641\u0631\u0645.",
+      exp_2_text: "\u062a\u062c\u0647\u06cc\u0632 \u0646\u06cc\u0631\u0648 \u0632\u0646\u06af\u0627\u0646 (TNZ Oil)\u060c \u062a\u0647\u0631\u0627\u0646 - \u062a\u0648\u0633\u0639\u0647 \u0641\u0648\u0644 \u0627\u0633\u062a\u06a9 \u0648 \u062a\u062d\u0648\u06cc\u0644 \u067e\u0644\u062a\u0641\u0631\u0645.",
       exp_3_period: "\u0641\u0648\u0631\u06cc\u0647 \u06f2\u06f0\u06f1\u06f9 \u062a\u0627 \u0622\u0648\u0631\u06cc\u0644 \u06f2\u06f0\u06f2\u06f0",
       exp_3_company: "Enermonde",
       exp_3_role: "\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0648 \u0646\u06af\u0647\u062f\u0627\u0631\u06cc \u0633\u0631\u0648\u06cc\u0633",
@@ -150,7 +152,7 @@
       exp_4_role: "\u06a9\u0627\u0631\u0634\u0646\u0627\u0633 \u0641\u0646\u06cc \u0646\u0631\u0645 \u0627\u0641\u0632\u0627\u0631",
       exp_4_text: "\u0633\u0645\u0627 \u0633\u0627\u0645\u0627\u0646\u0647\u060c \u062a\u0647\u0631\u0627\u0646 - \u062a\u0648\u0633\u0639\u0647 \u0646\u0631\u0645 \u0627\u0641\u0632\u0627\u0631 \u0648 \u0639\u0645\u0644\u06cc\u0627\u062a \u0641\u0646\u06cc.",
       edu_title: "\u0633\u0648\u0627\u0628\u0642 \u062a\u062d\u0635\u06cc\u0644\u06cc",
-      edu_desc: "\u067e\u06cc\u0634\u06cc\u0646\u0647 \u062a\u062d\u0635\u06cc\u0644\u06cc \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0634\u062f\u0647 \u0627\u0632 \u0646\u0633\u062e\u0647 \u0642\u0628\u0644\u06cc \u067e\u0631\u0648\u0698\u0647.",
+      edu_desc: "\u067e\u06cc\u0634\u06cc\u0646\u0647 \u062a\u062d\u0635\u06cc\u0644\u06cc \u0648 \u0633\u0648\u0627\u0628\u0642 \u0622\u0645\u0648\u0632\u0634 \u0631\u0633\u0645\u06cc.",
       edu_1_period: "\u0627\u0632 \u06f2\u06f0\u06f2\u06f3",
       edu_1_school: "\u062f\u0627\u0646\u0634\u06af\u0627\u0647 \u0641\u0631\u0627\u0646 \u0645\u0647\u0631",
       edu_1_degree: "\u06a9\u0627\u0631\u0634\u0646\u0627\u0633\u06cc \u0627\u0631\u0634\u062f \u0639\u0644\u0648\u0645 \u06a9\u0627\u0645\u067e\u06cc\u0648\u062a\u0631",
@@ -185,6 +187,8 @@
       ph_subject: "\u0645\u0648\u0636\u0648\u0639",
       ph_message: "\u067e\u06cc\u0627\u0645 \u062e\u0648\u062f \u0631\u0627 \u0628\u0646\u0648\u06cc\u0633\u06cc\u062f",
       reach_title: "\u0631\u0627\u0647 \u0647\u0627\u06cc \u0627\u0631\u062a\u0628\u0627\u0637\u06cc",
+      map_title: "\u0646\u0642\u0634\u0647 \u062a\u0647\u0631\u0627\u0646 (\u0634\u0647\u0631\u06a9 \u063a\u0631\u0628)",
+      map_open: "\u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0646\u0642\u0634\u0647",
       support_title: "\u062d\u0645\u0627\u06cc\u062a",
       support_wallet: "\u06a9\u06cc\u0641 \u067e\u0648\u0644 TON"
     }
@@ -301,185 +305,112 @@
   const preferredLang = localStorage.getItem(LANG_KEY) || "en";
   applyLanguage(preferredLang, false);
 
-  function canUseWebGL() {
-    try {
-      const canvas = document.createElement("canvas");
-      return !!(
-        window.WebGLRenderingContext &&
-        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-      );
-    } catch {
-      return false;
-    }
-  }
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const saveDataMode = !!(navigator.connection && navigator.connection.saveData);
+  const lowPowerDevice =
+    window.innerWidth < 992 ||
+    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+    ("ontouchstart" in window && (navigator.maxTouchPoints || 0) > 0);
 
-  function initThreeHero() {
-    if (!window.THREE || !hero3d) return false;
-    if (!canUseWebGL()) return false;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-    if (navigator.connection && navigator.connection.saveData) return false;
+  // Lightweight fallback is intentionally default for smoother scroll on mid/low devices.
+  document.body.classList.add("no-webgl");
 
-    const { THREE } = window;
-    const lowPowerDevice =
-      window.innerWidth < 768 ||
-      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
-      ("ontouchstart" in window && (navigator.maxTouchPoints || 0) > 0);
-    const targetFps = lowPowerDevice ? 30 : 60;
-    const frameInterval = 1000 / targetFps;
-    const starCount = lowPowerDevice ? 240 : 420;
-    const geoDetail = lowPowerDevice ? 0 : 1;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
-    camera.position.set(0, 0, 5.6);
+  function initParallax() {
+    if (reduceMotion || saveDataMode) return;
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: !lowPowerDevice,
-      powerPreference: lowPowerDevice ? "low-power" : "high-performance"
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPowerDevice ? 1.1 : 1.5));
-    hero3d.appendChild(renderer.domElement);
+    const layers = [
+      { el: document.querySelector(".orb-1"), ySpeed: -0.08, xSpeed: 0.02 },
+      { el: document.querySelector(".orb-2"), ySpeed: 0.06, xSpeed: -0.02 },
+      { el: document.querySelector(".bg-grid"), ySpeed: -0.025, xSpeed: 0 }
+    ].filter((layer) => layer.el);
+    if (!layers.length) return;
 
-    const lightA = new THREE.DirectionalLight(0x69d8ff, 1.1);
-    lightA.position.set(2, 2, 3);
-    const lightB = new THREE.DirectionalLight(0x1fe0b5, 0.7);
-    lightB.position.set(-2, -1, 2);
-    scene.add(lightA, lightB);
+    let latestY = window.scrollY || 0;
+    let ticking = false;
 
-    const core = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.25, geoDetail),
-      new THREE.MeshStandardMaterial({
-        color: 0x1fe0b5,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.85
-      })
-    );
-    scene.add(core);
-
-    const pointsGeo = new THREE.BufferGeometry();
-    const stars = new Float32Array(starCount);
-    for (let i = 0; i < stars.length; i += 3) {
-      stars[i] = (Math.random() - 0.5) * 7;
-      stars[i + 1] = (Math.random() - 0.5) * 4;
-      stars[i + 2] = (Math.random() - 0.5) * 5;
-    }
-    pointsGeo.setAttribute("position", new THREE.BufferAttribute(stars, 3));
-    const points = new THREE.Points(
-      pointsGeo,
-      new THREE.PointsMaterial({ color: 0x7dc5ff, size: 0.03, transparent: true, opacity: 0.65 })
-    );
-    scene.add(points);
-
-    function resize() {
-      const w = hero3d.clientWidth || 1;
-      const h = hero3d.clientHeight || 1;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h, false);
-    }
-    resize();
-    window.addEventListener("resize", resize, { passive: true });
-
-    let lastTime = 0;
-    let heroVisible = true;
-    if ("IntersectionObserver" in window && heroSection) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          heroVisible = entries.some((e) => e.isIntersecting);
-        },
-        { threshold: 0.05 }
-      );
-      io.observe(heroSection);
-    }
-
-    const tick = (now = 0) => {
-      if (document.hidden || !heroVisible) {
-        window.requestAnimationFrame(tick);
-        return;
-      }
-      const delta = now - lastTime;
-      if (delta >= frameInterval) {
-        lastTime = now - (delta % frameInterval);
-        const speed = lowPowerDevice ? 0.8 : 1;
-        core.rotation.y += 0.0035 * speed;
-        core.rotation.x += 0.0017 * speed;
-        points.rotation.y -= 0.0009 * speed;
-        points.rotation.x += 0.0004 * speed;
-        renderer.render(scene, camera);
-      }
-      window.requestAnimationFrame(tick);
+    const render = () => {
+      ticking = false;
+      const y = Math.min(latestY, 2400);
+      layers.forEach((layer) => {
+        const tx = y * layer.xSpeed;
+        const ty = y * layer.ySpeed;
+        layer.el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+      });
     };
-    tick();
-    return true;
-  }
-  const threeStarted = initThreeHero();
-  document.body.classList.toggle("no-webgl", !threeStarted);
 
-  if (!window.gsap) {
-    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
-    meters.forEach((meter) => {
+    const onScroll = () => {
+      latestY = window.scrollY || 0;
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(render);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    render();
+  }
+
+  function initReveal() {
+    const revealEls = Array.from(document.querySelectorAll(".reveal"));
+    if (!revealEls.length) return;
+
+    const heroReveal = revealEls.filter((el) => el.closest("#home"));
+    const scrollReveal = revealEls.filter((el) => !el.closest("#home"));
+    heroReveal.forEach((el) => el.classList.add("in"));
+
+    if (!scrollReveal.length) return;
+    if (!("IntersectionObserver" in window) || reduceMotion) {
+      scrollReveal.forEach((el) => el.classList.add("in"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
+    );
+
+    scrollReveal.forEach((el) => io.observe(el));
+  }
+
+  function initMeters() {
+    const fill = (meter) => {
       const level = Number(meter.dataset.level || 0);
       meter.style.width = `${Math.max(0, Math.min(100, level))}%`;
-    });
-    return;
-  }
+    };
 
-  const hasScrollTrigger = !!window.ScrollTrigger;
-  if (hasScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+    if (!meters.length) return;
+    if (!("IntersectionObserver" in window) || reduceMotion) {
+      meters.forEach(fill);
+      return;
+    }
 
-  gsap.to(".orb-1", { x: 40, y: 35, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" });
-  gsap.to(".orb-2", { x: -35, y: -20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
-
-  gsap.from(".display-title", { y: 45, opacity: 0, duration: 0.9, ease: "power3.out", delay: 0.1 });
-  gsap.from(".lead", { y: 24, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.25 });
-  gsap.from(".hero-actions .btn", { y: 16, opacity: 0, duration: 0.55, stagger: 0.12, ease: "power2.out", delay: 0.35 });
-
-  const allReveal = gsap.utils.toArray(".reveal");
-  const heroReveal = allReveal.filter((el) => el.closest("#home"));
-  const scrollReveal = allReveal.filter((el) => !el.closest("#home"));
-
-  if (heroReveal.length) {
-    gsap.set(heroReveal, { opacity: 1, y: 0, scale: 1 });
-  }
-
-  gsap.set(scrollReveal, { opacity: 0, y: 22, scale: 0.995 });
-  if (hasScrollTrigger) {
-    ScrollTrigger.batch(scrollReveal, {
-      start: "top 94%",
-      once: true,
-      onEnter: (batch) =>
-        gsap.to(batch, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.62,
-          stagger: 0.06,
-          ease: "power2.out"
-        })
-    });
-    window.addEventListener(
-      "load",
-      () => {
-        setTimeout(() => ScrollTrigger.refresh(), 120);
+    const io = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          fill(entry.target);
+          observer.unobserve(entry.target);
+        });
       },
-      { once: true }
+      { rootMargin: "0px 0px -4% 0px", threshold: 0.15 }
     );
-  } else {
-    gsap.to(scrollReveal, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.02, ease: "power1.out" });
+
+    meters.forEach((meter) => io.observe(meter));
   }
 
-  meters.forEach((meter) => {
-    const level = Number(meter.dataset.level || 0);
-    gsap.to(meter, {
-      width: `${Math.max(0, Math.min(100, level))}%`,
-      duration: 1.1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: meter,
-        start: "top 92%",
-        once: true
-      }
-    });
-  });
+  if (window.gsap && !reduceMotion && !lowPowerDevice) {
+    gsap.from(".display-title", { y: 24, opacity: 0, duration: 0.45, ease: "power2.out", delay: 0.05 });
+    gsap.from(".lead", { y: 14, opacity: 0, duration: 0.42, ease: "power2.out", delay: 0.14 });
+    gsap.from(".hero-actions .btn", { y: 10, opacity: 0, duration: 0.38, stagger: 0.08, ease: "power2.out", delay: 0.2 });
+  }
+
+  initParallax();
+  initReveal();
+  initMeters();
 })();
