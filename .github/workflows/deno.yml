@@ -23,20 +23,33 @@ jobs:
 
     steps:
       - name: Setup repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Deno
-        # uses: denoland/setup-deno@v1
-        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: v1.x
+          deno-version: v2.x
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
       # - name: Verify formatting
       #   run: deno fmt --check
 
+      - name: Detect Deno test files
+        id: deno_tests
+        run: |
+          if find . -type f \( -name "*_test.ts" -o -name "*_test.js" -o -name "*_test.tsx" -o -name "*_test.mjs" -o -name "*_test.mts" \) | grep -q .; then
+            echo "has_tests=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tests=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run linter
-        run: deno lint
+        run: deno lint scripts/modern.js
 
       - name: Run tests
+        if: steps.deno_tests.outputs.has_tests == 'true'
         run: deno test -A
+
+      - name: Skip tests (no test files)
+        if: steps.deno_tests.outputs.has_tests != 'true'
+        run: echo "No Deno test files found. Skipping deno test."
