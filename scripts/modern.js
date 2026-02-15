@@ -69,6 +69,8 @@
       edu_3_school: "Rayan Kashiha",
       edu_3_degree: "Diploma in Science",
       edu_3_text: "GPA: 13",
+      wp_title: "WordPress Projects",
+      wp_desc: "Websites designed and delivered with WordPress.",
       projects_title: "Selected Work",
       projects_desc: "Snapshots of infrastructure and engineering delivery work.",
       project_1_title: "Cloud Migration Pipeline",
@@ -165,6 +167,8 @@
       edu_3_school: "\u0631\u0627\u06cc\u0627\u0646 \u06a9\u0627\u0634\u06cc\u0647\u0627",
       edu_3_degree: "\u062f\u06cc\u067e\u0644\u0645 \u0639\u0644\u0648\u0645 \u062a\u062c\u0631\u0628\u06cc",
       edu_3_text: "\u0645\u0639\u062f\u0644: \u06f1\u06f3",
+      wp_title: "\u0646\u0645\u0648\u0646\u0647 \u0633\u0627\u06cc\u062a \u0647\u0627\u06cc \u0648\u0631\u062f\u067e\u0631\u0633\u06cc",
+      wp_desc: "\u0633\u0627\u06cc\u062a \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0627 \u0648\u0631\u062f\u067e\u0631\u0633 \u0637\u0631\u0627\u062d\u06cc \u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647 \u0627\u0646\u062f.",
       projects_title: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
       projects_desc: "\u0646\u0645\u0627\u06cc\u06cc \u0627\u0632 \u0641\u0639\u0627\u0644\u06cc\u062a \u0647\u0627\u06cc \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u06cc \u0648 \u062a\u062d\u0648\u06cc\u0644 \u0645\u0647\u0646\u062f\u0633\u06cc.",
       project_1_title: "\u067e\u0627\u06cc\u067e\u0644\u0627\u06cc\u0646 \u0645\u0647\u0627\u062c\u0631\u062a \u0628\u0647 \u06a9\u0644\u0648\u062f",
@@ -209,15 +213,15 @@
   dict.fa.aria_toggle_theme = "\u062a\u063a\u06cc\u06cc\u0631 \u062a\u0645";
 
   const nav = document.getElementById("mainNav");
-  const heroSection = document.getElementById("home");
   const year = document.getElementById("year");
   const metaDescription = document.getElementById("metaDescription");
-  const hero3d = document.getElementById("hero3d");
   const langToggle = document.getElementById("langToggle");
   const langToggleText = document.getElementById("langToggleText");
   const themeToggle = document.getElementById("themeToggle");
   const themeToggleText = document.getElementById("themeToggleText");
   const themeIcon = document.getElementById("themeIcon");
+  const i18nNodes = Array.from(document.querySelectorAll("[data-i18n]"));
+  const i18nPlaceholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
   const meters = Array.from(document.querySelectorAll(".meter span"));
   const LANG_KEY = "site_lang";
   const THEME_KEY = "site_theme";
@@ -231,7 +235,19 @@
     nav.classList.toggle("scrolled", window.scrollY > 18);
   };
   toggleNav();
-  window.addEventListener("scroll", toggleNav, { passive: true });
+  let navTicking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (navTicking) return;
+      navTicking = true;
+      window.requestAnimationFrame(() => {
+        toggleNav();
+        navTicking = false;
+      });
+    },
+    { passive: true }
+  );
 
   function updateControlLabels() {
     const tr = dict[currentLang] || dict.en;
@@ -255,7 +271,9 @@
   function applyTheme(theme) {
     currentTheme = theme === "light" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", currentTheme);
-    localStorage.setItem(THEME_KEY, currentTheme);
+    if (localStorage.getItem(THEME_KEY) !== currentTheme) {
+      localStorage.setItem(THEME_KEY, currentTheme);
+    }
     updateControlLabels();
   }
 
@@ -272,12 +290,12 @@
     document.documentElement.lang = safeLang;
     document.documentElement.dir = safeLang === "fa" ? "rtl" : "ltr";
 
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
+    i18nNodes.forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (tr[key]) el.textContent = tr[key];
     });
 
-    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    i18nPlaceholderNodes.forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
       if (tr[key]) el.setAttribute("placeholder", tr[key]);
     });
@@ -286,7 +304,9 @@
       metaDescription.setAttribute("content", tr.meta_description);
     }
 
-    localStorage.setItem(LANG_KEY, safeLang);
+    if (localStorage.getItem(LANG_KEY) !== safeLang) {
+      localStorage.setItem(LANG_KEY, safeLang);
+    }
     updateControlLabels();
   }
 
@@ -316,7 +336,7 @@
   document.body.classList.add("no-webgl");
 
   function initParallax() {
-    if (reduceMotion || saveDataMode) return;
+    if (reduceMotion || saveDataMode || lowPowerDevice) return;
 
     const layers = [
       { el: document.querySelector(".orb-1"), ySpeed: -0.08, xSpeed: 0.02 },
@@ -402,12 +422,6 @@
     );
 
     meters.forEach((meter) => io.observe(meter));
-  }
-
-  if (window.gsap && !reduceMotion && !lowPowerDevice) {
-    gsap.from(".display-title", { y: 24, opacity: 0, duration: 0.45, ease: "power2.out", delay: 0.05 });
-    gsap.from(".lead", { y: 14, opacity: 0, duration: 0.42, ease: "power2.out", delay: 0.14 });
-    gsap.from(".hero-actions .btn", { y: 10, opacity: 0, duration: 0.38, stagger: 0.08, ease: "power2.out", delay: 0.2 });
   }
 
   initParallax();
