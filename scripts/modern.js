@@ -137,6 +137,7 @@
   dict.fa.aria_toggle_theme = "\u062a\u063a\u06cc\u06cc\u0631 \u062a\u0645";
 
   const nav = document.getElementById("mainNav");
+  const heroSection = document.getElementById("home");
   const year = document.getElementById("year");
   const metaDescription = document.getElementById("metaDescription");
   const hero3d = document.getElementById("hero3d");
@@ -247,6 +248,8 @@
   function initThreeHero() {
     if (!window.THREE || !hero3d) return false;
     if (!canUseWebGL()) return false;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+    if (navigator.connection && navigator.connection.saveData) return false;
 
     const { THREE } = window;
     const lowPowerDevice =
@@ -311,8 +314,19 @@
     window.addEventListener("resize", resize, { passive: true });
 
     let lastTime = 0;
+    let heroVisible = true;
+    if ("IntersectionObserver" in window && heroSection) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          heroVisible = entries.some((e) => e.isIntersecting);
+        },
+        { threshold: 0.05 }
+      );
+      io.observe(heroSection);
+    }
+
     const tick = (now = 0) => {
-      if (document.hidden) {
+      if (document.hidden || !heroVisible) {
         window.requestAnimationFrame(tick);
         return;
       }
@@ -343,9 +357,8 @@
     return;
   }
 
-  if (window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-  }
+  const hasScrollTrigger = !!window.ScrollTrigger;
+  if (hasScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(".orb-1", { x: 40, y: 35, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" });
   gsap.to(".orb-2", { x: -35, y: -20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
@@ -354,21 +367,39 @@
   gsap.from(".lead", { y: 24, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.25 });
   gsap.from(".hero-actions .btn", { y: 16, opacity: 0, duration: 0.55, stagger: 0.12, ease: "power2.out", delay: 0.35 });
 
-  gsap.set(".reveal", { opacity: 0, y: 30, scale: 0.985, filter: "blur(8px)" });
-  ScrollTrigger.batch(".reveal", {
-    start: "top 90%",
-    once: true,
-    onEnter: (batch) =>
-      gsap.to(batch, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 0.9,
-        stagger: 0.08,
-        ease: "expo.out"
-      })
-  });
+  const allReveal = gsap.utils.toArray(".reveal");
+  const heroReveal = allReveal.filter((el) => el.closest("#home"));
+  const scrollReveal = allReveal.filter((el) => !el.closest("#home"));
+
+  if (heroReveal.length) {
+    gsap.set(heroReveal, { opacity: 1, y: 0, scale: 1 });
+  }
+
+  gsap.set(scrollReveal, { opacity: 0, y: 22, scale: 0.995 });
+  if (hasScrollTrigger) {
+    ScrollTrigger.batch(scrollReveal, {
+      start: "top 94%",
+      once: true,
+      onEnter: (batch) =>
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.62,
+          stagger: 0.06,
+          ease: "power2.out"
+        })
+    });
+    window.addEventListener(
+      "load",
+      () => {
+        setTimeout(() => ScrollTrigger.refresh(), 120);
+      },
+      { once: true }
+    );
+  } else {
+    gsap.to(scrollReveal, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.02, ease: "power1.out" });
+  }
 
   meters.forEach((meter) => {
     const level = Number(meter.dataset.level || 0);
