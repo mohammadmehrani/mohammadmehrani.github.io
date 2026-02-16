@@ -1,0 +1,164 @@
+export const content = {
+  en: {
+    nav: ["About", "Skills", "Experience", "Education", "Projects", "Certifications", "Contact"],
+    hero: {
+      eyebrow: "DevOps Engineer | Platform & Cloud",
+      title: "I build fast, secure, and reliable cloud platforms.",
+      desc: "Mohammad Mehrani with hands-on experience in CI/CD, Kubernetes, infrastructure automation, observability, and production-grade Linux environments.",
+      ctaResume: "Download Resume",
+      ctaHire: "Hire Me",
+      chip: "Available for remote contracts",
+      location: "Tehran, Iran",
+      langs: "English | Persian"
+    },
+    about: {
+      title: "About Me",
+      p1: "I focus on improving software delivery quality by designing dependable deployment workflows, secure infrastructure, and scalable cloud services.",
+      p2: "My practical experience includes Linux systems, GitOps-style workflows, container platforms, and infrastructure as code.",
+      quickTitle: "Quick Facts",
+      quick: [
+        ["Role", "DevOps Engineer"],
+        ["Experience", "Production Platforms"],
+        ["Focus", "CI/CD, Kubernetes, Cloud, Security"]
+      ]
+    },
+    skills: {
+      title: "Core Skills",
+      desc: "Tools and capabilities used in real-world delivery pipelines.",
+      items: [
+        ["DevOps Engineering", 90],
+        ["Kubernetes & Containers", 85],
+        ["CI/CD Pipelines", 88],
+        ["Cloud (AWS / Azure / GCP)", 82],
+        ["Terraform / IaC", 84],
+        ["Monitoring & Observability", 80]
+      ]
+    },
+    experience: {
+      title: "Work Experience",
+      desc: "Professional history in infrastructure, support, and software delivery.",
+      items: [
+        ["May 2023 - Present", "ParsPack", "Infrastructure Technical Support", "PARSPACK (ABRHA), Tehran, Iran"],
+        ["June 2018 - March 2023", "Tajhiz Niroo Zangan (TNZ Oil)", "Full Stack Developer", "Tehran, Iran"],
+        ["February 2019 - April 2020", "Enermonde", "Support and Maintenance Services", "Tehran, Iran"],
+        ["June 2018 - November 2019", "Sama Samaneh", "Software Technical Expert", "Tehran, Iran"]
+      ]
+    },
+    education: {
+      title: "Education",
+      desc: "Academic background and formal education records.",
+      items: [
+        ["Since 2023", "Faran Mehr University", "Master's Degree in Computer Science", "Branch: Computer Networks | GPA: 18"],
+        ["2017 - 2023", "Faran Mehr University", "Bachelor's Degree in Computer Science", "Branch: Software | GPA: 15"],
+        ["2008 - 2009", "Rayan Kashiha", "Diploma in Science", "GPA: 13"]
+      ]
+    },
+    projects: {
+      title: "Selected Work",
+      desc: "Snapshots of infrastructure and engineering delivery work.",
+      items: [
+        ["/images/flow01.jpeg", "Cloud Migration Pipeline", "Multi-stage deployment with quality gates, rollback strategy, and audit trails."],
+        ["/images/flow03.jpg", "Container Platform Hardening", "Security policy enforcement, runtime controls, and image scanning integration."],
+        ["/images/flow05.jpg", "Observability Stack", "Metrics, logs, alerts, and dashboards to reduce MTTR and improve reliability."]
+      ]
+    },
+    certifications: {
+      title: "Certifications",
+      desc: "Recent certifications and training records.",
+      images: [
+        "/images/cert-001.jpg",
+        "/images/cert-002.jpg",
+        "/images/cert-003.jpg",
+        "/images/cert-004.jpg",
+        "/images/cert-005.jpg",
+        "/images/cert-006.jpg"
+      ]
+    },
+    contact: {
+      title: "Contact",
+      desc: "For collaboration, consulting, or full-time opportunities, send a message.",
+      reach: "Reach Me"
+    }
+  },
+  fa: {
+    nav: ["درباره من", "مهارت ها", "سوابق شغلی", "سوابق تحصیلی", "پروژه ها", "گواهینامه ها", "تماس"],
+    hero: {
+      eyebrow: "مهندس دواپس | پلتفرم و کلود",
+      title: "من پلتفرم های سریع، امن و پایدار می سازم.",
+      desc: "محمد مهرانی با تجربه عملی در CI/CD، کوبرنتیز، اتوماسیون زیرساخت، مانیتورینگ و محیط های لینوکسی.",
+      ctaResume: "دانلود رزومه",
+      ctaHire: "همکاری با من",
+      chip: "آماده همکاری ریموت",
+      location: "تهران، ایران",
+      langs: "فارسی | انگلیسی"
+    },
+    about: {
+      title: "درباره من",
+      p1: "تمرکز من بهبود کیفیت تحویل نرم افزار با طراحی فرآیندهای استقرار قابل اعتماد، زیرساخت امن و سرویس های ابری مقیاس پذیر است.",
+      p2: "تجربه عملی من شامل سیستم های لینوکسی، گردش کار GitOps، پلتفرم های کانتینری و IaC است.",
+      quickTitle: "اطلاعات سریع",
+      quick: [
+        ["عنوان", "مهندس دواپس"],
+        ["تجربه", "پلتفرم های عملیاتی"],
+        ["تمرکز", "CI/CD، کوبرنتیز، کلود، امنیت"]
+      ]
+    },
+    skills: {
+      title: "مهارت های کلیدی",
+      desc: "ابزارها و توانمندی هایی که در پروژه های واقعی استفاده می کنم.",
+      items: [
+        ["مهندسی دواپس", 90],
+        ["کوبرنتیز و کانتینر", 85],
+        ["خط لوله های CI/CD", 88],
+        ["رایانش ابری (AWS / Azure / GCP)", 82],
+        ["Terraform / IaC", 84],
+        ["مانیتورینگ و مشاهده پذیری", 80]
+      ]
+    },
+    experience: {
+      title: "سوابق شغلی",
+      desc: "سوابق حرفه ای در حوزه زیرساخت، پشتیبانی و توسعه نرم افزار.",
+      items: [
+        ["می ۲۰۲۳ تا کنون", "پارس پک", "پشتیبان فنی زیرساخت", "تهران، ایران"],
+        ["ژوئن ۲۰۱۸ تا مارس ۲۰۲۳", "تجهیز نیرو زنگان (TNZ Oil)", "توسعه دهنده فول استک", "تهران، ایران"],
+        ["فوریه ۲۰۱۹ تا آوریل ۲۰۲۰", "Enermonde", "پشتیبانی و نگهداری سرویس", "تهران، ایران"],
+        ["ژوئن ۲۰۱۸ تا نوامبر ۲۰۱۹", "سما سامانه", "کارشناس فنی نرم افزار", "تهران، ایران"]
+      ]
+    },
+    education: {
+      title: "سوابق تحصیلی",
+      desc: "پیشینه تحصیلی و سوابق آموزش رسمی.",
+      items: [
+        ["از ۲۰۲۳", "دانشگاه فران مهر", "کارشناسی ارشد علوم کامپیوتر", "گرایش: شبکه های کامپیوتری | معدل: ۱۸"],
+        ["۲۰۱۷ تا ۲۰۲۳", "دانشگاه فران مهر", "کارشناسی علوم کامپیوتر", "گرایش: نرم افزار | معدل: ۱۵"],
+        ["۲۰۰۸ تا ۲۰۰۹", "رایان کاشیها", "دیپلم علوم تجربی", "معدل: ۱۳"]
+      ]
+    },
+    projects: {
+      title: "نمونه کارها",
+      desc: "نمایی از فعالیت های زیرساختی و تحویل مهندسی.",
+      items: [
+        ["/images/flow01.jpeg", "پایپلاین مهاجرت به کلود", "استقرار چندمرحله ای با کنترل کیفیت و استراتژی بازگشت."],
+        ["/images/flow03.jpg", "سخت سازی پلتفرم کانتینری", "اعمال سیاست های امنیتی و کنترل زمان اجرا."],
+        ["/images/flow05.jpg", "پشته مانیتورینگ", "متریک، لاگ، هشدار و داشبورد برای افزایش پایداری."]
+      ]
+    },
+    certifications: {
+      title: "گواهینامه ها",
+      desc: "آخرین دوره ها و گواهینامه های حرفه ای.",
+      images: [
+        "/images/cert-001.jpg",
+        "/images/cert-002.jpg",
+        "/images/cert-003.jpg",
+        "/images/cert-004.jpg",
+        "/images/cert-005.jpg",
+        "/images/cert-006.jpg"
+      ]
+    },
+    contact: {
+      title: "تماس",
+      desc: "برای همکاری، مشاوره یا فرصت های شغلی پیام بفرستید.",
+      reach: "راه های ارتباطی"
+    }
+  }
+};
