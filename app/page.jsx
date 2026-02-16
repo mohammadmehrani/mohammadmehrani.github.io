@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { content } from "./content";
+import content from "../data/content.json";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -70,7 +71,14 @@ export default function HomePage() {
             </div>
           </motion.div>
           <motion.div className="photo-wrap" initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
-            <img src="/images/mehrani.jpg" alt="Mohammad Mehrani" loading="eager" fetchPriority="high" />
+            <Image
+              src="/images/mehrani.jpg"
+              alt="Mohammad Mehrani"
+              width={320}
+              height={320}
+              priority
+              sizes="(max-width: 980px) 70vw, 320px"
+            />
             <span className="chip">{t.hero.chip}</span>
           </motion.div>
         </section>
@@ -141,7 +149,7 @@ export default function HomePage() {
           <div className="grid three">
             {t.projects.items.map((p) => (
               <motion.article key={p[1]} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp} className="project">
-                <img src={p[0]} alt={p[1]} loading="lazy" decoding="async" />
+                <Image src={p[0]} alt={p[1]} width={960} height={600} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
                 <h3>{p[1]}</h3>
                 <p className="muted">{p[2]}</p>
               </motion.article>
@@ -152,9 +160,11 @@ export default function HomePage() {
         <section className="card">
           <h2>{t.certifications.title}</h2>
           <p className="muted">{t.certifications.desc}</p>
-          <div className="grid three">
+          <div className="grid three cert-grid">
             {t.certifications.images.map((src) => (
-              <motion.img key={src} src={src} alt="Certificate" loading="lazy" decoding="async" initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp} />
+              <motion.div key={src} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+                <Image src={src} alt="Certificate" width={900} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
+              </motion.div>
             ))}
           </div>
         </section>

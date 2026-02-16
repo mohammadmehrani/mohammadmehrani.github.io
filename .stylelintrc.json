@@ -1,0 +1,17 @@
+﻿{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "declaration-empty-line-before": null,
+    "selector-class-pattern": null,
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["color-mix", "clamp", "min", "max"]
+      }
+    ],
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true
+  }
+}

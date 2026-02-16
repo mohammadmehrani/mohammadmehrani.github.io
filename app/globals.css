@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #071221;
   --bg-2: #0d1b2d;
   --text: #e8f0ff;
@@ -30,6 +30,8 @@ body {
     radial-gradient(800px 500px at 100% 10%, rgba(31, 224, 181, 0.16), transparent 60%),
     linear-gradient(140deg, var(--bg), var(--bg-2));
 }
+
+img, video { max-width: 100%; height: auto; }
 
 .topbar {
   position: sticky;
@@ -88,7 +90,7 @@ h2, h3 { margin: 0 0 0.6rem; }
 .photo-wrap { display: grid; justify-items: center; gap: 0.6rem; }
 .photo-wrap img {
   width: min(320px, 100%);
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--stroke);
@@ -118,8 +120,8 @@ h2, h3 { margin: 0 0 0.6rem; }
 .meta strong { color: var(--accent); }
 html[dir="ltr"] .meta { flex-direction: row-reverse; }
 
-.project img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 0.6rem; margin-bottom: 0.5rem; }
-.grid.three > img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 0.6rem; border: 1px solid var(--stroke); }
+.project img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 0.6rem; margin-bottom: 0.5rem; }
+.cert-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0.6rem; border: 1px solid var(--stroke); }
 
 .form { display: grid; gap: 0.6rem; }
 input, textarea {
@@ -132,6 +134,20 @@ input, textarea {
   font: inherit;
 }
 .contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+
+.admin-panel { min-height: 70vh; }
+.admin-head {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-editor {
+  min-height: 58vh;
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.6;
+}
 
 @media (max-width: 980px) {
   .hero,
