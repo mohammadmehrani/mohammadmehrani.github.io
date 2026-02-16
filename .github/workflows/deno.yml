@@ -35,8 +35,6 @@ jobs:
         run: |
           if [ -f "deno.json" ] || [ -f "deno.jsonc" ]; then
             echo "has_deno_project=true" >> "$GITHUB_OUTPUT"
-          elif find . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.mts" -o -name "*.cts" \) | grep -q .; then
-            echo "has_deno_project=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_deno_project=false" >> "$GITHUB_OUTPUT"
           fi
