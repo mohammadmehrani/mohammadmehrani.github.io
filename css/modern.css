@@ -52,6 +52,10 @@ html[dir="rtl"] .navbar-brand { font-family: "Vazirmatn", sans-serif; letter-spa
 
 a { color: inherit; text-decoration: none; }
 .section-pad { padding: 5.5rem 0; position: relative; z-index: 2; }
+main > section:not(#home) {
+  content-visibility: auto;
+  contain-intrinsic-size: 720px;
+}
 
 .bg-grid {
   position: fixed; inset: 0; pointer-events: none;
@@ -65,7 +69,7 @@ a { color: inherit; text-decoration: none; }
 
 .bg-orb {
   position: fixed; width: 26rem; aspect-ratio: 1; border-radius: 999px;
-  pointer-events: none; filter: blur(44px); opacity: 0.35; z-index: 0;
+  pointer-events: none; filter: blur(36px); opacity: 0.3; z-index: 0;
   will-change: transform;
   transform: translate3d(0, 0, 0);
 }
@@ -358,6 +362,7 @@ html[dir="rtl"] .footer-inner { flex-direction: row-reverse; }
 html[dir="rtl"] .top-controls { direction: ltr; }
 html[dir="rtl"] .list-panel strong { text-align: start; }
 html[dir="rtl"] .timeline-meta { flex-direction: row-reverse; }
+html[dir="ltr"] .timeline-meta { flex-direction: row-reverse; }
 
 body.lang-transition main,
 body.lang-transition .footer {
@@ -381,6 +386,8 @@ body.lang-transition .footer {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .bg-orb,
+  .bg-grid { transform: none !important; }
   .reveal,
   #mainNav,
   .socials a,

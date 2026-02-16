@@ -228,6 +228,22 @@
   let currentLang = "en";
   let currentTheme = "dark";
 
+  const getStored = (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  };
+
+  const setStored = (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // ignore storage failures (private mode / restrictive browsers)
+    }
+  };
+
   if (year) year.textContent = new Date().getFullYear();
 
   const toggleNav = () => {
@@ -271,8 +287,8 @@
   function applyTheme(theme) {
     currentTheme = theme === "light" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", currentTheme);
-    if (localStorage.getItem(THEME_KEY) !== currentTheme) {
-      localStorage.setItem(THEME_KEY, currentTheme);
+    if (getStored(THEME_KEY) !== currentTheme) {
+      setStored(THEME_KEY, currentTheme);
     }
     updateControlLabels();
   }
@@ -304,8 +320,8 @@
       metaDescription.setAttribute("content", tr.meta_description);
     }
 
-    if (localStorage.getItem(LANG_KEY) !== safeLang) {
-      localStorage.setItem(LANG_KEY, safeLang);
+    if (getStored(LANG_KEY) !== safeLang) {
+      setStored(LANG_KEY, safeLang);
     }
     updateControlLabels();
   }
@@ -318,11 +334,11 @@
   });
 
   const preferredTheme =
-    localStorage.getItem(THEME_KEY) ||
+    getStored(THEME_KEY) ||
     (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
   applyTheme(preferredTheme);
 
-  const preferredLang = localStorage.getItem(LANG_KEY) || "en";
+  const preferredLang = getStored(LANG_KEY) || "en";
   applyLanguage(preferredLang, false);
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
