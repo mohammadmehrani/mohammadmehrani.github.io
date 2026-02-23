@@ -29,9 +29,74 @@ body {
     radial-gradient(1200px 500px at 5% -10%, rgba(27, 165, 255, 0.18), transparent 60%),
     radial-gradient(800px 500px at 100% 10%, rgba(31, 224, 181, 0.16), transparent 60%),
     linear-gradient(140deg, var(--bg), var(--bg-2));
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 img, video { max-width: 100%; height: auto; }
+
+.terminal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.terminal-grid {
+  position: absolute;
+  inset: -40% -20% -20%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--accent) 14%, transparent) 0 1px,
+      transparent 1px 22px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--accent-2) 14%, transparent) 0 1px,
+      transparent 1px 22px
+    );
+  transform-origin: center bottom;
+  transform: perspective(700px) rotateX(68deg);
+  opacity: 0.22;
+  animation: grid-drift 16s linear infinite;
+}
+
+.terminal-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--accent) 25%, transparent) 50%,
+    transparent 100%
+  );
+  opacity: 0.22;
+  animation: scanline 6s linear infinite;
+}
+
+.terminal-rain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  mix-blend-mode: screen;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  letter-spacing: 0.04em;
+}
+
+.terminal-rain span {
+  position: absolute;
+  left: 0;
+  color: color-mix(in srgb, var(--accent) 80%, #0f0 20%);
+  white-space: nowrap;
+  animation: rain-trace linear infinite;
+}
+
+.terminal-rain span:nth-child(1) { top: 12%; animation-duration: 18s; }
+.terminal-rain span:nth-child(2) { top: 34%; animation-duration: 22s; animation-delay: -5s; }
+.terminal-rain span:nth-child(3) { top: 56%; animation-duration: 20s; animation-delay: -8s; }
+.terminal-rain span:nth-child(4) { top: 78%; animation-duration: 24s; animation-delay: -11s; }
 
 .topbar {
   position: sticky;
@@ -66,6 +131,9 @@ button, .btn {
   margin: 1.2rem auto 3rem;
   display: grid;
   gap: 1rem;
+  position: relative;
+  z-index: 1;
+  perspective: 1200px;
 }
 
 .hero {
@@ -80,6 +148,9 @@ button, .btn {
   border-radius: 1rem;
   background: var(--card);
   padding: 1rem;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 .muted { color: var(--muted); }
 .eyebrow { color: var(--accent); margin-bottom: 0.4rem; }
@@ -147,6 +218,31 @@ input, textarea {
   min-height: 58vh;
   font-family: "JetBrains Mono", monospace;
   line-height: 1.6;
+}
+
+@keyframes scanline {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes rain-trace {
+  from { transform: translateX(-30%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes grid-drift {
+  from { transform: perspective(700px) rotateX(68deg) translateY(0); }
+  to { transform: perspective(700px) rotateX(68deg) translateY(22px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-grid,
+  .terminal-scanline,
+  .terminal-rain span {
+    animation: none;
+  }
 }
 
 @media (max-width: 980px) {
