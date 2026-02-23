@@ -2,17 +2,23 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 }
+const reveal3d = {
+  hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
+  visible: { opacity: 1, y: 0, rotateX: 0, scale: 1 }
 };
 
 export default function HomePage() {
   const [lang, setLang] = useState("en");
   const [theme, setTheme] = useState("dark");
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 25, mass: 0.2 });
+  const heroY = useTransform(smoothProgress, [0, 1], [0, -36]);
+  const heroRotateX = useTransform(smoothProgress, [0, 1], [0, 6]);
+  const heroRotateY = useTransform(smoothProgress, [0, 1], [0, -5]);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("site_lang");
@@ -42,6 +48,15 @@ export default function HomePage() {
 
   return (
     <>
+      <div className="terminal-bg" aria-hidden="true">
+        <div className="terminal-grid" />
+        <div className="terminal-scanline" />
+        <div className="terminal-rain">
+          {["$ kubectl get pods", "$ terraform plan", "$ git push origin main", "$ docker compose up"].map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </div>
+      </div>
       <header className="topbar">
         <strong className="brand">M.Mehrani</strong>
         <nav>
@@ -60,8 +75,8 @@ export default function HomePage() {
       </header>
 
       <main className="shell">
-        <section className="hero">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={fadeUp} transition={{ duration: 0.5 }}>
+        <motion.section className="hero" style={shouldReduceMotion ? undefined : { y: heroY, rotateX: heroRotateX, rotateY: heroRotateY }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={reveal3d} transition={{ duration: 0.55, ease: "easeOut" }}>
             <p className="eyebrow">{t.hero.eyebrow}</p>
             <h1>{t.hero.title}</h1>
             <p className="muted">{t.hero.desc}</p>
@@ -70,7 +85,7 @@ export default function HomePage() {
               <a className="btn" href="#contact">{t.hero.ctaHire}</a>
             </div>
           </motion.div>
-          <motion.div className="photo-wrap" initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+          <motion.div className="photo-wrap" initial="hidden" whileInView="visible" viewport={{ once: false }} variants={reveal3d} transition={{ duration: 0.55, ease: "easeOut" }}>
             <Image
               src="/images/mehrani.jpg"
               alt="Mohammad Mehrani"
@@ -81,15 +96,15 @@ export default function HomePage() {
             />
             <span className="chip">{t.hero.chip}</span>
           </motion.div>
-        </section>
+        </motion.section>
 
         <section className="grid two">
-          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp} className="card">
+          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.55 }} className="card">
             <h2>{t.about.title}</h2>
             <p className="muted">{t.about.p1}</p>
             <p className="muted">{t.about.p2}</p>
           </motion.article>
-          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp} className="card">
+          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.55 }} className="card">
             <h3>{t.about.quickTitle}</h3>
             <ul className="facts">
               {t.about.quick.map(([k, v]) => (
@@ -102,72 +117,72 @@ export default function HomePage() {
           </motion.article>
         </section>
 
-        <section className="card">
+        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
           <h2>{t.skills.title}</h2>
           <p className="muted">{t.skills.desc}</p>
           <div className="skills">
             {t.skills.items.map(([name, level]) => (
-              <motion.div key={name} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+              <motion.div key={name} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.5 }}>
                 <div className="skill-head"><span>{name}</span><strong>{level}%</strong></div>
                 <div className="meter"><span style={{ width: `${level}%` }} /></div>
               </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="card">
+        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
           <h2>{t.experience.title}</h2>
           <p className="muted">{t.experience.desc}</p>
           <div className="timeline">
             {t.experience.items.map((item) => (
-              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
               </motion.article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="card">
+        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
           <h2>{t.education.title}</h2>
           <p className="muted">{t.education.desc}</p>
           <div className="timeline">
             {t.education.items.map((item) => (
-              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
               </motion.article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="card">
+        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
           <h2>{t.projects.title}</h2>
           <p className="muted">{t.projects.desc}</p>
           <div className="grid three">
             {t.projects.items.map((p) => (
-              <motion.article key={p[1]} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp} className="project">
+              <motion.article key={p[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }} className="project">
                 <Image src={p[0]} alt={p[1]} width={960} height={600} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
                 <h3>{p[1]}</h3>
                 <p className="muted">{p[2]}</p>
               </motion.article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="card">
+        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
           <h2>{t.certifications.title}</h2>
           <p className="muted">{t.certifications.desc}</p>
           <div className="grid three cert-grid">
             {t.certifications.images.map((src) => (
-              <motion.div key={src} initial="hidden" whileInView="visible" viewport={{ once: false }} variants={fadeUp}>
+              <motion.div key={src} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
                 <Image src={src} alt="Certificate" width={900} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
               </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         <section id="contact" className="grid two">
           <article className="card">
