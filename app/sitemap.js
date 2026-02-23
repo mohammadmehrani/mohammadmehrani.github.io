@@ -1,4 +1,4 @@
-﻿export default function sitemap() {
+export default function sitemap() {
   return [
     {
       url: 'https://mohammadmehrani.github.io',

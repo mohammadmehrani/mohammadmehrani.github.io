@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'mmehrani-v2';
+const CACHE_NAME = 'mmehrani-v2';
 const APP_SHELL = ['/', '/manifest.webmanifest', '/favicon.ico', '/offline.html'];
 
 self.addEventListener('install', (event) => {

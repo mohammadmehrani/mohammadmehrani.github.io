@@ -1,4 +1,4 @@
-﻿name: Lighthouse
+name: Lighthouse
 
 on:
   pull_request:
