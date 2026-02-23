@@ -213,25 +213,26 @@ export default function HomePage() {
         </Reveal>
 
         <section id="contact" className="grid two">
-          <article className="card">
+          <Reveal as="article" className="card" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
             <h2>{t.contact.title}</h2>
             <p className="muted">{t.contact.desc}</p>
             <form className="form" action="https://formspree.io/f/mwkyjjza" method="POST">
-              <input name="name" placeholder={lang === "fa" ? "نام شما" : "Your name"} required />
-              <input name="_replyto" type="email" placeholder={lang === "fa" ? "ایمیل شما" : "Your email"} required />
-              <textarea name="message_body" rows="5" placeholder={lang === "fa" ? "پیام شما" : "Message"} required />
-              <button className="btn" type="submit">{lang === "fa" ? "ارسال پیام" : "Send Message"}</button>
+              <input name="name" placeholder={lang === "fa" ? "\u0646\u0627\u0645 \u0634\u0645\u0627" : "Your name"} required />
+              <input name="_replyto" type="email" placeholder={lang === "fa" ? "\u0627\u06cc\u0645\u06cc\u0644 \u0634\u0645\u0627" : "Your email"} required />
+              <textarea name="message_body" rows="5" placeholder={lang === "fa" ? "\u067e\u06cc\u0627\u0645 \u0634\u0645\u0627" : "Message"} required />
+              <button className="btn" type="submit">{lang === "fa" ? "\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645" : "Send Message"}</button>
             </form>
-          </article>
-          <article className="card">
+          </Reveal>
+          <Reveal as="article" className="card" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
             <h3>{t.contact.reach}</h3>
             <ul className="contacts">
               <li><a href="mailto:admin@m-mehrani.ir">admin@m-mehrani.ir</a></li>
               <li>{t.hero.location}</li>
             </ul>
-          </article>
+          </Reveal>
         </section>
       </main>
     </>
   );
 }
+
