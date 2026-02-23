@@ -1,14 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
 
 const reveal3d = {
   hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
   visible: { opacity: 1, y: 0, rotateX: 0, scale: 1 }
 };
+
+function Reveal({ as = "div", className, children, amount = 0.2, duration = 0.55, reduceMotion = false }) {
+  const ref = useRef(null);
+  const controls = useAnimation();
+  const isInView = useInView(ref, { amount, once: false });
+  const MotionTag = as === "section" ? motion.section : as === "article" ? motion.article : motion.div;
+
+  useEffect(() => {
+    if (reduceMotion) {
+      controls.set("visible");
+      return;
+    }
+    controls.start(isInView ? "visible" : "hidden");
+  }, [controls, isInView, reduceMotion]);
+
+  return (
+    <MotionTag
+      ref={ref}
+      className={className}
+      variants={reveal3d}
+      initial={reduceMotion ? "visible" : "hidden"}
+      animate={controls}
+      transition={{ duration, ease: "easeOut" }}
+    >
+      {children}
+    </MotionTag>
+  );
+}
 
 export default function HomePage() {
   const [lang, setLang] = useState("en");
@@ -76,7 +104,7 @@ export default function HomePage() {
 
       <main className="shell">
         <motion.section className="hero" style={shouldReduceMotion ? undefined : { y: heroY, rotateX: heroRotateX, rotateY: heroRotateY }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} variants={reveal3d} transition={{ duration: 0.55, ease: "easeOut" }}>
+          <Reveal amount={0.3} reduceMotion={shouldReduceMotion}>
             <p className="eyebrow">{t.hero.eyebrow}</p>
             <h1>{t.hero.title}</h1>
             <p className="muted">{t.hero.desc}</p>
@@ -84,8 +112,8 @@ export default function HomePage() {
               <a className="btn" href="/pdf/M.Mehrani.pdf" target="_blank" rel="noreferrer">{t.hero.ctaResume}</a>
               <a className="btn" href="#contact">{t.hero.ctaHire}</a>
             </div>
-          </motion.div>
-          <motion.div className="photo-wrap" initial="hidden" whileInView="visible" viewport={{ once: false }} variants={reveal3d} transition={{ duration: 0.55, ease: "easeOut" }}>
+          </Reveal>
+          <Reveal className="photo-wrap" amount={0.3} reduceMotion={shouldReduceMotion}>
             <Image
               src="/images/mehrani.jpg"
               alt="Mohammad Mehrani"
@@ -95,16 +123,16 @@ export default function HomePage() {
               sizes="(max-width: 980px) 70vw, 320px"
             />
             <span className="chip">{t.hero.chip}</span>
-          </motion.div>
+          </Reveal>
         </motion.section>
 
         <section className="grid two">
-          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.55 }} className="card">
+          <Reveal as="article" className="card" amount={0.2} reduceMotion={shouldReduceMotion}>
             <h2>{t.about.title}</h2>
             <p className="muted">{t.about.p1}</p>
             <p className="muted">{t.about.p2}</p>
-          </motion.article>
-          <motion.article initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.55 }} className="card">
+          </Reveal>
+          <Reveal as="article" className="card" amount={0.2} reduceMotion={shouldReduceMotion}>
             <h3>{t.about.quickTitle}</h3>
             <ul className="facts">
               {t.about.quick.map(([k, v]) => (
@@ -114,75 +142,75 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </motion.article>
+          </Reveal>
         </section>
 
-        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
           <h2>{t.skills.title}</h2>
           <p className="muted">{t.skills.desc}</p>
           <div className="skills">
             {t.skills.items.map(([name, level]) => (
-              <motion.div key={name} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.5 }}>
+              <Reveal key={name} amount={0.18} duration={0.5} reduceMotion={shouldReduceMotion}>
                 <div className="skill-head"><span>{name}</span><strong>{level}%</strong></div>
                 <div className="meter"><span style={{ width: `${level}%` }} /></div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
-        </motion.section>
+        </Reveal>
 
-        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
           <h2>{t.experience.title}</h2>
           <p className="muted">{t.experience.desc}</p>
           <div className="timeline">
             {t.experience.items.map((item) => (
-              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
+              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
-              </motion.article>
+              </Reveal>
             ))}
           </div>
-        </motion.section>
+        </Reveal>
 
-        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
           <h2>{t.education.title}</h2>
           <p className="muted">{t.education.desc}</p>
           <div className="timeline">
             {t.education.items.map((item) => (
-              <motion.article key={item[0] + item[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
+              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
-              </motion.article>
+              </Reveal>
             ))}
           </div>
-        </motion.section>
+        </Reveal>
 
-        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
           <h2>{t.projects.title}</h2>
           <p className="muted">{t.projects.desc}</p>
           <div className="grid three">
             {t.projects.items.map((p) => (
-              <motion.article key={p[1]} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }} className="project">
+              <Reveal key={p[1]} as="article" className="project" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
                 <Image src={p[0]} alt={p[1]} width={960} height={600} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
                 <h3>{p[1]}</h3>
                 <p className="muted">{p[2]}</p>
-              </motion.article>
+              </Reveal>
             ))}
           </div>
-        </motion.section>
+        </Reveal>
 
-        <motion.section className="card" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={reveal3d} transition={{ duration: 0.55 }}>
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
           <h2>{t.certifications.title}</h2>
           <p className="muted">{t.certifications.desc}</p>
           <div className="grid three cert-grid">
             {t.certifications.images.map((src) => (
-              <motion.div key={src} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={reveal3d} transition={{ duration: 0.5 }}>
+              <Reveal key={src} amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
                 <Image src={src} alt="Certificate" width={900} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
-              </motion.div>
+              </Reveal>
             ))}
           </div>
-        </motion.section>
+        </Reveal>
 
         <section id="contact" className="grid two">
           <article className="card">

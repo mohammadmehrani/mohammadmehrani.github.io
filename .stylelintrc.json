@@ -3,7 +3,10 @@
   "rules": {
     "alpha-value-notation": null,
     "color-function-notation": null,
+    "declaration-block-single-line-max-declarations": null,
     "declaration-empty-line-before": null,
+    "keyframes-name-pattern": null,
+    "rule-empty-line-before": null,
     "selector-class-pattern": null,
     "function-no-unknown": [
       true,
