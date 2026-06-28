@@ -1,7 +1,11 @@
 # Mohammad Mehrani
 
 <p align="center">
-  <img src="./profile-3d-contrib/profile-night-rainbow.svg" alt="3D contribution graph" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-solarized-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-solarized-light.svg" />
+    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-solarized-light.svg" />
+  </picture>
 </p>
 
 <p align="center">
@@ -28,14 +32,11 @@
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=mohammadmehrani&style=for-the-badge&color=0e75b6" alt="Profile views" />
   <img src="https://img.shields.io/github/followers/mohammadmehrani?style=for-the-badge&logo=github" alt="Followers" />
-  <img src="https://img.shields.io/badge/Public%20Repos-View%20on%20GitHub-2f81f7?style=for-the-badge&logo=github" alt="Public repos" />
 </p>
 
 ## About Me
 
-- Backend and automation focused developer.
-- Building practical systems with clean architecture.
-- Interested in Python, Go, cloud tools, and DevOps workflows.
+DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure automation, observability, and production-grade Linux environments. I focus on improving software delivery quality by designing dependable deployment workflows, secure infrastructure, and scalable cloud services.
 
 ## Tech Stack
 
@@ -43,7 +44,7 @@
   <img src="https://skillicons.dev/icons?i=python,go,js,ts,nodejs,docker,linux,git,github,gitlab,postgres,redis,vscode,nginx,bash" alt="Tech stack icons" />
 </p>
 
-## Project Performance Report
+## GitHub Stats
 
 <!-- <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=mohammadmehrani&show_icons=true&count_private=true&include_all_commits=false&hide_border=true&theme=transparent" alt="GitHub stats" />
@@ -65,10 +66,4 @@
 <p align="center">
   <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mohammadmehrani&theme=github_dark" alt="Repos per language" />
   <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=mohammadmehrani&theme=github_dark" alt="Most commit language" />
-</p>
-
-## Contribution Views
-
-<p align="center">
-  <img src="./profile-3d-contrib/profile-south-season-animate.svg" alt="3D contribution graph green" />
 </p>
