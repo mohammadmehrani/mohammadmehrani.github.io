@@ -34,6 +34,12 @@
   <img src="https://img.shields.io/github/followers/mohammadmehrani?style=for-the-badge&logo=github" alt="Followers" />
 </p>
 
+<p align="center">
+  <a href="https://mohammadmehrani.github.io/">mohammadmehrani.github.io</a>
+  ·
+  <a href="https://mohammadmehrani.vercel.app/">mohammadmehrani.vercel.app</a>
+</p>
+
 ## About Me
 
 DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure automation, observability, and production-grade Linux environments. I focus on improving software delivery quality by designing dependable deployment workflows, secure infrastructure, and scalable cloud services.

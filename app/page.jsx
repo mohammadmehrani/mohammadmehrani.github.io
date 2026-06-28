@@ -229,6 +229,11 @@ export default function HomePage() {
               <li><a href="mailto:admin@m-mehrani.ir">admin@m-mehrani.ir</a></li>
               <li>{t.hero.location}</li>
             </ul>
+            <p className="muted" style={{ marginTop: "1rem" }}>{t.contact.sites}</p>
+            <ul className="contacts">
+              <li><a href="https://mohammadmehrani.github.io/" target="_blank" rel="noreferrer">mohammadmehrani.github.io</a></li>
+              <li><a href="https://mohammadmehrani.vercel.app/" target="_blank" rel="noreferrer">mohammadmehrani.vercel.app</a></li>
+            </ul>
           </Reveal>
         </section>
       </main>

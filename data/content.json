@@ -77,7 +77,8 @@
     "contact": {
       "title": "Contact",
       "desc": "For collaboration, consulting, or full-time opportunities, send a message.",
-      "reach": "Reach Me"
+      "reach": "Reach Me",
+      "sites": "Also find me at"
     }
   },
   "fa": {
@@ -158,7 +159,8 @@
     "contact": {
       "title": "تماس",
       "desc": "برای همکاری، مشاوره یا فرصت های شغلی پیام بفرستید.",
-      "reach": "راه های ارتباطی"
+      "reach": "راه های ارتباطی",
+      "sites": "همچنین در این آدرس‌ها"
     }
   }
 }
