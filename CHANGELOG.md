@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-06-29
 
+fix: copy M.Mehrani2026.pdf to public/pdf for Vercel serving
+
+### 2026-06-29
+
+generated
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-29
+
 fix: revert GitHub username back to mohammadmehrani
 
 ### 2026-06-29
@@ -186,19 +202,3 @@ Fix Some Error
 ### 2026-02-16
 
 Update package.json
-Signed-off-by: Mohammad Mehrani <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-02-16
-
-Update and rename pacdkage.json to package.json
-Signed-off-by: Mohammad Mehrani <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-02-16
-
-Update and rename package.json to pacdkage.json
-Signed-off-by: Mohammad Mehrani <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-02-16
-
-fix workflow
-
-### 2026-02-16
-
-Fix CI build: align React versions and harden npm install
