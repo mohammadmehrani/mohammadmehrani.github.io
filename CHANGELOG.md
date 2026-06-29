@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-06-29
 
+feat: live activity feed and stats from Cloudflare Worker
+
+### 2026-06-29
+
+feat: add Cloudflare Worker (github-hub) for webhook processing, KV storage, and live API
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-29
+
 fix: changelog workflow YAML parsing issue
 
 ### 2026-06-29
@@ -186,19 +202,3 @@ Remove all Vercel configs and workflows
 ### 2026-02-15
 
 Fix CI workflows for Pages and Deno; add Vercel static config
-
-### 2026-02-15
-
-Version 2.1.3
-
-### 2026-02-15
-
-Version 2.1.1
-
-### 2026-02-15
-
-Version 2.1.2 By @mohammadmehrani
-
-### 2026-02-15
-
-Version 2.1.2
