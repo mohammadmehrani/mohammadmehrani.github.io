@@ -8,6 +8,7 @@ import activityData from "../data/activity.json";
 import statsData from "../data/stats.json";
 import ThreeBackground from "../components/ThreeBackground";
 
+const GITHUB_USER = "madimhn";
 const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
 
 const reveal3d = {
