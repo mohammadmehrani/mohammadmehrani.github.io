@@ -212,6 +212,20 @@
   dict.fa.aria_switch_lang = "\u062a\u063a\u06cc\u06cc\u0631 \u0632\u0628\u0627\u0646";
   dict.fa.aria_toggle_theme = "\u062a\u063a\u06cc\u06cc\u0631 \u062a\u0645";
 
+  const mapUrls = {
+    en: {
+      iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0!2d51.3665!3d35.7605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2s",
+      link: "https://www.google.com/maps?q=35.7605,51.3665"
+    },
+    fa: {
+      iframe: "https://www.openstreetmap.org/export/embed.html?bbox=51.3230%2C35.7300%2C51.4040%2C35.7910&layer=mapnik&marker=35.7605%2C51.3665",
+      link: "https://www.openstreetmap.org/?mlat=35.7605&mlon=51.3665#map=14/35.7605/51.3665"
+    }
+  };
+
+  const mapIframe = document.getElementById("mapIframe");
+  const mapLink = document.getElementById("mapLink");
+
   const nav = document.getElementById("mainNav");
   const year = document.getElementById("year");
   const metaDescription = document.getElementById("metaDescription");
@@ -322,6 +336,12 @@
 
     if (getStored(LANG_KEY) !== safeLang) {
       setStored(LANG_KEY, safeLang);
+    }
+    if (mapIframe && mapUrls[safeLang]) {
+      mapIframe.src = mapUrls[safeLang].iframe;
+    }
+    if (mapLink && mapUrls[safeLang]) {
+      mapLink.href = mapUrls[safeLang].link;
     }
     updateControlLabels();
   }

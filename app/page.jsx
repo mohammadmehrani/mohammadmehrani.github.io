@@ -234,6 +234,19 @@ export default function HomePage() {
               <li><a href="https://mohammadmehrani.github.io/" target="_blank" rel="noreferrer">mohammadmehrani.github.io</a></li>
               <li><a href="https://mohammadmehrani.vercel.app/" target="_blank" rel="noreferrer">mohammadmehrani.vercel.app</a></li>
             </ul>
+            <div className="map-box" style={{ marginTop: "1.5rem" }}>
+              <div className="map-head">
+                <h4>{t.contact.mapTitle}</h4>
+                <a href={lang === "fa" ? "https://www.openstreetmap.org/?mlat=35.7605&mlon=51.3665#map=14/35.7605/51.3665" : "https://www.google.com/maps?q=35.7605,51.3665"} target="_blank" rel="noreferrer">{t.contact.mapOpen}</a>
+              </div>
+              <iframe
+                title="Tehran map - Shahrak Gharb"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={lang === "fa" ? "https://www.openstreetmap.org/export/embed.html?bbox=51.3500%2C35.7500%2C51.3830%2C35.7710&layer=mapnik&marker=35.7605%2C51.3665" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.0!2d51.3665!3d35.7605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2s"}
+                style={{ width: "100%", height: 220, border: 0, borderRadius: 8, marginTop: "0.5rem" }}
+              />
+            </div>
           </Reveal>
         </section>
       </main>
