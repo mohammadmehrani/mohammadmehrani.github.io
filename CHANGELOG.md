@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-06-30
 
+clean: remove test webhook files
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-30
+
 test: webhook test 2
 
 ### 2026-06-29
@@ -190,15 +202,3 @@ upcli
 ### 2026-02-24
 
 update CLI
-
-### 2026-02-24
-
-Update globals.css
-
-### 2026-02-24
-
-Update page.jsx
-
-### 2026-02-16
-
-whitout bom
