@@ -45,6 +45,7 @@ function Reveal({ as = "div", className, children, amount = 0.2, duration = 0.55
 export default function HomePage() {
   const [lang, setLang] = useState("en");
   const [theme, setTheme] = useState("dark");
+  const [stealth, setStealth] = useState(false);
   const [liveActivity, setLiveActivity] = useState(activityData);
   const [liveStats, setLiveStats] = useState(statsData);
   const shouldReduceMotion = useReducedMotion();
@@ -57,8 +58,10 @@ export default function HomePage() {
   useEffect(() => {
     const savedLang = localStorage.getItem("site_lang");
     const savedTheme = localStorage.getItem("site_theme");
+    const params = new URLSearchParams(window.location.search);
     if (savedLang === "fa") setLang("fa");
     if (savedTheme === "light") setTheme("light");
+    if (params.has("stealth") || localStorage.getItem("stealth") === "true") setStealth(true);
   }, []);
 
   useEffect(() => {
@@ -111,7 +114,7 @@ export default function HomePage() {
         </div>
       </div>
       <header className="topbar">
-        <strong className="brand">M.Mehrani</strong>
+        <strong className="brand" style={{ visibility: stealth ? "hidden" : "visible" }}>M.Mehrani</strong>
         <nav>
           {t.nav.map((item) => (
             <a key={item} href="#" onClick={(e) => e.preventDefault()}>
@@ -120,6 +123,9 @@ export default function HomePage() {
           ))}
         </nav>
         <div className="actions">
+          <button onClick={() => { setStealth((v) => !v); localStorage.setItem("stealth", (!stealth).toString()); }}>
+            {stealth ? "👤" : "👻"}
+          </button>
           <button onClick={() => setLang((v) => (v === "en" ? "fa" : "en"))}>{lang === "en" ? "FA" : "EN"}</button>
           <button onClick={() => setTheme((v) => (v === "dark" ? "light" : "dark"))}>
             {theme === "dark" ? "Light" : "Dark"}
@@ -129,7 +135,7 @@ export default function HomePage() {
 
       <main className="shell">
         <motion.section className="hero" style={shouldReduceMotion ? undefined : { y: heroY, rotateX: heroRotateX, rotateY: heroRotateY }}>
-          <Reveal amount={0.3} reduceMotion={shouldReduceMotion}>
+          {!stealth && <Reveal amount={0.3} reduceMotion={shouldReduceMotion}>
             <p className="eyebrow">{t.hero.eyebrow}</p>
             <h1>{t.hero.title}</h1>
             <p className="muted">{t.hero.desc}</p>
@@ -137,8 +143,8 @@ export default function HomePage() {
               <a className="btn" href="/pdf/M.Mehrani2026.pdf" target="_blank" rel="noreferrer">{t.hero.ctaResume}</a>
               <a className="btn" href="#contact">{t.hero.ctaHire}</a>
             </div>
-          </Reveal>
-          <Reveal className="photo-wrap" amount={0.3} reduceMotion={shouldReduceMotion}>
+          </Reveal>}
+          {!stealth && <Reveal className="photo-wrap" amount={0.3} reduceMotion={shouldReduceMotion}>
             <Image
               src="/images/mehrani.jpg"
               alt="Mohammad Mehrani"
@@ -148,7 +154,7 @@ export default function HomePage() {
               sizes="(max-width: 980px) 70vw, 320px"
             />
             <span className="chip">{t.hero.chip}</span>
-          </Reveal>
+          </Reveal>}
         </motion.section>
 
         <section className="grid two">
@@ -266,7 +272,7 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <section id="contact" className="grid two">
+        {!stealth && <section id="contact" className="grid two">
           <Reveal as="article" className="card" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
             <h2>{t.contact.title}</h2>
             <p className="muted">{t.contact.desc}</p>
@@ -302,7 +308,7 @@ export default function HomePage() {
               />
             </div>
           </Reveal>
-        </section>
+        </section>}
       </main>
     </>
   );
