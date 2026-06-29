@@ -6,6 +6,7 @@
     "declaration-block-single-line-max-declarations": null,
     "declaration-empty-line-before": null,
     "keyframes-name-pattern": null,
+    "no-descending-specificity": null,
     "rule-empty-line-before": null,
     "selector-class-pattern": null,
     "function-no-unknown": [
