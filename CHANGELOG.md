@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-06-29
 
+feat: add Three.js scroll parallax background with wireframe 3D objects
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-29
+
 feat: add stealth mode toggle to hide personal info
 
 ### 2026-06-29
@@ -190,15 +202,3 @@ Add Vercel static project config
 ### 2026-02-16
 
 Deno CI: require deno.json to run lint/tests
-
-### 2026-02-16
-
-Fix Deno CI: skip lint/test when no Deno project
-
-### 2026-02-15
-
-Wordpress Off
-
-### 2026-02-15
-
-Optimize script runtime and restore WordPress section above projects
