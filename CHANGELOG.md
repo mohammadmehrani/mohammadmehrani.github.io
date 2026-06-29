@@ -4,6 +4,30 @@ Auto-generated from conventional commits.
 
 ### 2026-06-29
 
+fix: revert GitHub username back to mohammadmehrani
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update GitHub username to madimhn
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-29
+
 feat: add Three.js scroll parallax background with wireframe 3D objects
 
 ### 2026-06-29
@@ -178,27 +202,3 @@ fix workflow
 ### 2026-02-16
 
 Fix CI build: align React versions and harden npm install
-
-### 2026-02-16
-
-Migrate to Next.js app, add SEO/PWA/analytics, and modern CI pipelines
-
-### 2026-02-16
-
-Optimize frontend performance, SEO metadata, and resilient storage handling
-
-### 2026-02-16
-
-Fix Profile Picture
-
-### 2026-02-16
-
-Bug Fix
-
-### 2026-02-16
-
-Add Vercel static project config
-
-### 2026-02-16
-
-Deno CI: require deno.json to run lint/tests
