@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
-import activity from "../data/activity.json";
-import stats from "../data/stats.json";
+import activityData from "../data/activity.json";
+import statsData from "../data/stats.json";
+
+const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
 
 const reveal3d = {
   hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
@@ -43,6 +45,8 @@ function Reveal({ as = "div", className, children, amount = 0.2, duration = 0.55
 export default function HomePage() {
   const [lang, setLang] = useState("en");
   const [theme, setTheme] = useState("dark");
+  const [liveActivity, setLiveActivity] = useState(activityData);
+  const [liveStats, setLiveStats] = useState(statsData);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 25, mass: 0.2 });
@@ -72,6 +76,25 @@ export default function HomePage() {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
     }
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchLive() {
+      try {
+        const [act, st] = await Promise.all([
+          fetch(WORKER_URL + "/api/activity").then(r => r.json()),
+          fetch(WORKER_URL + "/api/stats").then(r => r.json())
+        ]);
+        if (mounted) {
+          if (Array.isArray(act) && act.length > 0) setLiveActivity(act);
+          if (st && typeof st.stars === "number") setLiveStats(st);
+        }
+      } catch {}
+    }
+    fetchLive();
+    const interval = setInterval(fetchLive, 60000);
+    return () => { mounted = false; clearInterval(interval); };
   }, []);
 
   const t = useMemo(() => content[lang], [lang]);
@@ -218,10 +241,10 @@ export default function HomePage() {
           <h2>{t.activity.title}</h2>
           <p className="muted">{t.activity.desc}</p>
           <div className="activity-feed">
-            {activity.length === 0 ? (
+            {liveActivity.length === 0 ? (
               <p className="muted" style={{ textAlign: "center", padding: "1rem 0" }}>{t.activity.empty}</p>
             ) : (
-              activity.slice(0, 10).map((a, i) => (
+              liveActivity.slice(0, 10).map((a, i) => (
                 <div key={i} className="activity-item">
                   <span>{a.icon}</span>
                   <span className="muted">{a.message}</span>
@@ -236,10 +259,10 @@ export default function HomePage() {
           <h2>{t.stats.title}</h2>
           <p className="muted">{t.stats.desc}</p>
           <div className="stats-grid">
-            <div className="stat-box"><strong>⭐</strong><span>{stats.stars}</span><label>Stars</label></div>
-            <div className="stat-box"><strong>🔱</strong><span>{stats.forks}</span><label>Forks</label></div>
-            <div className="stat-box"><strong>📋</strong><span>{stats.open_issues}</span><label>Issues</label></div>
-            <div className="stat-box"><strong>👁️</strong><span>{stats.watchers}</span><label>Watchers</label></div>
+            <div className="stat-box"><strong>⭐</strong><span>{liveStats.stars ?? 0}</span><label>Stars</label></div>
+            <div className="stat-box"><strong>🔱</strong><span>{liveStats.forks ?? 0}</span><label>Forks</label></div>
+            <div className="stat-box"><strong>📋</strong><span>{liveStats.open_issues ?? 0}</span><label>Issues</label></div>
+            <div className="stat-box"><strong>👁️</strong><span>{liveStats.watchers ?? 0}</span><label>Watchers</label></div>
           </div>
         </Reveal>
 
