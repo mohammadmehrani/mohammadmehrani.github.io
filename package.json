@@ -22,7 +22,7 @@
         "three": "^0.185.0"
     },
     "devDependencies": {
-        "@lhci/cli": "^0.14.0",
+        "@lhci/cli": "^0.15.1",
         "eslint": "^8.57.0",
         "eslint-config-next": "^14.2.5",
         "htmlhint": "^1.6.3",
