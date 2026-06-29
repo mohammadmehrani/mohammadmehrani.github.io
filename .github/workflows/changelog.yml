@@ -10,7 +10,7 @@ permissions:
 jobs:
   changelog:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'chore: update')
+    if: "${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'chore: update') }}"
     steps:
       - uses: actions/checkout@v4
         with:
