@@ -35,6 +35,19 @@ body {
 
 img, video { max-width: 100%; height: auto; }
 
+.three-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .three-bg { display: none; }
+}
+
 .terminal-bg {
   position: fixed;
   inset: 0;

@@ -6,6 +6,7 @@ import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring
 import content from "../data/content.json";
 import activityData from "../data/activity.json";
 import statsData from "../data/stats.json";
+import ThreeBackground from "../components/ThreeBackground";
 
 const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
 
@@ -102,8 +103,14 @@ export default function HomePage() {
 
   const t = useMemo(() => content[lang], [lang]);
 
+  const scrollRef = useRef(0);
+  useEffect(() => {
+    return smoothProgress.on("change", (v) => { scrollRef.current = v; });
+  }, []);
+
   return (
     <>
+      <ThreeBackground scrollY={scrollRef} />
       <div className="terminal-bg" aria-hidden="true">
         <div className="terminal-grid" />
         <div className="terminal-scanline" />

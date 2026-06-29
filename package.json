@@ -1,29 +1,32 @@
 {
-    "name":  "mohammadmehrani-portfolio",
-    "version":  "3.0.0",
-    "private":  true,
-    "scripts":  {
-                    "dev":  "next dev",
-                    "build":  "next build",
-                    "start":  "next start",
-                    "lint":  "next lint",
-                    "lint:html":  "htmlhint public/offline.html",
-                    "lint:css":  "stylelint app/**/*.css",
-                    "lint:links":  "node -e \"console.log(\u0027link check skipped in CI for stability\u0027)\"",
-                    "lighthouse":  "lhci autorun"
-                },
-    "dependencies":  {
-                         "framer-motion":  "^11.3.19",
-                         "next":  "^15.5.18",
-                         "react":  "^18.2.0",
-                         "react-dom":  "^18.2.0"
-                     },
-    "devDependencies":  {
-                            "@lhci/cli":  "^0.14.0",
-                            "eslint":  "^8.57.0",
-                            "eslint-config-next":  "^14.2.5",
-                            "htmlhint":  "^1.6.3",
-                            "stylelint":  "^16.9.0",
-                            "stylelint-config-standard":  "^36.0.1"
-                        }
+    "name": "mohammadmehrani-portfolio",
+    "version": "3.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "lint:html": "htmlhint public/offline.html",
+        "lint:css": "stylelint app/**/*.css",
+        "lint:links": "node -e \"console.log('link check skipped in CI for stability')\"",
+        "lighthouse": "lhci autorun"
+    },
+    "dependencies": {
+        "@react-three/drei": "^10.7.7",
+        "@react-three/fiber": "^9.6.1",
+        "framer-motion": "^11.3.19",
+        "next": "^15.5.18",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "three": "^0.185.0"
+    },
+    "devDependencies": {
+        "@lhci/cli": "^0.14.0",
+        "eslint": "^8.57.0",
+        "eslint-config-next": "^14.2.5",
+        "htmlhint": "^1.6.3",
+        "stylelint": "^16.9.0",
+        "stylelint-config-standard": "^36.0.1"
+    }
 }
