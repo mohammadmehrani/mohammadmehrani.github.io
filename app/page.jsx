@@ -8,7 +8,7 @@ import activityData from "../data/activity.json";
 import statsData from "../data/stats.json";
 import ThreeBackground from "../components/ThreeBackground";
 
-const GITHUB_USER = "madimhn";
+const GITHUB_USER = "mohammadmehrani";
 const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
 
 const reveal3d = {
@@ -131,7 +131,8 @@ export default function HomePage() {
           ))}
         </nav>
         <div className="actions">
-          <button onClick={() => { setStealth((v) => !v); localStorage.setItem("stealth", (!stealth).toString()); }}>
+          <button onClick={() => { setStealth((v) => !v); localStorage.setItem("stealth", (!stealth).toString()); }}
+            title={stealth ? "Show personal info" : "Hide personal info"} style={{ opacity: stealth ? 0.6 : 1 }}>
             {stealth ? "👤" : "👻"}
           </button>
           <button onClick={() => setLang((v) => (v === "en" ? "fa" : "en"))}>{lang === "en" ? "FA" : "EN"}</button>

@@ -19,7 +19,7 @@
     "crons": ["0 */6 * * *"]
   },
   "vars": {
-    "GITHUB_REPO": "madimhn/mohammadmehrani.github.io",
-    "GITHUB_USER": "madimhn"
+    "GITHUB_REPO": "mohammadmehrani/mohammadmehrani.github.io",
+    "GITHUB_USER": "mohammadmehrani"
   }
 }
