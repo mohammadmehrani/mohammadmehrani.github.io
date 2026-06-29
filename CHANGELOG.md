@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-06-29
 
+feat: add stealth mode toggle to hide personal info
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-29
+
 feat: live activity feed and stats from Cloudflare Worker
 
 ### 2026-06-29
@@ -190,15 +202,3 @@ Wordpress Off
 ### 2026-02-15
 
 Optimize script runtime and restore WordPress section above projects
-
-### 2026-02-15
-
-Fix Goftino Weget
-
-### 2026-02-15
-
-Remove all Vercel configs and workflows
-
-### 2026-02-15
-
-Fix CI workflows for Pages and Deno; add Vercel static config
