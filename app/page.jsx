@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
+import activity from "../data/activity.json";
+import stats from "../data/stats.json";
 
 const reveal3d = {
   hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
@@ -209,6 +211,35 @@ export default function HomePage() {
                 <Image src={src} alt="Certificate" width={900} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
               </Reveal>
             ))}
+          </div>
+        </Reveal>
+
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+          <h2>{t.activity.title}</h2>
+          <p className="muted">{t.activity.desc}</p>
+          <div className="activity-feed">
+            {activity.length === 0 ? (
+              <p className="muted" style={{ textAlign: "center", padding: "1rem 0" }}>{t.activity.empty}</p>
+            ) : (
+              activity.slice(0, 10).map((a, i) => (
+                <div key={i} className="activity-item">
+                  <span>{a.icon}</span>
+                  <span className="muted">{a.message}</span>
+                  <span className="activity-date">{new Date(a.date).toLocaleDateString(lang === "fa" ? "fa-IR" : "en-US")}</span>
+                </div>
+              ))
+            )}
+          </div>
+        </Reveal>
+
+        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+          <h2>{t.stats.title}</h2>
+          <p className="muted">{t.stats.desc}</p>
+          <div className="stats-grid">
+            <div className="stat-box"><strong>⭐</strong><span>{stats.stars}</span><label>Stars</label></div>
+            <div className="stat-box"><strong>🔱</strong><span>{stats.forks}</span><label>Forks</label></div>
+            <div className="stat-box"><strong>📋</strong><span>{stats.open_issues}</span><label>Issues</label></div>
+            <div className="stat-box"><strong>👁️</strong><span>{stats.watchers}</span><label>Watchers</label></div>
           </div>
         </Reveal>
 

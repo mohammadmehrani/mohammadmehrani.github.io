@@ -1,0 +1,43 @@
+name: Changelog Generator
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'chore: update')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog
+        run: |
+          mkdir -p data
+          {
+            echo "# Changelog"
+            echo ""
+            echo "Auto-generated from conventional commits."
+            echo ""
+            git log --no-merges --pretty=format:"### %ad%n%n%s%n%b" --date=format:"%Y-%m-%d" \
+              | head -200
+          } > CHANGELOG.md
+
+      - name: Update last activity timestamp
+        run: |
+          mkdir -p data
+          if [ -f data/stats.json ]; then
+            TMP=$(mktemp)
+            jq --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '.last_commit = $date' data/stats.json > "$TMP"
+            mv "$TMP" data/stats.json
+          fi
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update changelog"
+          file_pattern: "CHANGELOG.md data/stats.json"

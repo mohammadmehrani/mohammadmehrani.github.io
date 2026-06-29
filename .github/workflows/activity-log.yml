@@ -1,0 +1,54 @@
+name: Activity Log
+on:
+  watch:
+    types: [started]
+  issues:
+    types: [opened, closed, reopened]
+  fork:
+
+permissions:
+  contents: write
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record activity
+        run: |
+          mkdir -p data
+          if [ ! -f data/activity.json ]; then echo '[]' > data/activity.json; fi
+          EVENT_TYPE=""
+          ICON=""
+          case "${{ github.event_name }}" in
+            watch)
+              EVENT_TYPE="star"
+              ICON="⭐"
+              MSG="${{ github.event.sender.login }} starred the repo"
+              ;;
+            issues)
+              EVENT_TYPE="issue_${{ github.event.action }}"
+              ICON="📋"
+              MSG="${{ github.event.sender.login }} ${{ github.event.action }} issue #${{ github.event.issue.number }}: ${{ github.event.issue.title }}"
+              ;;
+            fork)
+              EVENT_TYPE="fork"
+              ICON="🔱"
+              MSG="${{ github.event.sender.login }} forked the repo"
+              ;;
+          esac
+          ENTRY=$(jq -n \
+            --arg icon "$ICON" \
+            --arg type "$EVENT_TYPE" \
+            --arg msg "$MSG" \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{icon: $icon, type: $type, message: $msg, date: $date}')
+          TMP=$(mktemp)
+          jq --argjson entry "$ENTRY" '[ $entry ] + .[0:49]' data/activity.json > "$TMP"
+          mv "$TMP" data/activity.json
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update activity log"
+          file_pattern: data/activity.json

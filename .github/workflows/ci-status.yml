@@ -1,0 +1,37 @@
+name: CI Status Tracker
+on:
+  workflow_run:
+    workflows: [CI, "Deploy static content to Pages", "Stats Sync", "Activity Log"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update CI status
+        run: |
+          mkdir -p data
+          CONCLUSION="${{ github.event.workflow_run.conclusion }}"
+          WORKFLOW="${{ github.event.workflow_run.name }}"
+          BRANCH="${{ github.event.workflow_run.head_branch }}"
+          STATUS="${{ github.event.workflow_run.status }}"
+          RUN_ID="${{ github.event.workflow_run.id }}"
+          jq -n \
+            --arg workflow "$WORKFLOW" \
+            --arg conclusion "$CONCLUSION" \
+            --arg branch "$BRANCH" \
+            --arg status "$STATUS" \
+            --arg run_id "$RUN_ID" \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{workflow: $workflow, conclusion: $conclusion, branch: $branch, status: $status, run_id: ($run_id|tonumber), date: $date}' \
+            > data/ci-status.json
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update CI status"
+          file_pattern: data/ci-status.json

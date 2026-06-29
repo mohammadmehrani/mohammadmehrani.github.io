@@ -1,0 +1,39 @@
+name: Stats Sync
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch repo stats
+        run: |
+          mkdir -p data
+          RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}")
+          STARS=$(echo "$RESP" | jq '.stargazers_count')
+          FORKS=$(echo "$RESP" | jq '.forks_count')
+          ISSUES=$(echo "$RESP" | jq '.open_issues_count')
+          WATCHERS=$(echo "$RESP" | jq '.subscribers_count')
+          SIZE=$(echo "$RESP" | jq '.size')
+          jq -n \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg stars "$STARS" \
+            --arg forks "$FORKS" \
+            --arg issues "$ISSUES" \
+            --arg watchers "$WATCHERS" \
+            --arg size "$SIZE" \
+            '{date: $date, stars: ($stars|tonumber), forks: ($forks|tonumber), open_issues: ($issues|tonumber), watchers: ($watchers|tonumber), size: ($size|tonumber), last_commit: $date}' \
+            > data/stats.json
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update repo stats"
+          file_pattern: data/stats.json

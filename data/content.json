@@ -81,6 +81,15 @@
       "sites": "Also find me at",
       "mapTitle": "Tehran",
       "mapOpen": "Open Map"
+    },
+    "activity": {
+      "title": "Live Activity",
+      "desc": "Recent interactions with this repository — stars, issues, and forks.",
+      "empty": "No activity yet. Star the repo to see it here!"
+    },
+    "stats": {
+      "title": "Repo Stats",
+      "desc": "Real-time statistics fetched daily via GitHub Actions."
     }
   },
   "fa": {
@@ -165,6 +174,15 @@
       "sites": "همچنین در این آدرس‌ها",
       "mapTitle": "تهران",
       "mapOpen": "باز کردن نقشه"
+    },
+    "activity": {
+      "title": "فعالیت‌های زنده",
+      "desc": "تعاملات اخیر با این ریپازیتوری — ستاره، issue و fork.",
+      "empty": "هنوز فعالیتی ثبت نشده. ستاره بده تا اینجا ببینی!"
+    },
+    "stats": {
+      "title": "آمار ریپو",
+      "desc": "آمار لحظه‌ای که هر روز توسط GitHub Actions به‌روزرسانی می‌شود."
     }
   }
 }

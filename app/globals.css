@@ -256,6 +256,45 @@ input, textarea {
   .topbar { align-items: flex-start; flex-direction: column; }
 }
 
+.activity-feed {
+  display: grid;
+  gap: 0.4rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.activity-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--stroke);
+  font-size: 0.85rem;
+}
+.activity-item:last-child { border-bottom: 0; }
+.activity-date { font-size: 0.75rem; color: var(--muted); opacity: 0.7; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.stat-box {
+  text-align: center;
+  padding: 0.7rem 0.4rem;
+  border: 1px solid var(--stroke);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+.stat-box strong { font-size: 1.4rem; display: block; margin-bottom: 0.2rem; }
+.stat-box span { font-size: 1.1rem; font-weight: 700; display: block; }
+.stat-box label { font-size: 0.7rem; color: var(--muted); }
+
+@media (width <= 640px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 .map-box {
   margin-top: 1rem;
   border: 1px solid var(--stroke);
