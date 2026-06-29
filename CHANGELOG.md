@@ -2,6 +2,18 @@
 
 Auto-generated from conventional commits.
 
+### 2026-06-30
+
+test: webhook test 2026-06-30 00:36:49
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
 ### 2026-06-29
 
 fix: copy M.Mehrani2026.pdf to public/pdf for Vercel serving
@@ -190,15 +202,3 @@ json file have problem
 ### 2026-02-16
 
 recreate clean package.json without BOM
-
-### 2026-02-16
-
-remove corrupted package.json
-
-### 2026-02-16
-
-Fix Some Error
-
-### 2026-02-16
-
-Update package.json
