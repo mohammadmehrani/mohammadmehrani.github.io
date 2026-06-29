@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-06-30
 
+test: webhook test 2
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
+### 2026-06-30
+
 test: webhook test 2026-06-30 00:36:49
 
 ### 2026-06-29
@@ -190,15 +202,3 @@ Update page.jsx
 ### 2026-02-16
 
 whitout bom
-
-### 2026-02-16
-
-utf whit bom
-
-### 2026-02-16
-
-json file have problem
-
-### 2026-02-16
-
-recreate clean package.json without BOM
