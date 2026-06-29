@@ -109,7 +109,7 @@ export default function HomePage() {
             <h1>{t.hero.title}</h1>
             <p className="muted">{t.hero.desc}</p>
             <div className="row-btn">
-              <a className="btn" href="/pdf/M.Mehrani.pdf" target="_blank" rel="noreferrer">{t.hero.ctaResume}</a>
+              <a className="btn" href="/pdf/M.Mehrani2026.pdf" target="_blank" rel="noreferrer">{t.hero.ctaResume}</a>
               <a className="btn" href="#contact">{t.hero.ctaHire}</a>
             </div>
           </Reveal>
