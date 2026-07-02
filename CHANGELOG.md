@@ -4,6 +4,14 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+feat: add Codespaces + VS Code open buttons to projects, fix README solarized->night-view
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 style: add CSS for achievement progress bars and grid
 
 ### 2026-07-02
@@ -193,12 +201,4 @@ clean: remove test webhook files
 ### 2026-06-29
 
 chore: update CI status
-
-### 2026-06-29
-
-chore: update changelog
-
-### 2026-06-30
-
-test: webhook test 2
 
