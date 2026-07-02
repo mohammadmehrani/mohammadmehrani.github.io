@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+style: add CSS for achievement progress bars and grid
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 feat: add achievement progress tracking with live PR count and progress bars
 
 ### 2026-07-02
@@ -189,16 +201,4 @@ chore: update changelog
 ### 2026-06-30
 
 test: webhook test 2
-
-### 2026-06-29
-
-chore: update CI status
-
-### 2026-06-29
-
-chore: update changelog
-
-### 2026-06-30
-
-test: webhook test 2026-06-30 00:36:49
 
