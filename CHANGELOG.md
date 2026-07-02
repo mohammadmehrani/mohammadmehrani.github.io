@@ -2,6 +2,22 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-03
+
+feat: sync README with profile repo - animated mermaid, ASCII art, yaml bio, collapsible links, fixed trophy/stats endpoints
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-02
+
+chore: update changelog
+
 ### 2026-07-02
 
 fix: remove BOM from theme-preview.json (was breaking xarthurx action JSON parser)
@@ -185,20 +201,4 @@ feat: add /projects route with all GitHub repos + badges
 ### 2026-07-02
 
 chore: update CI status
-
-### 2026-07-02
-
-chore: update repo stats
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-fix: replace m-mehrani.ir with iodeck.ir across site + fix profile counter + add trophy badges
 
