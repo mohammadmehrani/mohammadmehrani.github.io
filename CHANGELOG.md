@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+feat: add /projects route with all GitHub repos + badges
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update repo stats
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 fix: replace m-mehrani.ir with iodeck.ir across site + fix profile counter + add trophy badges
 
 ### 2026-07-01
@@ -182,23 +202,3 @@ fix resume download link to M.Mehrani2026.pdf on both Vercel and GitHub Pages
 
 upgrade next from 14.2.35 to 15.5.18
 Bumps [next](https://github.com/vercel/next.js) from 14.2.35 to 15.5.18.
-- [Release notes](https://github.com/vercel/next.js/releases)
-- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)
-- [Commits](https://github.com/vercel/next.js/compare/v14.2.35...v15.5.18)
-
----
-updated-dependencies:
-- dependency-name: next
-  dependency-version: 15.5.18
-  dependency-type: direct:production
-...
-
-Signed-off-by: dependabot[bot] <support@github.com>
-Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-### 2026-06-29
-
-fix CI: disable no-descending-specificity, upgrade Node to 22
-
-### 2026-06-29
-
-add bilingual map (OSM for FA, Google Maps for EN) to both Vercel and GitHub Pages
