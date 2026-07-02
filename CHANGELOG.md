@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+feat: sync 3D Skyline badge to README
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: sync README with profile repo - animated mermaid, ASCII art, yaml bio, collapsible links, fixed trophy/stats endpoints
 
 ### 2026-07-02
@@ -185,18 +197,6 @@ chore: update changelog
 ### 2026-07-02
 
 feat: add /achievements route with trophies, stats, and badges
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add /projects route with all GitHub repos + badges
 
 ### 2026-07-02
 
