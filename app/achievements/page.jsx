@@ -207,13 +207,26 @@ export default function AchievementsPage() {
           </div>
         </section>
 
-        {/* Contribution Graph */}
+        {/* 3D Contribution Graph (Green) */}
         <section className="card" style={{ overflow: "hidden" }}>
-          <h2>{lang === "fa" ? "گراف مشارکت" : "Contribution Graph"}</h2>
+          <h2>{lang === "fa" ? "گراف سه‌بعدی مشارکت" : "3D Contribution Graph"}</h2>
+          <div className="contribution-graph">
+            <img
+              src="https://raw.githubusercontent.com/mohammadmehrani/mohammadmehrani/main/profile-3d-contrib/profile-green-animate.svg"
+              alt="3D Contribution graph"
+              loading="lazy"
+              style={{ width: "100%", borderRadius: "0.6rem" }}
+            />
+          </div>
+        </section>
+
+        {/* Activity Graph */}
+        <section className="card" style={{ overflow: "hidden" }}>
+          <h2>{lang === "fa" ? "گراف فعالیت" : "Activity Graph"}</h2>
           <div className="contribution-graph">
             <img
               src={`https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USER}&bg_color=0d1117&color=58a6ff&line=3fb950&point=f78166&area=true&hide_border=true`}
-              alt="Contribution graph"
+              alt="Activity graph"
               loading="lazy"
               style={{ width: "100%", borderRadius: "0.6rem" }}
             />
