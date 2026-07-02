@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+fix: bottom 3D box -> solarized-dark (green bg + orange/gold tones)
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 fix: top 3D box -> rainbow, add bottom green-animate box
 
 ### 2026-07-02
@@ -189,16 +201,4 @@ chore: update CI status
 ### 2026-06-30
 
 chore: update activity log
-
-### 2026-06-30
-
-chore: update CI status
-
-### 2026-06-30
-
-chore: update repo stats
-
-### 2026-06-29
-
-chore: update CI status
 
