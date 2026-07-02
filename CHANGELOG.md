@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+fix: top 3D box -> rainbow, add bottom green-animate box
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 feat: add Codespaces + VS Code open buttons to projects, fix README solarized->night-view
 
 ### 2026-07-02
@@ -185,18 +197,6 @@ chore: update CI status
 ### 2026-06-30
 
 chore: update repo stats
-
-### 2026-06-29
-
-chore: update CI status
-
-### 2026-06-29
-
-chore: update changelog
-
-### 2026-06-30
-
-clean: remove test webhook files
 
 ### 2026-06-29
 
