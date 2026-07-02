@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
 import activityData from "../data/activity.json";
 import statsData from "../data/stats.json";
-import ThreeBackground from "../components/ThreeBackground";
+
+const ThreeBackground = dynamic(() => import("../components/ThreeBackground"), { ssr: false });
 
 const GITHUB_USER = "mohammadmehrani";
 const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
