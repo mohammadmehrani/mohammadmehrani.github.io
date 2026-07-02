@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+fix: remove BOM from theme-preview.json (was breaking xarthurx action JSON parser)
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 feat: add all xarthurx themes (10), daily rotation workflow, SETTING_JSON config
 
 ### 2026-07-02
@@ -189,16 +201,4 @@ chore: update changelog
 ### 2026-07-02
 
 fix: replace m-mehrani.ir with iodeck.ir across site + fix profile counter + add trophy badges
-
-### 2026-07-01
-
-generated
-
-### 2026-07-01
-
-chore: update CI status
-
-### 2026-07-01
-
-chore: update repo stats
 
