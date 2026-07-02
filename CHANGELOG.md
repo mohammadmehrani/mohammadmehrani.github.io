@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+fix: dynamically import ThreeBackground with ssr:false for Vercel
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 ci: add Vercel auto-deploy workflow on push to main
 
 ### 2026-07-02
@@ -189,16 +201,4 @@ feat: add stealth mode toggle to hide personal info
 ### 2026-06-29
 
 chore: update CI status
-
-### 2026-06-29
-
-chore: update changelog
-
-### 2026-06-29
-
-feat: live activity feed and stats from Cloudflare Worker
-
-### 2026-06-29
-
-feat: add Cloudflare Worker (github-hub) for webhook processing, KV storage, and live API
 
