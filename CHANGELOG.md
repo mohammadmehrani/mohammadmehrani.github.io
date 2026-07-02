@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-02
 
+feat: add achievement progress tracking with live PR count and progress bars
+
+### 2026-07-02
+
+chore: cleanup yolo test file [skip ci]
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-02
+
 chore: add yolo achievement file [skip ci]
 
 ### 2026-07-02
@@ -185,20 +201,4 @@ chore: update changelog
 ### 2026-06-30
 
 test: webhook test 2026-06-30 00:36:49
-
-### 2026-06-29
-
-chore: update CI status
-
-### 2026-06-29
-
-chore: update changelog
-
-### 2026-06-29
-
-fix: copy M.Mehrani2026.pdf to public/pdf for Vercel serving
-
-### 2026-06-29
-
-generated
 
