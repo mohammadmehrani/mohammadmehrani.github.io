@@ -2,9 +2,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-night-view.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-night-view.svg" />
-    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-night-view.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
+    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-night-rainbow.svg" />
   </picture>
 </p>
 
@@ -41,6 +41,11 @@
   <a href="https://mohammadmehrani.vercel.app/">mohammadmehrani.vercel.app</a>
   ·
   <a href="https://mohammadmehrani.github.io/achievements">Achievements</a>
+</p>
+
+
+<p align="center">
+  <img src="./profile-3d-contrib/profile-green-animate.svg" alt="3D contribution graph animated" />
 </p>
 
 ## About Me
@@ -80,4 +85,5 @@ DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure au
 <p align="center">
   <img loading="lazy" src="https://github-profile-trophy.vercel.app/?username=mohammadmehrani&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" />
 </p>
+
 
