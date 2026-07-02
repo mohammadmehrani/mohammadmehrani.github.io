@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useAnimation, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import content from "../data/content.json";
@@ -125,9 +126,9 @@ export default function HomePage() {
         <strong className="brand" style={{ visibility: stealth ? "hidden" : "visible" }}>M.Mehrani</strong>
         <nav>
           {t.nav.map((item) => (
-            <a key={item} href="#" onClick={(e) => e.preventDefault()}>
-              {item}
-            </a>
+            item === "Projects" || item === "پروژه ها"
+              ? <Link key={item} href="/projects">{item}</Link>
+              : <a key={item} href="#" onClick={(e) => e.preventDefault()}>{item}</a>
           ))}
         </nav>
         <div className="actions">

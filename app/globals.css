@@ -226,6 +226,98 @@ input, textarea {
 .contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
 
 .admin-panel { min-height: 70vh; }
+
+.projects-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+}
+.projects-search {
+  flex: 1;
+  min-width: 200px;
+}
+.projects-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+.projects-toggle input { width: auto; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.project-card {
+  border: 1px solid var(--stroke);
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  display: grid;
+  gap: 0.45rem;
+}
+.project-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.project-card-head a { color: var(--accent); text-decoration: none; }
+.project-card-head a:hover { text-decoration: underline; }
+.project-card-head h3 { margin: 0; font-size: 1rem; }
+.fork-label {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--stroke);
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.project-desc {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.badge-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.repo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--stroke);
+  background: color-mix(in srgb, var(--badge-color, var(--accent)) 15%, transparent);
+  color: var(--text);
+}
+.topic-row {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+.topic-chip {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  color: var(--muted);
+}
 .admin-head {
   display: flex;
   gap: 1rem;
