@@ -18,8 +18,8 @@
   <a href="https://t.me/mohammad_mehrani">
     <img src="https://img.shields.io/badge/Telegram-mohammad__mehrani-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
   </a>
-  <a href="https://m-mehrani.ir/">
-    <img src="https://img.shields.io/badge/Blog-m--mehrani.ir-222222?style=for-the-badge&logo=hashnode&logoColor=white" alt="Blog" />
+  <a href="https://iodeck.ir/">
+    <img src="https://img.shields.io/badge/Blog-iodeck.ir-222222?style=for-the-badge&logo=hashnode&logoColor=white" alt="Blog" />
   </a>
   <a href="mailto:mehrani1992@gmail.com">
     <img src="https://img.shields.io/badge/Email-mehrani1992%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
@@ -30,8 +30,9 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=mohammadmehrani&style=for-the-badge&color=0e75b6" alt="Profile views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani&label=Profile%20Views&countColor=%230e75b6&style=flat-square" alt="Profile views" />
   <img src="https://img.shields.io/github/followers/mohammadmehrani?style=for-the-badge&logo=github" alt="Followers" />
+  <img src="https://img.shields.io/github/stars/mohammadmehrani?style=for-the-badge&logo=github" alt="Stars" />
 </p>
 
 <p align="center">
@@ -72,4 +73,8 @@ DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure au
 <p align="center">
   <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mohammadmehrani&theme=github_dark" alt="Repos per language" />
   <img loading="lazy" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=mohammadmehrani&theme=github_dark" alt="Most commit language" />
+</p>
+
+<p align="center">
+  <img loading="lazy" src="https://github-profile-trophy.vercel.app/?username=mohammadmehrani&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" />
 </p>

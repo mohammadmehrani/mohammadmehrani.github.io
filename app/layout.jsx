@@ -39,7 +39,7 @@ const personSchema = {
   name: "Mohammad Mehrani",
   jobTitle: "DevOps Engineer",
   url: "https://mohammadmehrani.github.io",
-  email: "mailto:admin@m-mehrani.ir",
+  email: "mailto:admin@iodeck.ir",
   image: "https://mohammadmehrani.github.io/images/mehrani.jpg",
   sameAs: [
     "https://github.com/mohammadmehrani",
