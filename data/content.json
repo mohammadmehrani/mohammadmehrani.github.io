@@ -92,6 +92,27 @@
       "desc": "Real-time statistics fetched daily via GitHub Actions."
     }
   },
+  "githubReport": {
+    "title": "GitHub Report",
+    "desc": "Comprehensive overview of open source activity and contribution metrics.",
+    "overview": "Account Overview",
+    "contributions": "Contribution Activity (Last 30 Days)",
+    "languages": "Language Breakdown",
+    "repos": "Repository Stats",
+    "activityFeed": "Recent Activity",
+    "totalStars": "Total Stars",
+    "totalForks": "Total Forks",
+    "totalRepos": "Public Repos",
+    "followers": "Followers",
+    "following": "Following",
+    "pullRequests": "Pull Requests",
+    "issues": "Issues",
+    "lastYear": "Last Year Contributions",
+    "bestStreak": "Best Streak",
+    "contributeTo": "Contributed To",
+    "focused": "Focus Areas",
+    "noActivity": "No activity in the last 30 days."
+  },
   "fa": {
     "nav": ["درباره من", "مهارت ها", "سوابق شغلی", "سوابق تحصیلی", "پروژه ها", "گواهینامه ها", "تماس"],
     "hero": {
@@ -184,5 +205,26 @@
       "title": "آمار ریپو",
       "desc": "آمار لحظه‌ای که هر روز توسط GitHub Actions به‌روزرسانی می‌شود."
     }
+  },
+  "githubReport": {
+    "title": "گزارش گیتهاب",
+    "desc": "نمای جامع از فعالیت‌های متن‌باز و معیارهای مشارکت.",
+    "overview": "نمای کلی حساب",
+    "contributions": "فعالیت مشارکتی (۳۰ روز اخیر)",
+    "languages": "تفکیک زبان‌ها",
+    "repos": "آمار ریپازیتوری‌ها",
+    "activityFeed": "فعالیت‌های اخیر",
+    "totalStars": "مجموع ستاره‌ها",
+    "totalForks": "مجموع فورک‌ها",
+    "totalRepos": "ریپوهای عمومی",
+    "followers": "دنبال‌کنندگان",
+    "following": "دنبال‌شونده",
+    "pullRequests": "درخواست‌های Pull",
+    "issues": "مسائل",
+    "lastYear": "مشارکت سال گذشته",
+    "bestStreak": "بهترین استریک",
+    "contributeTo": "مشارکت در",
+    "focused": "حوزه‌های تمرکز",
+    "noActivity": "هیچ فعالیتی در ۳۰ روز اخیر ثبت نشده."
   }
 }

@@ -13,24 +13,102 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch repo stats
+      - name: Fetch all stats
         run: |
           mkdir -p data
-          RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}")
-          STARS=$(echo "$RESP" | jq '.stargazers_count')
-          FORKS=$(echo "$RESP" | jq '.forks_count')
-          ISSUES=$(echo "$RESP" | jq '.open_issues_count')
-          WATCHERS=$(echo "$RESP" | jq '.subscribers_count')
-          SIZE=$(echo "$RESP" | jq '.size')
+          OWNER="${{ github.repository_owner }}"
+          REPO="${{ github.repository }}"
+
+          # Repo-level stats
+          REPO_RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$REPO")
+          STARS=$(echo "$REPO_RESP" | jq '.stargazers_count')
+          FORKS=$(echo "$REPO_RESP" | jq '.forks_count')
+          ISSUES=$(echo "$REPO_RESP" | jq '.open_issues_count')
+          WATCHERS=$(echo "$REPO_RESP" | jq '.subscribers_count')
+          SIZE=$(echo "$REPO_RESP" | jq '.size')
+
+          # User-level stats
+          USER_RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/$OWNER")
+          PUBLIC_REPOS=$(echo "$USER_RESP" | jq '.public_repos')
+          FOLLOWERS=$(echo "$USER_RESP" | jq '.followers')
+          FOLLOWING=$(echo "$USER_RESP" | jq '.following')
+
+          # Total stars/forks across all repos
+          REPOS_LIST=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/$OWNER/repos?per_page=100")
+          TOTAL_STARS=$(echo "$REPOS_LIST" | jq '[.[].stargazers_count] | add // 0')
+          TOTAL_FORKS=$(echo "$REPOS_LIST" | jq '[.[].forks_count] | add // 0')
+
+          # Pull requests count
+          PR_COUNT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/search/issues?q=author:$OWNER+type:pr" | jq '.total_count // 0')
+
+          # Contributed repos count (unique repos the user has contributed to)
+          CONTRIB_COUNT=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/search/issues?q=author:$OWNER+type:pr+is:merged" | jq '.total_count // 0')
+
+          # Languages from repos
+          LANGS_JSON=$(echo "$REPOS_LIST" | jq '[.[] | select(.language != null) | .language] | unique')
+          LANG_DATA="[]"
+          for LANG in $(echo "$LANGS_JSON" | jq -r '.[]'); do
+            COUNT=$(echo "$REPOS_LIST" | jq "[.[] | select(.language==\"$LANG\")] | length")
+            TOTAL=$(echo "$REPOS_LIST" | jq 'length')
+            if [ "$TOTAL" -gt 0 ]; then
+              PCT=$(echo "scale=0; $COUNT * 100 / $TOTAL" | bc)
+              LANG_DATA=$(echo "$LANG_DATA" | jq --arg lang "$LANG" --argjson pct "$PCT" '. + [[$lang, $pct]]')
+            fi
+          done
+
+          # Last year contribution count (from GitHub GraphQL)
+          CONTRIB_QUERY="{\"query\":\"query { user(login:\\\"$OWNER\\\") { contributionsCollection { contributionCalendar { totalContributions } } } }\"}"
+          CONTRIB_RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "$CONTRIB_QUERY" \
+            "https://api.github.com/graphql")
+          LAST_YEAR=$(echo "$CONTRIB_RESP" | jq '.data.user.contributionsCollection.contributionCalendar.totalContributions // 0')
+
+          # Contribution days (last 30 days)
+          COMMIT_QUERY="{\"query\":\"query { user(login:\\\"$OWNER\\\") { contributionsCollection(from:\\\"$(date -u -d '30 days ago' +%Y-%m-%dT00:00:00Z)\\\", to:\\\"$(date -u +%Y-%m-%dT23:59:59Z)\\\") { contributionCalendar { weeks { contributionDays { contributionCount } } } } } }\"}"
+          COMMIT_RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "$COMMIT_QUERY" \
+            "https://api.github.com/graphql")
+          CONTRIB_DAYS=$(echo "$COMMIT_RESP" | jq '[.data.user.contributionsCollection.contributionCalendar.weeks[].contributionDays[].contributionCount]')
+
+          # Best streak (approximate from last year)
+          STREAK_QUERY="{\"query\":\"query { user(login:\\\"$OWNER\\\") { contributionsCollection { contributionCalendar { weeks { contributionDays { contributionCount date } } } } } }\"}"
+          STREAK_RESP=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "$STREAK_QUERY" \
+            "https://api.github.com/graphql")
+          DAYS=$(echo "$STREAK_RESP" | jq '[.data.user.contributionsCollection.contributionCalendar.weeks[].contributionDays[]]')
+          BEST_STREAK=$(echo "$DAYS" | jq '[reduce .[] as $d (0; if $d.contributionCount > 0 then .+1 else 0 end)] | max // 0')
+
+          # Repo list for top repos
+          REPO_LIST=$(echo "$REPOS_LIST" | jq '[.[] | {name: .name, stars: .stargazers_count, forks: .forks_count, language: .language}]')
+
           jq -n \
             --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            --arg stars "$STARS" \
-            --arg forks "$FORKS" \
-            --arg issues "$ISSUES" \
-            --arg watchers "$WATCHERS" \
-            --arg size "$SIZE" \
-            '{date: $date, stars: ($stars|tonumber), forks: ($forks|tonumber), open_issues: ($issues|tonumber), watchers: ($watchers|tonumber), size: ($size|tonumber), last_commit: $date}' \
+            --argjson stars "${STARS:-0}" \
+            --argjson forks "${FORKS:-0}" \
+            --argjson issues "${ISSUES:-0}" \
+            --argjson watchers "${WATCHERS:-0}" \
+            --argjson size "${SIZE:-0}" \
+            --argjson public_repos "${PUBLIC_REPOS:-0}" \
+            --argjson followers "${FOLLOWERS:-0}" \
+            --argjson following "${FOLLOWING:-0}" \
+            --argjson total_stars "${TOTAL_STARS:-0}" \
+            --argjson total_forks "${TOTAL_FORKS:-0}" \
+            --argjson pull_requests "${PR_COUNT:-0}" \
+            --argjson contributed_to "${CONTRIB_COUNT:-0}" \
+            --argjson best_streak "${BEST_STREAK:-0}" \
+            --argjson last_year "${LAST_YEAR:-0}" \
+            --argjson languages "$LANG_DATA" \
+            --argjson contribution_days "$CONTRIB_DAYS" \
+            --argjson repos "$REPO_LIST" \
+            '{date: $date, stars: $stars, forks: $forks, open_issues: $issues, watchers: $watchers, size: $size, last_commit: $date, user: {public_repos: $public_repos, followers: $followers, following: $following, total_stars: $total_stars, total_forks: $total_forks, pull_requests: $pull_requests, contributed_to: $contributed_to, best_streak: $best_streak, last_year_contributions: $last_year}, languages: $languages, contribution_days: $contribution_days, repos: $repos}' \
             > data/stats.json
 
       - uses: stefanzweifel/git-auto-commit-action@v5

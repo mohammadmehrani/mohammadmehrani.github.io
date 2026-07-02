@@ -14,32 +14,33 @@ const ThreeBackground = dynamic(() => import("../components/ThreeBackground"), {
 const GITHUB_USER = "mohammadmehrani";
 const WORKER_URL = "https://github-hub.mehrani1992-882.workers.dev";
 
-const reveal3d = {
-  hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
-  visible: { opacity: 1, y: 0, rotateX: 0, scale: 1 }
-};
-
-function Reveal({ as = "div", className, children, amount = 0.2, duration = 0.55, reduceMotion = false }) {
+function Reveal({ as = "div", className, children, amount = 0.2, duration = 0.55 }) {
   const ref = useRef(null);
   const controls = useAnimation();
   const isInView = useInView(ref, { amount, once: false });
-  const MotionTag = as === "section" ? motion.section : as === "article" ? motion.article : motion.div;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (reduceMotion) {
-      controls.set("visible");
-      return;
+    if (mounted) {
+      controls.start(isInView ? "visible" : "hidden");
     }
-    controls.start(isInView ? "visible" : "hidden");
-  }, [controls, isInView, reduceMotion]);
+  }, [controls, isInView, mounted]);
+
+  const MotionTag = as === "section" ? motion.section : as === "article" ? motion.article : motion.div;
 
   return (
     <MotionTag
       ref={ref}
       className={className}
-      variants={reveal3d}
-      initial={reduceMotion ? "visible" : "hidden"}
-      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 40, rotateX: -16, scale: 0.97 },
+        visible: { opacity: 1, y: 0, rotateX: 0, scale: 1 }
+      }}
+      initial={false}
+      animate={mounted ? controls : undefined}
+      style={mounted ? undefined : { opacity: 1, transform: "none" }}
       transition={{ duration, ease: "easeOut" }}
     >
       {children}
@@ -106,11 +107,15 @@ export default function HomePage() {
   }, []);
 
   const t = useMemo(() => content[lang], [lang]);
+  const gr = content.githubReport;
 
   const scrollRef = useRef(0);
   useEffect(() => {
     return smoothProgress.on("change", (v) => { scrollRef.current = v; });
   }, []);
+
+  const totalContributions = (liveStats.user?.last_year_contributions ?? 0);
+  const langTotal = (liveStats.languages ?? []).reduce((s, [, v]) => s + v, 0);
 
   return (
     <>
@@ -147,7 +152,7 @@ export default function HomePage() {
 
       <main className="shell">
         <motion.section className="hero" style={shouldReduceMotion ? undefined : { y: heroY, rotateX: heroRotateX, rotateY: heroRotateY }}>
-          {!stealth && <Reveal amount={0.3} reduceMotion={shouldReduceMotion}>
+          {!stealth && <Reveal amount={0.3}>
             <p className="eyebrow">{t.hero.eyebrow}</p>
             <h1>{t.hero.title}</h1>
             <p className="muted">{t.hero.desc}</p>
@@ -156,7 +161,7 @@ export default function HomePage() {
               <a className="btn" href="#contact">{t.hero.ctaHire}</a>
             </div>
           </Reveal>}
-          {!stealth && <Reveal className="photo-wrap" amount={0.3} reduceMotion={shouldReduceMotion}>
+          {!stealth && <Reveal className="photo-wrap" amount={0.3}>
             <Image
               src="/images/mehrani.jpg"
               alt="Mohammad Mehrani"
@@ -170,12 +175,12 @@ export default function HomePage() {
         </motion.section>
 
         <section className="grid two">
-          <Reveal as="article" className="card" amount={0.2} reduceMotion={shouldReduceMotion}>
+          <Reveal as="article" className="card" amount={0.2}>
             <h2>{t.about.title}</h2>
             <p className="muted">{t.about.p1}</p>
             <p className="muted">{t.about.p2}</p>
           </Reveal>
-          <Reveal as="article" className="card" amount={0.2} reduceMotion={shouldReduceMotion}>
+          <Reveal as="article" className="card" amount={0.2}>
             <h3>{t.about.quickTitle}</h3>
             <ul className="facts">
               {t.about.quick.map(([k, v]) => (
@@ -188,12 +193,12 @@ export default function HomePage() {
           </Reveal>
         </section>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.skills.title}</h2>
           <p className="muted">{t.skills.desc}</p>
           <div className="skills">
             {t.skills.items.map(([name, level]) => (
-              <Reveal key={name} amount={0.18} duration={0.5} reduceMotion={shouldReduceMotion}>
+              <Reveal key={name} amount={0.18} duration={0.5}>
                 <div className="skill-head"><span>{name}</span><strong>{level}%</strong></div>
                 <div className="meter"><span style={{ width: `${level}%` }} /></div>
               </Reveal>
@@ -201,12 +206,12 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.experience.title}</h2>
           <p className="muted">{t.experience.desc}</p>
           <div className="timeline">
             {t.experience.items.map((item) => (
-              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
@@ -215,12 +220,12 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.education.title}</h2>
           <p className="muted">{t.education.desc}</p>
           <div className="timeline">
             {t.education.items.map((item) => (
-              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+              <Reveal key={item[0] + item[1]} as="article" amount={0.2} duration={0.5}>
                 <div className="meta"><strong>{item[1]}</strong><span>{item[0]}</span></div>
                 <h3>{item[2]}</h3>
                 <p className="muted">{item[3]}</p>
@@ -229,12 +234,12 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.projects.title}</h2>
           <p className="muted">{t.projects.desc}</p>
           <div className="grid three">
             {t.projects.items.map((p) => (
-              <Reveal key={p[1]} as="article" className="project" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+              <Reveal key={p[1]} as="article" className="project" amount={0.2} duration={0.5}>
                 <Image src={p[0]} alt={p[1]} width={960} height={600} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
                 <h3>{p[1]}</h3>
                 <p className="muted">{p[2]}</p>
@@ -243,19 +248,106 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.certifications.title}</h2>
           <p className="muted">{t.certifications.desc}</p>
           <div className="grid three cert-grid">
             {t.certifications.images.map((src) => (
-              <Reveal key={src} amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+              <Reveal key={src} amount={0.2} duration={0.5}>
                 <Image src={src} alt="Certificate" width={900} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" />
               </Reveal>
             ))}
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        {/* ——— GitHub Report Section ——— */}
+        <Reveal as="section" className="card" amount={0.15}>
+          <h2>{gr.title}</h2>
+          <p className="muted">{gr.desc}</p>
+
+          {/* Overview Grid */}
+          <h3 style={{ marginTop: "1.2rem" }}>{gr.overview}</h3>
+          <div className="stats-grid">
+            <div className="stat-box"><strong>⭐</strong><span>{liveStats.user?.total_stars ?? liveStats.stars}</span><label>{gr.totalStars}</label></div>
+            <div className="stat-box"><strong>🍴</strong><span>{liveStats.user?.total_forks ?? liveStats.forks}</span><label>{gr.totalForks}</label></div>
+            <div className="stat-box"><strong>📦</strong><span>{liveStats.user?.public_repos ?? 0}</span><label>{gr.totalRepos}</label></div>
+            <div className="stat-box"><strong>👥</strong><span>{liveStats.user?.followers ?? 0}</span><label>{gr.followers}</label></div>
+            <div className="stat-box"><strong>🔄</strong><span>{liveStats.user?.following ?? 0}</span><label>{gr.following}</label></div>
+            <div className="stat-box"><strong>🔀</strong><span>{liveStats.user?.pull_requests ?? 0}</span><label>{gr.pullRequests}</label></div>
+            <div className="stat-box"><strong>📋</strong><span>{liveStats.open_issues}</span><label>{gr.issues}</label></div>
+            <div className="stat-box"><strong>📈</strong><span>{totalContributions}</span><label>{gr.lastYear}</label></div>
+          </div>
+
+          {/* Contribution Activity (Last 30 Days) */}
+          <h3 style={{ marginTop: "1.2rem" }}>{gr.contributions}</h3>
+          {(liveStats.contribution_days ?? []).length > 0 ? (
+            <div style={{ display: "flex", gap: 3, alignItems: "flex-end", minHeight: 80, padding: "0.5rem 0", flexWrap: "wrap" }}>
+              {liveStats.contribution_days.map((count, i) => (
+                <div key={i}
+                  title={`${count} contributions`}
+                  style={{
+                    width: "calc(100% / 31 - 3px)",
+                    minWidth: 6,
+                    height: Math.max(4, count * 14),
+                    background: count === 0 ? "var(--stroke)" : count > 0 && count <= 3 ? "#0e4429" : count <= 6 ? "#006d32" : count <= 10 ? "#26a641" : "#39d353",
+                    borderRadius: 2,
+                    transition: "height 0.3s"
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="muted">{gr.noActivity}</p>
+          )}
+
+          {/* Language Breakdown */}
+          <h3 style={{ marginTop: "1.2rem" }}>{gr.languages}</h3>
+          {(liveStats.languages ?? []).length > 0 ? (
+            <div style={{ display: "grid", gap: "0.5rem", marginTop: "0.5rem" }}>
+              {liveStats.languages.map(([name, pct]) => (
+                <div key={name}>
+                  <div className="skill-head"><span>{name}</span><strong>{pct}%</strong></div>
+                  <div className="meter"><span style={{ width: `${pct}%`, background: "linear-gradient(90deg, var(--accent-2), var(--accent))" }} /></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">{gr.noActivity}</p>
+          )}
+
+          {/* Recent Activity Feed */}
+          <h3 style={{ marginTop: "1.2rem" }}>{gr.activityFeed}</h3>
+          {liveActivity.length === 0 ? (
+            <p className="muted" style={{ textAlign: "center", padding: "1rem 0" }}>{t.activity.empty}</p>
+          ) : (
+            <div className="activity-feed">
+              {liveActivity.slice(0, 10).map((a, i) => (
+                <div key={i} className="activity-item">
+                  <span>{a.icon}</span>
+                  <span className="muted">{a.message}</span>
+                  <span className="activity-date">{new Date(a.date).toLocaleDateString(lang === "fa" ? "fa-IR" : "en-US")}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Focus Areas */}
+          {(liveStats.languages ?? []).length > 0 && (
+            <>
+              <h3 style={{ marginTop: "1.2rem" }}>{gr.focused}</h3>
+              <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+                {liveStats.languages.map(([name]) => (
+                  <span key={name} style={{ padding: "0.25rem 0.6rem", border: "1px solid var(--stroke)", borderRadius: 999, fontSize: "0.8rem", color: "var(--muted)" }}>
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </Reveal>
+
+        {/* ——— Activity Section (existing) ——— */}
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.activity.title}</h2>
           <p className="muted">{t.activity.desc}</p>
           <div className="activity-feed">
@@ -273,7 +365,7 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="card" amount={0.18} reduceMotion={shouldReduceMotion}>
+        <Reveal as="section" className="card" amount={0.18}>
           <h2>{t.stats.title}</h2>
           <p className="muted">{t.stats.desc}</p>
           <div className="stats-grid">
@@ -285,17 +377,17 @@ export default function HomePage() {
         </Reveal>
 
         {!stealth && <section id="contact" className="grid two">
-          <Reveal as="article" className="card" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+          <Reveal as="article" className="card" amount={0.2} duration={0.5}>
             <h2>{t.contact.title}</h2>
             <p className="muted">{t.contact.desc}</p>
             <form className="form" action="https://formspree.io/f/mwkyjjza" method="POST">
-              <input name="name" placeholder={lang === "fa" ? "\u0646\u0627\u0645 \u0634\u0645\u0627" : "Your name"} required />
-              <input name="_replyto" type="email" placeholder={lang === "fa" ? "\u0627\u06cc\u0645\u06cc\u0644 \u0634\u0645\u0627" : "Your email"} required />
-              <textarea name="message_body" rows="5" placeholder={lang === "fa" ? "\u067e\u06cc\u0627\u0645 \u0634\u0645\u0627" : "Message"} required />
-              <button className="btn" type="submit">{lang === "fa" ? "\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645" : "Send Message"}</button>
+              <input name="name" placeholder={lang === "fa" ? "نام شما" : "Your name"} required />
+              <input name="_replyto" type="email" placeholder={lang === "fa" ? "ایمیل شما" : "Your email"} required />
+              <textarea name="message_body" rows="5" placeholder={lang === "fa" ? "پیام شما" : "Message"} required />
+              <button className="btn" type="submit">{lang === "fa" ? "ارسال پیام" : "Send Message"}</button>
             </form>
           </Reveal>
-          <Reveal as="article" className="card" amount={0.2} duration={0.5} reduceMotion={shouldReduceMotion}>
+          <Reveal as="article" className="card" amount={0.2} duration={0.5}>
             <h3>{t.contact.reach}</h3>
             <ul className="contacts">
               <li><a href="mailto:admin@iodeck.ir">admin@iodeck.ir</a></li>
@@ -325,4 +417,3 @@ export default function HomePage() {
     </>
   );
 }
-
