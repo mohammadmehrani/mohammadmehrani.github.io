@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: add force-static to sitemap and robots for static export
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: npm ci --legacy-peer-deps for react 18 compatibility
 
 ### 2026-07-02
@@ -186,18 +198,6 @@ chore: update changelog
 ### 2026-07-02
 
 docs: add achievements link to README
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add 3D green contribution graph to achievements page
 
 ### 2026-07-02
 
