@@ -429,3 +429,31 @@ input, textarea {
   font-weight: 700;
   font-size: 0.82rem;
 }
+
+/* ——— Achievement Progress ——— */
+.progress-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.progress-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card-bg); border-radius: 0.6rem; border: 1px solid var(--border); }
+.progress-item.done { border-color: var(--accent); opacity: 0.8; }
+.progress-icon { font-size: 1.4rem; width: 2.2rem; text-align: center; }
+.progress-info { flex: 1; }
+.progress-info strong { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.progress-status { font-size: 1.1rem; }
+.ach-progress { height: 6px; background: var(--border); border-radius: 4px; position: relative; overflow: visible; }
+.ach-progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #58a6ff); border-radius: 4px; transition: width 0.6s ease; }
+.ach-progress-label { position: absolute; right: 0; top: -1.3rem; font-size: 0.7rem; color: var(--muted); }
+
+/* ——— Achievement Grid ——— */
+.achievement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+.achievement-card { display: flex; gap: 0.75rem; padding: 0.85rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.6rem; transition: all 0.2s; }
+.achievement-card.earned { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--card-bg)); }
+.achievement-card.retired { opacity: 0.5; }
+.ach-icon { font-size: 1.6rem; width: 2.4rem; text-align: center; padding-top: 0.2rem; }
+.ach-body { flex: 1; }
+.ach-body strong { font-size: 0.9rem; }
+.ach-body p { font-size: 0.8rem; margin: 0.15rem 0 0.4rem; }
+.ach-levels { display: flex; gap: 0.35rem; }
+.ach-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--border); }
+.ach-dot.filled { background: var(--accent); }
+
+.achievement-trophy-wrap { overflow-x: auto; margin-top: 0.75rem; }
+.trophy-img { max-width: 100%; height: auto; border-radius: 0.6rem; }
