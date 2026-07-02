@@ -457,3 +457,8 @@ input, textarea {
 
 .achievement-trophy-wrap { overflow-x: auto; margin-top: 0.75rem; }
 .trophy-img { max-width: 100%; height: auto; border-radius: 0.6rem; }
+
+/* ——— Project Action Buttons ——— */
+.project-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.project-actions .btn-sm { padding: 0.35rem 0.7rem; font-size: 0.78rem; border-radius: 0.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; background: var(--card-bg); border: 1px solid var(--border); color: var(--text); cursor: pointer; transition: all 0.15s; }
+.project-actions .btn-sm:hover { border-color: var(--accent); color: var(--accent); }

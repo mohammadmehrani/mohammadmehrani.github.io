@@ -1,10 +1,10 @@
-# Mohammad Mehrani
+﻿# Mohammad Mehrani
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-solarized-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-solarized-light.svg" />
-    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-solarized-light.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-night-view.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-night-view.svg" />
+    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-night-view.svg" />
   </picture>
 </p>
 
@@ -80,3 +80,4 @@ DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure au
 <p align="center">
   <img loading="lazy" src="https://github-profile-trophy.vercel.app/?username=mohammadmehrani&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" />
 </p>
+

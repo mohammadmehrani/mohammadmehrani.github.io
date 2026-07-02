@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -53,7 +53,7 @@ export default function ProjectsPage() {
             name: r.name, desc: r.description, stars: r.stargazers_count,
             forks: r.forks_count, lang: r.language, license: r.license?.spdx_id,
             updated: r.updated_at, fork: r.fork, topics: r.topics || [],
-            url: r.html_url,
+            url: r.html_url, full_name: r.full_name,
           })));
         }
       })
@@ -146,6 +146,15 @@ export default function ProjectsPage() {
                 <div className="badge-row">
                   <RepoBadge label="🕐" value={new Date(repo.updated).toLocaleDateString()} />
                 </div>
+                <div className="project-actions">
+                  <a href={"https://github.com/codespaces/new?repo=" + encodeURIComponent(repo.full_name)} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline">
+                    <span>Open in Codespaces</span>
+                  </a>
+                  <a href={"https://github.dev/" + repo.full_name} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline">
+                    <span>Open in VS Code</span>
+                  </a>
+                </div>
+
                 {repo.topics?.length > 0 && (
                   <div className="topic-row">
                     {repo.topics.map((t) => (
@@ -167,3 +176,4 @@ export default function ProjectsPage() {
     </>
   );
 }
+
