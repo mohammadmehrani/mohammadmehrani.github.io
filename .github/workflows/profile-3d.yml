@@ -2,7 +2,7 @@ name: GitHub-3D-Profile
 
 on:
   schedule:
-    - cron: "0 18 * * *"
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,11 +18,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: settings/theme-preview.json
       - name: Commit & Push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add -A .
-          if git commit -m "generated"; then
+          if git commit -m "generated: profile-3d-contrib [skip ci]"; then
+            git pull --rebase
             git push
           fi

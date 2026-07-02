@@ -45,7 +45,7 @@
 
 
 <p align="center">
-  <img src="./profile-3d-contrib/profile-solarized-dark.svg" alt="3D contribution graph animated" />
+  <img src="./profile-3d-contrib/solarized-dark.svg" alt="3D contribution graph animated" />
 </p>
 
 ## About Me
@@ -85,6 +85,7 @@ DevOps Engineer with hands-on experience in CI/CD, Kubernetes, infrastructure au
 <p align="center">
   <img loading="lazy" src="https://github-profile-trophy.vercel.app/?username=mohammadmehrani&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" />
 </p>
+
 
 
 
