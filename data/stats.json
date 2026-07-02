@@ -5,7 +5,7 @@
   "open_issues": 1,
   "watchers": 1,
   "size": 23709,
-  "last_commit": "2026-07-02T21:08:00Z",
+  "last_commit": "2026-07-02T22:03:00Z",
   "user": {
     "public_repos": 12,
     "followers": 6,
@@ -18,18 +18,75 @@
     "last_year_contributions": 379
   },
   "languages": [
-    ["JavaScript", 35],
-    ["Python", 28],
-    ["TypeScript", 18],
-    ["Go", 10],
-    ["HTML", 5],
-    ["Shell", 4]
+    [
+      "JavaScript",
+      35
+    ],
+    [
+      "Python",
+      28
+    ],
+    [
+      "TypeScript",
+      18
+    ],
+    [
+      "Go",
+      10
+    ],
+    [
+      "HTML",
+      5
+    ],
+    [
+      "Shell",
+      4
+    ]
   ],
   "contribution_days": [
-    0, 0, 3, 5, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0,
+    0,
+    3,
+    5,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
   ],
   "repos": [
-    {"name": "mohammadmehrani.github.io", "stars": 1, "forks": 1, "language": "JavaScript"},
-    {"name": "mohammadmehrani", "stars": 0, "forks": 0, "language": "TypeScript"}
+    {
+      "name": "mohammadmehrani.github.io",
+      "stars": 1,
+      "forks": 1,
+      "language": "JavaScript"
+    },
+    {
+      "name": "mohammadmehrani",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript"
+    }
   ]
 }

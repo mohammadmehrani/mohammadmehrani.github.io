@@ -4,6 +4,31 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+feat: network-topology 3D background, GitHub report section, Reveal progressive-enhancement, comprehensive stats-sync
+- Redesigned ThreeBackground: dodecahedron core, 3 orbital rings with traveling
+  nodes, 24 network-connection lines, 120-particle constellation field
+- Fixed Reveal component: initial={false} + mounted-state CSS fallback so
+  content is visible without JavaScript (fixes Vercel blank page in Iran)
+- Added comprehensive GitHub Report section at bottom of homepage with:
+  overview grid, 30-day contribution bars, language breakdown, activity feed,
+  focus-area tags
+- Updated content.json with githubReport keys (en + fa)
+- Updated stats.json with user-level data (followers, PRs, languages,
+  contribution days, repos, last-year contributions)
+- Updated stats-sync.yml workflow to fetch user stats, languages, contributions
+  via GraphQL
+- Updated static.yml to build Next.js with STATIC_EXPORT=true and deploy out/
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: sync 3D Skyline badge to README
 
 ### 2026-07-02
@@ -177,28 +202,3 @@ chore: update CI status
 ### 2026-07-02
 
 chore: update changelog
-
-### 2026-07-02
-
-ci: add Vercel auto-deploy workflow on push to main
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add /achievements route with trophies, stats, and badges
-
-### 2026-07-02
-
-chore: update CI status
-
