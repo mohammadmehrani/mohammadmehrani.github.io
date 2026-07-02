@@ -2,6 +2,50 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-02
+
+fix: replace m-mehrani.ir with iodeck.ir across site + fix profile counter + add trophy badges
+
+### 2026-07-01
+
+generated
+
+### 2026-07-01
+
+chore: update CI status
+
+### 2026-07-01
+
+chore: update repo stats
+
+### 2026-06-30
+
+generated
+
+### 2026-06-30
+
+chore: update CI status
+
+### 2026-06-30
+
+chore: update activity log
+
+### 2026-06-30
+
+chore: update CI status
+
+### 2026-06-30
+
+chore: update repo stats
+
+### 2026-06-29
+
+chore: update CI status
+
+### 2026-06-29
+
+chore: update changelog
+
 ### 2026-06-30
 
 clean: remove test webhook files
@@ -158,47 +202,3 @@ fix CI: disable no-descending-specificity, upgrade Node to 22
 ### 2026-06-29
 
 add bilingual map (OSM for FA, Google Maps for EN) to both Vercel and GitHub Pages
-
-### 2026-06-29
-
-add vercel.json, display both site URLs in contact section and README
-
-### 2026-06-28
-
-generated
-
-### 2026-06-28
-
-upgrade 3D profile workflow to xarthurx/github-3d-profile with Solarized theme, sync README with content.json
-
-### 2026-06-07
-
-Update README.md
-Signed-off-by: Maddix Mhn <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-06-05
-
-Add files via upload
-Signed-off-by: Mohammad Mhn <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-06-05
-
-My CV 2026
-Signed-off-by: Mohammad Mhn <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-02-24
-
-Update README.md
-Signed-off-by: Mohammad Mehrani <49093105+mohammadmehrani@users.noreply.github.com>
-### 2026-02-24
-
-initialize
-
-### 2026-02-24
-
-finalize
-
-### 2026-02-24
-
-upcli
-
-### 2026-02-24
-
-update CLI
