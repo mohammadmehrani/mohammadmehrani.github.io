@@ -4,6 +4,28 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: unify Three.js scenes — fixed fullscreen background, mini scenes in skills/report sections
+- Made main 3D background position: fixed (full viewport, z-index 0)
+- Refactored makeOrbitRing into shared utility for both main and mini scenes
+- Added initMiniThree() for smaller 3D scenes with configurable shape, rings, particles
+- Placed mini3d in skills (icosahedron, purple, 2 rings) and report (dodecahedron, blue, no rings)
+- Removed duplicate .hero-3d canvas CSS rule
+- Adjusted mini-3d positioning and opacity for light/dark themes
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: SEO overhaul, cleanup unused files, optimize speed, add robots.txt + sitemap
 
 ### 2026-07-03
@@ -180,25 +202,3 @@ chore: update CI status
 ### 2026-07-02
 
 generated: profile-3d-contrib [skip ci]
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-fix: remove BOM from theme-preview.json (was breaking xarthurx action JSON parser)
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add all xarthurx themes (10), daily rotation workflow, SETTING_JSON config
-
-### 2026-07-02
