@@ -307,12 +307,14 @@ button,
 .donate-box { border: 1px dashed var(--stroke); border-radius: 0.9rem; padding: 0.8rem; background: rgba(255, 255, 255, 0.02); }
 .donate-box p { margin-bottom: 0.3rem; }
 .wallet-usdt { display: flex; gap: 0.75rem; align-items: flex-start; }
+.wallet-main { display: flex; gap: 0.75rem; flex: 1; min-width: 0; }
 .wallet-badge { flex-shrink: 0; }
 .wallet-body { flex: 1; min-width: 0; }
 .wallet-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.25rem; }
 .wallet-usdt code { word-break: break-all; font-size: 0.7rem; margin-top: 0.25rem; background: var(--card-bg); padding: 0.35rem 0.5rem; border-radius: 6px; border: 1px solid var(--stroke); white-space: pre-wrap; color: var(--warm); direction: ltr; display: block; text-align: left; }
-.wallet-qr { margin-top: 0.5rem; }
-.wallet-qr img { display: block; border-radius: 8px; border: 1px solid var(--stroke); background: #fff; }
+.wallet-qr { flex-shrink: 0; }
+.wallet-qr img { display: block; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; max-width: 140px; height: auto; }
+@media (min-width: 576px) { .wallet-qr img { max-width: 200px; } }
 html[data-theme="dark"] .wallet-qr img { filter: brightness(0.85); }
 .donate-box code { white-space: pre-wrap; color: var(--warm); direction: ltr; display: block; text-align: left; }
 
@@ -472,15 +474,7 @@ body.no-webgl .mini-3d { display: none; }
   background: rgba(255,255,255,0.02);
   padding: 0.7rem;
 }
-.clock-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.55rem;
-}
-.clock-head h4 { margin: 0; font-size: 0.95rem; }
-.clock-tz { color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+.clock-tz { color: var(--accent); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem; }
 .clock-face {
   display: flex;
   flex-direction: column;
