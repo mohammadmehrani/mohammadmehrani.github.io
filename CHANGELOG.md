@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: clean node_modules/.next before Pages upload to reduce artifact size
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 revert: restore original index.html and static.yml for GitHub Pages
 GitHub Pages back to original bootstrap-based design.
 Vercel keeps the Next.js app with network-topology background.
@@ -176,22 +192,6 @@ chore: update changelog
 ### 2026-07-02
 
 style: add CSS for achievement progress bars and grid
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add achievement progress tracking with live PR count and progress bars
-
-### 2026-07-02
-
-chore: cleanup yolo test file [skip ci]
 
 ### 2026-07-02
 
