@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+refactor: merge wallet + clock into one box with two titled sections
+- Combined donate-box and clock-box into one unified box
+- Section 1: 'حمایت مالی' with USDT TRC20 wallet + QR
+- Section 2: 'وقت محلی من جهت همکاری ریموت در سطح جهانی' with Tehran clock
+- Cleaned up unused clock-box CSS
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: remove clock title, larger QR on right, remove map i18n keys
 - Removed only clock-box heading/Tehran title (not the clock itself)
 - Moved QR code to right side with larger size (200x200)
@@ -182,23 +202,3 @@ fix: add force-static to sitemap and robots for static export
 ### 2026-07-02
 
 chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-03
-
-fix: npm ci --legacy-peer-deps for react 18 compatibility
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
