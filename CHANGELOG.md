@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+feat: port GitHub Report, Three.js 3D background, scroll animations to bootstrap site
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: clean node_modules/.next before Pages upload to reduce artifact size
 
 ### 2026-07-03
@@ -172,26 +192,6 @@ chore: update changelog
 ### 2026-07-02
 
 fix: top 3D box -> rainbow, add bottom green-animate box
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-feat: add Codespaces + VS Code open buttons to projects, fix README solarized->night-view
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-style: add CSS for achievement progress bars and grid
 
 ### 2026-07-02
 
