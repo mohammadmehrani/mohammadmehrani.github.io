@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: three.min.js at root js/ path for GH Pages, defer attribute on script, v3 SW (network-first)
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: Vercel redesign — 3D Earth globe, modern UI, local fonts, remove map
 - 3D Earth background (Three.js globe with clouds, glow, particles)
 - Modern glass-morphism UI with bootstrap color scheme
@@ -187,18 +199,6 @@ chore: update changelog
 ### 2026-07-03
 
 fix: clean node_modules/.next before Pages upload to reduce artifact size
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update changelog
 
 ### 2026-07-03
 
