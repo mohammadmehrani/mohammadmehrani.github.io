@@ -387,6 +387,31 @@
     (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
     ("ontouchstart" in window && (navigator.maxTouchPoints || 0) > 0);
 
+  function makeOrbitRing(radius, color, speed, offset, tilt) {
+    const rGroup = new THREE.Group();
+    rGroup.rotation.x = tilt;
+    const segs = 48;
+    const pts = [];
+    for (let i = 0; i <= segs; i++) {
+      const theta = (i / segs) * Math.PI * 2;
+      pts.push(new THREE.Vector3(
+        Math.cos(theta) * radius,
+        Math.sin(theta * 0.7 + offset) * 0.4,
+        Math.sin(theta) * radius
+      ));
+    }
+    const ringGeo = new THREE.BufferGeometry().setFromPoints(pts);
+    const ringMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.2 });
+    rGroup.add(new THREE.Line(ringGeo, ringMat));
+    const dot = new THREE.Mesh(
+      new THREE.SphereGeometry(0.06, 8, 8),
+      new THREE.MeshBasicMaterial({ color })
+    );
+    dot.position.set(radius, 0, 0);
+    rGroup.add(dot);
+    return { group: rGroup, dot, radius, speed, offset, tilt, angle: offset };
+  }
+
   function initThreeBackground() {
     if (!window.THREE || reduceMotion || saveDataMode || lowPowerDevice) return;
     const container = document.getElementById("hero3d");
@@ -418,30 +443,6 @@
     });
     const inner = new THREE.Mesh(new THREE.IcosahedronGeometry(0.6, 1), innerMat);
     group.add(inner);
-    function makeOrbitRing(radius, color, speed, offset, tilt) {
-      const rGroup = new THREE.Group();
-      rGroup.rotation.x = tilt;
-      const segs = 48;
-      const pts = [];
-      for (let i = 0; i <= segs; i++) {
-        const theta = (i / segs) * Math.PI * 2;
-        pts.push(new THREE.Vector3(
-          Math.cos(theta) * radius,
-          Math.sin(theta * 0.7 + offset) * 0.4,
-          Math.sin(theta) * radius
-        ));
-      }
-      const ringGeo = new THREE.BufferGeometry().setFromPoints(pts);
-      const ringMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.2 });
-      rGroup.add(new THREE.Line(ringGeo, ringMat));
-      const dot = new THREE.Mesh(
-        new THREE.SphereGeometry(0.06, 8, 8),
-        new THREE.MeshBasicMaterial({ color })
-      );
-      dot.position.set(radius, 0, 0);
-      rGroup.add(dot);
-      return { group: rGroup, dot, radius, speed, offset, tilt, angle: offset };
-    }
     const rings = [
       makeOrbitRing(2.6, 0x1fe0b5, 0.7, 0, 0.15),
       makeOrbitRing(3.4, 0x7c3aed, 0.4, Math.PI / 3, -0.25),
@@ -521,6 +522,74 @@
         p.mesh.position.x += Math.cos(t * p.speed * 0.7 + p.phase) * 0.001;
       });
       pointLight.position.copy(camera.position);
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  function initMiniThree(id, opts) {
+    if (!window.THREE || reduceMotion || saveDataMode || lowPowerDevice) return;
+    const container = document.getElementById(id);
+    if (!container) return;
+    const s = opts.size || 30;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 50);
+    camera.position.set(0, 0, s * 0.3);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    container.appendChild(renderer.domElement);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambient);
+    const group = new THREE.Group();
+    scene.add(group);
+    const shape = opts.shape || "dode";
+    const geo = shape === "ico" ? new THREE.IcosahedronGeometry(s * 0.08, 0) : new THREE.DodecahedronGeometry(s * 0.08, 0);
+    const mat = new THREE.MeshStandardMaterial({
+      color: opts.color || 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.25
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    group.add(mesh);
+    if (opts.ring) {
+      const ring = makeOrbitRing(s * 0.14, opts.ringColor || 0x7c3aed, 0.5, 0, 0.2);
+      group.add(ring.group);
+      const ring2 = makeOrbitRing(s * 0.12, opts.ringColor2 || 0x1ba5ff, 0.7, Math.PI / 2, -0.3);
+      group.add(ring2.group);
+    }
+    const particles = [];
+    for (let i = 0; i < (opts.particles || 20); i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = s * 0.18 + Math.random() * s * 0.1;
+      const pos = new THREE.Vector3(
+        Math.sin(phi) * Math.cos(theta) * r,
+        Math.sin(phi) * Math.sin(theta) * r * 0.5,
+        Math.cos(phi) * r
+      );
+      const pMat = new THREE.MeshBasicMaterial({ color: opts.color || 0xa8bbd9, transparent: true, opacity: 0.2 });
+      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(0.03, 4, 4), pMat);
+      pMesh.position.copy(pos);
+      group.add(pMesh);
+      particles.push({ mesh: pMesh, speed: 0.1 + Math.random() * 0.2, phase: Math.random() * Math.PI * 2 });
+    }
+    function resize() {
+      const w = container.clientWidth, h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      const t = clock.getElapsedTime();
+      group.rotation.y += delta * (opts.speed || 0.4);
+      group.rotation.x = Math.sin(t * 0.15) * 0.1;
+      mesh.rotation.x += delta * 0.2;
+      mesh.rotation.z += delta * 0.1;
+      particles.forEach(p => {
+        p.mesh.position.y += Math.sin(t * p.speed + p.phase) * 0.001;
+      });
       renderer.render(scene, camera);
     }
     animate();
@@ -740,5 +809,7 @@
   initMeters();
   initClock();
   initThreeBackground();
+  initMiniThree("mini3dSkills", { shape: "ico", color: 0x7c3aed, ring: true, ringColor: 0x1fe0b5, ringColor2: 0x1ba5ff, particles: 25, speed: 0.3 });
+  initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 });
   initGitHubReport();
 })();

@@ -121,24 +121,24 @@ html[data-theme="light"] .navbar-toggler-icon { filter: invert(0); }
 .hero { padding-top: 9rem; position: relative; overflow: hidden; }
 .hero .container { position: relative; z-index: 2; }
 .hero-3d {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.5;
 }
-html[data-theme="light"] .hero-3d { opacity: 0.4; }
+html[data-theme="light"] .hero-3d { opacity: 0.35; }
 body.no-webgl .hero-3d {
   background:
-    radial-gradient(45rem 24rem at 15% 30%, rgba(26, 115, 204, 0.28), transparent 70%),
-    radial-gradient(34rem 20rem at 78% 42%, rgba(31, 224, 181, 0.24), transparent 68%);
-  opacity: 0.7;
+    radial-gradient(60rem 30rem at 15% 30%, rgba(26, 115, 204, 0.25), transparent 70%),
+    radial-gradient(40rem 25rem at 78% 42%, rgba(31, 224, 181, 0.2), transparent 68%);
+  opacity: 0.6;
 }
 html[data-theme="light"] body.no-webgl .hero-3d {
   background:
-    radial-gradient(45rem 24rem at 15% 30%, rgba(26, 115, 204, 0.18), transparent 70%),
-    radial-gradient(34rem 20rem at 78% 42%, rgba(26, 157, 127, 0.18), transparent 68%);
-  opacity: 0.8;
+    radial-gradient(60rem 30rem at 15% 30%, rgba(26, 115, 204, 0.15), transparent 70%),
+    radial-gradient(40rem 25rem at 78% 42%, rgba(26, 157, 127, 0.15), transparent 68%);
+  opacity: 0.7;
 }
 .muted { color: var(--muted); }
 .eyebrow { color: var(--warm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
@@ -428,6 +428,30 @@ body.lang-transition .footer {
   padding: 0.25rem 0.6rem; border: 1px solid var(--stroke);
   border-radius: 999px; font-size: 0.8rem; color: var(--muted);
 }
+
+/* Mini 3D scenes */
+.mini-3d {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: -1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#mini3dSkills {
+  top: -8%;
+  right: -6%;
+  width: 260px;
+  height: 260px;
+}
+#mini3dReport {
+  bottom: -5%;
+  left: -8%;
+  width: 200px;
+  height: 200px;
+}
+html[data-theme="light"] .mini-3d { opacity: 0.15; }
+body.no-webgl .mini-3d { display: none; }
 
 /* Three.js background canvas */
 .hero-3d canvas { display: block; width: 100%; height: 100%; }
