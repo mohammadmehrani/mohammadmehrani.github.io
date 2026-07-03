@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+chore: replace map with live Tehran clock widget
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: port GitHub Report, Three.js 3D background, scroll animations to bootstrap site
 
 ### 2026-07-03
@@ -184,21 +200,5 @@ fix: bottom 3D box -> solarized-dark (green bg + orange/gold tones)
 ### 2026-07-02
 
 chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-fix: top 3D box -> rainbow, add bottom green-animate box
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
 
 ### 2026-07-02
