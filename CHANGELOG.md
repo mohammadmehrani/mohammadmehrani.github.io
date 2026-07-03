@@ -4,6 +4,27 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+feat: replace TON wallet with USDT TRC20 + QR code + icon
+- Wallet address changed to TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS
+- Added QR code via qrserver.com API
+- Added USDT (Tether) SVG icon with TRX badge on bottom-right
+- Label: 'SEND USDT TRC20' with i18n support (en/fa)
+- Email remains mohammad@iodeck.ir
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: unify Three.js scenes — fixed fullscreen background, mini scenes in skills/report sections
 - Made main 3D background position: fixed (full viewport, z-index 0)
 - Refactored makeOrbitRing into shared utility for both main and mini scenes
@@ -181,24 +202,3 @@ chore: update changelog
 
 ### 2026-07-03
 
-feat: sync 3D Skyline badge to README
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-03
-
-feat: sync README with profile repo - animated mermaid, ASCII art, yaml bio, collapsible links, fixed trophy/stats endpoints
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-generated: profile-3d-contrib [skip ci]
