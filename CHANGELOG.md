@@ -4,6 +4,34 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: remove clock title, larger QR on right, remove map i18n keys
+- Removed only clock-box heading/Tehran title (not the clock itself)
+- Moved QR code to right side with larger size (200x200)
+- Removed unused map_title/map_open i18n keys
+- Cleaned up unused clock-head CSS
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 feat: replace TON wallet with USDT TRC20 + QR code + icon
 - Wallet address changed to TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS
 - Added QR code via qrserver.com API
@@ -174,31 +202,3 @@ chore: update CI status
 ### 2026-07-02
 
 chore: update changelog
-
-### 2026-07-03
-
-feat: network-topology 3D background, GitHub report section, Reveal progressive-enhancement, comprehensive stats-sync
-- Redesigned ThreeBackground: dodecahedron core, 3 orbital rings with traveling
-  nodes, 24 network-connection lines, 120-particle constellation field
-- Fixed Reveal component: initial={false} + mounted-state CSS fallback so
-  content is visible without JavaScript (fixes Vercel blank page in Iran)
-- Added comprehensive GitHub Report section at bottom of homepage with:
-  overview grid, 30-day contribution bars, language breakdown, activity feed,
-  focus-area tags
-- Updated content.json with githubReport keys (en + fa)
-- Updated stats.json with user-level data (followers, PRs, languages,
-  contribution days, repos, last-year contributions)
-- Updated stats-sync.yml workflow to fetch user stats, languages, contributions
-  via GraphQL
-- Updated static.yml to build Next.js with STATIC_EXPORT=true and deploy out/
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-03
-
