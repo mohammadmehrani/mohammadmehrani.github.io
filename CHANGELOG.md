@@ -4,6 +4,27 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+feat: Vercel redesign — 3D Earth globe, modern UI, local fonts, remove map
+- 3D Earth background (Three.js globe with clouds, glow, particles)
+- Modern glass-morphism UI with bootstrap color scheme
+- Local Vazirmatn + JetBrains Mono fonts (woff2)
+- Removed Tehran map section from Vercel app
+- Cleaned up terminal/cyberpunk aesthetic for cleaner look
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: add local three.js fallback for CDN issues
 - Added local three.min.js in public/js/ as primary loader
 - Fallback to cdnjs CDN on error
@@ -181,24 +202,3 @@ chore: update changelog
 
 ### 2026-07-03
 
-revert: restore original index.html and static.yml for GitHub Pages
-GitHub Pages back to original bootstrap-based design.
-Vercel keeps the Next.js app with network-topology background.
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update changelog
-
-### 2026-07-03
-
-fix: add .npmrc legacy-peer-deps for Vercel + clean up static.yml
-
-### 2026-07-02
