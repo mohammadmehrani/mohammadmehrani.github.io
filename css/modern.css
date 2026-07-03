@@ -432,6 +432,45 @@ body.lang-transition .footer {
 /* Three.js background canvas */
 .hero-3d canvas { display: block; width: 100%; height: 100%; }
 
+/* ——— Tehran Clock ——— */
+.clock-box {
+  margin-top: 1rem;
+  border: 1px solid var(--stroke);
+  border-radius: 0.9rem;
+  background: rgba(255,255,255,0.02);
+  padding: 0.7rem;
+}
+.clock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.clock-head h4 { margin: 0; font-size: 0.95rem; }
+.clock-tz { color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+.clock-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0;
+}
+#clockTime {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#clockDate {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 html[dir="rtl"] .activity-item { flex-direction: row-reverse; }
 html[dir="rtl"] .activity-date { margin-left: 0; margin-right: auto; }
 
