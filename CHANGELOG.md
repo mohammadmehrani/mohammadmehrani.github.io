@@ -4,6 +4,24 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+revert: restore original index.html and static.yml for GitHub Pages
+GitHub Pages back to original bootstrap-based design.
+Vercel keeps the Next.js app with network-topology background.
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: add .npmrc legacy-peer-deps for Vercel + clean up static.yml
 
 ### 2026-07-02
@@ -184,21 +202,3 @@ chore: update CI status
 chore: update changelog
 
 ### 2026-07-02
-
-chore: add yolo achievement file [skip ci]
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update activity log
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update activity log
