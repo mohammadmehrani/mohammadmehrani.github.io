@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: add .npmrc legacy-peer-deps for Vercel + clean up static.yml
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update CI status
+
+### 2026-07-02
+
+chore: update changelog
+
+### 2026-07-03
+
 fix: add force-static to sitemap and robots for static export
 
 ### 2026-07-02
@@ -186,19 +202,3 @@ chore: update CI status
 ### 2026-07-02
 
 chore: update activity log
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-02
-
-docs: add achievements link to README
-
-### 2026-07-02
-
-chore: update CI status
