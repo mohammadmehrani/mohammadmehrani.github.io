@@ -95,7 +95,7 @@
       ph_message: "Write your message",
       reach_title: "Reach Me",
 
-      support_title: "Support",
+      support_title: "Financial Support",
       support_wallet: "SEND USDT TRC20",
       nav_report: "GitHub Report",
       report_title: "GitHub Report",
