@@ -1,6 +1,4 @@
 {
-  "framework": "nextjs",
-  "buildCommand": "next build",
-  "outputDirectory": ".next",
-  "installCommand": "npm install --no-audit --no-fund --legacy-peer-deps"
+  "version": 2,
+  "framework": null
 }

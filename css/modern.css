@@ -315,8 +315,8 @@ button,
 .wallet-body { flex: 1; min-width: 0; }
 .wallet-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.25rem; }
 .wallet-usdt code { word-break: break-all; font-size: 0.7rem; margin-top: 0.25rem; background: var(--card-bg); padding: 0.35rem 0.5rem; border-radius: 6px; border: 1px solid var(--stroke); white-space: pre-wrap; color: var(--warm); direction: ltr; display: block; text-align: left; }
-.wallet-qr { flex-shrink: 0; }
-.wallet-qr img { display: block; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; max-width: 140px; height: auto; }
+.wallet-qr { margin-top: 0.75rem; text-align: center; }
+.wallet-qr img { display: inline-block; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; max-width: 160px; height: auto; }
 @media (min-width: 576px) { .wallet-qr img { max-width: 200px; } }
 html[data-theme="dark"] .wallet-qr img { filter: brightness(0.85); }
 .donate-box code { white-space: pre-wrap; color: var(--warm); direction: ltr; display: block; text-align: left; }
@@ -469,6 +469,10 @@ body.no-webgl .mini-3d { display: none; }
 /* Three.js background canvas */
 .hero-3d canvas { display: block; width: 100%; height: 100%; }
 
+.contact-clock-item { align-items: flex-start !important; }
+.contact-clock-item .clock-face { flex-direction: row; gap: 0.4rem; flex-wrap: wrap; padding: 0; }
+.contact-clock-item #clockTime { font-size: 1rem; background: none; -webkit-text-fill-color: var(--accent); }
+.contact-clock-item #clockDate { font-size: 0.8rem; }
 .clock-tz { color: var(--accent); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem; }
 .clock-face {
   display: flex;

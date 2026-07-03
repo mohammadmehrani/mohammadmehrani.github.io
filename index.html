@@ -12,6 +12,12 @@
   <meta name="googlebot" content="index,follow" />
   <link rel="canonical" href="https://mohammadmehrani.github.io/" />
 
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="format-detection" content="telephone=no" />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Mohammad Mehrani (madi) | DevOps Engineer" />
@@ -61,6 +67,10 @@
   }
   </script>
 
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://api.qrserver.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -476,6 +486,14 @@
               <ul class="contact-list">
                 <li><i class="bi bi-envelope"></i><a href="mailto:mohammad@iodeck.ir">mohammad@iodeck.ir</a></li>
                 <li><i class="bi bi-geo-alt"></i><span data-i18n="meta_location">Tehran, Iran</span></li>
+                <li class="contact-clock-item">
+                  <i class="bi bi-clock"></i>
+                  <div class="clock-face">
+                    <span class="clock-tz">IRST (UTC+3:30)</span>
+                    <span id="clockTime">--:--:--</span>
+                    <span id="clockDate">---</span>
+                  </div>
+                </li>
               </ul>
 
               <div class="socials">
@@ -507,18 +525,9 @@
                         <code>TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS</code>
                       </div>
                     </div>
-                    <div class="wallet-qr">
-                      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS" alt="USDT TRC20 Wallet" loading="lazy" width="200" height="200" decoding="async" />
-                    </div>
                   </div>
-                </div>
-                <hr class="donate-divider">
-                <div class="donate-section">
-                  <h4 class="donate-subtitle">وقت محلی من جهت همکاری ریموت در سطح جهانی</h4>
-                  <div class="clock-face">
-                    <span class="clock-tz">IRST (UTC+3:30)</span>
-                    <span id="clockTime">--:--:--</span>
-                    <span id="clockDate">---</span>
+                  <div class="wallet-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS" alt="USDT TRC20 Wallet" loading="lazy" width="200" height="200" decoding="async" />
                   </div>
                 </div>
               </div>
@@ -543,6 +552,6 @@
   <script>
     !function(){var i="kWrYfy",a=window,d=document;function l(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,o=localStorage.getItem("goftino_"+i);g.async=!0,g.src=o?s+"?o="+o:s;d.getElementsByTagName("head")[0].appendChild(g)}function r(){if("requestIdleCallback"in a){a.requestIdleCallback(l,{timeout:2000})}else{a.setTimeout(l,900)}};"complete"===d.readyState?r():a.attachEvent?a.attachEvent("onload",r):a.addEventListener("load",r,!1)}();
   </script>
-  <script src="scripts/modern.js" defer></script>
+  <script src="js/modern.js" defer></script>
 </body>
 </html>
