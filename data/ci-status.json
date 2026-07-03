@@ -1,8 +1,8 @@
 {
-  "workflow": "CI",
-  "conclusion": "success",
+  "workflow": "Deploy static content to Pages",
+  "conclusion": "failure",
   "branch": "main",
   "status": "completed",
-  "run_id": 28633492080,
-  "date": "2026-07-03T02:01:39Z"
+  "run_id": 28633728976,
+  "date": "2026-07-03T02:07:37Z"
 }
