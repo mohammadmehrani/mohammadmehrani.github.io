@@ -4,6 +4,24 @@ Auto-generated from conventional commits.
 
 ### 2026-07-03
 
+fix: add local three.js fallback for CDN issues
+- Added local three.min.js in public/js/ as primary loader
+- Fallback to cdnjs CDN on error
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update CI status
+
+### 2026-07-03
+
+chore: update changelog
+
+### 2026-07-03
+
 refactor: merge wallet + clock into one box with two titled sections
 - Combined donate-box and clock-box into one unified box
 - Section 1: 'حمایت مالی' with USDT TRC20 wallet + QR
@@ -184,21 +202,3 @@ chore: update changelog
 fix: add .npmrc legacy-peer-deps for Vercel + clean up static.yml
 
 ### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update CI status
-
-### 2026-07-02
-
-chore: update changelog
-
-### 2026-07-03
-
-fix: add force-static to sitemap and robots for static export
-
-### 2026-07-02
-
-chore: update CI status
