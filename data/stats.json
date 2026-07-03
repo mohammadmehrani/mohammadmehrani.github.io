@@ -1,0 +1,153 @@
+{
+  "date": "2026-07-03T09:15:56Z",
+  "stars": 1,
+  "forks": 1,
+  "open_issues": 0,
+  "watchers": 1,
+  "size": 24144,
+  "last_commit": "2026-07-03T09:15:56Z",
+  "user": {
+    "public_repos": 12,
+    "followers": 37,
+    "following": 269,
+    "total_stars": 17,
+    "total_forks": 3,
+    "pull_requests": 10,
+    "contributed_to": 6,
+    "best_streak": 140,
+    "last_year_contributions": 648
+  },
+  "languages": [
+    [
+      "CSS",
+      8
+    ],
+    [
+      "Dart",
+      8
+    ],
+    [
+      "HCL",
+      8
+    ],
+    [
+      "Kotlin",
+      8
+    ],
+    [
+      "PowerShell",
+      16
+    ],
+    [
+      "TypeScript",
+      16
+    ]
+  ],
+  "contribution_days": [
+    9,
+    6,
+    3,
+    6,
+    5,
+    1,
+    5,
+    8,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    5,
+    6,
+    21,
+    6,
+    19,
+    15,
+    11,
+    5,
+    42,
+    22,
+    18,
+    141,
+    87
+  ],
+  "repos": [
+    {
+      "name": "dashyar",
+      "stars": 5,
+      "forks": 0,
+      "language": "TypeScript"
+    },
+    {
+      "name": "DjangoTMP",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "Maddix-tools",
+      "stars": 1,
+      "forks": 1,
+      "language": "Dart"
+    },
+    {
+      "name": "MaddixSuite",
+      "stars": 0,
+      "forks": 0,
+      "language": "PowerShell"
+    },
+    {
+      "name": "mohammadmehrani",
+      "stars": 2,
+      "forks": 0,
+      "language": "PowerShell"
+    },
+    {
+      "name": "mohammadmehrani.github.io",
+      "stars": 1,
+      "forks": 1,
+      "language": "CSS"
+    },
+    {
+      "name": "n8n",
+      "stars": 1,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "Nova-Client",
+      "stars": 1,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "NovaRadar",
+      "stars": 2,
+      "forks": 0,
+      "language": "Kotlin"
+    },
+    {
+      "name": "Project-Aurora",
+      "stars": 2,
+      "forks": 0,
+      "language": "HCL"
+    },
+    {
+      "name": "urh",
+      "stars": 1,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "vira",
+      "stars": 1,
+      "forks": 1,
+      "language": "TypeScript"
+    }
+  ]
+}
