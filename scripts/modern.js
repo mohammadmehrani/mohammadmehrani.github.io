@@ -693,14 +693,16 @@
     }
 
     const io = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+          } else {
+            entry.target.classList.remove("in");
+          }
         });
       },
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.06 }
     );
 
     scrollReveal.forEach((el) => io.observe(el));

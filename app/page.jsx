@@ -390,7 +390,7 @@ export default function HomePage() {
           <Reveal as="article" className="card" amount={0.2} duration={0.5}>
             <h3>{t.contact.reach}</h3>
             <ul className="contacts">
-              <li><a href="mailto:admin@iodeck.ir">admin@iodeck.ir</a></li>
+              <li><a href="mailto:mohammad@iodeck.ir">mohammad@iodeck.ir</a></li>
               <li>{t.hero.location}</li>
             </ul>
             <p className="muted" style={{ marginTop: "1rem" }}>{t.contact.sites}</p>

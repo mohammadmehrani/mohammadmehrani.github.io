@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Remove build artifacts
-        run: rm -rf node_modules .next out .vercel *_cache
+        run: rm -rf node_modules .next out .vercel *_cache public/components data/app workers settings .eslintrc.json .stylelintrc.json .htmlhintrc lighthouserc.json next.config.mjs package.json package-lock.json vercel.json CHANGELOG.md SECURITY.md LICENSE-free.txt _config.yml profile-3d-contrib
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
