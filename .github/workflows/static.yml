@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: STATIC_EXPORT=true npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
