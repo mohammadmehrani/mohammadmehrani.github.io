@@ -7,6 +7,7 @@
       nav_education: "Education",
       nav_projects: "Projects",
       nav_certs: "Certifications",
+      nav_report: "GitHub Report",
       nav_contact: "Contact",
       hero_eyebrow: "DevOps Engineer | Platform & Cloud",
       hero_title: "I build fast, secure, and reliable cloud platforms.",
@@ -96,7 +97,24 @@
       map_title: "Tehran Map (Shahrak Gharb)",
       map_open: "Open Map",
       support_title: "Support",
-      support_wallet: "TON Wallet"
+      support_wallet: "TON Wallet",
+      nav_report: "GitHub Report",
+      report_title: "GitHub Report",
+      report_desc: "Comprehensive overview of open source activity and contribution metrics.",
+      report_overview: "Account Overview",
+      report_contributions: "Contribution Activity (Last 30 Days)",
+      report_languages: "Language Breakdown",
+      report_activity: "Recent Activity",
+      report_focused: "Focus Areas",
+      report_totalStars: "Total Stars",
+      report_totalForks: "Total Forks",
+      report_totalRepos: "Public Repos",
+      report_followers: "Followers",
+      report_following: "Following",
+      report_pullRequests: "Pull Requests",
+      report_issues: "Issues",
+      report_lastYear: "Year Contribs",
+      report_noActivity: "No activity in the last 30 days."
     },
     fa: {
       nav_about: "\u062f\u0631\u0628\u0627\u0631\u0647 \u0645\u0646",
@@ -105,6 +123,7 @@
       nav_education: "\u0633\u0648\u0627\u0628\u0642 \u062a\u062d\u0635\u06cc\u0644\u06cc",
       nav_projects: "\u067e\u0631\u0648\u0698\u0647 \u0647\u0627",
       nav_certs: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0647\u0627",
+      nav_report: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
       nav_contact: "\u062a\u0645\u0627\u0633",
       hero_eyebrow: "\u0645\u0647\u0646\u062f\u0633 \u062f\u0648\u0627\u067e\u0633 | \u067e\u0644\u062a\u0641\u0631\u0645 \u0648 \u06a9\u0644\u0648\u062f",
       hero_title: "\u0645\u0646 \u067e\u0644\u062a\u0641\u0631\u0645 \u0647\u0627\u06cc \u0633\u0631\u06cc\u0639\u060c \u0627\u0645\u0646 \u0648 \u067e\u0627\u06cc\u062f\u0627\u0631 \u0645\u06cc \u0633\u0627\u0632\u0645.",
@@ -194,7 +213,24 @@
       map_title: "\u0646\u0642\u0634\u0647 \u062a\u0647\u0631\u0627\u0646 (\u0634\u0647\u0631\u06a9 \u063a\u0631\u0628)",
       map_open: "\u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0646\u0642\u0634\u0647",
       support_title: "\u062d\u0645\u0627\u06cc\u062a",
-      support_wallet: "\u06a9\u06cc\u0641 \u067e\u0648\u0644 TON"
+      support_wallet: "\u06a9\u06cc\u0641 \u067e\u0648\u0644 TON",
+      nav_report: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
+      report_title: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
+      report_desc: "\u0646\u0645\u0627\u06cc \u062c\u0627\u0645\u0639 \u0627\u0632 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0645\u062a\u0646\u200c\u0628\u0627\u0632 \u0648 \u0645\u0639\u06cc\u0627\u0631\u0647\u0627\u06cc \u0645\u0634\u0627\u0631\u06a9\u062a.",
+      report_overview: "\u0646\u0645\u0627\u06cc \u06a9\u0644\u06cc \u062d\u0633\u0627\u0628",
+      report_contributions: "\u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0634\u0627\u0631\u06a9\u062a\u06cc (\u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631)",
+      report_languages: "\u062a\u0641\u06a9\u06cc\u06a9 \u0632\u0628\u0627\u0646\u200c\u0647\u0627",
+      report_activity: "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0627\u062e\u06cc\u0631",
+      report_focused: "\u062d\u0648\u0632\u0647\u200c\u0647\u0627\u06cc \u062a\u0645\u0631\u06a9\u0632",
+      report_totalStars: "\u0645\u062c\u0645\u0648\u0639 \u0633\u062a\u0627\u0631\u0647\u200c\u0647\u0627",
+      report_totalForks: "\u0645\u062c\u0645\u0648\u0639 \u0641\u0648\u0631\u06a9\u200c\u0647\u0627",
+      report_totalRepos: "\u0631\u06cc\u067e\u0648\u0647\u0627\u06cc \u0639\u0645\u0648\u0645\u06cc",
+      report_followers: "\u062f\u0646\u0628\u0627\u0644\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646",
+      report_following: "\u062f\u0646\u0628\u0627\u0644\u200c\u0634\u0648\u0646\u062f\u0647",
+      report_pullRequests: "\u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627\u06cc Pull",
+      report_issues: "\u0645\u0633\u0627\u0626\u0644",
+      report_lastYear: "\u0645\u0634\u0627\u0631\u06a9\u062a \u0633\u0627\u0644",
+      report_noActivity: "\u0647\u06cc\u0686 \u0641\u0639\u0627\u0644\u06cc\u062a\u06cc \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631 \u062b\u0628\u062a \u0646\u0634\u062f\u0647."
     }
   };
 
@@ -368,8 +404,240 @@
     (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
     ("ontouchstart" in window && (navigator.maxTouchPoints || 0) > 0);
 
-  // Lightweight fallback is intentionally default for smoother scroll on mid/low devices.
-  document.body.classList.add("no-webgl");
+  function initThreeBackground() {
+    if (!window.THREE || reduceMotion || saveDataMode || lowPowerDevice) return;
+    const container = document.getElementById("hero3d");
+    if (!container) return;
+    document.body.classList.remove("no-webgl");
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(48, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.set(0, 0, 6.5);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.25);
+    scene.add(ambient);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    dirLight.position.set(5, 5, 5);
+    scene.add(dirLight);
+    const pointLight = new THREE.PointLight(0x1ba5ff, 25);
+    scene.add(pointLight);
+    const group = new THREE.Group();
+    scene.add(group);
+    const dodeMat = new THREE.MeshStandardMaterial({
+      color: 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.3
+    });
+    const dode = new THREE.Mesh(new THREE.DodecahedronGeometry(1.8), dodeMat);
+    group.add(dode);
+    const innerMat = new THREE.MeshBasicMaterial({
+      color: 0x1ba5ff, transparent: true, opacity: 0.08, wireframe: true
+    });
+    const inner = new THREE.Mesh(new THREE.IcosahedronGeometry(0.6, 1), innerMat);
+    group.add(inner);
+    function makeOrbitRing(radius, color, speed, offset, tilt) {
+      const rGroup = new THREE.Group();
+      rGroup.rotation.x = tilt;
+      const segs = 48;
+      const pts = [];
+      for (let i = 0; i <= segs; i++) {
+        const theta = (i / segs) * Math.PI * 2;
+        pts.push(new THREE.Vector3(
+          Math.cos(theta) * radius,
+          Math.sin(theta * 0.7 + offset) * 0.4,
+          Math.sin(theta) * radius
+        ));
+      }
+      const ringGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      const ringMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.2 });
+      rGroup.add(new THREE.Line(ringGeo, ringMat));
+      const dot = new THREE.Mesh(
+        new THREE.SphereGeometry(0.06, 8, 8),
+        new THREE.MeshBasicMaterial({ color })
+      );
+      dot.position.set(radius, 0, 0);
+      rGroup.add(dot);
+      return { group: rGroup, dot, radius, speed, offset, tilt, angle: offset };
+    }
+    const rings = [
+      makeOrbitRing(2.6, 0x1fe0b5, 0.7, 0, 0.15),
+      makeOrbitRing(3.4, 0x7c3aed, 0.4, Math.PI / 3, -0.25),
+      makeOrbitRing(2.2, 0x1ba5ff, 0.9, Math.PI / 1.5, 0.35)
+    ];
+    rings.forEach(r => group.add(r.group));
+    const nodePositions = [];
+    for (let i = 0; i < 24; i++) {
+      const theta = (i / 24) * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = 2.8 + Math.random() * 1.2;
+      nodePositions.push(new THREE.Vector3(
+        Math.sin(phi) * Math.cos(theta) * r,
+        Math.sin(phi) * Math.sin(theta) * r * 0.5,
+        Math.cos(phi) * r
+      ));
+    }
+    nodePositions.forEach((pos, i) => {
+      const color = i % 3 === 0 ? 0x1fe0b5 : i % 3 === 1 ? 0x1ba5ff : 0x7c3aed;
+      const dotGeo = new THREE.SphereGeometry(0.04, 6, 6);
+      const dotMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.5 });
+      const dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.copy(pos);
+      group.add(dot);
+      const cPoints = [
+        new THREE.Vector3(0, 0, 0),
+        pos.clone().multiplyScalar(0.3),
+        pos.clone().multiplyScalar(0.7),
+        pos.clone()
+      ];
+      const cGeo = new THREE.BufferGeometry().setFromPoints(cPoints);
+      const cMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.12 });
+      group.add(new THREE.Line(cGeo, cMat));
+    });
+    const particles = [];
+    for (let i = 0; i < 120; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = 4 + Math.random() * 3;
+      const pos = new THREE.Vector3(
+        Math.sin(phi) * Math.cos(theta) * r,
+        Math.sin(phi) * Math.sin(theta) * r * 0.4,
+        Math.cos(phi) * r
+      );
+      const size = 0.008 + Math.random() * 0.02;
+      const pMat = new THREE.MeshBasicMaterial({ color: 0xa8bbd9, transparent: true, opacity: 0.25 });
+      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(size, 4, 4), pMat);
+      pMesh.position.copy(pos);
+      group.add(pMesh);
+      particles.push({ mesh: pMesh, pos, speed: 0.08 + Math.random() * 0.15, phase: Math.random() * Math.PI * 2 });
+    }
+    function resize() {
+      const w = container.clientWidth, h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+    window.addEventListener("resize", resize);
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      const t = clock.getElapsedTime();
+      group.rotation.y += delta * 0.06;
+      dode.rotation.x += delta * 0.15;
+      dode.rotation.z += delta * 0.08;
+      inner.rotation.x = Math.sin(t * 0.2) * 0.1;
+      inner.rotation.y += delta * 0.2;
+      rings.forEach(r => {
+        r.angle += delta * r.speed;
+        r.dot.position.x = Math.cos(r.angle) * r.radius;
+        r.dot.position.z = Math.sin(r.angle) * r.radius;
+        r.dot.position.y = Math.sin(r.angle * 0.7 + r.offset) * 0.4;
+      });
+      particles.forEach(p => {
+        p.mesh.position.y += Math.sin(t * p.speed + p.phase) * 0.002;
+        p.mesh.position.x += Math.cos(t * p.speed * 0.7 + p.phase) * 0.001;
+      });
+      pointLight.position.copy(camera.position);
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  function initGitHubReport() {
+    const container = document.getElementById("reportContent");
+    if (!container) return;
+    Promise.all([
+      fetch("data/stats.json").then(r => r.json()).catch(() => null),
+      fetch("data/activity.json").then(r => r.json()).catch(() => null)
+    ]).then(([stats, activity]) => {
+      if (!stats || !stats.user) return;
+      const u = stats.user;
+      const setText = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val != null ? val : "-";
+      };
+      setText("statStars", u.total_stars);
+      setText("statForks", u.total_forks);
+      setText("statRepos", u.public_repos);
+      setText("statFollowers", u.followers);
+      setText("statFollowing", u.following);
+      setText("statPRs", u.pull_requests);
+      setText("statIssues", stats.open_issues);
+      setText("statContribs", u.last_year_contributions);
+      const barContainer = document.getElementById("contribBars");
+      if (barContainer && Array.isArray(stats.contribution_days)) {
+        barContainer.innerHTML = "";
+        stats.contribution_days.forEach((count) => {
+          const bar = document.createElement("div");
+          bar.className = "contribution-bar";
+          const h = Math.max(4, count * 14);
+          bar.style.height = h + "px";
+          if (count === 0) bar.style.background = "var(--stroke)";
+          else if (count <= 3) bar.style.background = "#0e4429";
+          else if (count <= 6) bar.style.background = "#006d32";
+          else if (count <= 10) bar.style.background = "#26a641";
+          else bar.style.background = "#39d353";
+          bar.title = count + " contributions";
+          barContainer.appendChild(bar);
+        });
+      }
+      const langContainer = document.getElementById("langBreakdown");
+      if (langContainer && Array.isArray(stats.languages)) {
+        langContainer.innerHTML = "";
+        stats.languages.forEach(([name, pct]) => {
+          const row = document.createElement("div");
+          row.innerHTML = '<div class="skill-head"><span>' + name + '</span><strong>' + pct + '%</strong></div><div class="meter"><span style="width:' + pct + '%;background:linear-gradient(90deg,var(--accent-2),var(--accent))"></span></div>';
+          langContainer.appendChild(row);
+        });
+      }
+      if (Array.isArray(activity) && activity.length > 0) {
+        const feed = document.getElementById("activityFeed");
+        if (feed) {
+          feed.innerHTML = "";
+          activity.slice(0, 10).forEach(a => {
+            const item = document.createElement("div");
+            item.className = "activity-item";
+            const date = new Date(a.date);
+            const dateStr = date.toLocaleDateString(currentLang === "fa" ? "fa-IR" : "en-US");
+            item.innerHTML = '<span>' + a.icon + '</span><span class="muted">' + a.message + '</span><span class="activity-date">' + dateStr + '</span>';
+            feed.appendChild(item);
+          });
+        }
+      }
+      const focusContainer = document.getElementById("focusTags");
+      if (focusContainer && Array.isArray(stats.languages)) {
+        focusContainer.innerHTML = "";
+        stats.languages.forEach(([name]) => {
+          const tag = document.createElement("span");
+          tag.className = "focus-tag";
+          tag.textContent = name;
+          focusContainer.appendChild(tag);
+        });
+      }
+    });
+  }
+
+  function initHeroParallax() {
+    if (reduceMotion || saveDataMode || lowPowerDevice) return;
+    const hero = document.querySelector("#home .hero .container");
+    if (!hero) return;
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = Math.min(window.scrollY, 800);
+          const progress = Math.min(y / 800, 1);
+          const moveY = progress * -30;
+          const rotateXVal = progress * 4;
+          hero.style.transform = "perspective(800px) translateY(" + moveY.toFixed(1) + "px) rotateX(" + rotateXVal.toFixed(1) + "deg)";
+          ticking = false;
+        });
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 
   function initParallax() {
     if (reduceMotion || saveDataMode || lowPowerDevice) return;
@@ -461,6 +729,9 @@
   }
 
   initParallax();
+  initHeroParallax();
   initReveal();
   initMeters();
+  initThreeBackground();
+  initGitHubReport();
 })();
