@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+feat: add detailed visit badges to README and website footer
+
+### 2026-07-08
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 fix: MEHRANY -> MEHRANI in ASCII art
 
 ### 2026-07-07
@@ -186,19 +202,3 @@ chore: update CI status
 chore: update changelog
 
 ### 2026-07-03
-
-feat: replace TON wallet with USDT TRC20 + QR code + icon
-- Wallet address changed to TM4uZRWBHDtzRQrYgdFhuiNrvDiaJgPFtS
-- Added QR code via qrserver.com API
-- Added USDT (Tether) SVG icon with TRX badge on bottom-right
-- Label: 'SEND USDT TRC20' with i18n support (en/fa)
-- Email remains mohammad@iodeck.ir
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
