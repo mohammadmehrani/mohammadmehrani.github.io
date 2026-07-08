@@ -418,29 +418,47 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 0, 13);
+    camera.position.set(0, 0, 9);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.15);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambient);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.3);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.35);
     dirLight.position.set(5, 5, 5);
     scene.add(dirLight);
 
+    // outer torus knot shape
+    const torusMat = new THREE.MeshStandardMaterial({
+      color: 0x1ba5ff, emissive: 0x1ba5ff, emissiveIntensity: 0.12,
+      wireframe: false, transparent: true, opacity: 0.35, metalness: 0.3, roughness: 0.4
+    });
+    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(2.2, 0.7, 128, 16), torusMat);
+
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.12
+    });
+    const wire = new THREE.Mesh(new THREE.TorusKnotGeometry(2.25, 0.75, 64, 8), wireMat);
+
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x1fe0b5, transparent: true, opacity: 0.03
+    });
+    const glow = new THREE.Mesh(new THREE.TorusKnotGeometry(2.3, 0.8, 32, 8), glowMat);
+
+    // text particle animation (inner)
     const text = "MOHAMMAD MEHRANI";
-    const fontSize = 110;
+    const fontSize = 100;
     const step = 3;
     const colors = [0x1ba5ff, 0x7c3aed, 0x1fe0b5];
 
     function getCharPoints(ch) {
       const c = document.createElement("canvas");
       const cx = c.getContext("2d");
-      c.width = 220;
-      c.height = 190;
+      c.width = 200;
+      c.height = 170;
       cx.fillStyle = "#fff";
       cx.font = "bold " + fontSize + "px Arial";
       cx.textAlign = "center";
@@ -453,8 +471,8 @@
       for (let y = 0; y < c.height; y += step) {
         for (let x = 0; x < c.width; x += step) {
           if ((y * c.width + x) * 4 < d.length && d[(y * c.width + x) * 4] > 128) {
-            const px = (x / c.width - 0.5) * 2.8;
-            const py = -(y / c.height - 0.5) * 2.2;
+            const px = (x / c.width - 0.5) * 2;
+            const py = -(y / c.height - 0.5) * 1.6;
             pts.push({ x: px, y: py });
             tx += px; ty += py; cnt++;
           }
@@ -467,14 +485,15 @@
 
     const chars = text.split("");
     const letters = chars.map(getCharPoints);
+
     const group = new THREE.Group();
+    group.add(torus);
+    group.add(wire);
+    group.add(glow);
     scene.add(group);
 
-    let maxPts = 0;
-    letters.forEach(l => { if (l.length > maxPts) maxPts = l.length; });
-
     const allParticles = [];
-    const numParticles = 1800;
+    const numParticles = 2000;
 
     for (let pi = 0; pi < numParticles; pi++) {
       const targets = [];
@@ -489,52 +508,28 @@
           const src = pts[pi % pts.length];
           t = { x: src.x + (Math.random() - 0.5) * 0.1, y: src.y + (Math.random() - 0.5) * 0.1 };
         }
-        targets.push(new THREE.Vector3(t.x, t.y, (Math.random() - 0.5) * 0.3));
+        targets.push(new THREE.Vector3(t.x, t.y, (Math.random() - 0.5) * 0.2));
       }
-      const scatter = new THREE.Vector3(
-        (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 6, (Math.random() - 0.5) * 4
-      );
       const color = colors[Math.floor(Math.random() * colors.length)];
-      const size = 0.04 + Math.random() * 0.05;
+      const size = 0.03 + Math.random() * 0.04;
       const mat = new THREE.MeshStandardMaterial({
-        color, emissive: color, emissiveIntensity: 0.3,
+        color, emissive: color, emissiveIntensity: 0.25,
         metalness: 0.2, roughness: 0.4, transparent: true, opacity: 0
       });
-      const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 8, 8), mat);
-      mesh.position.copy(scatter);
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 6, 6), mat);
+      mesh.position.set(targets[0].x, targets[0].y, targets[0].z);
       group.add(mesh);
       allParticles.push({
-        mesh, targets, scatter, color,
-        phase: Math.random() * Math.PI * 2,
-        drift: 0.001 + Math.random() * 0.002
+        mesh, targets, color,
+        phase: Math.random() * Math.PI * 2
       });
-    }
-
-    const wireParticles = [];
-    for (let pi = 0; pi < 400; pi++) {
-      const targets = [];
-      for (let ci = 0; ci < letters.length; ci++) {
-        const pts = letters[ci];
-        const t = pts.length ? (pts[pi % pts.length] || { x: 0, y: 0 }) : { x: 0, y: 0 };
-        targets.push(new THREE.Vector3(t.x, t.y, (Math.random() - 0.5) * 0.3));
-      }
-      const scatter = new THREE.Vector3(
-        (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 6, (Math.random() - 0.5) * 4
-      );
-      const mat = new THREE.MeshBasicMaterial({
-        color: 0xa8bbd9, transparent: true, opacity: 0
-      });
-      const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.015, 4, 4), mat);
-      mesh.position.copy(scatter);
-      group.add(mesh);
-      wireParticles.push({ mesh, targets, scatter });
     }
 
     const bgParticles = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 50; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 7 + Math.random() * 3;
+      const r = 5 + Math.random() * 3;
       const pos = new THREE.Vector3(
         Math.sin(phi) * Math.cos(theta) * r,
         Math.sin(phi) * Math.sin(theta) * r * 0.4,
@@ -542,23 +537,13 @@
       );
       const pMat = new THREE.MeshBasicMaterial({
         color: colors[Math.floor(Math.random() * colors.length)],
-        transparent: true, opacity: 0.08 + Math.random() * 0.1
+        transparent: true, opacity: 0.06 + Math.random() * 0.08
       });
-      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(0.015 + Math.random() * 0.02, 4, 4), pMat);
+      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(0.01 + Math.random() * 0.02, 4, 4), pMat);
       pMesh.position.copy(pos);
       group.add(pMesh);
       bgParticles.push({ mesh: pMesh, pos: pos.clone(), speed: 0.015 + Math.random() * 0.04, phase: Math.random() * Math.PI * 2 });
     }
-
-    const ringGeo = new THREE.TorusGeometry(3.8, 0.008, 12, 80);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x1fe0b5, transparent: true, opacity: 0.08 });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.rotation.x = Math.PI / 2.5;
-    group.add(ring);
-    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.005, 12, 100), new THREE.MeshBasicMaterial({ color: 0x7c3aed, transparent: true, opacity: 0.05 }));
-    ring2.rotation.x = -Math.PI / 3;
-    ring2.rotation.z = Math.PI / 4;
-    group.add(ring2);
 
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
@@ -573,35 +558,36 @@
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
+
+      // animate outer torus
+      torus.rotation.x += delta * 0.1;
+      torus.rotation.z += delta * 0.05;
+      wire.rotation.x += delta * 0.08;
+      wire.rotation.z += delta * 0.04;
+      glow.rotation.x += delta * 0.06;
+      glow.rotation.z += delta * 0.03;
+      torusMat.emissiveIntensity = 0.08 + Math.sin(t * 0.4) * 0.06;
+
+      // animate inner text particles
       const perLetter = 3.5;
       const total = letters.length * perLetter;
       const loopT = t % total;
       const ci = Math.floor(loopT / perLetter);
       const progress = (loopT % perLetter) / perLetter;
-      const easeIn = progress < 0.3 ? progress / 0.3 : 1;
-      const easeOut = progress > 0.7 ? 1 - (progress - 0.7) / 0.3 : 1;
       const mix = Math.min(1, progress * 1.5);
-
       const nextIdx = (ci + 1) % letters.length;
 
       allParticles.forEach(p => {
         const from = p.targets[ci];
         const to = p.targets[nextIdx];
         p.mesh.position.lerpVectors(from, to, mix);
-        const s = 0.5 + mix * 0.5;
+        const s = 0.6 + mix * 0.4;
         p.mesh.scale.set(s, s, s);
-        p.mesh.position.x += Math.sin(t * 0.5 + p.phase) * 0.003;
-        p.mesh.position.y += Math.cos(t * 0.4 + p.phase) * 0.002;
-        const fade = 0.4 + 0.6 * (1 - Math.abs(mix - 0.5) * 2);
+        p.mesh.position.x += Math.sin(t * 0.6 + p.phase) * 0.002;
+        p.mesh.position.y += Math.cos(t * 0.5 + p.phase) * 0.0015;
+        const fade = 0.35 + 0.65 * (1 - Math.abs(mix - 0.5) * 2);
         p.mesh.material.opacity = fade;
-        p.mesh.material.emissiveIntensity = 0.15 + fade * 0.25;
-      });
-
-      wireParticles.forEach(p => {
-        const from = p.targets[ci];
-        const to = p.targets[nextIdx];
-        p.mesh.position.lerpVectors(from, to, mix);
-        p.mesh.material.opacity = (0.1 + 0.3 * (1 - Math.abs(mix - 0.5) * 2)) * 0.5;
+        p.mesh.material.emissiveIntensity = 0.12 + fade * 0.2;
       });
 
       bgParticles.forEach(p => {
@@ -610,9 +596,7 @@
       });
 
       group.rotation.y += delta * 0.04;
-      group.rotation.x = Math.sin(t * 0.02) * 0.03;
-      ring.rotation.z += delta * 0.01;
-      ring2.rotation.y += delta * 0.008;
+      group.rotation.x = Math.sin(t * 0.015) * 0.03;
 
       renderer.render(scene, camera);
     }
