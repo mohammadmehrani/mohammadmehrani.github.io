@@ -481,7 +481,9 @@
       for (let ci = 0; ci < letters.length; ci++) {
         const pts = letters[ci];
         let t;
-        if (pi < pts.length) {
+        if (!pts.length) {
+          t = { x: 0, y: 0 };
+        } else if (pi < pts.length) {
           t = pts[pi];
         } else {
           const src = pts[pi % pts.length];
@@ -513,8 +515,7 @@
       const targets = [];
       for (let ci = 0; ci < letters.length; ci++) {
         const pts = letters[ci];
-        const idx = pi % (pts.length || 1);
-        const t = pts[idx] || { x: 0, y: 0 };
+        const t = pts.length ? (pts[pi % pts.length] || { x: 0, y: 0 }) : { x: 0, y: 0 };
         targets.push(new THREE.Vector3(t.x, t.y, (Math.random() - 0.5) * 0.3));
       }
       const scatter = new THREE.Vector3(
@@ -899,8 +900,8 @@
   initReveal();
   initMeters();
   initClock();
-  initThreeBackground();
-  initMiniThree("mini3dSkills", { shape: "ico", color: 0x7c3aed, ring: true, ringColor: 0x1fe0b5, ringColor2: 0x1ba5ff, particles: 25, speed: 0.3 });
-  initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 });
+  try { initThreeBackground(); } catch (e) { console.warn("3D bg error:", e); }
+  try { initMiniThree("mini3dSkills", { shape: "ico", color: 0x7c3aed, ring: true, ringColor: 0x1fe0b5, ringColor2: 0x1ba5ff, particles: 25, speed: 0.3 }); } catch (e) {}
+  try { initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 }); } catch (e) {}
   initGitHubReport();
 })();
