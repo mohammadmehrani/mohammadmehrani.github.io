@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+feat: merge Torus Knot outer shape + inner particle text animation
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 fix: space char crash in 3D, try-catch wrappers
 
 ### 2026-07-08
@@ -185,20 +201,4 @@ cleanup: remove Next.js, organize static site, optimize SEO/speed/security, rest
 ### 2026-07-03
 
 rotate: 3D theme [skip ci]
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update changelog
-
-### 2026-07-03
-
-fix: three.min.js at root js/ path for GH Pages, defer attribute on script, v3 SW (network-first)
-
-### 2026-07-03
-
-chore: update CI status
 
