@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+fix: remove portfolio subdomain, reduce bar height, center 3D
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 fix: Parspec job date, English fallback, 3D upgrade, RTL brand
 
 ### 2026-07-08
@@ -188,17 +200,5 @@ chore: update CI status
 ### 2026-07-03
 
 chore: update changelog
-
-### 2026-07-03
-
-fix: remove clock title, larger QR on right, remove map i18n keys
-- Removed only clock-box heading/Tehran title (not the clock itself)
-- Moved QR code to right side with larger size (200x200)
-- Removed unused map_title/map_open i18n keys
-- Cleaned up unused clock-head CSS
-
-### 2026-07-03
-
-chore: update CI status
 
 ### 2026-07-03
