@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+fix: Parspec job date, English fallback, 3D upgrade, RTL brand
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 feat: add detailed visit badges to README and website footer
 
 ### 2026-07-08
@@ -184,21 +200,5 @@ fix: remove clock title, larger QR on right, remove map i18n keys
 ### 2026-07-03
 
 chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update changelog
 
 ### 2026-07-03
