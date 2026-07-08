@@ -417,7 +417,7 @@
     document.body.classList.remove("no-webgl");
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 1.5, 7);
+    camera.position.set(0, 0, 7);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -631,7 +631,7 @@
         stats.contribution_days.forEach((count) => {
           const bar = document.createElement("div");
           bar.className = "contribution-bar";
-          const h = Math.max(4, count * 14);
+          const h = Math.max(4, count * 7);
           bar.style.height = h + "px";
           if (count === 0) bar.style.background = "var(--stroke)";
           else if (count <= 3) bar.style.background = "#0e4429";
