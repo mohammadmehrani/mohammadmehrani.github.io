@@ -352,8 +352,9 @@ html[data-theme="dark"] .wallet-qr img { filter: brightness(0.85); }
 }
 
 .footer { border-top: 1px solid var(--stroke); padding: 1rem 0; background: rgba(3, 10, 18, 0.7); }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 .footer p { margin: 0; color: #ffd24d; font-weight: 700; }
+.footer-badges { color: inherit !important; font-weight: 400 !important; display: flex; align-items: center; gap: 0.5rem; }
 .to-top { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--stroke); border-radius: 999px; }
 
 .reveal { opacity: 0; transform: translateY(30px) rotateX(-10deg) scale(0.98); will-change: transform, opacity; perspective: 800px; transform-origin: center top; }

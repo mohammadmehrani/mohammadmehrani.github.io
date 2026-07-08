@@ -22,7 +22,13 @@ graph TB
 </p>
 
 <p align="center">
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani&labelColor=%230d1117&countColor=%233fb950&style=flat-square" alt="Profile views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani&label=Total&labelColor=%230d1117&countColor=%233fb950&style=flat-square" alt="Total views" />
+  &nbsp;
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fmonth&label=Monthly&labelColor=%230d1117&countColor=%232196f3&style=flat-square" alt="Monthly views" />
+  &nbsp;
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fweek&label=Weekly&labelColor=%230d1117&countColor=%23ff9800&style=flat-square" alt="Weekly views" />
+  &nbsp;
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fday&label=Today&labelColor=%230d1117&countColor=%23e74c3c&style=flat-square" alt="Today views" />
   &nbsp;
   <a href="https://mohammadmehrani.github.io/achievements">
     <img src="https://img.shields.io/badge/Achievements-🏆_View_All-6f42c1?style=flat-square&logo=github&logoColor=white" alt="Achievements" />
