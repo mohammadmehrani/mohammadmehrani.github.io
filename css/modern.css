@@ -48,7 +48,7 @@ html[dir="rtl"] h1,
 html[dir="rtl"] h2,
 html[dir="rtl"] h3,
 html[dir="rtl"] h4,
-html[dir="rtl"] .navbar-brand { font-family: "Vazirmatn", sans-serif; letter-spacing: 0; }
+html[dir="rtl"] .navbar-brand { font-family: "JetBrains Mono", monospace; letter-spacing: 0.05em; }
 
 a { color: inherit; text-decoration: none; }
 .section-pad { padding: 5.5rem 0; position: relative; z-index: 2; }

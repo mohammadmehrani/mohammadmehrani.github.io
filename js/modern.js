@@ -40,7 +40,7 @@
       skill_6: "Monitoring & Observability",
       exp_title: "Work Experience",
       exp_desc: "Professional history in infrastructure, support, and software delivery.",
-      exp_1_period: "May 2023 - Present",
+      exp_1_period: "May 2023 - 2024",
       exp_1_company: "ParsPack",
       exp_1_role: "Infrastructure Technical Support",
       exp_1_text: "PARSPACK (ABRHA), Tehran, Iran - technical support for infrastructure services and cloud operations.",
@@ -155,7 +155,7 @@
       skill_6: "\u0645\u0627\u0646\u06cc\u062a\u0648\u0631\u06cc\u0646\u06af \u0648 \u0645\u0634\u0627\u0647\u062f\u0647 \u067e\u0630\u06cc\u0631\u06cc",
       exp_title: "\u0633\u0648\u0627\u0628\u0642 \u0634\u063a\u0644\u06cc",
       exp_desc: "\u0633\u0648\u0627\u0628\u0642 \u062d\u0631\u0641\u0647 \u0627\u06cc \u062f\u0631 \u062d\u0648\u0632\u0647 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u060c \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0648 \u062a\u0648\u0633\u0639\u0647 \u0646\u0631\u0645 \u0627\u0641\u0632\u0627\u0631.",
-      exp_1_period: "\u0645\u06cc \u06f2\u06f0\u06f2\u06f3 \u062a\u0627 \u06a9\u0646\u0648\u0646",
+      exp_1_period: "\u0645\u06cc \u06f2\u06f0\u06f2\u06f3 \u062a\u0627 \u06f2\u06f0\u06f2\u06f4",
       exp_1_company: "\u067e\u0627\u0631\u0633 \u067e\u06a9",
       exp_1_role: "\u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u0641\u0646\u06cc \u0632\u06cc\u0631\u0633\u0627\u062e\u062a",
       exp_1_text: "\u067e\u0627\u0631\u0633 \u067e\u06a9 (\u0622\u0628\u0631\u0647\u0627)\u060c \u062a\u0647\u0631\u0627\u0646 - \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0641\u0646\u06cc \u0633\u0631\u0648\u06cc\u0633 \u0647\u0627\u06cc \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u06cc \u0648 \u0639\u0645\u0644\u06cc\u0627\u062a \u06a9\u0644\u0648\u062f.",
@@ -416,82 +416,71 @@
     if (!container) return;
     document.body.classList.remove("no-webgl");
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(48, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 0, 6.5);
+    const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.set(0, 1.5, 7);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
-    const ambient = new THREE.AmbientLight(0xffffff, 0.25);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambient);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
-    dirLight.position.set(5, 5, 5);
-    scene.add(dirLight);
-    const pointLight = new THREE.PointLight(0x1ba5ff, 25);
-    scene.add(pointLight);
+
     const group = new THREE.Group();
     scene.add(group);
-    const dodeMat = new THREE.MeshStandardMaterial({
-      color: 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.3
+
+    const torusMat = new THREE.MeshStandardMaterial({
+      color: 0x1ba5ff, emissive: 0x1ba5ff, emissiveIntensity: 0.15,
+      wireframe: false, transparent: true, opacity: 0.5, metalness: 0.3, roughness: 0.4
     });
-    const dode = new THREE.Mesh(new THREE.DodecahedronGeometry(1.8), dodeMat);
-    group.add(dode);
-    const innerMat = new THREE.MeshBasicMaterial({
-      color: 0x1ba5ff, transparent: true, opacity: 0.08, wireframe: true
+    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(1.4, 0.5, 128, 16), torusMat);
+    group.add(torus);
+
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.15
     });
-    const inner = new THREE.Mesh(new THREE.IcosahedronGeometry(0.6, 1), innerMat);
-    group.add(inner);
-    const rings = [
-      makeOrbitRing(2.6, 0x1fe0b5, 0.7, 0, 0.15),
-      makeOrbitRing(3.4, 0x7c3aed, 0.4, Math.PI / 3, -0.25),
-      makeOrbitRing(2.2, 0x1ba5ff, 0.9, Math.PI / 1.5, 0.35)
-    ];
-    rings.forEach(r => group.add(r.group));
-    const nodePositions = [];
-    for (let i = 0; i < 24; i++) {
-      const theta = (i / 24) * Math.PI * 2;
+    const wire = new THREE.Mesh(new THREE.TorusKnotGeometry(1.45, 0.55, 64, 8), wireMat);
+    group.add(wire);
+
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x1fe0b5, transparent: true, opacity: 0.04
+    });
+    const glow = new THREE.Mesh(new THREE.TorusKnotGeometry(1.5, 0.6, 32, 8), glowMat);
+    group.add(glow);
+
+    const ringGeo = new THREE.TorusGeometry(2.6, 0.015, 16, 80);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x1fe0b5, transparent: true, opacity: 0.2 });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 2.5;
+    group.add(ring);
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.01, 16, 100), new THREE.MeshBasicMaterial({ color: 0x7c3aed, transparent: true, opacity: 0.12 }));
+    ring2.rotation.x = -Math.PI / 3;
+    ring2.rotation.z = Math.PI / 4;
+    group.add(ring2);
+    const ring3 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.008, 12, 60), new THREE.MeshBasicMaterial({ color: 0x1ba5ff, transparent: true, opacity: 0.25 }));
+    ring3.rotation.x = Math.PI / 4;
+    ring3.rotation.y = Math.PI / 6;
+    group.add(ring3);
+
+    const particles = [];
+    for (let i = 0; i < 200; i++) {
+      const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 2.8 + Math.random() * 1.2;
-      nodePositions.push(new THREE.Vector3(
+      const r = 3 + Math.random() * 4;
+      const pos = new THREE.Vector3(
         Math.sin(phi) * Math.cos(theta) * r,
         Math.sin(phi) * Math.sin(theta) * r * 0.5,
         Math.cos(phi) * r
-      ));
-    }
-    nodePositions.forEach((pos, i) => {
-      const color = i % 3 === 0 ? 0x1fe0b5 : i % 3 === 1 ? 0x1ba5ff : 0x7c3aed;
-      const dotGeo = new THREE.SphereGeometry(0.04, 6, 6);
-      const dotMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.5 });
-      const dot = new THREE.Mesh(dotGeo, dotMat);
-      dot.position.copy(pos);
-      group.add(dot);
-      const cPoints = [
-        new THREE.Vector3(0, 0, 0),
-        pos.clone().multiplyScalar(0.3),
-        pos.clone().multiplyScalar(0.7),
-        pos.clone()
-      ];
-      const cGeo = new THREE.BufferGeometry().setFromPoints(cPoints);
-      const cMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.12 });
-      group.add(new THREE.Line(cGeo, cMat));
-    });
-    const particles = [];
-    for (let i = 0; i < 120; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const r = 4 + Math.random() * 3;
-      const pos = new THREE.Vector3(
-        Math.sin(phi) * Math.cos(theta) * r,
-        Math.sin(phi) * Math.sin(theta) * r * 0.4,
-        Math.cos(phi) * r
       );
-      const size = 0.008 + Math.random() * 0.02;
-      const pMat = new THREE.MeshBasicMaterial({ color: 0xa8bbd9, transparent: true, opacity: 0.25 });
+      const size = 0.01 + Math.random() * 0.03;
+      const colors = [0x1ba5ff, 0x7c3aed, 0x1fe0b5, 0xff6b6b];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const pMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.15 + Math.random() * 0.3 });
       const pMesh = new THREE.Mesh(new THREE.SphereGeometry(size, 4, 4), pMat);
       pMesh.position.copy(pos);
       group.add(pMesh);
-      particles.push({ mesh: pMesh, pos, speed: 0.08 + Math.random() * 0.15, phase: Math.random() * Math.PI * 2 });
+      particles.push({ mesh: pMesh, pos: pos.clone(), speed: 0.02 + Math.random() * 0.08, phase: Math.random() * Math.PI * 2, drift: 0.001 + Math.random() * 0.003 });
     }
+
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
       camera.aspect = w / h;
@@ -504,22 +493,23 @@
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
-      group.rotation.y += delta * 0.06;
-      dode.rotation.x += delta * 0.15;
-      dode.rotation.z += delta * 0.08;
-      inner.rotation.x = Math.sin(t * 0.2) * 0.1;
-      inner.rotation.y += delta * 0.2;
-      rings.forEach(r => {
-        r.angle += delta * r.speed;
-        r.dot.position.x = Math.cos(r.angle) * r.radius;
-        r.dot.position.z = Math.sin(r.angle) * r.radius;
-        r.dot.position.y = Math.sin(r.angle * 0.7 + r.offset) * 0.4;
-      });
+      group.rotation.y += delta * 0.08;
+      group.rotation.x = Math.sin(t * 0.03) * 0.05;
+      torus.rotation.x += delta * 0.12;
+      torus.rotation.z += delta * 0.06;
+      wire.rotation.x += delta * 0.1;
+      wire.rotation.z += delta * 0.05;
+      glow.rotation.x += delta * 0.08;
+      glow.rotation.z += delta * 0.04;
+      ring.rotation.z += delta * 0.02;
+      ring2.rotation.y += delta * 0.015;
+      ring3.rotation.y += delta * 0.03;
+      ring3.rotation.x += delta * 0.01;
+      torusMat.emissiveIntensity = 0.1 + Math.sin(t * 0.5) * 0.08;
       particles.forEach(p => {
-        p.mesh.position.y += Math.sin(t * p.speed + p.phase) * 0.002;
-        p.mesh.position.x += Math.cos(t * p.speed * 0.7 + p.phase) * 0.001;
+        p.mesh.position.x += Math.sin(t * p.speed + p.phase) * p.drift;
+        p.mesh.position.y += Math.cos(t * p.speed * 0.6 + p.phase) * p.drift;
       });
-      pointLight.position.copy(camera.position);
       renderer.render(scene, camera);
     }
     animate();
