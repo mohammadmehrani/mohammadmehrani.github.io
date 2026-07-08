@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+fix: space char crash in 3D, try-catch wrappers
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 feat: 3D uppercase MOHAMMAD MEHRANI with metallic particles morphing between letters
 
 ### 2026-07-08
@@ -186,19 +202,3 @@ fix: three.min.js at root js/ path for GH Pages, defer attribute on script, v3 S
 
 chore: update CI status
 
-### 2026-07-03
-
-chore: update changelog
-
-### 2026-07-03
-
-feat: Vercel redesign — 3D Earth globe, modern UI, local fonts, remove map
-- 3D Earth background (Three.js globe with clouds, glow, particles)
-- Modern glass-morphism UI with bootstrap color scheme
-- Local Vazirmatn + JetBrains Mono fonts (woff2)
-- Removed Tehran map section from Vercel app
-- Cleaned up terminal/cyberpunk aesthetic for cleaner look
-
-### 2026-07-03
-
-chore: update CI status
