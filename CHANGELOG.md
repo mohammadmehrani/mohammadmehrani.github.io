@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-08
 
+fix: contribution bars in fixed container with max height
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
+### 2026-07-08
+
 feat: 3D particle text animation looping 'Mohammad Mehrani' letter by letter
 
 ### 2026-07-08
@@ -186,19 +202,3 @@ fix: add local three.js fallback for CDN issues
 - Fallback to cdnjs CDN on error
 
 ### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update changelog
-
-### 2026-07-03
-
-refactor: merge wallet + clock into one box with two titled sections
-- Combined donate-box and clock-box into one unified box
-- Section 1: 'حمایت مالی' with USDT TRC20 wallet + QR
