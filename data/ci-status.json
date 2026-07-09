@@ -1,8 +1,8 @@
 {
-  "workflow": "CI",
+  "workflow": "Stats Sync",
   "conclusion": "success",
   "branch": "main",
   "status": "completed",
-  "run_id": 28941870439,
-  "date": "2026-07-08T12:16:38Z"
+  "run_id": 29008756933,
+  "date": "2026-07-09T09:36:33Z"
 }
