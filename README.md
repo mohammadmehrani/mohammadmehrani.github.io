@@ -106,7 +106,7 @@ about_me:
 </p>
 
 <p align="center">
-  <img src="./profile-3d-contrib/graphite-dark.svg" alt="3D contribution graph animated" width="90%" />
+  <img src="./profile-3d-contrib/nord-light.svg" alt="3D contribution graph animated" width="90%" />
 </p>
 
 <details>
