@@ -2,6 +2,74 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-11
+
+Remove schedule from blog-post-workflow
+
+### 2026-07-11
+
+chore: update CI status
+
+### 2026-07-11
+
+chore: update repo stats
+
+### 2026-07-11
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-10
+
+chore: update CI status
+
+### 2026-07-10
+
+chore: update repo stats
+
+### 2026-07-10
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-09
+
+chore: update CI status
+
+### 2026-07-09
+
+chore: update repo stats
+
+### 2026-07-09
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update emails to madi@iodeck.ir / admin@iodeck.ir
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update repo stats
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update CI status
+
+### 2026-07-08
+
+chore: update changelog
+
 ### 2026-07-08
 
 feat: merge Torus Knot outer shape + inner particle text animation
@@ -133,72 +201,4 @@ fix: MEHRANY -> MEHRANI in ASCII art
 ### 2026-07-07
 
 chore: update CI status
-
-### 2026-07-07
-
-chore: update repo stats
-
-### 2026-07-07
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-06
-
-chore: update CI status
-
-### 2026-07-06
-
-chore: update repo stats
-
-### 2026-07-06
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-05
-
-chore: update CI status
-
-### 2026-07-05
-
-chore: update repo stats
-
-### 2026-07-05
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-04
-
-chore: update CI status
-
-### 2026-07-04
-
-chore: update repo stats
-
-### 2026-07-04
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update repo stats
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-chore: update CI status
-
-### 2026-07-03
-
-cleanup: remove Next.js, organize static site, optimize SEO/speed/security, restructure Contact section
-
-### 2026-07-03
-
-rotate: 3D theme [skip ci]
 
