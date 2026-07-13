@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: darker background, 900 orbs, 3000 haze particles for depth
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 fix: correct ring rotation axis for proper Saturn viewing angle
 
 ### 2026-07-13
@@ -184,18 +196,6 @@ chore: update changelog
 ### 2026-07-13
 
 fix: static galaxy angle, dust orbits core
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-fix: galaxy angled view (rotation.x=0.35) like before
 
 ### 2026-07-13
 
