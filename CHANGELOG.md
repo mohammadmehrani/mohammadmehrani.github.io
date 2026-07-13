@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: resize Saturn scene to full-view scale with multi-color particle cloud
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: replace spiral galaxy with Saturn-like planet scene
 - Central planet with banding, atmosphere glow
 - Saturn ring system (4 concentric rings)
@@ -184,21 +200,5 @@ chore: update changelog
 ### 2026-07-13
 
 fix: realistic center galaxy with spiral arms, bulge, dust, deeper bg
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: 3D galaxy background, local portfolio screenshots, GR nav, CORS proxy modal
-
-### 2026-07-13
-
-chore: update CI status
 
 ### 2026-07-13
