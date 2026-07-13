@@ -1,53 +1,48 @@
 {
-  "date": "2026-07-12T08:14:15Z",
+  "date": "2026-07-13T09:23:02Z",
   "stars": 1,
   "forks": 1,
   "open_issues": 0,
   "watchers": 1,
-  "size": 24140,
-  "last_commit": "2026-07-13T09:19:24Z",
+  "size": 26759,
+  "last_commit": "2026-07-13T09:23:02Z",
   "user": {
-    "public_repos": 12,
+    "public_repos": 11,
     "followers": 38,
-    "following": 273,
-    "total_stars": 17,
+    "following": 274,
+    "total_stars": 15,
     "total_forks": 3,
-    "pull_requests": 10,
+    "pull_requests": 8,
     "contributed_to": 6,
-    "best_streak": 149,
-    "last_year_contributions": 955
+    "best_streak": 150,
+    "last_year_contributions": 994
   },
   "languages": [
     [
       "CSS",
-      8
+      9
     ],
     [
       "Dart",
-      8
+      9
     ],
     [
       "HCL",
-      8
-    ],
-    [
-      "Kotlin",
-      8
+      9
     ],
     [
       "PowerShell",
-      16
+      18
     ],
     [
       "TypeScript",
-      16
+      18
     ]
   ],
   "contribution_days": [
     1,
     1,
     1,
-    2,
     1,
     1,
     1,
@@ -60,9 +55,9 @@
     19,
     15,
     11,
-    5,
-    42,
-    22,
+    4,
+    41,
+    16,
     18,
     141,
     105,
@@ -73,8 +68,9 @@
     97,
     36,
     17,
-    39,
-    3
+    40,
+    12,
+    38
   ],
   "repos": [
     {
@@ -124,12 +120,6 @@
       "stars": 1,
       "forks": 0,
       "language": null
-    },
-    {
-      "name": "NovaRadar",
-      "stars": 2,
-      "forks": 0,
-      "language": "Kotlin"
     },
     {
       "name": "Project-Aurora",
