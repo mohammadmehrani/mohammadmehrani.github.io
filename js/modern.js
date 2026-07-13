@@ -428,7 +428,7 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 0, 7);
+    camera.position.set(0, 1.3, 7.5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -640,12 +640,15 @@
     });
     const glowSphere2 = new THREE.Mesh(new THREE.SphereGeometry(0.7, 16, 16), glowMat2);
 
-    scene.add(galaxy);
-    scene.add(bulge);
+    const galaxyGroup = new THREE.Group();
+    galaxyGroup.add(galaxy);
+    galaxyGroup.add(bulge);
+    galaxyGroup.add(glowSphere);
+    galaxyGroup.add(glowSphere2);
+    galaxyGroup.rotation.x = 0.35;
+    scene.add(galaxyGroup);
     scene.add(stars);
     scene.add(dust);
-    scene.add(glowSphere);
-    scene.add(glowSphere2);
 
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
@@ -661,8 +664,8 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      galaxy.rotation.z += delta * 0.05;
-      bulge.rotation.z += delta * 0.05;
+      galaxyGroup.rotation.z += delta * 0.045;
+      galaxyGroup.rotation.x = 0.35 + Math.sin(t * 0.015) * 0.03;
 
       glowSphere.material.opacity = 0.2 + Math.sin(t * 0.4) * 0.08;
       glowSphere.scale.setScalar(1 + Math.sin(t * 0.25) * 0.06);
