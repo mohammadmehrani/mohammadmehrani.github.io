@@ -437,6 +437,17 @@
 
     const hue = new THREE.Color();
 
+    const ptCanvas = document.createElement("canvas");
+    ptCanvas.width = 32; ptCanvas.height = 32;
+    const ctx = ptCanvas.getContext("2d");
+    const radGrad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    radGrad.addColorStop(0, "rgba(255,255,255,1)");
+    radGrad.addColorStop(0.3, "rgba(255,255,255,0.8)");
+    radGrad.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = radGrad;
+    ctx.fillRect(0, 0, 32, 32);
+    const circleTexture = new THREE.CanvasTexture(ptCanvas);
+
     // --- Spiral Galaxy (3 arms, multi-color gradient) ---
     const gCount = 12000;
     const gPos = new Float32Array(gCount * 3);
@@ -473,7 +484,7 @@
     galGeo.setAttribute("position", new THREE.BufferAttribute(gPos, 3));
     galGeo.setAttribute("color", new THREE.BufferAttribute(gCol, 3));
     const galaxy = new THREE.Points(galGeo, new THREE.PointsMaterial({
-      size: 0.055, vertexColors: true, transparent: true, opacity: 0.95,
+      size: 0.055, vertexColors: true, transparent: true, opacity: 0.95, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
     }));
     galaxy.rotation.x = 0.3;
@@ -509,7 +520,7 @@
     starGeo.setAttribute("position", new THREE.BufferAttribute(sPos, 3));
     starGeo.setAttribute("color", new THREE.BufferAttribute(sCol, 3));
     const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
-      size: 0.025, vertexColors: true, transparent: true, opacity: 0.5,
+      size: 0.025, vertexColors: true, transparent: true, opacity: 0.5, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
     }));
 
@@ -532,7 +543,7 @@
     dustGeo.setAttribute("position", new THREE.BufferAttribute(dPos, 3));
     dustGeo.setAttribute("color", new THREE.BufferAttribute(dCol, 3));
     const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
-      size: 0.05, vertexColors: true, transparent: true, opacity: 0.3,
+      size: 0.05, vertexColors: true, transparent: true, opacity: 0.3, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
     }));
 
@@ -560,7 +571,7 @@
     orbGeo.setAttribute("position", new THREE.BufferAttribute(oPos, 3));
     orbGeo.setAttribute("color", new THREE.BufferAttribute(oCol, 3));
     const orbs = new THREE.Points(orbGeo, new THREE.PointsMaterial({
-      size: 0.09, vertexColors: true, transparent: true, opacity: 0.5,
+      size: 0.09, vertexColors: true, transparent: true, opacity: 0.5, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
     }));
 
@@ -898,7 +909,7 @@
       document.body.style.overflow = "hidden";
       if (loading) loading.classList.remove("hidden");
       previewImg.src = url.includes("iodeck.ir")
-        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&embed=screenshot.url"
+        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&force=true&embed=screenshot.url"
         : "https://image.thum.io/get/width/1920/crop/1080/" + url;
       previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
       previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
