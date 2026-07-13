@@ -664,15 +664,13 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      galaxyGroup.rotation.z += delta * 0.045;
-      galaxyGroup.rotation.x = 0.35 + Math.sin(t * 0.015) * 0.03;
-
       glowSphere.material.opacity = 0.2 + Math.sin(t * 0.4) * 0.08;
       glowSphere.scale.setScalar(1 + Math.sin(t * 0.25) * 0.06);
       glowSphere2.material.opacity = 0.06 + Math.sin(t * 0.3 + 1) * 0.03;
 
+      dust.rotation.y += delta * 0.025;
+      dust.rotation.x = 0.35 + Math.sin(t * 0.01) * 0.02;
       stars.rotation.y += delta * 0.001;
-      dust.rotation.y += delta * 0.002;
 
       renderer.render(scene, camera);
     }
