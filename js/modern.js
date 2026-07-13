@@ -8,7 +8,7 @@
       nav_projects: "Projects",
       nav_portfolio: "Portfolio",
       nav_certs: "Certifications",
-      nav_report: "GitHub Report",
+      nav_report: "GR",
       nav_contact: "Contact",
       hero_eyebrow: "DevOps Engineer | Platform & Cloud",
       hero_title: "I build fast, secure, and reliable cloud platforms.",
@@ -98,7 +98,7 @@
 
       support_title: "Financial Support",
       support_wallet: "SEND USDT TRC20",
-      nav_report: "GitHub Report",
+      nav_report: "GR",
       report_title: "GitHub Report",
       report_desc: "Comprehensive overview of open source activity and contribution metrics.",
       report_overview: "Account Overview",
@@ -117,7 +117,8 @@
       report_noActivity: "No activity in the last 30 days.",
       portfolio_title: "Portfolio",
       portfolio_desc: "Platforms, websites and applications designed and delivered.",
-      portfolio_loading: "Loading website..."
+      portfolio_loading: "Loading website...",
+      portfolio_blocked: "Site blocked iframe, opening in new tab..."
     },
     fa: {
       nav_about: "\u062f\u0631\u0628\u0627\u0631\u0647 \u0645\u0646",
@@ -127,7 +128,7 @@
       nav_projects: "\u067e\u0631\u0648\u0698\u0647 \u0647\u0627",
       nav_portfolio: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
       nav_certs: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0647\u0627",
-      nav_report: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
+      nav_report: "GR",
       nav_contact: "\u062a\u0645\u0627\u0633",
       hero_eyebrow: "\u0645\u0647\u0646\u062f\u0633 \u062f\u0648\u0627\u067e\u0633 | \u067e\u0644\u062a\u0641\u0631\u0645 \u0648 \u06a9\u0644\u0648\u062f",
       hero_title: "\u0645\u0646 \u067e\u0644\u062a\u0641\u0631\u0645 \u0647\u0627\u06cc \u0633\u0631\u06cc\u0639\u060c \u0627\u0645\u0646 \u0648 \u067e\u0627\u06cc\u062f\u0627\u0631 \u0645\u06cc \u0633\u0627\u0632\u0645.",
@@ -217,7 +218,7 @@
 
       support_title: "\u062d\u0645\u0627\u06cc\u062a",
       support_wallet: "\u0627\u0631\u0633\u0627\u0644 USDT TRC20",
-      nav_report: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
+      nav_report: "GR",
       report_title: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
       report_desc: "\u0646\u0645\u0627\u06cc \u062c\u0627\u0645\u0639 \u0627\u0632 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0645\u062a\u0646\u200c\u0628\u0627\u0632 \u0648 \u0645\u0639\u06cc\u0627\u0631\u0647\u0627\u06cc \u0645\u0634\u0627\u0631\u06a9\u062a.",
       report_overview: "\u0646\u0645\u0627\u06cc \u06a9\u0644\u06cc \u062d\u0633\u0627\u0628",
@@ -236,7 +237,8 @@
       report_noActivity: "\u0647\u06cc\u0686 \u0641\u0639\u0627\u0644\u06cc\u062a\u06cc \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631 \u062b\u0628\u062a \u0646\u0634\u062f\u0647.",
       portfolio_title: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
       portfolio_desc: "\u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u060c \u0633\u0627\u06cc\u062a\u200c\u0647\u0627 \u0648 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0637\u0631\u0627\u062d\u06cc \u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647.",
-      portfolio_loading: "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0633\u0627\u06cc\u062a..."
+      portfolio_loading: "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0633\u0627\u06cc\u062a...",
+      portfolio_blocked: "\u0633\u0627\u06cc\u062a \u0646\u0645\u062a\u0648\u0627\u0646\u0633\u062a \u062f\u0631 iframe \u0628\u0627\u0631 \u0634\u0648\u062f\u060c \u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u062f\u0631 \u062a\u0627\u0628 \u062c\u062f\u06cc\u062f..."
     }
   };
 
@@ -425,144 +427,141 @@
     document.body.classList.remove("no-webgl");
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 0, 9);
+    const camera = new THREE.PerspectiveCamera(65, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.set(0, 1.2, 8);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.2);
-    scene.add(ambient);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.35);
-    dirLight.position.set(5, 5, 5);
-    scene.add(dirLight);
+    // Galaxy particle system
+    const galaxyParticles = 8000;
+    const positions = new Float32Array(galaxyParticles * 3);
+    const colors = new Float32Array(galaxyParticles * 3);
+    const sizes = new Float32Array(galaxyParticles);
+    const randoms = new Float32Array(galaxyParticles);
 
-    // icosahedron core
-    const icoMat = new THREE.MeshStandardMaterial({
-      color: 0x1fe0b5, emissive: 0x1fe0b5, emissiveIntensity: 0.1,
-      wireframe: false, transparent: true, opacity: 0.3, metalness: 0.4, roughness: 0.3,
-      flatShading: true
-    });
-    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.8, 0), icoMat);
+    const colorCenter = new THREE.Color(0x1fe0b5);
+    const colorMid = new THREE.Color(0x7c3aed);
+    const colorEdge = new THREE.Color(0x1ba5ff);
 
-    const icoWireMat = new THREE.MeshBasicMaterial({
-      color: 0x1ba5ff, wireframe: true, transparent: true, opacity: 0.15
-    });
-    const icoWire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.85, 0), icoWireMat);
+    const radius = 4.5;
+    const arms = 3;
+    const spin = 1.8;
+    const randomness = 0.35;
+    const armSpread = 0.5;
 
-    const octaMat = new THREE.MeshStandardMaterial({
-      color: 0x7c3aed, emissive: 0x7c3aed, emissiveIntensity: 0.08,
-      wireframe: false, transparent: true, opacity: 0.2, metalness: 0.3, roughness: 0.4,
-      flatShading: true
-    });
-    const octa = new THREE.Mesh(new THREE.OctahedronGeometry(0.6), octaMat);
-    octa.position.set(3.2, 1.2, 0);
+    for (let i = 0; i < galaxyParticles; i++) {
+      const armIdx = i % arms;
+      const armAngle = (armIdx / arms) * Math.PI * 2;
+      const dist = Math.pow(Math.random(), 1.2) * radius;
+      const distFactor = dist / radius;
+      const angle = armAngle + dist * spin + (Math.random() - 0.5) * randomness * (1 - distFactor * 0.5);
 
-    const dodeMat = new THREE.MeshBasicMaterial({
-      color: 0xffb449, wireframe: true, transparent: true, opacity: 0.1
-    });
-    const dode = new THREE.Mesh(new THREE.DodecahedronGeometry(1.0), dodeMat);
-    dode.position.set(-2.8, -1.5, -1);
+      const x = Math.cos(angle) * dist + (Math.random() - 0.5) * armSpread * distFactor;
+      const z = Math.sin(angle) * dist + (Math.random() - 0.5) * armSpread * distFactor;
+      const y = (Math.random() - 0.5) * 0.6 * (1 - distFactor * 0.3);
 
-    // text particle animation (inner)
-    const text = "MOHAMMAD MEHRANI";
-    const fontSize = 100;
-    const step = 3;
-    const colors = [0x1ba5ff, 0x7c3aed, 0x1fe0b5];
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
 
-    function getCharPoints(ch) {
-      const c = document.createElement("canvas");
-      const cx = c.getContext("2d");
-      c.width = 200;
-      c.height = 170;
-      cx.fillStyle = "#fff";
-      cx.font = "bold " + fontSize + "px Arial";
-      cx.textAlign = "center";
-      cx.textBaseline = "middle";
-      cx.fillText(ch, c.width / 2, c.height / 2);
-      const img = cx.getImageData(0, 0, c.width, c.height);
-      const d = img.data;
-      const pts = [];
-      let tx = 0, ty = 0, cnt = 0;
-      for (let y = 0; y < c.height; y += step) {
-        for (let x = 0; x < c.width; x += step) {
-          if ((y * c.width + x) * 4 < d.length && d[(y * c.width + x) * 4] > 128) {
-            const px = (x / c.width - 0.5) * 2;
-            const py = -(y / c.height - 0.5) * 1.6;
-            pts.push({ x: px, y: py });
-            tx += px; ty += py; cnt++;
-          }
-        }
-      }
-      const cx_ = cnt ? tx / cnt : 0, cy_ = cnt ? ty / cnt : 0;
-      pts.forEach(p => { p.x -= cx_; p.y -= cy_; });
-      return pts;
+      const c = new THREE.Color().lerpColors(colorCenter, colorMid, distFactor * 0.6);
+      c.lerp(colorEdge, Math.pow(distFactor, 1.5) * 0.5);
+      colors[i * 3] = c.r;
+      colors[i * 3 + 1] = c.g;
+      colors[i * 3 + 2] = c.b;
+
+      sizes[i] = 0.04 + Math.random() * 0.08 * (1 - distFactor * 0.4);
+      randoms[i] = Math.random() * Math.PI * 2;
     }
 
-    const chars = text.split("");
-    const letters = chars.map(getCharPoints);
+    const galaxyGeo = new THREE.BufferGeometry();
+    galaxyGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    galaxyGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    galaxyGeo.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
 
-    const group = new THREE.Group();
-    group.add(ico);
-    group.add(icoWire);
-    group.add(octa);
-    group.add(dode);
-    scene.add(group);
+    const galaxyMat = new THREE.PointsMaterial({
+      size: 0.07,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+    const galaxy = new THREE.Points(galaxyGeo, galaxyMat);
+    galaxy.rotation.x = 0.25;
 
-    const allParticles = [];
-    const numParticles = 2000;
-
-    for (let pi = 0; pi < numParticles; pi++) {
-      const targets = [];
-      for (let ci = 0; ci < letters.length; ci++) {
-        const pts = letters[ci];
-        let t;
-        if (!pts.length) {
-          t = { x: 0, y: 0 };
-        } else if (pi < pts.length) {
-          t = pts[pi];
-        } else {
-          const src = pts[pi % pts.length];
-          t = { x: src.x + (Math.random() - 0.5) * 0.1, y: src.y + (Math.random() - 0.5) * 0.1 };
-        }
-        targets.push(new THREE.Vector3(t.x, t.y, (Math.random() - 0.5) * 0.2));
-      }
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const size = 0.03 + Math.random() * 0.04;
-      const mat = new THREE.MeshStandardMaterial({
-        color, emissive: color, emissiveIntensity: 0.25,
-        metalness: 0.2, roughness: 0.4, transparent: true, opacity: 0
-      });
-      const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 6, 6), mat);
-      mesh.position.set(targets[0].x, targets[0].y, targets[0].z);
-      group.add(mesh);
-      allParticles.push({
-        mesh, targets, color,
-        phase: Math.random() * Math.PI * 2
-      });
-    }
-
-    const bgParticles = [];
-    for (let i = 0; i < 50; i++) {
+    // Outer star field
+    const starCount = 2000;
+    const starPos = new Float32Array(starCount * 3);
+    const starSizes = new Float32Array(starCount);
+    const starSpeeds = new Float32Array(starCount);
+    for (let i = 0; i < starCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 5 + Math.random() * 3;
-      const pos = new THREE.Vector3(
-        Math.sin(phi) * Math.cos(theta) * r,
-        Math.sin(phi) * Math.sin(theta) * r * 0.4,
-        Math.cos(phi) * r
-      );
-      const pMat = new THREE.MeshBasicMaterial({
-        color: colors[Math.floor(Math.random() * colors.length)],
-        transparent: true, opacity: 0.06 + Math.random() * 0.08
-      });
-      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(0.01 + Math.random() * 0.02, 4, 4), pMat);
-      pMesh.position.copy(pos);
-      group.add(pMesh);
-      bgParticles.push({ mesh: pMesh, pos: pos.clone(), speed: 0.015 + Math.random() * 0.04, phase: Math.random() * Math.PI * 2 });
+      const r = 15 + Math.random() * 30;
+      starPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
+      starPos[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r * 0.4;
+      starPos[i * 3 + 2] = Math.cos(phi) * r;
+      starSizes[i] = 0.02 + Math.random() * 0.06;
+      starSpeeds[i] = 0.002 + Math.random() * 0.006;
     }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({
+      color: 0xaabbdd,
+      size: 0.04,
+      transparent: true,
+      opacity: 0.5,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+    const stars = new THREE.Points(starGeo, starMat);
+
+    // Central glow
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x1fe0b5,
+      transparent: true,
+      opacity: 0.15,
+      blending: THREE.AdditiveBlending
+    });
+    const glowSphere = new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), glowMat);
+
+    // Ring system
+    const rings = [];
+    const ringColors = [0x1fe0b5, 0x7c3aed, 0x1ba5ff];
+    for (let ri = 0; ri < 3; ri++) {
+      const rRadius = 2.2 + ri * 0.7;
+      const rSegs = 64;
+      const rPts = [];
+      for (let j = 0; j <= rSegs; j++) {
+        const theta = (j / rSegs) * Math.PI * 2;
+        const rX = Math.cos(theta) * rRadius;
+        const rZ = Math.sin(theta) * rRadius;
+        const rY = Math.sin(theta * 2 + ri) * 0.15;
+        rPts.push(new THREE.Vector3(rX, rY, rZ));
+      }
+      const rGeo = new THREE.BufferGeometry().setFromPoints(rPts);
+      const rMat = new THREE.LineBasicMaterial({
+        color: ringColors[ri],
+        transparent: true,
+        opacity: 0.08 + ri * 0.03
+      });
+      const rLine = new THREE.Line(rGeo, rMat);
+      rLine.rotation.x = 0.3 + ri * 0.15;
+      rLine.rotation.z = ri * 0.1;
+      rLine.userData = { speed: 0.1 + ri * 0.05, phase: ri * 0.5 };
+      rings.push(rLine);
+    }
+
+    scene.add(galaxy);
+    scene.add(stars);
+    scene.add(glowSphere);
+    rings.forEach(r => scene.add(r));
 
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
@@ -578,47 +577,18 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      // animate geometric shapes
-      ico.rotation.x += delta * 0.15;
-      ico.rotation.y += delta * 0.2;
-      icoWire.rotation.x += delta * 0.12;
-      icoWire.rotation.y += delta * 0.16;
-      octa.rotation.x += delta * 0.25;
-      octa.rotation.z += delta * 0.3;
-      octa.position.y = 1.2 + Math.sin(t * 0.5) * 0.4;
-      dode.rotation.y += delta * 0.08;
-      dode.rotation.z += delta * 0.05;
-      icoMat.emissiveIntensity = 0.08 + Math.sin(t * 0.4) * 0.06;
+      galaxy.rotation.y += delta * 0.06;
+      galaxy.rotation.x = 0.25 + Math.sin(t * 0.02) * 0.04;
 
-      // animate inner text particles
-      const perLetter = 3.5;
-      const total = letters.length * perLetter;
-      const loopT = t % total;
-      const ci = Math.floor(loopT / perLetter);
-      const progress = (loopT % perLetter) / perLetter;
-      const mix = Math.min(1, progress * 1.5);
-      const nextIdx = (ci + 1) % letters.length;
+      glowSphere.material.opacity = 0.12 + Math.sin(t * 0.3) * 0.05;
+      glowSphere.scale.setScalar(1 + Math.sin(t * 0.2) * 0.08);
 
-      allParticles.forEach(p => {
-        const from = p.targets[ci];
-        const to = p.targets[nextIdx];
-        p.mesh.position.lerpVectors(from, to, mix);
-        const s = 0.6 + mix * 0.4;
-        p.mesh.scale.set(s, s, s);
-        p.mesh.position.x += Math.sin(t * 0.6 + p.phase) * 0.002;
-        p.mesh.position.y += Math.cos(t * 0.5 + p.phase) * 0.0015;
-        const fade = 0.35 + 0.65 * (1 - Math.abs(mix - 0.5) * 2);
-        p.mesh.material.opacity = fade;
-        p.mesh.material.emissiveIntensity = 0.12 + fade * 0.2;
+      rings.forEach((r, i) => {
+        r.rotation.y += delta * r.userData.speed;
+        r.rotation.x = 0.3 + i * 0.15 + Math.sin(t * 0.05 + i) * 0.02;
       });
 
-      bgParticles.forEach(p => {
-        p.mesh.position.x += Math.sin(t * p.speed + p.phase) * 0.001;
-        p.mesh.position.y += Math.cos(t * p.speed * 0.7 + p.phase) * 0.001;
-      });
-
-      group.rotation.y += delta * 0.04;
-      group.rotation.x = Math.sin(t * 0.015) * 0.03;
+      stars.rotation.y += delta * 0.003;
 
       renderer.render(scene, camera);
     }
@@ -913,15 +883,25 @@
 
     if (!modal || !iframe) return;
 
+    const proxyUrl = (url) => "https://corsproxy.io/?" + encodeURIComponent(url);
+
     const openModal = (url) => {
-      iframe.src = url;
       urlText.textContent = url;
       if (externalBtn) externalBtn.href = url;
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
       if (loading) loading.classList.remove("hidden");
-      iframe.onload = () => { if (loading) loading.classList.add("hidden"); };
-      setTimeout(() => { if (loading) loading.classList.add("hidden"); }, 8000);
+
+      iframe.src = proxyUrl(url);
+
+      let loaded = false;
+      iframe.onload = () => { loaded = true; if (loading) loading.classList.add("hidden"); };
+      setTimeout(() => {
+        if (!loaded && loading) {
+          loading.innerHTML = '<div class="portfolio-fallback" style="height:100%"><i class="bi bi-globe2" style="font-size:3rem"></i><span style="font-size:1rem">' + (dict[currentLang].portfolio_blocked || "Site blocked iframe, opening in new tab...") + '</span></div>';
+          setTimeout(() => { window.open(url, "_blank"); }, 1500);
+        }
+      }, 6000);
     };
 
     const closeModal = () => {
