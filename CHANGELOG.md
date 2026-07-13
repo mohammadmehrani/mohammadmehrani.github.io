@@ -4,6 +4,25 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: replace spiral galaxy with Saturn-like planet scene
+- Central planet with banding, atmosphere glow
+- Saturn ring system (4 concentric rings)
+- Dense orbital particle belt (8000 particles)
+- Inner swarm (4000 particles) close to planet
+- 8 orbiting moon objects
+- 3-point lighting for planet depth
+- Background stars and scattered orbs kept
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: circular point textures (radial gradient) for galaxy particles + force-refresh iodeck screenshot
 
 ### 2026-07-13
@@ -183,22 +202,3 @@ feat: 3D galaxy background, local portfolio screenshots, GR nav, CORS proxy moda
 chore: update CI status
 
 ### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: update 3D background, add social nav, portfolio section with 6 sites
-
-### 2026-07-13
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-12
-
-chore: update CI status
-
