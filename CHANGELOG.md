@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+fix: restore original spiral galaxy centered with angle
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 refactor: simplified central core with orbiting rings, nebula cloud
 
 ### 2026-07-13
@@ -177,22 +193,6 @@ chore: update changelog
 ### 2026-07-08
 
 feat: merge Torus Knot outer shape + inner particle text animation
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update changelog
-
-### 2026-07-08
-
-fix: space char crash in 3D, try-catch wrappers
 
 ### 2026-07-08
 
