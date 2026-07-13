@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: change mini 3D shapes to spheres, remove 'Open' text from modal button
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 fix: use microlink for iodeck.ir screenshot (Cloudflare blocks thum.io)
 
 ### 2026-07-13
@@ -187,18 +199,6 @@ chore: update CI status
 chore: update repo stats
 
 ### 2026-07-11
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-10
-
-chore: update CI status
-
-### 2026-07-10
-
-chore: update repo stats
-
-### 2026-07-10
 
 rotate: 3D theme [skip ci]
 
