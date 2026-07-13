@@ -428,227 +428,150 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 1.3, 7.5);
+    camera.position.set(0, 0, 6.5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // --- Galaxy colors (realistic) ---
-    const colCore = new THREE.Color(0xffdd88);
-    const colInner = new THREE.Color(0xcc88ff);
-    const colMid = new THREE.Color(0x8855dd);
-    const colOuter = new THREE.Color(0x4488ff);
-    const colTip = new THREE.Color(0x44ddff);
+    const hue = new THREE.Color();
 
-    // --- Main galaxy: 2-arm spiral, 15000 particles ---
-    const gCount = 15000;
-    const gPos = new Float32Array(gCount * 3);
-    const gCol = new Float32Array(gCount * 3);
-    const gSiz = new Float32Array(gCount);
-    const gPhs = new Float32Array(gCount);
+    // --- Core glow (center) ---
+    const coreMat = new THREE.MeshBasicMaterial({
+      color: 0xffaa55,
+      transparent: true,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending
+    });
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.3, 20, 20), coreMat);
+    const coreHaloMat = new THREE.MeshBasicMaterial({
+      color: 0xdd88ff,
+      transparent: true,
+      opacity: 0.12,
+      blending: THREE.AdditiveBlending
+    });
+    const coreHalo = new THREE.Mesh(new THREE.SphereGeometry(0.6, 20, 20), coreHaloMat);
 
-    const gRadius = 4.2;
-    const arms = 2;
-    const spin = 2.4;
+    // --- Orbiting ring particles (tilted) ---
+    const orbCount = 4000;
+    const orbPos = new Float32Array(orbCount * 3);
+    const orbCol = new Float32Array(orbCount * 3);
+    const orbSiz = new Float32Array(orbCount);
+    const orbPhs = new Float32Array(orbCount);
 
-    for (let i = 0; i < gCount; i++) {
-      const arm = i % arms;
-      const armAngle = (arm / arms) * Math.PI * 2;
-      const dist = Math.pow(Math.random(), 1.0) * gRadius;
-      const df = dist / gRadius;
+    const ringRadius = 1.2;
+    const ringSpread = 0.3;
+    for (let i = 0; i < orbCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const r = ringRadius + (Math.random() - 0.5) * ringSpread;
+      const spreadY = (Math.random() - 0.5) * 0.12;
+      orbPos[i * 3] = Math.cos(angle) * r;
+      orbPos[i * 3 + 1] = Math.sin(angle) * r * 0.15 + spreadY;
+      orbPos[i * 3 + 2] = Math.sin(angle) * r * 0.4;
 
-      const scatter = 0.15 + df * 0.35;
-      const angle = armAngle + dist * spin + (Math.random() - 0.5) * scatter;
-      const thickness = (Math.random() - 0.5) * 0.08 * (1 + df * 2);
-
-      const x = Math.cos(angle) * dist + (Math.random() - 0.5) * 0.3 * df;
-      const z = Math.sin(angle) * dist + (Math.random() - 0.5) * 0.3 * df;
-      const y = (Math.random() - 0.5) * 0.05 * (1 + df * 3);
-
-      gPos[i * 3] = x;
-      gPos[i * 3 + 1] = y;
-      gPos[i * 3 + 2] = z;
-
-      const c = new THREE.Color().lerpColors(colCore, colInner, df * 0.4);
-      c.lerp(colMid, Math.min(1, df * 0.7));
-      if (df > 0.5) {
-        c.lerp(colOuter, (df - 0.5) * 1.2);
-      }
-      if (df > 0.8) {
-        c.lerp(colTip, (df - 0.8) * 1.5);
-      }
-      gCol[i * 3] = c.r;
-      gCol[i * 3 + 1] = c.g;
-      gCol[i * 3 + 2] = c.b;
-
-      gSiz[i] = 0.02 + Math.random() * 0.04 * (1 + df * 0.5);
-      gPhs[i] = Math.random() * Math.PI * 2;
+      hue.setHSL(0.75 + Math.random() * 0.15, 0.8, 0.5 + Math.random() * 0.3);
+      orbCol[i * 3] = hue.r;
+      orbCol[i * 3 + 1] = hue.g;
+      orbCol[i * 3 + 2] = hue.b;
+      orbSiz[i] = 0.03 + Math.random() * 0.04;
+      orbPhs[i] = Math.random() * Math.PI * 2;
     }
+    const orbGeo = new THREE.BufferGeometry();
+    orbGeo.setAttribute("position", new THREE.BufferAttribute(orbPos, 3));
+    orbGeo.setAttribute("color", new THREE.BufferAttribute(orbCol, 3));
+    const orbMat = new THREE.PointsMaterial({
+      size: 0.04,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+    const rings = new THREE.Points(orbGeo, orbMat);
+    rings.rotation.x = 1.0;
+    rings.rotation.z = 0.2;
 
-    // Core bulge - dense sphere of warm particles
-    const bulgeCount = 3000;
-    const bPos = new Float32Array(bulgeCount * 3);
-    const bCol = new Float32Array(bulgeCount * 3);
-    const bSiz = new Float32Array(bulgeCount);
-    for (let i = 0; i < bulgeCount; i++) {
-      const r = Math.pow(Math.random(), 1.5) * 0.5;
+    // --- Outer scattered particles (nebula cloud) ---
+    const cloudCount = 6000;
+    const cPos = new Float32Array(cloudCount * 3);
+    const cCol = new Float32Array(cloudCount * 3);
+    const cSiz = new Float32Array(cloudCount);
+    const cPhs = new Float32Array(cloudCount);
+    for (let i = 0; i < cloudCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      bPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-      bPos[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r * 0.6;
-      bPos[i * 3 + 2] = Math.cos(phi) * r;
+      const r = 1.5 + Math.random() * 4.5;
+      const stretch = 0.4 + Math.random() * 0.6;
+      cPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
+      cPos[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r * 0.3;
+      cPos[i * 3 + 2] = Math.cos(phi) * r * stretch;
 
-      const brightness = 0.8 + Math.random() * 0.2;
-      bCol[i * 3] = 1.0 * brightness;
-      bCol[i * 3 + 1] = 0.85 * brightness;
-      bCol[i * 3 + 2] = 0.55 * brightness;
-      bSiz[i] = 0.03 + Math.random() * 0.06;
+      const t = Math.random();
+      if (t < 0.33) hue.setHSL(0.78, 0.7, 0.4 + Math.random() * 0.3);
+      else if (t < 0.66) hue.setHSL(0.65, 0.6, 0.5 + Math.random() * 0.2);
+      else hue.setHSL(0.55, 0.5, 0.6 + Math.random() * 0.2);
+      cCol[i * 3] = hue.r * 0.6;
+      cCol[i * 3 + 1] = hue.g * 0.6;
+      cCol[i * 3 + 2] = hue.b * 0.6;
+      cSiz[i] = 0.06 + Math.random() * 0.14;
+      cPhs[i] = Math.random() * Math.PI * 2;
     }
-
-    const galGeo = new THREE.BufferGeometry();
-    galGeo.setAttribute("position", new THREE.BufferAttribute(gPos, 3));
-    galGeo.setAttribute("color", new THREE.BufferAttribute(gCol, 3));
-
-    const bulgeGeo = new THREE.BufferGeometry();
-    bulgeGeo.setAttribute("position", new THREE.BufferAttribute(bPos, 3));
-    bulgeGeo.setAttribute("color", new THREE.BufferAttribute(bCol, 3));
-
-    const galMat = new THREE.PointsMaterial({
-      size: 0.045,
+    const cloudGeo = new THREE.BufferGeometry();
+    cloudGeo.setAttribute("position", new THREE.BufferAttribute(cPos, 3));
+    cloudGeo.setAttribute("color", new THREE.BufferAttribute(cCol, 3));
+    const cloudMat = new THREE.PointsMaterial({
+      size: 0.1,
       vertexColors: true,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.3,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true
     });
-    const galaxy = new THREE.Points(galGeo, galMat);
+    const cloud = new THREE.Points(cloudGeo, cloudMat);
 
-    const bulgeMat = new THREE.PointsMaterial({
-      size: 0.055,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.9,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      sizeAttenuation: true
-    });
-    const bulge = new THREE.Points(bulgeGeo, bulgeMat);
-
-    // --- Star field background (15000 stars, varied colors/sizes) ---
-    const starCount = 15000;
+    // --- Background stars ---
+    const starCount = 12000;
     const sPos = new Float32Array(starCount * 3);
     const sCol = new Float32Array(starCount * 3);
     const sSiz = new Float32Array(starCount);
-    const sPhs = new Float32Array(starCount);
-    const starColors = [
-      new THREE.Color(0xffffff),
-      new THREE.Color(0xaaccff),
-      new THREE.Color(0xffddbb),
-      new THREE.Color(0xbbddff)
-    ];
     for (let i = 0; i < starCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 10 + Math.random() * 40;
+      const r = 8 + Math.random() * 35;
       sPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-      sPos[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r * 0.5;
+      sPos[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r * 0.6;
       sPos[i * 3 + 2] = Math.cos(phi) * r;
 
-      const sc = starColors[Math.floor(Math.random() * starColors.length)];
-      const br = 0.4 + Math.random() * 0.6;
-      sCol[i * 3] = sc.r * br;
-      sCol[i * 3 + 1] = sc.g * br;
-      sCol[i * 3 + 2] = sc.b * br;
-
-      sSiz[i] = 0.01 + Math.random() * 0.04;
-      sPhs[i] = Math.random() * Math.PI * 2;
+      const t = Math.random();
+      if (t < 0.5) { sCol[i * 3] = 1; sCol[i * 3 + 1] = 1; sCol[i * 3 + 2] = 1; }
+      else if (t < 0.75) { sCol[i * 3] = 0.9; sCol[i * 3 + 1] = 0.8; sCol[i * 3 + 2] = 0.6; }
+      else { sCol[i * 3] = 0.7; sCol[i * 3 + 1] = 0.8; sCol[i * 3 + 2] = 1; }
+      const br = 0.3 + Math.random() * 0.7;
+      sCol[i * 3] *= br; sCol[i * 3 + 1] *= br; sCol[i * 3 + 2] *= br;
+      sSiz[i] = 0.01 + Math.random() * 0.035;
     }
     const starGeo = new THREE.BufferGeometry();
     starGeo.setAttribute("position", new THREE.BufferAttribute(sPos, 3));
     starGeo.setAttribute("color", new THREE.BufferAttribute(sCol, 3));
     const starMat = new THREE.PointsMaterial({
-      size: 0.025,
+      size: 0.02,
       vertexColors: true,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.65,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true
     });
     const stars = new THREE.Points(starGeo, starMat);
 
-    // --- Nebula / floating stardust particles ---
-    const dustCount = 4000;
-    const dPos = new Float32Array(dustCount * 3);
-    const dCol = new Float32Array(dustCount * 3);
-    const dSiz = new Float32Array(dustCount);
-    const dPhs = new Float32Array(dustCount);
-    const dustColors = [
-      new THREE.Color(0x6644aa),
-      new THREE.Color(0x4488dd),
-      new THREE.Color(0xaa44aa),
-      new THREE.Color(0x4488cc)
-    ];
-    for (let i = 0; i < dustCount; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const r = 5 + Math.random() * 12;
-      dPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-      dPos[i * 3 + 1] = (Math.random() - 0.5) * 6;
-      dPos[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
-
-      const dc = dustColors[Math.floor(Math.random() * dustColors.length)];
-      const br = 0.1 + Math.random() * 0.15;
-      dCol[i * 3] = dc.r * br;
-      dCol[i * 3 + 1] = dc.g * br;
-      dCol[i * 3 + 2] = dc.b * br;
-
-      dSiz[i] = 0.08 + Math.random() * 0.2;
-      dPhs[i] = Math.random() * Math.PI * 2;
-    }
-    const dustGeo = new THREE.BufferGeometry();
-    dustGeo.setAttribute("position", new THREE.BufferAttribute(dPos, 3));
-    dustGeo.setAttribute("color", new THREE.BufferAttribute(dCol, 3));
-    const dustMat = new THREE.PointsMaterial({
-      size: 0.15,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.25,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      sizeAttenuation: true
-    });
-    const dust = new THREE.Points(dustGeo, dustMat);
-
-    // --- Central bright core glow ---
-    const glowMat = new THREE.MeshBasicMaterial({
-      color: 0xffdd77,
-      transparent: true,
-      opacity: 0.25,
-      blending: THREE.AdditiveBlending
-    });
-    const glowSphere = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 16), glowMat);
-
-    const glowMat2 = new THREE.MeshBasicMaterial({
-      color: 0xcc88ff,
-      transparent: true,
-      opacity: 0.08,
-      blending: THREE.AdditiveBlending
-    });
-    const glowSphere2 = new THREE.Mesh(new THREE.SphereGeometry(0.7, 16, 16), glowMat2);
-
-    const galaxyGroup = new THREE.Group();
-    galaxyGroup.add(galaxy);
-    galaxyGroup.add(bulge);
-    galaxyGroup.add(glowSphere);
-    galaxyGroup.add(glowSphere2);
-    galaxyGroup.rotation.x = 0.35;
-    scene.add(galaxyGroup);
+    scene.add(core);
+    scene.add(coreHalo);
+    scene.add(rings);
+    scene.add(cloud);
     scene.add(stars);
-    scene.add(dust);
 
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
@@ -658,19 +581,20 @@
     }
     window.addEventListener("resize", resize);
 
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
     function animate() {
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      glowSphere.material.opacity = 0.2 + Math.sin(t * 0.4) * 0.08;
-      glowSphere.scale.setScalar(1 + Math.sin(t * 0.25) * 0.06);
-      glowSphere2.material.opacity = 0.06 + Math.sin(t * 0.3 + 1) * 0.03;
+      rings.rotation.y += delta * 0.35;
+      cloud.rotation.y += delta * 0.025;
+      cloud.rotation.x = 0.15 + Math.sin(t * 0.008) * 0.05;
+      stars.rotation.y += delta * 0.0008;
 
-      dust.rotation.y += delta * 0.025;
-      dust.rotation.x = 0.35 + Math.sin(t * 0.01) * 0.02;
-      stars.rotation.y += delta * 0.001;
+      coreMat.opacity = 0.35 + Math.sin(t * 0.5) * 0.1;
+      core.scale.setScalar(1 + Math.sin(t * 0.3) * 0.08);
+      coreHaloMat.opacity = 0.1 + Math.sin(t * 0.4 + 0.5) * 0.04;
 
       renderer.render(scene, camera);
     }
