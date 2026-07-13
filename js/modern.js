@@ -620,8 +620,7 @@
     scene.add(ambient);
     const group = new THREE.Group();
     scene.add(group);
-    const shape = opts.shape || "dode";
-    const geo = shape === "ico" ? new THREE.IcosahedronGeometry(s * 0.08, 0) : new THREE.DodecahedronGeometry(s * 0.08, 0);
+    const geo = new THREE.SphereGeometry(s * 0.08, 12, 12);
     const mat = new THREE.MeshStandardMaterial({
       color: opts.color || 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.25
     });
