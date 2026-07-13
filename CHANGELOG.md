@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+fix: use microlink for iodeck.ir screenshot (Cloudflare blocks thum.io)
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update repo stats
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: live thum.io screenshots for grid + modal, removed static images
 
 ### 2026-07-13
@@ -181,24 +201,4 @@ chore: update repo stats
 ### 2026-07-10
 
 rotate: 3D theme [skip ci]
-
-### 2026-07-09
-
-chore: update CI status
-
-### 2026-07-09
-
-chore: update repo stats
-
-### 2026-07-09
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update emails to madi@iodeck.ir / admin@iodeck.ir
 
