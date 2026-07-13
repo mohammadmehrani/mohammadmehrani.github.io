@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+fix: correct ring rotation axis for proper Saturn viewing angle
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: resize Saturn scene to full-view scale with multi-color particle cloud
 
 ### 2026-07-13
@@ -188,17 +200,5 @@ fix: galaxy angled view (rotation.x=0.35) like before
 ### 2026-07-13
 
 chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-fix: realistic center galaxy with spiral arms, bulge, dust, deeper bg
 
 ### 2026-07-13
