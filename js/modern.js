@@ -883,16 +883,14 @@
   function initPortfolioModal() {
     const cards = document.querySelectorAll(".portfolio-card");
     const modal = document.getElementById("portfolioModal");
-    const iframe = document.getElementById("portfolioIframe");
+    const previewImg = document.getElementById("portfolioPreviewImg");
     const loading = document.getElementById("portfolioLoading");
     const urlText = document.getElementById("pmbUrlText");
     const closeBtn = modal?.querySelector(".pmb-close");
     const backdrop = modal?.querySelector(".portfolio-modal-backdrop");
     const externalBtn = document.getElementById("pmbExternal");
 
-    if (!modal || !iframe) return;
-
-    const proxyUrl = (url) => "https://corsproxy.io/?" + encodeURIComponent(url);
+    if (!modal || !previewImg) return;
 
     const openModal = (url) => {
       urlText.textContent = url;
@@ -900,23 +898,15 @@
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
       if (loading) loading.classList.remove("hidden");
-
-      iframe.src = proxyUrl(url);
-
-      let loaded = false;
-      iframe.onload = () => { loaded = true; if (loading) loading.classList.add("hidden"); };
-      setTimeout(() => {
-        if (!loaded && loading) {
-          loading.innerHTML = '<div class="portfolio-fallback" style="height:100%"><i class="bi bi-globe2" style="font-size:3rem"></i><span style="font-size:1rem">' + (dict[currentLang].portfolio_blocked || "Site blocked iframe, opening in new tab...") + '</span></div>';
-          setTimeout(() => { window.open(url, "_blank"); }, 1500);
-        }
-      }, 6000);
+      previewImg.src = "https://image.thum.io/get/width/1920/crop/1080/" + url;
+      previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
+      previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
     };
 
     const closeModal = () => {
       modal.classList.remove("active");
       document.body.style.overflow = "";
-      setTimeout(() => { iframe.src = ""; }, 300);
+      setTimeout(() => { previewImg.src = ""; }, 300);
     };
 
     cards.forEach((card) => {
