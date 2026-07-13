@@ -492,7 +492,7 @@
         map: tex || null
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.rotation.x = Math.PI / 2.6;
+      ring.rotation.x = -Math.PI / 2;
       return ring;
     }
     // Ring texture (subtle variation)
