@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+clean: remove unused assets (old CSS, JS plugins, Wordpress images, commented section)
+Deleted: css/main.css, main.css.bak, aos.css
+Deleted: js/aos.js, now-ui-kit.js, core/, plugins/
+Deleted: images/1-4.png (Wordpress section was commented out)
+Removed: commented WordPress section from HTML
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: change mini 3D shapes to spheres, remove 'Open' text from modal button
 
 ### 2026-07-13
@@ -181,24 +201,4 @@ chore: update CI status
 ### 2026-07-11
 
 chore: update CI status
-
-### 2026-07-11
-
-chore: update changelog
-
-### 2026-07-11
-
-Remove schedule from blog-post-workflow
-
-### 2026-07-11
-
-chore: update CI status
-
-### 2026-07-11
-
-chore: update repo stats
-
-### 2026-07-11
-
-rotate: 3D theme [skip ci]
 
