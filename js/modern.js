@@ -448,115 +448,146 @@
     ctx.fillRect(0, 0, 32, 32);
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
 
-    // --- Saturn-like Planet ---
+    // --- Saturn-like Planet Scene (full-view, multi-color) ---
     const planetGroup = new THREE.Group();
     planetGroup.rotation.x = 0.3;
 
-    // Planet body
-    const planetGeo = new THREE.SphereGeometry(0.7, 32, 32);
+    // Planet body (realistic with banding)
+    const planetGeo = new THREE.SphereGeometry(1.0, 48, 48);
     const planetMat = new THREE.MeshStandardMaterial({
-      color: 0xd4a06a, metalness: 0.3, roughness: 0.7
+      color: 0xd4a06a, metalness: 0.2, roughness: 0.8
     });
     const planet = new THREE.Mesh(planetGeo, planetMat);
 
-    // Planet banding (subtle stripes via a second transparent mesh)
-    const bandGeo = new THREE.SphereGeometry(0.705, 32, 32);
-    const bandMat = new THREE.MeshBasicMaterial({
-      color: 0xb8875a, transparent: true, opacity: 0.15, wireframe: true
+    // Banding overlay
+    const bandCtx = document.createElement("canvas").getContext("2d");
+    bandCtx.canvas.width = 256; bandCtx.canvas.height = 128;
+    for (let y = 0; y < 128; y++) {
+      const bandVal = 60 + Math.sin(y * 0.25) * 25 + Math.sin(y * 0.6) * 12 + Math.sin(y * 1.3) * 6;
+      bandCtx.fillStyle = "rgb(" + (140 + bandVal) + "," + (100 + bandVal) + "," + (60 + bandVal * 0.6) + ")";
+      bandCtx.fillRect(0, y, 256, 1);
+    }
+    const bandTex = new THREE.CanvasTexture(bandCtx.canvas);
+    const bandMat = new THREE.MeshStandardMaterial({
+      map: bandTex, transparent: true, opacity: 0.35, blending: THREE.MultiplyBlending
     });
-    const band = new THREE.Mesh(bandGeo, bandMat);
+    const bandMesh = new THREE.Mesh(new THREE.SphereGeometry(1.005, 48, 48), bandMat);
 
     // Atmosphere glow
-    const atmoGlow = new THREE.Mesh(new THREE.SphereGeometry(0.75, 24, 24),
-      new THREE.MeshBasicMaterial({ color: 0xe8c88a, transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending }));
-    const atmoGlow2 = new THREE.Mesh(new THREE.SphereGeometry(0.85, 24, 24),
-      new THREE.MeshBasicMaterial({ color: 0xd4a06a, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending }));
+    const atmoGlow = new THREE.Mesh(new THREE.SphereGeometry(1.1, 32, 32),
+      new THREE.MeshBasicMaterial({ color: 0xe8c88a, transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending }));
+    const atmoGlow2 = new THREE.Mesh(new THREE.SphereGeometry(1.25, 32, 32),
+      new THREE.MeshBasicMaterial({ color: 0xd4a06a, transparent: true, opacity: 0.04, blending: THREE.AdditiveBlending }));
 
     planetGroup.add(planet);
-    planetGroup.add(band);
+    planetGroup.add(bandMesh);
     planetGroup.add(atmoGlow);
     planetGroup.add(atmoGlow2);
 
-    // Saturn Rings
-    function makeRing(inner, outer, color, opacity) {
-      const ringGeo = new THREE.RingGeometry(inner, outer, 64);
+    // Saturn Rings (realistic scale with gaps)
+    function makeRing(inner, outer, color, opacity, tex) {
+      const ringGeo = new THREE.RingGeometry(inner, outer, 80);
       const ringMat = new THREE.MeshBasicMaterial({
-        color, side: THREE.DoubleSide, transparent: true, opacity, depthWrite: false
+        color, side: THREE.DoubleSide, transparent: true, opacity, depthWrite: false,
+        map: tex || null
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.rotation.x = Math.PI / 2.4;
+      ring.rotation.x = Math.PI / 2.6;
       return ring;
     }
-    const ring1 = makeRing(0.95, 1.5, 0xc8a87a, 0.3);
-    const ring2 = makeRing(1.1, 1.8, 0xb8956a, 0.2);
-    const ring3 = makeRing(1.3, 2.0, 0xa08060, 0.12);
-    const ring4 = makeRing(0.85, 1.0, 0x988060, 0.08);
+    // Ring texture (subtle variation)
+    const ringCtx = document.createElement("canvas").getContext("2d");
+    ringCtx.canvas.width = 512; ringCtx.canvas.height = 16;
+    for (let x = 0; x < 512; x++) {
+      const v = 100 + Math.sin(x * 0.08) * 40 + Math.sin(x * 0.2) * 20 + Math.sin(x * 0.5) * 10;
+      const gap = (x > 180 && x < 200) || (x > 320 && x < 340);
+      const g = gap ? 20 : v;
+      ringCtx.fillStyle = "rgb(" + (g + 60) + "," + (g + 40) + "," + (g + 20) + ")";
+      ringCtx.fillRect(x, 0, 1, 16);
+    }
+    const ringTex = new THREE.CanvasTexture(ringCtx.canvas);
+    ringTex.wrapS = THREE.ClampToEdgeWrapping;
+
+    const ring1 = makeRing(1.3, 2.8, 0xc8a87a, 0.35, ringTex);
+    const ring2 = makeRing(1.5, 3.2, 0xb8956a, 0.2, ringTex);
+    const ring3 = makeRing(1.1, 1.25, 0x988060, 0.1);
+    const ring4 = makeRing(3.0, 3.8, 0xa08060, 0.08, ringTex);
     planetGroup.add(ring1, ring2, ring3, ring4);
 
-    // Orbital particle belt (dense, around the planet)
-    const beltCount = 8000;
-    const bPos = new Float32Array(beltCount * 3);
-    const bCol = new Float32Array(beltCount * 3);
-    for (let i = 0; i < beltCount; i++) {
-      const dist = 0.9 + Math.pow(Math.random(), 0.7) * 2.6;
+    // Multi-color orbital particle cloud (like old galaxy but around planet)
+    const cloudCount = 14000;
+    const cPos = new Float32Array(cloudCount * 3);
+    const cCol = new Float32Array(cloudCount * 3);
+    const colCore = new THREE.Color(0xffcc66);
+    const colInner = new THREE.Color(0xdd88ff);
+    const colMid = new THREE.Color(0x5588ff);
+    const colOuter = new THREE.Color(0x44ddcc);
+    const cloudRadius = 4.5;
+    for (let i = 0; i < cloudCount; i++) {
+      const dist = Math.pow(Math.random(), 0.9) * cloudRadius;
       const angle = Math.random() * Math.PI * 2;
-      const height = (Math.random() - 0.5) * 0.25 * (1 + dist * 0.3);
-      bPos[i * 3] = Math.cos(angle) * dist;
-      bPos[i * 3 + 1] = height;
-      bPos[i * 3 + 2] = Math.sin(angle) * dist;
+      const height = (Math.random() - 0.5) * 0.4 * (1 + dist * 0.2);
+      cPos[i * 3] = Math.cos(angle) * dist;
+      cPos[i * 3 + 1] = height;
+      cPos[i * 3 + 2] = Math.sin(angle) * dist;
+      const df = dist / cloudRadius;
+      const c = new THREE.Color().lerpColors(colCore, colInner, Math.min(1, df * 0.6));
+      if (df > 0.3) c.lerp(colMid, (df - 0.3) * 1.2);
+      if (df > 0.6) c.lerp(colOuter, (df - 0.6) * 1.8);
+      const br = 0.7 + Math.random() * 0.3;
+      cCol[i * 3] = c.r * br;
+      cCol[i * 3 + 1] = c.g * br;
+      cCol[i * 3 + 2] = c.b * br;
+    }
+    const cloudGeo = new THREE.BufferGeometry();
+    cloudGeo.setAttribute("position", new THREE.BufferAttribute(cPos, 3));
+    cloudGeo.setAttribute("color", new THREE.BufferAttribute(cCol, 3));
+    const cloud = new THREE.Points(cloudGeo, new THREE.PointsMaterial({
+      size: 0.055, vertexColors: true, transparent: true, opacity: 0.85, map: circleTexture,
+      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+    }));
+    planetGroup.add(cloud);
+
+    // Dense inner belt (smaller, closer particles)
+    const innerCount = 6000;
+    const iPos = new Float32Array(innerCount * 3);
+    const iCol = new Float32Array(innerCount * 3);
+    for (let i = 0; i < innerCount; i++) {
+      const dist = 0.5 + Math.pow(Math.random(), 0.4) * 1.5;
+      const angle = Math.random() * Math.PI * 2;
+      const height = (Math.random() - 0.5) * 0.15;
+      iPos[i * 3] = Math.cos(angle) * dist;
+      iPos[i * 3 + 1] = height;
+      iPos[i * 3 + 2] = Math.sin(angle) * dist;
       const t = Math.random();
-      if (t < 0.4) { hue.setHSL(0.08, 0.6, 0.5 + Math.random() * 0.3); }
-      else if (t < 0.7) { hue.setHSL(0.1, 0.5, 0.4 + Math.random() * 0.3); }
-      else { hue.setHSL(0.05, 0.7, 0.6 + Math.random() * 0.2); }
-      bCol[i*3]=hue.r; bCol[i*3+1]=hue.g; bCol[i*3+2]=hue.b;
+      if (t < 0.33) { hue.setHSL(0.08, 0.6, 0.5 + Math.random() * 0.3); }
+      else if (t < 0.66) { hue.setHSL(0.12, 0.5, 0.4 + Math.random() * 0.3); }
+      else { hue.setHSL(0.04, 0.7, 0.5 + Math.random() * 0.3); }
+      iCol[i*3]=hue.r; iCol[i*3+1]=hue.g; iCol[i*3+2]=hue.b;
     }
-    const beltGeo = new THREE.BufferGeometry();
-    beltGeo.setAttribute("position", new THREE.BufferAttribute(bPos, 3));
-    beltGeo.setAttribute("color", new THREE.BufferAttribute(bCol, 3));
-    const belt = new THREE.Points(beltGeo, new THREE.PointsMaterial({
-      size: 0.04, vertexColors: true, transparent: true, opacity: 0.7, map: circleTexture,
+    const innerGeo = new THREE.BufferGeometry();
+    innerGeo.setAttribute("position", new THREE.BufferAttribute(iPos, 3));
+    innerGeo.setAttribute("color", new THREE.BufferAttribute(iCol, 3));
+    const innerBelt = new THREE.Points(innerGeo, new THREE.PointsMaterial({
+      size: 0.035, vertexColors: true, transparent: true, opacity: 0.6, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
     }));
+    planetGroup.add(innerBelt);
 
-    planetGroup.add(belt);
-
-    // Dense inner swarm (closer to planet, smaller particles)
-    const swarmCount = 4000;
-    const wPos = new Float32Array(swarmCount * 3);
-    const wCol = new Float32Array(swarmCount * 3);
-    for (let i = 0; i < swarmCount; i++) {
-      const dist = 0.4 + Math.pow(Math.random(), 0.5) * 0.6;
-      const angle = Math.random() * Math.PI * 2;
-      const height = (Math.random() - 0.5) * 0.12;
-      wPos[i * 3] = Math.cos(angle) * dist;
-      wPos[i * 3 + 1] = height;
-      wPos[i * 3 + 2] = Math.sin(angle) * dist;
-      hue.setHSL(0.09 + Math.random() * 0.06, 0.7, 0.4 + Math.random() * 0.4);
-      wCol[i*3]=hue.r; wCol[i*3+1]=hue.g; wCol[i*3+2]=hue.b;
-    }
-    const swarmGeo = new THREE.BufferGeometry();
-    swarmGeo.setAttribute("position", new THREE.BufferAttribute(wPos, 3));
-    swarmGeo.setAttribute("color", new THREE.BufferAttribute(wCol, 3));
-    const swarm = new THREE.Points(swarmGeo, new THREE.PointsMaterial({
-      size: 0.03, vertexColors: true, transparent: true, opacity: 0.6, map: circleTexture,
-      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
-    }));
-    planetGroup.add(swarm);
-
-    // Scattered tiny moons (visible objects orbiting)
+    // Orbiting moons
     const moonGroup = new THREE.Group();
-    const moonCount = 8;
-    for (let i = 0; i < moonCount; i++) {
-      const dist = 1.0 + Math.random() * 1.8;
-      const ang = (i / moonCount) * Math.PI * 2 + Math.random() * 0.3;
-      const sz = 0.03 + Math.random() * 0.05;
-      const m = new THREE.Mesh(
+    for (let i = 0; i < 10; i++) {
+      const dist = 1.5 + Math.random() * 2.0;
+      const ang = Math.random() * Math.PI * 2;
+      const sz = 0.04 + Math.random() * 0.06;
+      const moonHue = Math.random();
+      const moon = new THREE.Mesh(
         new THREE.SphereGeometry(sz, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0xc8b090 })
+        new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(0.08 + moonHue * 0.1, 0.4, 0.4 + Math.random() * 0.3) })
       );
-      m.userData = { dist, ang, speed: 0.2 + Math.random() * 0.3, height: (Math.random() - 0.5) * 0.15 };
-      m.position.set(Math.cos(ang) * dist, m.userData.height, Math.sin(ang) * dist);
-      moonGroup.add(m);
+      moon.userData = { dist, ang, speed: 0.1 + Math.random() * 0.25, yOff: (Math.random() - 0.5) * 0.2 };
+      moon.position.set(Math.cos(ang) * dist, moon.userData.yOff, Math.sin(ang) * dist);
+      moonGroup.add(moon);
     }
     planetGroup.add(moonGroup);
 
@@ -595,7 +626,7 @@
     for (let i = 0; i < orbCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 3 + Math.random() * 8;
+      const r = 4 + Math.random() * 8;
       oPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
       oPos[i * 3 + 1] = (Math.random() - 0.5) * 5;
       oPos[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
@@ -616,13 +647,13 @@
     scene.add(stars);
     scene.add(orbs);
 
-    // Lights for planet
+    // Lights
     const ambientLight = new THREE.AmbientLight(0x404060);
     scene.add(ambientLight);
-    const dirLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+    const dirLight = new THREE.DirectionalLight(0xffeedd, 1.5);
     dirLight.position.set(5, 5, 5);
     scene.add(dirLight);
-    const fillLight = new THREE.DirectionalLight(0x8888ff, 0.5);
+    const fillLight = new THREE.DirectionalLight(0x8888ff, 0.4);
     fillLight.position.set(-5, -3, -5);
     scene.add(fillLight);
 
@@ -640,24 +671,24 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      planetGroup.rotation.y += delta * 0.015;
+      planetGroup.rotation.y += delta * 0.02;
 
-      belt.rotation.y += delta * 0.04;
-      swarm.rotation.y += delta * 0.06;
+      cloud.rotation.y += delta * 0.035;
+      innerBelt.rotation.y += delta * 0.05;
 
       moonGroup.children.forEach((m, i) => {
         const d = m.userData.dist;
         const ang = m.userData.ang + t * m.userData.speed;
         m.position.x = Math.cos(ang) * d;
         m.position.z = Math.sin(ang) * d;
-        m.position.y = m.userData.height + Math.sin(t * 0.5 + i) * 0.05;
+        m.position.y = m.userData.yOff + Math.sin(t * 0.6 + i * 1.2) * 0.04;
       });
 
-      planet.rotation.y += delta * 0.08;
-      band.rotation.y += delta * 0.06;
+      planet.rotation.y += delta * 0.1;
+      bandMesh.rotation.y += delta * 0.08;
 
-      atmoGlow.material.opacity = 0.1 + Math.sin(t * 0.3) * 0.04;
-      atmoGlow.scale.setScalar(1 + Math.sin(t * 0.2 + 0.5) * 0.03);
+      atmoGlow.material.opacity = 0.08 + Math.sin(t * 0.3) * 0.04;
+      atmoGlow.scale.setScalar(1 + Math.sin(t * 0.25 + 0.5) * 0.03);
 
       stars.rotation.y += delta * 0.001;
       orbs.rotation.y += delta * 0.005;
