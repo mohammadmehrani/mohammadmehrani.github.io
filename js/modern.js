@@ -898,7 +898,9 @@
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
       if (loading) loading.classList.remove("hidden");
-      previewImg.src = "https://image.thum.io/get/width/1920/crop/1080/" + url;
+      previewImg.src = url.includes("iodeck.ir")
+        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&embed=screenshot.url"
+        : "https://image.thum.io/get/width/1920/crop/1080/" + url;
       previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
       previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
     };
