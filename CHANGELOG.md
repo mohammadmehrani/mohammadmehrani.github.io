@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: live thum.io screenshots for grid + modal, removed static images
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 feat: multi-color galaxy gradient, floating orbs, colored stars
 
 ### 2026-07-13
@@ -185,20 +201,4 @@ chore: update CI status
 ### 2026-07-08
 
 chore: update emails to madi@iodeck.ir / admin@iodeck.ir
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update repo stats
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update CI status
 
