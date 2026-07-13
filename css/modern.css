@@ -1,6 +1,6 @@
 :root {
-  --bg: #071221;
-  --bg-2: #0d1b2d;
+  --bg: #040b16;
+  --bg-2: #081224;
   --text: #e8f0ff;
   --muted: #a8bbd9;
   --card: rgba(13, 27, 45, 0.72);
@@ -33,10 +33,10 @@ body {
   color: var(--text);
   text-align: start;
   background:
-    radial-gradient(1000px 600px at 0% 0%, rgba(124, 58, 237, 0.18), transparent 60%),
-    radial-gradient(900px 500px at 100% 20%, rgba(31, 224, 181, 0.15), transparent 60%),
-    radial-gradient(800px 400px at 50% 100%, rgba(27, 165, 255, 0.12), transparent 60%),
-    linear-gradient(150deg, var(--bg), #050e1a, var(--bg-2));
+    radial-gradient(1000px 600px at 0% 0%, rgba(124, 58, 237, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 100% 20%, rgba(31, 224, 181, 0.1), transparent 60%),
+    radial-gradient(800px 400px at 50% 100%, rgba(27, 165, 255, 0.08), transparent 60%),
+    linear-gradient(150deg, var(--bg), #030a14, var(--bg-2));
 }
 
 html[dir="rtl"] body { font-family: "Vazirmatn", sans-serif; }

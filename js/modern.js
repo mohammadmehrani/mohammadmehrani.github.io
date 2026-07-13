@@ -619,33 +619,52 @@
     }));
 
     // --- Floating circular orbs (multi-color, scattered around) ---
-    const orbCount = 200;
+    const orbCount = 900;
     const oPos = new Float32Array(orbCount * 3);
     const oCol = new Float32Array(orbCount * 3);
-    const oPhs = new Float32Array(orbCount);
+    const oSiz = new Float32Array(orbCount);
     for (let i = 0; i < orbCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      const r = 4 + Math.random() * 8;
+      const r = 3 + Math.random() * 10;
       oPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-      oPos[i * 3 + 1] = (Math.random() - 0.5) * 5;
+      oPos[i * 3 + 1] = (Math.random() - 0.5) * 8;
       oPos[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
       const hh = (i / orbCount) * 0.8 + 0.55;
       hue.setHSL(hh % 1, 0.8, 0.5 + Math.random() * 0.3);
       oCol[i*3]=hue.r; oCol[i*3+1]=hue.g; oCol[i*3+2]=hue.b;
-      oPhs[i] = Math.random() * Math.PI * 2;
+      oSiz[i] = 0.04 + Math.random() * 0.08;
     }
     const orbGeo = new THREE.BufferGeometry();
     orbGeo.setAttribute("position", new THREE.BufferAttribute(oPos, 3));
     orbGeo.setAttribute("color", new THREE.BufferAttribute(oCol, 3));
     const orbs = new THREE.Points(orbGeo, new THREE.PointsMaterial({
-      size: 0.07, vertexColors: true, transparent: true, opacity: 0.4, map: circleTexture,
+      size: 0.06, vertexColors: true, transparent: true, opacity: 0.45, map: circleTexture,
       blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+    }));
+
+    // --- Tiny haze particles (depth layer) ---
+    const hazeCount = 3000;
+    const hPos = new Float32Array(hazeCount * 3);
+    for (let i = 0; i < hazeCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = 8 + Math.random() * 30;
+      hPos[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
+      hPos[i * 3 + 1] = (Math.random() - 0.5) * 12;
+      hPos[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
+    }
+    const hazeGeo = new THREE.BufferGeometry();
+    hazeGeo.setAttribute("position", new THREE.BufferAttribute(hPos, 3));
+    const haze = new THREE.Points(hazeGeo, new THREE.PointsMaterial({
+      size: 0.015, color: 0xaabbee, transparent: true, opacity: 0.08,
+      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true, map: circleTexture
     }));
 
     scene.add(planetGroup);
     scene.add(stars);
     scene.add(orbs);
+    scene.add(haze);
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0x404060);
@@ -693,6 +712,7 @@
       stars.rotation.y += delta * 0.001;
       orbs.rotation.y += delta * 0.005;
       orbs.rotation.x = Math.sin(t * 0.003) * 0.02;
+      haze.rotation.y += delta * 0.002;
 
       renderer.render(scene, camera);
     }
