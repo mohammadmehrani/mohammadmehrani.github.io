@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+fix: static galaxy angle, dust orbits core
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 fix: galaxy angled view (rotation.x=0.35) like before
 
 ### 2026-07-13
@@ -185,18 +197,6 @@ feat: 3D uppercase MOHAMMAD MEHRANI with metallic particles morphing between let
 ### 2026-07-08
 
 chore: update CI status
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update changelog
-
-### 2026-07-08
-
-fix: contribution bars in fixed container with max height
 
 ### 2026-07-08
 
