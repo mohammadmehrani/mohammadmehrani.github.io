@@ -2,6 +2,38 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-13
+
+feat: update 3D background, add social nav, portfolio section with 6 sites
+
+### 2026-07-13
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-12
+
+chore: update CI status
+
+### 2026-07-12
+
+chore: update repo stats
+
+### 2026-07-12
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-11
+
+chore: update CI status
+
+### 2026-07-11
+
+chore: update CI status
+
+### 2026-07-11
+
+chore: update changelog
+
 ### 2026-07-11
 
 Remove schedule from blog-post-workflow
@@ -167,38 +199,6 @@ chore: update changelog
 fix: Parspec job date, English fallback, 3D upgrade, RTL brand
 
 ### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update changelog
-
-### 2026-07-08
-
-feat: add detailed visit badges to README and website footer
-
-### 2026-07-08
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-08
-
-chore: update CI status
-
-### 2026-07-08
-
-chore: update changelog
-
-### 2026-07-08
-
-fix: MEHRANY -> MEHRANI in ASCII art
-
-### 2026-07-07
 
 chore: update CI status
 
