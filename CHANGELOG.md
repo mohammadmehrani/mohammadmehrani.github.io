@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-13
 
+feat: circular point textures (radial gradient) for galaxy particles + force-refresh iodeck screenshot
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
+### 2026-07-13
+
 clean: remove unused assets (old CSS, JS plugins, Wordpress images, commented section)
 Deleted: css/main.css, main.css.bak, aos.css
 Deleted: js/aos.js, now-ui-kit.js, core/, plugins/
@@ -183,22 +199,6 @@ feat: update 3D background, add social nav, portfolio section with 6 sites
 rotate: 3D theme [skip ci]
 
 ### 2026-07-12
-
-chore: update CI status
-
-### 2026-07-12
-
-chore: update repo stats
-
-### 2026-07-12
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-11
-
-chore: update CI status
-
-### 2026-07-11
 
 chore: update CI status
 
