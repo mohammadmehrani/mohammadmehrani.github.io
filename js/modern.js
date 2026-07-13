@@ -6,6 +6,7 @@
       nav_experience: "Experience",
       nav_education: "Education",
       nav_projects: "Projects",
+      nav_portfolio: "Portfolio",
       nav_certs: "Certifications",
       nav_report: "GitHub Report",
       nav_contact: "Contact",
@@ -113,7 +114,10 @@
       report_pullRequests: "Pull Requests",
       report_issues: "Issues",
       report_lastYear: "Year Contribs",
-      report_noActivity: "No activity in the last 30 days."
+      report_noActivity: "No activity in the last 30 days.",
+      portfolio_title: "Portfolio",
+      portfolio_desc: "Platforms, websites and applications designed and delivered.",
+      portfolio_loading: "Loading website..."
     },
     fa: {
       nav_about: "\u062f\u0631\u0628\u0627\u0631\u0647 \u0645\u0646",
@@ -121,6 +125,7 @@
       nav_experience: "\u0633\u0648\u0627\u0628\u0642 \u0634\u063a\u0644\u06cc",
       nav_education: "\u0633\u0648\u0627\u0628\u0642 \u062a\u062d\u0635\u06cc\u0644\u06cc",
       nav_projects: "\u067e\u0631\u0648\u0698\u0647 \u0647\u0627",
+      nav_portfolio: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
       nav_certs: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0647\u0627",
       nav_report: "\u06af\u0632\u0627\u0631\u0634 \u06af\u06cc\u062a\u0647\u0627\u0628",
       nav_contact: "\u062a\u0645\u0627\u0633",
@@ -228,7 +233,10 @@
       report_pullRequests: "\u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627\u06cc Pull",
       report_issues: "\u0645\u0633\u0627\u0626\u0644",
       report_lastYear: "\u0645\u0634\u0627\u0631\u06a9\u062a \u0633\u0627\u0644",
-      report_noActivity: "\u0647\u06cc\u0686 \u0641\u0639\u0627\u0644\u06cc\u062a\u06cc \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631 \u062b\u0628\u062a \u0646\u0634\u062f\u0647."
+      report_noActivity: "\u0647\u06cc\u0686 \u0641\u0639\u0627\u0644\u06cc\u062a\u06cc \u062f\u0631 \u06f3\u06f0 \u0631\u0648\u0632 \u0627\u062e\u06cc\u0631 \u062b\u0628\u062a \u0646\u0634\u062f\u0647.",
+      portfolio_title: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
+      portfolio_desc: "\u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u060c \u0633\u0627\u06cc\u062a\u200c\u0647\u0627 \u0648 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0637\u0631\u0627\u062d\u06cc \u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647.",
+      portfolio_loading: "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0633\u0627\u06cc\u062a..."
     }
   };
 
@@ -431,22 +439,32 @@
     dirLight.position.set(5, 5, 5);
     scene.add(dirLight);
 
-    // outer torus knot shape
-    const torusMat = new THREE.MeshStandardMaterial({
-      color: 0x1ba5ff, emissive: 0x1ba5ff, emissiveIntensity: 0.12,
-      wireframe: false, transparent: true, opacity: 0.35, metalness: 0.3, roughness: 0.4
+    // icosahedron core
+    const icoMat = new THREE.MeshStandardMaterial({
+      color: 0x1fe0b5, emissive: 0x1fe0b5, emissiveIntensity: 0.1,
+      wireframe: false, transparent: true, opacity: 0.3, metalness: 0.4, roughness: 0.3,
+      flatShading: true
     });
-    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(2.2, 0.7, 128, 16), torusMat);
+    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.8, 0), icoMat);
 
-    const wireMat = new THREE.MeshBasicMaterial({
-      color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.12
+    const icoWireMat = new THREE.MeshBasicMaterial({
+      color: 0x1ba5ff, wireframe: true, transparent: true, opacity: 0.15
     });
-    const wire = new THREE.Mesh(new THREE.TorusKnotGeometry(2.25, 0.75, 64, 8), wireMat);
+    const icoWire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.85, 0), icoWireMat);
 
-    const glowMat = new THREE.MeshBasicMaterial({
-      color: 0x1fe0b5, transparent: true, opacity: 0.03
+    const octaMat = new THREE.MeshStandardMaterial({
+      color: 0x7c3aed, emissive: 0x7c3aed, emissiveIntensity: 0.08,
+      wireframe: false, transparent: true, opacity: 0.2, metalness: 0.3, roughness: 0.4,
+      flatShading: true
     });
-    const glow = new THREE.Mesh(new THREE.TorusKnotGeometry(2.3, 0.8, 32, 8), glowMat);
+    const octa = new THREE.Mesh(new THREE.OctahedronGeometry(0.6), octaMat);
+    octa.position.set(3.2, 1.2, 0);
+
+    const dodeMat = new THREE.MeshBasicMaterial({
+      color: 0xffb449, wireframe: true, transparent: true, opacity: 0.1
+    });
+    const dode = new THREE.Mesh(new THREE.DodecahedronGeometry(1.0), dodeMat);
+    dode.position.set(-2.8, -1.5, -1);
 
     // text particle animation (inner)
     const text = "MOHAMMAD MEHRANI";
@@ -487,9 +505,10 @@
     const letters = chars.map(getCharPoints);
 
     const group = new THREE.Group();
-    group.add(torus);
-    group.add(wire);
-    group.add(glow);
+    group.add(ico);
+    group.add(icoWire);
+    group.add(octa);
+    group.add(dode);
     scene.add(group);
 
     const allParticles = [];
@@ -559,14 +578,17 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
 
-      // animate outer torus
-      torus.rotation.x += delta * 0.1;
-      torus.rotation.z += delta * 0.05;
-      wire.rotation.x += delta * 0.08;
-      wire.rotation.z += delta * 0.04;
-      glow.rotation.x += delta * 0.06;
-      glow.rotation.z += delta * 0.03;
-      torusMat.emissiveIntensity = 0.08 + Math.sin(t * 0.4) * 0.06;
+      // animate geometric shapes
+      ico.rotation.x += delta * 0.15;
+      ico.rotation.y += delta * 0.2;
+      icoWire.rotation.x += delta * 0.12;
+      icoWire.rotation.y += delta * 0.16;
+      octa.rotation.x += delta * 0.25;
+      octa.rotation.z += delta * 0.3;
+      octa.position.y = 1.2 + Math.sin(t * 0.5) * 0.4;
+      dode.rotation.y += delta * 0.08;
+      dode.rotation.z += delta * 0.05;
+      icoMat.emissiveIntensity = 0.08 + Math.sin(t * 0.4) * 0.06;
 
       // animate inner text particles
       const perLetter = 3.5;
@@ -879,6 +901,49 @@
     meters.forEach((meter) => io.observe(meter));
   }
 
+  function initPortfolioModal() {
+    const cards = document.querySelectorAll(".portfolio-card");
+    const modal = document.getElementById("portfolioModal");
+    const iframe = document.getElementById("portfolioIframe");
+    const loading = document.getElementById("portfolioLoading");
+    const urlText = document.getElementById("pmbUrlText");
+    const closeBtn = modal?.querySelector(".pmb-close");
+    const backdrop = modal?.querySelector(".portfolio-modal-backdrop");
+    const externalBtn = document.getElementById("pmbExternal");
+
+    if (!modal || !iframe) return;
+
+    const openModal = (url) => {
+      iframe.src = url;
+      urlText.textContent = url;
+      if (externalBtn) externalBtn.href = url;
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      if (loading) loading.classList.remove("hidden");
+      iframe.onload = () => { if (loading) loading.classList.add("hidden"); };
+      setTimeout(() => { if (loading) loading.classList.add("hidden"); }, 8000);
+    };
+
+    const closeModal = () => {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+      setTimeout(() => { iframe.src = ""; }, 300);
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const url = card.dataset.url;
+        if (url) openModal(url);
+      });
+    });
+
+    closeBtn?.addEventListener("click", closeModal);
+    backdrop?.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+    });
+  }
+
   initParallax();
   initHeroParallax();
   initReveal();
@@ -888,4 +953,5 @@
   try { initMiniThree("mini3dSkills", { shape: "ico", color: 0x7c3aed, ring: true, ringColor: 0x1fe0b5, ringColor2: 0x1ba5ff, particles: 25, speed: 0.3 }); } catch (e) {}
   try { initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 }); } catch (e) {}
   initGitHubReport();
+  initPortfolioModal();
 })();
