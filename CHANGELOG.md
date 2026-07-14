@@ -4,6 +4,25 @@ Auto-generated from conventional commits.
 
 ### 2026-07-14
 
+feat: light theme redesign (warm multi-color) + animated Sun 3D scene
+- Light theme: warm earthy palette (--bg: #fcf4ea), multi-color accents
+- Body gradient: warm radial gradients (coral/gold/teal)
+- Light nav, cards, inputs, footer, profile chip colors
+- Sun 3D scene for light theme: glowing sphere, corona layers,
+  6000 corona particles, 2000 streak rays, 600 warm orbs
+- Theme toggle re-initializes 3D scene (themechange event)
+- Dark theme untouched
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update changelog
+
+### 2026-07-14
+
 chore: checkpoint before light theme rework
 
 ### 2026-07-14
@@ -183,22 +202,3 @@ chore: update CI status
 
 ### 2026-07-13
 
-chore: update changelog
-
-### 2026-07-13
-
-fix: restore original spiral galaxy centered with angle
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
