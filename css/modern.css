@@ -46,17 +46,22 @@ html[data-theme="light"] body {
     linear-gradient(150deg, var(--bg), #faf0e4, var(--bg-2));
 }
 
-html[dir="rtl"] body { font-family: "Vazirmatn", sans-serif; }
+html[dir="rtl"] { font-family: "Vazirmatn", sans-serif; }
+html[dir="rtl"] body { font-family: inherit; }
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] .navbar-brand,
+html[dir="rtl"] .display-title,
+html[dir="rtl"] .lead,
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .btn { font-family: inherit; letter-spacing: 0; }
 
 h1, h2, h3, h4, .navbar-brand {
   font-family: "Sora", sans-serif;
   letter-spacing: -0.02em;
 }
-html[dir="rtl"] h1,
-html[dir="rtl"] h2,
-html[dir="rtl"] h3,
-html[dir="rtl"] h4,
-html[dir="rtl"] .navbar-brand { font-family: "Vazirmatn", sans-serif; letter-spacing: 0; }
 
 a { color: inherit; text-decoration: none; }
 .section-pad { padding: 5.5rem 0; position: relative; z-index: 2; }
