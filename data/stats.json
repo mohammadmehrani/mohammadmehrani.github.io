@@ -1,11 +1,11 @@
 {
-  "date": "2026-07-13T09:23:02Z",
+  "date": "2026-07-14T08:01:12Z",
   "stars": 1,
   "forks": 1,
   "open_issues": 0,
   "watchers": 1,
-  "size": 26759,
-  "last_commit": "2026-07-14T04:31:41Z",
+  "size": 27040,
+  "last_commit": "2026-07-14T08:01:12Z",
   "user": {
     "public_repos": 11,
     "followers": 38,
@@ -14,20 +14,20 @@
     "total_forks": 3,
     "pull_requests": 8,
     "contributed_to": 6,
-    "best_streak": 150,
-    "last_year_contributions": 994
+    "best_streak": 151,
+    "last_year_contributions": 1056
   },
   "languages": [
-    [
-      "CSS",
-      9
-    ],
     [
       "Dart",
       9
     ],
     [
       "HCL",
+      9
+    ],
+    [
+      "JavaScript",
       9
     ],
     [
@@ -40,7 +40,6 @@
     ]
   ],
   "contribution_days": [
-    1,
     1,
     1,
     1,
@@ -70,7 +69,8 @@
     17,
     40,
     12,
-    38
+    74,
+    26
   ],
   "repos": [
     {
@@ -107,7 +107,7 @@
       "name": "mohammadmehrani.github.io",
       "stars": 1,
       "forks": 1,
-      "language": "CSS"
+      "language": "JavaScript"
     },
     {
       "name": "n8n",
