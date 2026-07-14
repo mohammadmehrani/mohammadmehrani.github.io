@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-14
 
+fix: set Vazirmatn at html[dir=rtl] level for full Persian page coverage
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update changelog
+
+### 2026-07-14
+
 fix: persian RTL headings use Vazirmatn instead of JetBrains Mono
 
 ### 2026-07-14
@@ -183,22 +199,6 @@ feat: change mini 3D shapes to spheres, remove 'Open' text from modal button
 ### 2026-07-13
 
 chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-fix: use microlink for iodeck.ir screenshot (Cloudflare blocks thum.io)
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update repo stats
 
 ### 2026-07-13
 
