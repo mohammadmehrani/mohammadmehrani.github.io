@@ -338,6 +338,7 @@
       setStored(THEME_KEY, currentTheme);
     }
     updateControlLabels();
+    window.dispatchEvent(new Event("themechange"));
   }
 
   function applyLanguage(lang, animate = true) {
@@ -425,6 +426,7 @@
     const container = document.getElementById("hero3d");
     if (!container) return;
     document.body.classList.remove("no-webgl");
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 100);
@@ -447,6 +449,139 @@
     ctx.fillStyle = radGrad;
     ctx.fillRect(0, 0, 32, 32);
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
+
+    if (isLight) {
+      // --- Sun / Star Scene (light theme) ---
+      const sunGroup = new THREE.Group();
+      sunGroup.rotation.x = 0.3;
+
+      // Sun body
+      const sunGeo = new THREE.SphereGeometry(1.2, 48, 48);
+      const sunMat = new THREE.MeshBasicMaterial({ color: 0xffdd77 });
+      const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+      sunGroup.add(sunMesh);
+
+      // Inner corona
+      const corona1 = new THREE.Mesh(new THREE.SphereGeometry(1.4, 32, 32),
+        new THREE.MeshBasicMaterial({ color: 0xffaa44, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending }));
+      const corona2 = new THREE.Mesh(new THREE.SphereGeometry(1.7, 32, 32),
+        new THREE.MeshBasicMaterial({ color: 0xff8833, transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending }));
+      const corona3 = new THREE.Mesh(new THREE.SphereGeometry(2.2, 32, 32),
+        new THREE.MeshBasicMaterial({ color: 0xff6622, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending }));
+      sunGroup.add(corona1, corona2, corona3);
+
+      // Sun glow particle corona (dense ring of particles around sun)
+      const coronaCount = 6000;
+      const cp = new Float32Array(coronaCount * 3);
+      const cc = new Float32Array(coronaCount * 3);
+      for (let i = 0; i < coronaCount; i++) {
+        const dist = 1.0 + Math.pow(Math.random(), 0.6) * 2.0;
+        const angle = Math.random() * Math.PI * 2;
+        const height = (Math.random() - 0.5) * 0.8 * (dist * 0.5);
+        cp[i * 3] = Math.cos(angle) * dist;
+        cp[i * 3 + 1] = height;
+        cp[i * 3 + 2] = Math.sin(angle) * dist;
+        const t = Math.random();
+        if (t < 0.33) { hue.setHSL(0.08, 1, 0.5 + Math.random() * 0.3); }
+        else if (t < 0.66) { hue.setHSL(0.1, 0.9, 0.4 + Math.random() * 0.3); }
+        else { hue.setHSL(0.05, 0.8, 0.6 + Math.random() * 0.2); }
+        cc[i*3]=hue.r; cc[i*3+1]=hue.g; cc[i*3+2]=hue.b;
+      }
+      const coronaPts = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(cp, 3)).setAttribute("color", new THREE.BufferAttribute(cc, 3)),
+        new THREE.PointsMaterial({ size: 0.06, vertexColors: true, transparent: true, opacity: 0.7, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      );
+      sunGroup.add(coronaPts);
+
+      // Streak rays (long thin particles radiating outward)
+      const rayCount = 2000;
+      const rp = new Float32Array(rayCount * 3);
+      const rcol = new Float32Array(rayCount * 3);
+      for (let i = 0; i < rayCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const dist = 1.5 + Math.random() * 4;
+        rp[i * 3] = Math.sin(phi) * Math.cos(theta) * dist;
+        rp[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * dist * 0.4;
+        rp[i * 3 + 2] = Math.cos(phi) * dist;
+        const t = Math.random();
+        if (t < 0.5) { hue.setHSL(0.1, 0.8, 0.7 + Math.random() * 0.3); }
+        else { hue.setHSL(0.05, 0.7, 0.8 + Math.random() * 0.2); }
+        rcol[i*3]=hue.r; rcol[i*3+1]=hue.g; rcol[i*3+2]=hue.b;
+      }
+      const rays = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp, 3)).setAttribute("color", new THREE.BufferAttribute(rcol, 3)),
+        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.3, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      );
+      sunGroup.add(rays);
+
+      // Floating warm orbs
+      const oCount = 600;
+      const op = new Float32Array(oCount * 3);
+      const oc = new Float32Array(oCount * 3);
+      for (let i = 0; i < oCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const r = 3 + Math.random() * 9;
+        op[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
+        op[i * 3 + 1] = (Math.random() - 0.5) * 6;
+        op[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
+        const hh = 0.05 + (i / oCount) * 0.15;
+        hue.setHSL(hh, 0.8, 0.5 + Math.random() * 0.3);
+        oc[i*3]=hue.r; oc[i*3+1]=hue.g; oc[i*3+2]=hue.b;
+      }
+      const warmOrbs = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(op, 3)).setAttribute("color", new THREE.BufferAttribute(oc, 3)),
+        new THREE.PointsMaterial({ size: 0.07, vertexColors: true, transparent: true, opacity: 0.35, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      );
+      sunGroup.add(warmOrbs);
+
+      scene.add(sunGroup);
+
+      // Background stars for light theme
+      const starCount = 2000;
+      const sPos = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const r = 15 + Math.random() * 40;
+        sPos[i*3] = Math.sin(phi)*Math.cos(theta)*r;
+        sPos[i*3+1] = Math.sin(phi)*Math.sin(theta)*r*0.45;
+        sPos[i*3+2] = Math.cos(phi)*r;
+      }
+      const stars = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sPos, 3)),
+        new THREE.PointsMaterial({ size: 0.02, color: 0xccbbaa, transparent: true, opacity: 0.15, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      );
+      scene.add(stars);
+
+      function resize() {
+        const w = container.clientWidth, h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      }
+      window.addEventListener("resize", resize);
+
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const delta = clock.getDelta();
+        const t = clock.getElapsedTime();
+        sunGroup.rotation.y += delta * 0.008;
+        coronaPts.rotation.y += delta * 0.015;
+        rays.rotation.y += delta * 0.005;
+        warmOrbs.rotation.y += delta * 0.003;
+        corona1.scale.setScalar(1 + Math.sin(t * 0.15) * 0.04);
+        corona2.scale.setScalar(1 + Math.sin(t * 0.12 + 0.5) * 0.06);
+        corona3.scale.setScalar(1 + Math.sin(t * 0.09 + 1) * 0.08);
+        corona1.material.opacity = 0.18 + Math.sin(t * 0.2) * 0.06;
+        corona2.material.opacity = 0.08 + Math.sin(t * 0.15 + 0.3) * 0.04;
+        renderer.render(scene, camera);
+      }
+      animate();
+      return;
+    }
 
     // --- Saturn-like Planet Scene (full-view, multi-color) ---
     const planetGroup = new THREE.Group();
@@ -1045,6 +1180,11 @@
   initMeters();
   initClock();
   try { initThreeBackground(); } catch (e) { console.warn("3D bg error:", e); }
+  window.addEventListener("themechange", () => {
+    const c = document.querySelector("#hero3d");
+    if (c) { c.innerHTML = ""; }
+    try { initThreeBackground(); } catch (e) { console.warn("3D bg error:", e); }
+  });
   try { initMiniThree("mini3dSkills", { shape: "ico", color: 0x7c3aed, ring: true, ringColor: 0x1fe0b5, ringColor2: 0x1ba5ff, particles: 25, speed: 0.3 }); } catch (e) {}
   try { initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 }); } catch (e) {}
   initGitHubReport();
