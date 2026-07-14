@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-14
 
+fix: persian RTL headings use Vazirmatn instead of JetBrains Mono
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update changelog
+
+### 2026-07-14
+
 feat: email change, Gmail compose, mouse-follow star scene
 - madi@iodeck.ir → mohammad@iodeck.ir (3 places)
 - Mailto link → Gmail compose URL (pre-filled)
@@ -187,18 +199,6 @@ chore: update CI status
 ### 2026-07-13
 
 chore: update repo stats
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: live thum.io screenshots for grid + modal, removed static images
 
 ### 2026-07-13
 
