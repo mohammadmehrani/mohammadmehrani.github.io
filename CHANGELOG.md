@@ -2,6 +2,30 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-14
+
+chore: checkpoint before light theme rework
+
+### 2026-07-14
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-14
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update CI status
+
+### 2026-07-13
+
+chore: update changelog
+
 ### 2026-07-13
 
 feat: darker background, 900 orbs, 3000 haze particles for depth
@@ -176,29 +200,5 @@ chore: update CI status
 ### 2026-07-13
 
 chore: update changelog
-
-### 2026-07-13
-
-refactor: simplified central core with orbiting rings, nebula cloud
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-fix: static galaxy angle, dust orbits core
-
-### 2026-07-13
-
-chore: update CI status
 
 ### 2026-07-13
