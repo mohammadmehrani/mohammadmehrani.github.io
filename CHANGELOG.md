@@ -4,6 +4,30 @@ Auto-generated from conventional commits.
 
 ### 2026-07-14
 
+feat: email change, Gmail compose, mouse-follow star scene
+- madi@iodeck.ir → mohammad@iodeck.ir (3 places)
+- Mailto link → Gmail compose URL (pre-filled)
+- Contact form submit opens Gmail compose with form data
+- Light theme: Pollux-style star with procedural surface texture
+- 10000 corona particles, 3000 rays, 4000 orbital ring
+- 12 orbiting moons, 4-layer corona glow
+- Mouse-follow parallax rotation (smooth lerp)
+- Touch support for mobile
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update changelog
+
+### 2026-07-14
+
 feat: light theme redesign (warm multi-color) + animated Sun 3D scene
 - Light theme: warm earthy palette (--bg: #fcf4ea), multi-color accents
 - Body gradient: warm radial gradients (coral/gold/teal)
@@ -175,30 +199,6 @@ chore: update changelog
 ### 2026-07-13
 
 feat: live thum.io screenshots for grid + modal, removed static images
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: multi-color galaxy gradient, floating orbs, colored stars
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
 
 ### 2026-07-13
 
