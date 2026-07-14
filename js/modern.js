@@ -451,116 +451,163 @@
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
 
     if (isLight) {
-      // --- Sun / Star Scene (light theme) ---
-      const sunGroup = new THREE.Group();
-      sunGroup.rotation.x = 0.3;
+      // --- Bright Star Scene (light theme, mouse-follow) ---
+      const starGroup = new THREE.Group();
 
-      // Sun body
-      const sunGeo = new THREE.SphereGeometry(1.2, 48, 48);
-      const sunMat = new THREE.MeshBasicMaterial({ color: 0xffdd77 });
-      const sunMesh = new THREE.Mesh(sunGeo, sunMat);
-      sunGroup.add(sunMesh);
+      // Star body with procedural surface
+      const surfCtx = document.createElement("canvas").getContext("2d");
+      surfCtx.canvas.width = 256; surfCtx.canvas.height = 128;
+      for (let y = 0; y < 128; y++) {
+        for (let x = 0; x < 256; x++) {
+          const v = 140 + Math.sin(x * 0.06 + y * 0.04) * 30 + Math.sin(x * 0.12 + y * 0.08) * 15 + Math.sin(x * 0.25 + y * 0.15) * 8 + (Math.random() - 0.5) * 20;
+          const r = Math.min(255, v + 40);
+          const g = Math.min(255, v + 20);
+          const b = Math.min(255, v - 20);
+          surfCtx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+          surfCtx.fillRect(x, y, 1, 1);
+        }
+      }
+      const surfTex = new THREE.CanvasTexture(surfCtx.canvas);
+      const starMat = new THREE.MeshStandardMaterial({ map: surfTex, emissive: 0xffaa44, emissiveIntensity: 0.6 });
+      const starMesh = new THREE.Mesh(new THREE.SphereGeometry(1.1, 48, 48), starMat);
+      starGroup.add(starMesh);
 
-      // Inner corona
-      const corona1 = new THREE.Mesh(new THREE.SphereGeometry(1.4, 32, 32),
-        new THREE.MeshBasicMaterial({ color: 0xffaa44, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending }));
-      const corona2 = new THREE.Mesh(new THREE.SphereGeometry(1.7, 32, 32),
-        new THREE.MeshBasicMaterial({ color: 0xff8833, transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending }));
-      const corona3 = new THREE.Mesh(new THREE.SphereGeometry(2.2, 32, 32),
-        new THREE.MeshBasicMaterial({ color: 0xff6622, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending }));
-      sunGroup.add(corona1, corona2, corona3);
+      // Multi-layer corona glow
+      const glowLayers = [];
+      for (let i = 0; i < 4; i++) {
+        const sz = 1.3 + i * 0.4;
+        const col = [0xffcc66, 0xffaa44, 0xff8833, 0xff6622][i];
+        const op = [0.15, 0.1, 0.06, 0.03][i];
+        const g = new THREE.Mesh(new THREE.SphereGeometry(sz, 32, 32),
+          new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, blending: THREE.AdditiveBlending }));
+        g.userData = { idx: i, phase: Math.random() * 10 };
+        starGroup.add(g);
+        glowLayers.push(g);
+      }
 
-      // Sun glow particle corona (dense ring of particles around sun)
-      const coronaCount = 6000;
-      const cp = new Float32Array(coronaCount * 3);
-      const cc = new Float32Array(coronaCount * 3);
-      for (let i = 0; i < coronaCount; i++) {
-        const dist = 1.0 + Math.pow(Math.random(), 0.6) * 2.0;
+      // Dense corona particles (disk-like, dense)
+      const cpCount = 10000;
+      const cp = new Float32Array(cpCount * 3);
+      const cc = new Float32Array(cpCount * 3);
+      const cs = new Float32Array(cpCount);
+      for (let i = 0; i < cpCount; i++) {
+        const dist = 0.8 + Math.pow(Math.random(), 0.5) * 2.5;
         const angle = Math.random() * Math.PI * 2;
-        const height = (Math.random() - 0.5) * 0.8 * (dist * 0.5);
+        const height = (Math.random() - 0.5) * 0.5 * (1 + dist * 0.3);
         cp[i * 3] = Math.cos(angle) * dist;
         cp[i * 3 + 1] = height;
         cp[i * 3 + 2] = Math.sin(angle) * dist;
         const t = Math.random();
-        if (t < 0.33) { hue.setHSL(0.08, 1, 0.5 + Math.random() * 0.3); }
-        else if (t < 0.66) { hue.setHSL(0.1, 0.9, 0.4 + Math.random() * 0.3); }
-        else { hue.setHSL(0.05, 0.8, 0.6 + Math.random() * 0.2); }
+        if (t < 0.4) { hue.setHSL(0.08, 1, 0.6 + Math.random() * 0.3); }
+        else if (t < 0.7) { hue.setHSL(0.1, 0.8, 0.5 + Math.random() * 0.3); }
+        else { hue.setHSL(0.04, 0.9, 0.7 + Math.random() * 0.2); }
         cc[i*3]=hue.r; cc[i*3+1]=hue.g; cc[i*3+2]=hue.b;
+        cs[i] = 0.03 + Math.random() * 0.05;
       }
       const coronaPts = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(cp, 3)).setAttribute("color", new THREE.BufferAttribute(cc, 3)),
-        new THREE.PointsMaterial({ size: 0.06, vertexColors: true, transparent: true, opacity: 0.7, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.BufferGeometry()
+          .setAttribute("position", new THREE.BufferAttribute(cp, 3))
+          .setAttribute("color", new THREE.BufferAttribute(cc, 3)),
+        new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.8, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      sunGroup.add(coronaPts);
+      starGroup.add(coronaPts);
 
-      // Streak rays (long thin particles radiating outward)
-      const rayCount = 2000;
+      // Scatter rays (long particles radiating in all directions)
+      const rayCount = 3000;
       const rp = new Float32Array(rayCount * 3);
-      const rcol = new Float32Array(rayCount * 3);
+      const rc = new Float32Array(rayCount * 3);
       for (let i = 0; i < rayCount; i++) {
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(2 * Math.random() - 1);
-        const dist = 1.5 + Math.random() * 4;
-        rp[i * 3] = Math.sin(phi) * Math.cos(theta) * dist;
-        rp[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * dist * 0.4;
-        rp[i * 3 + 2] = Math.cos(phi) * dist;
-        const t = Math.random();
-        if (t < 0.5) { hue.setHSL(0.1, 0.8, 0.7 + Math.random() * 0.3); }
-        else { hue.setHSL(0.05, 0.7, 0.8 + Math.random() * 0.2); }
-        rcol[i*3]=hue.r; rcol[i*3+1]=hue.g; rcol[i*3+2]=hue.b;
+        const dist = 1.8 + Math.random() * 4.5;
+        rp[i*3] = Math.sin(phi)*Math.cos(theta)*dist;
+        rp[i*3+1] = Math.sin(phi)*Math.sin(theta)*dist*0.35;
+        rp[i*3+2] = Math.cos(phi)*dist;
+        hue.setHSL(0.08 + Math.random() * 0.06, 0.6, 0.7 + Math.random() * 0.3);
+        rc[i*3]=hue.r; rc[i*3+1]=hue.g; rc[i*3+2]=hue.b;
       }
       const rays = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp, 3)).setAttribute("color", new THREE.BufferAttribute(rcol, 3)),
-        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.3, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp, 3)).setAttribute("color", new THREE.BufferAttribute(rc, 3)),
+        new THREE.PointsMaterial({ size: 0.035, vertexColors: true, transparent: true, opacity: 0.25, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      sunGroup.add(rays);
+      starGroup.add(rays);
 
-      // Floating warm orbs
-      const oCount = 600;
-      const op = new Float32Array(oCount * 3);
-      const oc = new Float32Array(oCount * 3);
-      for (let i = 0; i < oCount; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-        const r = 3 + Math.random() * 9;
-        op[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-        op[i * 3 + 1] = (Math.random() - 0.5) * 6;
-        op[i * 3 + 2] = Math.sin(phi) * Math.sin(theta) * r;
-        const hh = 0.05 + (i / oCount) * 0.15;
-        hue.setHSL(hh, 0.8, 0.5 + Math.random() * 0.3);
-        oc[i*3]=hue.r; oc[i*3+1]=hue.g; oc[i*3+2]=hue.b;
+      // Orbital particle ring (wide, scattered)
+      const ringCount = 4000;
+      const rp2 = new Float32Array(ringCount * 3);
+      const rc2 = new Float32Array(ringCount * 3);
+      for (let i = 0; i < ringCount; i++) {
+        const dist = 2.0 + Math.pow(Math.random(), 0.6) * 3.0;
+        const angle = Math.random() * Math.PI * 2;
+        const height = (Math.random() - 0.5) * 0.6;
+        rp2[i*3] = Math.cos(angle)*dist;
+        rp2[i*3+1] = height;
+        rp2[i*3+2] = Math.sin(angle)*dist;
+        const t = Math.random();
+        if (t < 0.33) hue.setHSL(0.08, 0.7, 0.5 + Math.random()*0.3);
+        else if (t < 0.66) hue.setHSL(0.15, 0.6, 0.4 + Math.random()*0.3);
+        else hue.setHSL(0.04, 0.8, 0.6 + Math.random()*0.2);
+        rc2[i*3]=hue.r; rc2[i*3+1]=hue.g; rc2[i*3+2]=hue.b;
       }
-      const warmOrbs = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(op, 3)).setAttribute("color", new THREE.BufferAttribute(oc, 3)),
-        new THREE.PointsMaterial({ size: 0.07, vertexColors: true, transparent: true, opacity: 0.35, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      const orbitalRing = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp2, 3)).setAttribute("color", new THREE.BufferAttribute(rc2, 3)),
+        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.4, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      sunGroup.add(warmOrbs);
+      starGroup.add(orbitalRing);
 
-      scene.add(sunGroup);
-
-      // Background stars for light theme
-      const starCount = 2000;
-      const sPos = new Float32Array(starCount * 3);
-      for (let i = 0; i < starCount; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-        const r = 15 + Math.random() * 40;
-        sPos[i*3] = Math.sin(phi)*Math.cos(theta)*r;
-        sPos[i*3+1] = Math.sin(phi)*Math.sin(theta)*r*0.45;
-        sPos[i*3+2] = Math.cos(phi)*r;
+      // Orbiting small bodies (moons/rocks)
+      const moonGroup = new THREE.Group();
+      for (let i = 0; i < 12; i++) {
+        const dist = 1.8 + Math.random() * 2.5;
+        const ang = Math.random() * Math.PI * 2;
+        const sz = 0.03 + Math.random() * 0.07;
+        const m = new THREE.Mesh(
+          new THREE.SphereGeometry(sz, 6, 6),
+          new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(0.08, 0.4, 0.5 + Math.random()*0.3), emissive: 0x442200, emissiveIntensity: 0.2 })
+        );
+        m.userData = { dist, ang, speed: 0.15 + Math.random() * 0.3, yOff: (Math.random() - 0.5) * 0.2 };
+        m.position.set(Math.cos(ang)*dist, m.userData.yOff, Math.sin(ang)*dist);
+        moonGroup.add(m);
       }
-      const stars = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sPos, 3)),
-        new THREE.PointsMaterial({ size: 0.02, color: 0xccbbaa, transparent: true, opacity: 0.15, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
-      );
-      scene.add(stars);
+      starGroup.add(moonGroup);
 
-      function resize() {
+      scene.add(starGroup);
+
+      // Subtle background stars
+      const sCount = 1500;
+      const sp = new Float32Array(sCount * 3);
+      for (let i = 0; i < sCount; i++) {
+        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 20+Math.random()*40;
+        sp[i*3]=Math.sin(phi)*Math.cos(theta)*r;
+        sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.45;
+        sp[i*3+2]=Math.cos(phi)*r;
+      }
+      scene.add(new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sp, 3)),
+        new THREE.PointsMaterial({ size: 0.015, color: 0x997755, transparent: true, opacity: 0.12, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      ));
+
+      // Lights
+      scene.add(new THREE.AmbientLight(0x443322));
+      const dl = new THREE.DirectionalLight(0xffeedd, 2);
+      dl.position.set(5, 5, 5);
+      scene.add(dl);
+
+      // Mouse tracking
+      let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+      const onMouse = (x, y) => {
+        mouseX = (x / window.innerWidth) * 2 - 1;
+        mouseY = -(y / window.innerHeight) * 2 + 1;
+      };
+      window.addEventListener("mousemove", (e) => onMouse(e.clientX, e.clientY));
+      window.addEventListener("touchmove", (e) => {
+        if (e.touches.length) onMouse(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      let resize = () => {
         const w = container.clientWidth, h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      }
+        camera.aspect = w/h; camera.updateProjectionMatrix(); renderer.setSize(w, h);
+      };
       window.addEventListener("resize", resize);
 
       const clock = new THREE.Clock();
@@ -568,15 +615,30 @@
         requestAnimationFrame(animate);
         const delta = clock.getDelta();
         const t = clock.getElapsedTime();
-        sunGroup.rotation.y += delta * 0.008;
-        coronaPts.rotation.y += delta * 0.015;
-        rays.rotation.y += delta * 0.005;
-        warmOrbs.rotation.y += delta * 0.003;
-        corona1.scale.setScalar(1 + Math.sin(t * 0.15) * 0.04);
-        corona2.scale.setScalar(1 + Math.sin(t * 0.12 + 0.5) * 0.06);
-        corona3.scale.setScalar(1 + Math.sin(t * 0.09 + 1) * 0.08);
-        corona1.material.opacity = 0.18 + Math.sin(t * 0.2) * 0.06;
-        corona2.material.opacity = 0.08 + Math.sin(t * 0.15 + 0.3) * 0.04;
+
+        targetX += (mouseX - targetX) * 0.03;
+        targetY += (mouseY - targetY) * 0.03;
+        starGroup.rotation.y = targetX * 0.6;
+        starGroup.rotation.x = 0.2 + targetY * 0.25;
+
+        starMesh.rotation.y += delta * 0.05;
+        coronaPts.rotation.y += delta * 0.03;
+        rays.rotation.y += delta * 0.008;
+        orbitalRing.rotation.y += delta * 0.04;
+
+        moonGroup.children.forEach((m, i) => {
+          const ang = m.userData.ang + t * m.userData.speed;
+          m.position.x = Math.cos(ang) * m.userData.dist;
+          m.position.z = Math.sin(ang) * m.userData.dist;
+          m.position.y = m.userData.yOff + Math.sin(t * 0.5 + i) * 0.04;
+        });
+
+        glowLayers.forEach((g, i) => {
+          const ph = g.userData.phase;
+          g.scale.setScalar(1 + Math.sin(t * (0.12 + i * 0.03) + ph) * (0.03 + i * 0.015));
+          g.material.opacity = [0.12, 0.08, 0.05, 0.025][i] + Math.sin(t * (0.18 - i * 0.02) + ph) * 0.03;
+        });
+
         renderer.render(scene, camera);
       }
       animate();
@@ -1189,4 +1251,20 @@
   try { initMiniThree("mini3dReport", { shape: "dode", color: 0x1ba5ff, ring: false, particles: 15, speed: 0.5 }); } catch (e) {}
   initGitHubReport();
   initPortfolioModal();
+
+  // Contact form → Gmail compose
+  const contactForm = document.querySelector(".contact-panel form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      const subj = encodeURIComponent(fd.get("subject") || "Hello");
+      const body = encodeURIComponent(
+        "Name: " + (fd.get("name") || "") + "\n" +
+        "Email: " + (fd.get("_replyto") || "") + "\n\n" +
+        (fd.get("message_body") || "")
+      );
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=mohammad@iodeck.ir&su=" + subj + "&body=" + body, "_blank");
+    });
+  }
 })();
