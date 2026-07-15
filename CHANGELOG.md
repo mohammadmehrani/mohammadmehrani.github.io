@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-15
 
+Fix Jupiter: smooth sphere, realistic bands, orbiting dust particles, dramatic mouse follow
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update changelog
+
+### 2026-07-15
+
 Replace light-theme with Jupiter-inspired planet (dark blue + chocolate brown bands, displacement relief)
 
 ### 2026-07-15
@@ -186,19 +202,3 @@ feat: resize Saturn scene to full-view scale with multi-color particle cloud
 chore: update CI status
 
 ### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: replace spiral galaxy with Saturn-like planet scene
-- Central planet with banding, atmosphere glow
-- Saturn ring system (4 concentric rings)
-- Dense orbital particle belt (8000 particles)
-- Inner swarm (4000 particles) close to planet
-- 8 orbiting moon objects
-- 3-point lighting for planet depth
