@@ -451,148 +451,128 @@
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
 
     if (isLight) {
-      // --- Jupiter-inspired planet (dark blue + chocolate brown bands, relief surface) ---
+      // --- Jupiter (100% graphical, smooth sphere, floating particles, dramatic mouse follow) ---
       const planetGroup = new THREE.Group();
-      planetGroup.rotation.x = 0.25;
+      planetGroup.rotation.x = 0.3;
 
-      function smoothNoise(x, y) {
-        return Math.sin(x * 1.3 + y * 0.7) * Math.cos(y * 1.1 - x * 0.5) * 0.5 + 0.5;
+      function jupNoise(x, y) {
+        return Math.sin(x * 1.7 + y * 0.9) * Math.cos(y * 1.3 - x * 0.6) * 0.5 + 0.5;
       }
 
-      // Color palette — exact dark blue (#1a2b4a) and chocolate brown (#4a2c17) from buttons
-      const darkBlue = [26, 43, 74];
-      const chocoBrown = [74, 44, 23];
+      // Jupiter color bands — cream, orange-brown, rust, chocolate
+      const cream  = [235, 215, 185];
+      const orange = [185, 130, 70];
+      const brown  = [120, 70, 35];
+      const rust   = [90, 50, 25];
+      const choco  = [65, 38, 18];
       const mix = (a, b, t) => [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];
 
-      // Planet color texture — Jupiter-like bands
       const colCtx = document.createElement("canvas").getContext("2d");
       colCtx.canvas.width = 512; colCtx.canvas.height = 256;
       const colData = colCtx.createImageData(512, 256);
       for (let y = 0; y < 256; y++) {
-        const bandPos = y / 256;
-        const bandWave = Math.sin(bandPos * 18 + Math.sin(bandPos * 30) * 0.3) * 0.5 + 0.5;
-        const noise2 = smoothNoise(bandPos * 10, 0) * 0.2;
-        const t = Math.pow(bandWave + noise2, 0.8);
+        const bp = y / 256;
+        const wave = Math.sin(bp * 22 + Math.sin(bp * 35) * 0.4 + Math.sin(bp * 60) * 0.15) * 0.5 + 0.5;
+        const nz = jupNoise(bp * 12, 0) * 0.25 + jupNoise(bp * 25 + 5, 0) * 0.1;
+        const t = Math.min(1, Math.max(0, wave + nz));
         let col;
-        if (t < 0.35) col = darkBlue;
-        else if (t < 0.5) col = mix(darkBlue, chocoBrown, (t - 0.35) / 0.15);
-        else if (t < 0.7) col = mix(chocoBrown, [100, 60, 30], (t - 0.5) / 0.2);
-        else if (t < 0.85) col = mix([100, 60, 30], darkBlue, (t - 0.7) / 0.15);
-        else col = darkBlue;
+        if (t < 0.15) col = cream;
+        else if (t < 0.3) col = mix(cream, orange, (t - 0.15) / 0.15);
+        else if (t < 0.45) col = mix(orange, brown, (t - 0.3) / 0.15);
+        else if (t < 0.55) col = brown;
+        else if (t < 0.7) col = mix(brown, rust, (t - 0.55) / 0.15);
+        else if (t < 0.82) col = mix(rust, choco, (t - 0.7) / 0.12);
+        else if (t < 0.92) col = mix(choco, cream, (t - 0.82) / 0.1);
+        else col = cream;
         for (let x = 0; x < 512; x++) {
-          const spot = Math.sin(x * 0.15 + y * 0.1) * Math.cos(x * 0.05 - y * 0.08) * 15;
+          const turb = Math.sin(x * 0.18 + bp * 15) * Math.cos(x * 0.06 - bp * 8) * 12 +
+                       Math.sin(x * 0.4 + bp * 25) * 6;
           const idx = (y * 512 + x) * 4;
-          colData.data[idx] = Math.max(0, Math.min(255, col[0] + spot));
-          colData.data[idx + 1] = Math.max(0, Math.min(255, col[1] + spot));
-          colData.data[idx + 2] = Math.max(0, Math.min(255, col[2] + spot));
+          colData.data[idx] = Math.max(0, Math.min(255, col[0] + turb));
+          colData.data[idx + 1] = Math.max(0, Math.min(255, col[1] + turb * 0.7));
+          colData.data[idx + 2] = Math.max(0, Math.min(255, col[2] + turb * 0.4));
           colData.data[idx + 3] = 255;
         }
       }
       // Great Red Spot
-      for (let y = 90; y < 130; y++) {
-        for (let x = 200; x < 280; x++) {
-          const dx = (x - 240) / 40, dy = (y - 110) / 18;
+      for (let y = 92; y < 132; y++) {
+        for (let x = 190; x < 290; x++) {
+          const dx = (x - 240) / 42, dy = (y - 112) / 18;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 1) {
             const fade = 1 - dist;
             const idx = (y * 512 + x) * 4;
-            colData.data[idx] = Math.min(255, colData.data[idx] + fade * 60);
-            colData.data[idx + 1] = Math.max(0, colData.data[idx + 1] - fade * 20);
-            colData.data[idx + 2] = Math.max(0, colData.data[idx + 2] - fade * 10);
+            colData.data[idx] = Math.min(255, colData.data[idx] + fade * 65);
+            colData.data[idx + 1] = Math.max(0, colData.data[idx + 1] - fade * 15);
+            colData.data[idx + 2] = Math.max(0, colData.data[idx + 2] - fade * 20);
           }
         }
       }
       colCtx.putImageData(colData, 0, 0);
       const colorTex = new THREE.CanvasTexture(colCtx.canvas);
 
-      // Displacement map — surface relief (mountains + valleys)
-      const dispCtx = document.createElement("canvas").getContext("2d");
-      dispCtx.canvas.width = 256; dispCtx.canvas.height = 256;
-      const dispData = dispCtx.createImageData(256, 256);
-      for (let y = 0; y < 256; y++) {
-        for (let x = 0; x < 256; x++) {
-          const v = smoothNoise(x * 0.05, y * 0.05) * 0.6 +
-                    smoothNoise(x * 0.12 + 3, y * 0.12 + 3) * 0.25 +
-                    smoothNoise(x * 0.25 + 7, y * 0.25 + 7) * 0.15;
-          const idx = (y * 256 + x) * 4;
-          const val = Math.min(255, Math.max(0, v * 255));
-          dispData.data[idx] = val;
-          dispData.data[idx + 1] = val;
-          dispData.data[idx + 2] = val;
-          dispData.data[idx + 3] = 255;
-        }
-      }
-      dispCtx.putImageData(dispData, 0, 0);
-      const dispTex = new THREE.CanvasTexture(dispCtx.canvas);
-
       const planetMat = new THREE.MeshStandardMaterial({
         map: colorTex,
-        displacementMap: dispTex,
-        displacementScale: 0.25,
-        bumpMap: dispTex,
-        bumpScale: 0.08,
-        metalness: 0.05,
-        roughness: 0.7
+        metalness: 0.02, roughness: 0.85
       });
-      const planetBody = new THREE.Mesh(new THREE.SphereGeometry(1.2, 80, 80), planetMat);
+      const planetBody = new THREE.Mesh(new THREE.SphereGeometry(1.2, 64, 64), planetMat);
       planetGroup.add(planetBody);
 
       // Thin atmospheric glow
-      const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.28, 48, 48),
-        new THREE.MeshBasicMaterial({ color: 0x5577aa, transparent: true, opacity: 0.06, blending: THREE.AdditiveBlending }));
+      const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.3, 48, 48),
+        new THREE.MeshBasicMaterial({ color: 0xccaa88, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending }));
+      atmo.userData = { phase: Math.random() * 10 };
       planetGroup.add(atmo);
+      planetGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.4, 48, 48),
+        new THREE.MeshBasicMaterial({ color: 0x8866aa, transparent: true, opacity: 0.02, blending: THREE.AdditiveBlending })));
 
       scene.add(planetGroup);
 
-      // Floating background particles — visible amber/dust on light bg
-      const pCount = 800;
+      // Floating particles around Jupiter (dust ring / trojans)
+      const pCount = 1500;
       const pPos = new Float32Array(pCount * 3);
-      const pSiz = new Float32Array(pCount);
-      const pSpeeds = new Float32Array(pCount);
+      const pVel = new Float32Array(pCount);
       for (let i = 0; i < pCount; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-        const r = 2.5 + Math.random() * 12;
-        pPos[i*3] = Math.sin(phi)*Math.cos(theta)*r;
-        pPos[i*3+1] = (Math.random() - 0.5) * 7;
-        pPos[i*3+2] = Math.sin(phi)*Math.sin(theta)*r;
-        pSiz[i] = 0.02 + Math.random() * 0.06;
-        pSpeeds[i] = 0.002 + Math.random() * 0.008;
+        const dist = 1.6 + Math.pow(Math.random(), 0.7) * 4.5;
+        const angle = Math.random() * Math.PI * 2;
+        const height = (Math.random() - 0.5) * 1.2 * (1 + dist * 0.15);
+        pPos[i*3] = Math.cos(angle) * dist;
+        pPos[i*3+1] = height;
+        pPos[i*3+2] = Math.sin(angle) * dist;
+        pVel[i] = 0.3 + Math.random() * 0.7;
       }
       const particles = new THREE.Points(
-        new THREE.BufferGeometry()
-          .setAttribute("position", new THREE.BufferAttribute(pPos, 3))
-          .setAttribute("size", new THREE.BufferAttribute(pSiz, 1)),
-        new THREE.PointsMaterial({ size: 0.06, color: 0xcc8844, transparent: true, opacity: 0.15, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pPos, 3)),
+        new THREE.PointsMaterial({ size: 0.03, color: 0xccaa88, transparent: true, opacity: 0.25, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
 
-      // Faint distant stars
-      const sCount = 600;
+      // Distant stars
+      const sCount = 800;
       const sp = new Float32Array(sCount * 3);
       for (let i = 0; i < sCount; i++) {
-        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 8+Math.random()*30;
+        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 7+Math.random()*35;
         sp[i*3]=Math.sin(phi)*Math.cos(theta)*r;
-        sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.5;
+        sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.45;
         sp[i*3+2]=Math.cos(phi)*r;
       }
       const stars = new THREE.Points(
         new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sp, 3)),
-        new THREE.PointsMaterial({ size: 0.012, color: 0x998866, transparent: true, opacity: 0.1, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.PointsMaterial({ size: 0.015, color: 0xaa9966, transparent: true, opacity: 0.12, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
 
       scene.add(particles);
       scene.add(stars);
 
       // Lights
-      scene.add(new THREE.AmbientLight(0x445566, 0.6));
-      const dl = new THREE.DirectionalLight(0xffdd99, 1.8);
-      dl.position.set(6, 4, 6);
+      scene.add(new THREE.AmbientLight(0x445566, 0.5));
+      const dl = new THREE.DirectionalLight(0xffdd99, 1.6);
+      dl.position.set(5, 5, 5);
       scene.add(dl);
-      const fl = new THREE.DirectionalLight(0x6688bb, 0.3);
+      const fl = new THREE.DirectionalLight(0x7799bb, 0.3);
       fl.position.set(-4, -2, -4);
       scene.add(fl);
 
-      // Mouse
+      // Mouse — dramatic follow
       let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
       const onMouse = (x, y) => {
         mouseX = (x / window.innerWidth) * 2 - 1;
@@ -615,25 +595,29 @@
         const delta = clock.getDelta();
         const t = clock.getElapsedTime();
 
-        targetX += (mouseX - targetX) * 0.03;
-        targetY += (mouseY - targetY) * 0.03;
-        planetGroup.rotation.y = targetX * 0.5;
-        planetGroup.rotation.x = 0.25 + targetY * 0.2;
+        targetX += (mouseX - targetX) * 0.08;
+        targetY += (mouseY - targetY) * 0.08;
+        planetGroup.rotation.y = targetX * 0.8;
+        planetGroup.rotation.x = 0.3 + targetY * 0.35;
 
-        planetBody.rotation.y += delta * 0.02;
+        planetBody.rotation.y += delta * 0.015;
 
-        atmo.material.opacity = 0.05 + Math.sin(t * 0.2) * 0.02;
-        atmo.scale.setScalar(1 + Math.sin(t * 0.15) * 0.01);
+        atmo.material.opacity = 0.04 + Math.sin(t * 0.3 + atmo.userData.phase) * 0.025;
+        atmo.scale.setScalar(1 + Math.sin(t * 0.2) * 0.008);
 
-        // Float particles gently
+        // Orbit particles
         const pos = particles.geometry.attributes.position.array;
         for (let i = 0; i < pCount; i++) {
           const i3 = i * 3;
-          pos[i3 + 1] += Math.sin(t * pSpeeds[i] + i) * 0.0003;
+          const angle = Math.atan2(pos[i3+2], pos[i3]) + delta * pVel[i] * 0.15;
+          const dist = Math.sqrt(pos[i3]*pos[i3] + pos[i3+2]*pos[i3+2]);
+          pos[i3] = Math.cos(angle) * dist;
+          pos[i3+2] = Math.sin(angle) * dist;
+          pos[i3+1] += Math.sin(t * 0.5 + i) * 0.0002;
         }
         particles.geometry.attributes.position.needsUpdate = true;
 
-        stars.rotation.y += delta * 0.0005;
+        stars.rotation.y += delta * 0.0003;
 
         renderer.render(scene, camera);
       }
