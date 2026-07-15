@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-15
 
+Replace light-theme with Jupiter-inspired planet (dark blue + chocolate brown bands, displacement relief)
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update changelog
+
+### 2026-07-15
+
 Replace light-theme sun with dark star (Pollux + dark matter glow)
 
 ### 2026-07-15
@@ -186,19 +202,3 @@ feat: replace spiral galaxy with Saturn-like planet scene
 - Inner swarm (4000 particles) close to planet
 - 8 orbiting moon objects
 - 3-point lighting for planet depth
-- Background stars and scattered orbs kept
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: circular point textures (radial gradient) for galaxy particles + force-refresh iodeck screenshot
-
-### 2026-07-13
-
