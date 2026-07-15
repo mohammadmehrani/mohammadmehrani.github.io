@@ -451,148 +451,148 @@
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
 
     if (isLight) {
-      // --- Dark Star Scene (Pollux-inspired orange giant + dark matter glow) ---
-      const starGroup = new THREE.Group();
+      // --- Jupiter-inspired planet (dark blue + chocolate brown bands, relief surface) ---
+      const planetGroup = new THREE.Group();
+      planetGroup.rotation.x = 0.25;
 
-      // Star body — deep orange-red like Pollux, with dark patchy surface
-      const surfCtx = document.createElement("canvas").getContext("2d");
-      surfCtx.canvas.width = 256; surfCtx.canvas.height = 128;
-      for (let y = 0; y < 128; y++) {
-        for (let x = 0; x < 256; x++) {
-          const v = 80 + Math.sin(x * 0.05 + y * 0.03) * 25 + Math.sin(x * 0.13 + y * 0.09) * 12 + Math.sin(x * 0.3 + y * 0.18) * 6 + (Math.random() - 0.5) * 30;
-          const r = Math.min(255, Math.max(40, v + 100));
-          const g = Math.min(200, Math.max(20, v + 30));
-          const b = Math.min(120, Math.max(0, v - 10));
-          surfCtx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-          surfCtx.fillRect(x, y, 1, 1);
+      function smoothNoise(x, y) {
+        return Math.sin(x * 1.3 + y * 0.7) * Math.cos(y * 1.1 - x * 0.5) * 0.5 + 0.5;
+      }
+
+      // Color palette — exact dark blue (#1a2b4a) and chocolate brown (#4a2c17) from buttons
+      const darkBlue = [26, 43, 74];
+      const chocoBrown = [74, 44, 23];
+      const mix = (a, b, t) => [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];
+
+      // Planet color texture — Jupiter-like bands
+      const colCtx = document.createElement("canvas").getContext("2d");
+      colCtx.canvas.width = 512; colCtx.canvas.height = 256;
+      const colData = colCtx.createImageData(512, 256);
+      for (let y = 0; y < 256; y++) {
+        const bandPos = y / 256;
+        const bandWave = Math.sin(bandPos * 18 + Math.sin(bandPos * 30) * 0.3) * 0.5 + 0.5;
+        const noise2 = smoothNoise(bandPos * 10, 0) * 0.2;
+        const t = Math.pow(bandWave + noise2, 0.8);
+        let col;
+        if (t < 0.35) col = darkBlue;
+        else if (t < 0.5) col = mix(darkBlue, chocoBrown, (t - 0.35) / 0.15);
+        else if (t < 0.7) col = mix(chocoBrown, [100, 60, 30], (t - 0.5) / 0.2);
+        else if (t < 0.85) col = mix([100, 60, 30], darkBlue, (t - 0.7) / 0.15);
+        else col = darkBlue;
+        for (let x = 0; x < 512; x++) {
+          const spot = Math.sin(x * 0.15 + y * 0.1) * Math.cos(x * 0.05 - y * 0.08) * 15;
+          const idx = (y * 512 + x) * 4;
+          colData.data[idx] = Math.max(0, Math.min(255, col[0] + spot));
+          colData.data[idx + 1] = Math.max(0, Math.min(255, col[1] + spot));
+          colData.data[idx + 2] = Math.max(0, Math.min(255, col[2] + spot));
+          colData.data[idx + 3] = 255;
         }
       }
-      const surfTex = new THREE.CanvasTexture(surfCtx.canvas);
-      const starMat = new THREE.MeshStandardMaterial({ map: surfTex, emissive: 0xcc6622, emissiveIntensity: 0.4 });
-      const starMesh = new THREE.Mesh(new THREE.SphereGeometry(1.2, 48, 48), starMat);
-      starGroup.add(starMesh);
-
-      // Dark matter annihilation glow — deep red/magenta/purple
-      const glowLayers = [];
-      for (let i = 0; i < 5; i++) {
-        const sz = 1.35 + i * 0.35;
-        const col = [0xcc4444, 0xaa3366, 0x8833aa, 0x6633cc, 0x4444cc][i];
-        const op = [0.08, 0.06, 0.04, 0.025, 0.015][i];
-        const g = new THREE.Mesh(new THREE.SphereGeometry(sz, 32, 32),
-          new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, blending: THREE.AdditiveBlending }));
-        g.userData = { idx: i, phase: Math.random() * 10, baseOp: op };
-        starGroup.add(g);
-        glowLayers.push(g);
+      // Great Red Spot
+      for (let y = 90; y < 130; y++) {
+        for (let x = 200; x < 280; x++) {
+          const dx = (x - 240) / 40, dy = (y - 110) / 18;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 1) {
+            const fade = 1 - dist;
+            const idx = (y * 512 + x) * 4;
+            colData.data[idx] = Math.min(255, colData.data[idx] + fade * 60);
+            colData.data[idx + 1] = Math.max(0, colData.data[idx + 1] - fade * 20);
+            colData.data[idx + 2] = Math.max(0, colData.data[idx + 2] - fade * 10);
+          }
+        }
       }
+      colCtx.putImageData(colData, 0, 0);
+      const colorTex = new THREE.CanvasTexture(colCtx.canvas);
 
-      // Dark matter accretion disk particles — purple/magenta/teal swirl
-      const dmCount = 12000;
-      const dmPos = new Float32Array(dmCount * 3);
-      const dmCol = new Float32Array(dmCount * 3);
-      for (let i = 0; i < dmCount; i++) {
-        const dist = 0.6 + Math.pow(Math.random(), 0.6) * 3.0;
-        const angle = Math.random() * Math.PI * 2;
-        const height = (Math.random() - 0.5) * 0.4 * (1 + dist * 0.25);
-        dmPos[i * 3] = Math.cos(angle) * dist;
-        dmPos[i * 3 + 1] = height;
-        dmPos[i * 3 + 2] = Math.sin(angle) * dist;
-        const t = Math.random();
-        if (t < 0.3) hue.setHSL(0.75, 0.9, 0.3 + Math.random() * 0.2);
-        else if (t < 0.55) hue.setHSL(0.85, 0.8, 0.25 + Math.random() * 0.2);
-        else if (t < 0.75) hue.setHSL(0.65, 0.7, 0.35 + Math.random() * 0.2);
-        else hue.setHSL(0.9, 0.9, 0.4 + Math.random() * 0.2);
-        dmCol[i*3]=hue.r; dmCol[i*3+1]=hue.g; dmCol[i*3+2]=hue.b;
+      // Displacement map — surface relief (mountains + valleys)
+      const dispCtx = document.createElement("canvas").getContext("2d");
+      dispCtx.canvas.width = 256; dispCtx.canvas.height = 256;
+      const dispData = dispCtx.createImageData(256, 256);
+      for (let y = 0; y < 256; y++) {
+        for (let x = 0; x < 256; x++) {
+          const v = smoothNoise(x * 0.05, y * 0.05) * 0.6 +
+                    smoothNoise(x * 0.12 + 3, y * 0.12 + 3) * 0.25 +
+                    smoothNoise(x * 0.25 + 7, y * 0.25 + 7) * 0.15;
+          const idx = (y * 256 + x) * 4;
+          const val = Math.min(255, Math.max(0, v * 255));
+          dispData.data[idx] = val;
+          dispData.data[idx + 1] = val;
+          dispData.data[idx + 2] = val;
+          dispData.data[idx + 3] = 255;
+        }
       }
-      const dmGlow = new THREE.Points(
-        new THREE.BufferGeometry()
-          .setAttribute("position", new THREE.BufferAttribute(dmPos, 3))
-          .setAttribute("color", new THREE.BufferAttribute(dmCol, 3)),
-        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.7, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
-      );
-      starGroup.add(dmGlow);
+      dispCtx.putImageData(dispData, 0, 0);
+      const dispTex = new THREE.CanvasTexture(dispCtx.canvas);
 
-      // Sparse scatter particles — deep orange embers from Pollux
-      const emberCount = 4000;
-      const ePos = new Float32Array(emberCount * 3);
-      const eCol = new Float32Array(emberCount * 3);
-      for (let i = 0; i < emberCount; i++) {
+      const planetMat = new THREE.MeshStandardMaterial({
+        map: colorTex,
+        displacementMap: dispTex,
+        displacementScale: 0.25,
+        bumpMap: dispTex,
+        bumpScale: 0.08,
+        metalness: 0.05,
+        roughness: 0.7
+      });
+      const planetBody = new THREE.Mesh(new THREE.SphereGeometry(1.2, 80, 80), planetMat);
+      planetGroup.add(planetBody);
+
+      // Thin atmospheric glow
+      const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.28, 48, 48),
+        new THREE.MeshBasicMaterial({ color: 0x5577aa, transparent: true, opacity: 0.06, blending: THREE.AdditiveBlending }));
+      planetGroup.add(atmo);
+
+      scene.add(planetGroup);
+
+      // Floating background particles — visible amber/dust on light bg
+      const pCount = 800;
+      const pPos = new Float32Array(pCount * 3);
+      const pSiz = new Float32Array(pCount);
+      const pSpeeds = new Float32Array(pCount);
+      for (let i = 0; i < pCount; i++) {
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(2 * Math.random() - 1);
-        const dist = 1.5 + Math.random() * 5.0;
-        ePos[i*3] = Math.sin(phi)*Math.cos(theta)*dist;
-        ePos[i*3+1] = Math.sin(phi)*Math.sin(theta)*dist*0.4;
-        ePos[i*3+2] = Math.cos(phi)*dist;
-        hue.setHSL(0.06 + Math.random() * 0.06, 0.8, 0.3 + Math.random() * 0.3);
-        eCol[i*3]=hue.r; eCol[i*3+1]=hue.g; eCol[i*3+2]=hue.b;
+        const r = 2.5 + Math.random() * 12;
+        pPos[i*3] = Math.sin(phi)*Math.cos(theta)*r;
+        pPos[i*3+1] = (Math.random() - 0.5) * 7;
+        pPos[i*3+2] = Math.sin(phi)*Math.sin(theta)*r;
+        pSiz[i] = 0.02 + Math.random() * 0.06;
+        pSpeeds[i] = 0.002 + Math.random() * 0.008;
       }
-      const embers = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(ePos, 3)).setAttribute("color", new THREE.BufferAttribute(eCol, 3)),
-        new THREE.PointsMaterial({ size: 0.03, vertexColors: true, transparent: true, opacity: 0.2, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      const particles = new THREE.Points(
+        new THREE.BufferGeometry()
+          .setAttribute("position", new THREE.BufferAttribute(pPos, 3))
+          .setAttribute("size", new THREE.BufferAttribute(pSiz, 1)),
+        new THREE.PointsMaterial({ size: 0.06, color: 0xcc8844, transparent: true, opacity: 0.15, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      starGroup.add(embers);
 
-      // Dark orbital ring — cold teal/purple
-      const ringCount = 4000;
-      const rp2 = new Float32Array(ringCount * 3);
-      const rc2 = new Float32Array(ringCount * 3);
-      for (let i = 0; i < ringCount; i++) {
-        const dist = 2.2 + Math.pow(Math.random(), 0.6) * 3.5;
-        const angle = Math.random() * Math.PI * 2;
-        const height = (Math.random() - 0.5) * 0.5;
-        rp2[i*3] = Math.cos(angle)*dist;
-        rp2[i*3+1] = height;
-        rp2[i*3+2] = Math.sin(angle)*dist;
-        const t = Math.random();
-        if (t < 0.4) hue.setHSL(0.75, 0.6, 0.25 + Math.random()*0.2);
-        else if (t < 0.7) hue.setHSL(0.65, 0.5, 0.3 + Math.random()*0.2);
-        else hue.setHSL(0.85, 0.7, 0.2 + Math.random()*0.2);
-        rc2[i*3]=hue.r; rc2[i*3+1]=hue.g; rc2[i*3+2]=hue.b;
-      }
-      const darkRing = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp2, 3)).setAttribute("color", new THREE.BufferAttribute(rc2, 3)),
-        new THREE.PointsMaterial({ size: 0.035, vertexColors: true, transparent: true, opacity: 0.3, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
-      );
-      starGroup.add(darkRing);
-
-      // Dark orbiting bodies (cold dead moons / asteroids)
-      const moonGroup = new THREE.Group();
-      for (let i = 0; i < 15; i++) {
-        const dist = 2.0 + Math.random() * 3.0;
-        const ang = Math.random() * Math.PI * 2;
-        const sz = 0.02 + Math.random() * 0.05;
-        const m = new THREE.Mesh(
-          new THREE.SphereGeometry(sz, 6, 6),
-          new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(0.75, 0.3, 0.15 + Math.random()*0.2), emissive: 0x442266, emissiveIntensity: 0.1 })
-        );
-        m.userData = { dist, ang, speed: 0.08 + Math.random() * 0.15, yOff: (Math.random() - 0.5) * 0.25 };
-        m.position.set(Math.cos(ang)*dist, m.userData.yOff, Math.sin(ang)*dist);
-        moonGroup.add(m);
-      }
-      starGroup.add(moonGroup);
-
-      scene.add(starGroup);
-
-      // Deep space background stars — very faint
-      const sCount = 2000;
+      // Faint distant stars
+      const sCount = 600;
       const sp = new Float32Array(sCount * 3);
       for (let i = 0; i < sCount; i++) {
-        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 15+Math.random()*50;
+        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 8+Math.random()*30;
         sp[i*3]=Math.sin(phi)*Math.cos(theta)*r;
-        sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.45;
+        sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.5;
         sp[i*3+2]=Math.cos(phi)*r;
       }
-      scene.add(new THREE.Points(
+      const stars = new THREE.Points(
         new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sp, 3)),
-        new THREE.PointsMaterial({ size: 0.01, color: 0x666688, transparent: true, opacity: 0.08, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
-      ));
+        new THREE.PointsMaterial({ size: 0.012, color: 0x998866, transparent: true, opacity: 0.1, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      );
 
-      // Lights — dim, cool
-      scene.add(new THREE.AmbientLight(0x221133));
-      const dl = new THREE.DirectionalLight(0xcc8866, 0.8);
-      dl.position.set(5, 5, 5);
+      scene.add(particles);
+      scene.add(stars);
+
+      // Lights
+      scene.add(new THREE.AmbientLight(0x445566, 0.6));
+      const dl = new THREE.DirectionalLight(0xffdd99, 1.8);
+      dl.position.set(6, 4, 6);
       scene.add(dl);
+      const fl = new THREE.DirectionalLight(0x6688bb, 0.3);
+      fl.position.set(-4, -2, -4);
+      scene.add(fl);
 
-      // Mouse tracking
+      // Mouse
       let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
       const onMouse = (x, y) => {
         mouseX = (x / window.innerWidth) * 2 - 1;
@@ -617,26 +617,23 @@
 
         targetX += (mouseX - targetX) * 0.03;
         targetY += (mouseY - targetY) * 0.03;
-        starGroup.rotation.y = targetX * 0.6;
-        starGroup.rotation.x = 0.2 + targetY * 0.25;
+        planetGroup.rotation.y = targetX * 0.5;
+        planetGroup.rotation.x = 0.25 + targetY * 0.2;
 
-        starMesh.rotation.y += delta * 0.08;
-        dmGlow.rotation.y += delta * 0.04;
-        embers.rotation.y += delta * 0.01;
-        darkRing.rotation.y += delta * 0.05;
+        planetBody.rotation.y += delta * 0.02;
 
-        moonGroup.children.forEach((m, i) => {
-          const ang = m.userData.ang + t * m.userData.speed;
-          m.position.x = Math.cos(ang) * m.userData.dist;
-          m.position.z = Math.sin(ang) * m.userData.dist;
-          m.position.y = m.userData.yOff + Math.sin(t * 0.4 + i) * 0.03;
-        });
+        atmo.material.opacity = 0.05 + Math.sin(t * 0.2) * 0.02;
+        atmo.scale.setScalar(1 + Math.sin(t * 0.15) * 0.01);
 
-        glowLayers.forEach((g, i) => {
-          const ph = g.userData.phase;
-          g.scale.setScalar(1 + Math.sin(t * (0.08 + i * 0.025) + ph) * (0.025 + i * 0.01));
-          g.material.opacity = g.userData.baseOp + Math.sin(t * (0.12 - i * 0.015) + ph) * 0.02;
-        });
+        // Float particles gently
+        const pos = particles.geometry.attributes.position.array;
+        for (let i = 0; i < pCount; i++) {
+          const i3 = i * 3;
+          pos[i3 + 1] += Math.sin(t * pSpeeds[i] + i) * 0.0003;
+        }
+        particles.geometry.attributes.position.needsUpdate = true;
+
+        stars.rotation.y += delta * 0.0005;
 
         renderer.render(scene, camera);
       }
