@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-07-15
 
+Revert light-theme 3D to original bright star scene
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update changelog
+
+### 2026-07-15
+
 Fix Jupiter: smooth sphere, realistic bands, orbiting dust particles, dramatic mouse follow
 
 ### 2026-07-15
@@ -184,18 +196,6 @@ chore: update changelog
 ### 2026-07-13
 
 fix: correct ring rotation axis for proper Saturn viewing angle
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: resize Saturn scene to full-view scale with multi-color particle cloud
 
 ### 2026-07-13
 
