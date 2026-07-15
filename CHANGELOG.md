@@ -2,6 +2,46 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-15
+
+Replace light-theme sun with dark star (Pollux + dark matter glow)
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update repo stats
+
+### 2026-07-15
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-15
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update repo stats
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update CI status
+
+### 2026-07-14
+
+chore: update changelog
+
 ### 2026-07-14
 
 fix: set Vazirmatn at html[dir=rtl] level for full Persian page coverage
@@ -159,46 +199,6 @@ chore: update changelog
 ### 2026-07-13
 
 feat: circular point textures (radial gradient) for galaxy particles + force-refresh iodeck screenshot
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-clean: remove unused assets (old CSS, JS plugins, Wordpress images, commented section)
-Deleted: css/main.css, main.css.bak, aos.css
-Deleted: js/aos.js, now-ui-kit.js, core/, plugins/
-Deleted: images/1-4.png (Wordpress section was commented out)
-Removed: commented WordPress section from HTML
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: change mini 3D shapes to spheres, remove 'Open' text from modal button
-
-### 2026-07-13
-
-chore: update CI status
 
 ### 2026-07-13
 
