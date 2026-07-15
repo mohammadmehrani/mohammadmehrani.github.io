@@ -151,7 +151,10 @@
           </div>
           <div class="col-lg-5">
             <div class="profile-card reveal delay-2">
-              <img src="images/mehrani.jpg" alt="Portrait of Mohammad Mehrani" loading="eager" fetchpriority="high" decoding="async" />
+              <picture>
+                <source srcset="images/mehrani.webp" type="image/webp" />
+                <img src="images/mehrani.jpg" alt="Portrait of Mohammad Mehrani" loading="eager" fetchpriority="high" decoding="async" />
+              </picture>
               <div class="profile-chip">
                 <i class="bi bi-shield-check"></i>
                 <span data-i18n="hero_chip">Available for remote contracts</span>
@@ -325,7 +328,10 @@
         <div class="row g-4">
           <div class="col-md-6 col-lg-4 reveal">
             <article class="project-card">
-              <img src="images/flow01.jpeg" alt="Project visual 1" loading="lazy" decoding="async" />
+              <picture>
+                <source srcset="images/flow01.webp" type="image/webp" />
+                <img src="images/flow01.jpeg" alt="Project visual 1" loading="lazy" decoding="async" />
+              </picture>
               <div>
                 <h3 data-i18n="project_1_title">Cloud Migration Pipeline</h3>
                 <p data-i18n="project_1_desc">Multi-stage deployment with quality gates, rollback strategy, and audit trails.</p>
@@ -334,7 +340,10 @@
           </div>
           <div class="col-md-6 col-lg-4 reveal delay-1">
             <article class="project-card">
-              <img src="images/flow03.jpg" alt="Project visual 2" loading="lazy" decoding="async" />
+              <picture>
+                <source srcset="images/flow03.webp" type="image/webp" />
+                <img src="images/flow03.jpg" alt="Project visual 2" loading="lazy" decoding="async" />
+              </picture>
               <div>
                 <h3 data-i18n="project_2_title">Container Platform Hardening</h3>
                 <p data-i18n="project_2_desc">Security policy enforcement, runtime controls, and image scanning integration.</p>
@@ -343,7 +352,10 @@
           </div>
           <div class="col-md-6 col-lg-4 reveal delay-2">
             <article class="project-card">
-              <img src="images/flow05.jpg" alt="Project visual 3" loading="lazy" decoding="async" />
+              <picture>
+                <source srcset="images/flow05.webp" type="image/webp" />
+                <img src="images/flow05.jpg" alt="Project visual 3" loading="lazy" decoding="async" />
+              </picture>
               <div>
                 <h3 data-i18n="project_3_title">Observability Stack</h3>
                 <p data-i18n="project_3_desc">Metrics, logs, alerts, and dashboards to reduce MTTR and improve reliability.</p>
@@ -454,12 +466,15 @@
           </div>
         </div>
         <div class="portfolio-modal-body">
+          <button class="pmb-nav pmb-prev" id="pmbPrev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+          <button class="pmb-nav pmb-next" id="pmbNext" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
           <img id="portfolioPreviewImg" src="" alt="Website preview" style="width:100%;height:100%;object-fit:contain;background:#000;display:block" />
           <div class="portfolio-loading" id="portfolioLoading">
             <div class="spinner"></div>
             <span data-i18n="portfolio_loading">Loading preview...</span>
           </div>
         </div>
+        <div class="portfolio-modal-counter" id="pmbCounter"></div>
       </div>
     </div>
 
@@ -470,12 +485,12 @@
           <p data-i18n="certs_desc">Recent certifications and training records.</p>
         </div>
         <div class="cert-grid">
-          <img class="reveal" src="images/cert-001.jpg" alt="Certificate 1" loading="lazy" decoding="async" />
-          <img class="reveal delay-1" src="images/cert-002.jpg" alt="Certificate 2" loading="lazy" decoding="async" />
-          <img class="reveal delay-2" src="images/cert-003.jpg" alt="Certificate 3" loading="lazy" decoding="async" />
-          <img class="reveal" src="images/cert-004.jpg" alt="Certificate 4" loading="lazy" decoding="async" />
-          <img class="reveal delay-1" src="images/cert-005.jpg" alt="Certificate 5" loading="lazy" decoding="async" />
-          <img class="reveal delay-2" src="images/cert-006.jpg" alt="Certificate 6" loading="lazy" decoding="async" />
+          <picture class="reveal"><source srcset="images/cert-001.webp" type="image/webp" /><img src="images/cert-001.jpg" alt="Certificate 1" loading="lazy" decoding="async" /></picture>
+          <picture class="reveal delay-1"><source srcset="images/cert-002.webp" type="image/webp" /><img src="images/cert-002.jpg" alt="Certificate 2" loading="lazy" decoding="async" /></picture>
+          <picture class="reveal delay-2"><source srcset="images/cert-003.webp" type="image/webp" /><img src="images/cert-003.jpg" alt="Certificate 3" loading="lazy" decoding="async" /></picture>
+          <picture class="reveal"><source srcset="images/cert-004.webp" type="image/webp" /><img src="images/cert-004.jpg" alt="Certificate 4" loading="lazy" decoding="async" /></picture>
+          <picture class="reveal delay-1"><source srcset="images/cert-005.webp" type="image/webp" /><img src="images/cert-005.jpg" alt="Certificate 5" loading="lazy" decoding="async" /></picture>
+          <picture class="reveal delay-2"><source srcset="images/cert-006.webp" type="image/webp" /><img src="images/cert-006.jpg" alt="Certificate 6" loading="lazy" decoding="async" /></picture>
         </div>
       </div>
     </section>

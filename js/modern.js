@@ -451,121 +451,120 @@
     const circleTexture = new THREE.CanvasTexture(ptCanvas);
 
     if (isLight) {
-      // --- Bright Star Scene (light theme, mouse-follow) ---
+      // --- Dark Star Scene (Pollux-inspired orange giant + dark matter glow) ---
       const starGroup = new THREE.Group();
 
-      // Star body with procedural surface
+      // Star body — deep orange-red like Pollux, with dark patchy surface
       const surfCtx = document.createElement("canvas").getContext("2d");
       surfCtx.canvas.width = 256; surfCtx.canvas.height = 128;
       for (let y = 0; y < 128; y++) {
         for (let x = 0; x < 256; x++) {
-          const v = 140 + Math.sin(x * 0.06 + y * 0.04) * 30 + Math.sin(x * 0.12 + y * 0.08) * 15 + Math.sin(x * 0.25 + y * 0.15) * 8 + (Math.random() - 0.5) * 20;
-          const r = Math.min(255, v + 40);
-          const g = Math.min(255, v + 20);
-          const b = Math.min(255, v - 20);
+          const v = 80 + Math.sin(x * 0.05 + y * 0.03) * 25 + Math.sin(x * 0.13 + y * 0.09) * 12 + Math.sin(x * 0.3 + y * 0.18) * 6 + (Math.random() - 0.5) * 30;
+          const r = Math.min(255, Math.max(40, v + 100));
+          const g = Math.min(200, Math.max(20, v + 30));
+          const b = Math.min(120, Math.max(0, v - 10));
           surfCtx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
           surfCtx.fillRect(x, y, 1, 1);
         }
       }
       const surfTex = new THREE.CanvasTexture(surfCtx.canvas);
-      const starMat = new THREE.MeshStandardMaterial({ map: surfTex, emissive: 0xffaa44, emissiveIntensity: 0.6 });
-      const starMesh = new THREE.Mesh(new THREE.SphereGeometry(1.1, 48, 48), starMat);
+      const starMat = new THREE.MeshStandardMaterial({ map: surfTex, emissive: 0xcc6622, emissiveIntensity: 0.4 });
+      const starMesh = new THREE.Mesh(new THREE.SphereGeometry(1.2, 48, 48), starMat);
       starGroup.add(starMesh);
 
-      // Multi-layer corona glow
+      // Dark matter annihilation glow — deep red/magenta/purple
       const glowLayers = [];
-      for (let i = 0; i < 4; i++) {
-        const sz = 1.3 + i * 0.4;
-        const col = [0xffcc66, 0xffaa44, 0xff8833, 0xff6622][i];
-        const op = [0.15, 0.1, 0.06, 0.03][i];
+      for (let i = 0; i < 5; i++) {
+        const sz = 1.35 + i * 0.35;
+        const col = [0xcc4444, 0xaa3366, 0x8833aa, 0x6633cc, 0x4444cc][i];
+        const op = [0.08, 0.06, 0.04, 0.025, 0.015][i];
         const g = new THREE.Mesh(new THREE.SphereGeometry(sz, 32, 32),
           new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, blending: THREE.AdditiveBlending }));
-        g.userData = { idx: i, phase: Math.random() * 10 };
+        g.userData = { idx: i, phase: Math.random() * 10, baseOp: op };
         starGroup.add(g);
         glowLayers.push(g);
       }
 
-      // Dense corona particles (disk-like, dense)
-      const cpCount = 10000;
-      const cp = new Float32Array(cpCount * 3);
-      const cc = new Float32Array(cpCount * 3);
-      const cs = new Float32Array(cpCount);
-      for (let i = 0; i < cpCount; i++) {
-        const dist = 0.8 + Math.pow(Math.random(), 0.5) * 2.5;
+      // Dark matter accretion disk particles — purple/magenta/teal swirl
+      const dmCount = 12000;
+      const dmPos = new Float32Array(dmCount * 3);
+      const dmCol = new Float32Array(dmCount * 3);
+      for (let i = 0; i < dmCount; i++) {
+        const dist = 0.6 + Math.pow(Math.random(), 0.6) * 3.0;
         const angle = Math.random() * Math.PI * 2;
-        const height = (Math.random() - 0.5) * 0.5 * (1 + dist * 0.3);
-        cp[i * 3] = Math.cos(angle) * dist;
-        cp[i * 3 + 1] = height;
-        cp[i * 3 + 2] = Math.sin(angle) * dist;
+        const height = (Math.random() - 0.5) * 0.4 * (1 + dist * 0.25);
+        dmPos[i * 3] = Math.cos(angle) * dist;
+        dmPos[i * 3 + 1] = height;
+        dmPos[i * 3 + 2] = Math.sin(angle) * dist;
         const t = Math.random();
-        if (t < 0.4) { hue.setHSL(0.08, 1, 0.6 + Math.random() * 0.3); }
-        else if (t < 0.7) { hue.setHSL(0.1, 0.8, 0.5 + Math.random() * 0.3); }
-        else { hue.setHSL(0.04, 0.9, 0.7 + Math.random() * 0.2); }
-        cc[i*3]=hue.r; cc[i*3+1]=hue.g; cc[i*3+2]=hue.b;
-        cs[i] = 0.03 + Math.random() * 0.05;
+        if (t < 0.3) hue.setHSL(0.75, 0.9, 0.3 + Math.random() * 0.2);
+        else if (t < 0.55) hue.setHSL(0.85, 0.8, 0.25 + Math.random() * 0.2);
+        else if (t < 0.75) hue.setHSL(0.65, 0.7, 0.35 + Math.random() * 0.2);
+        else hue.setHSL(0.9, 0.9, 0.4 + Math.random() * 0.2);
+        dmCol[i*3]=hue.r; dmCol[i*3+1]=hue.g; dmCol[i*3+2]=hue.b;
       }
-      const coronaPts = new THREE.Points(
+      const dmGlow = new THREE.Points(
         new THREE.BufferGeometry()
-          .setAttribute("position", new THREE.BufferAttribute(cp, 3))
-          .setAttribute("color", new THREE.BufferAttribute(cc, 3)),
-        new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.8, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+          .setAttribute("position", new THREE.BufferAttribute(dmPos, 3))
+          .setAttribute("color", new THREE.BufferAttribute(dmCol, 3)),
+        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.7, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      starGroup.add(coronaPts);
+      starGroup.add(dmGlow);
 
-      // Scatter rays (long particles radiating in all directions)
-      const rayCount = 3000;
-      const rp = new Float32Array(rayCount * 3);
-      const rc = new Float32Array(rayCount * 3);
-      for (let i = 0; i < rayCount; i++) {
+      // Sparse scatter particles — deep orange embers from Pollux
+      const emberCount = 4000;
+      const ePos = new Float32Array(emberCount * 3);
+      const eCol = new Float32Array(emberCount * 3);
+      for (let i = 0; i < emberCount; i++) {
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(2 * Math.random() - 1);
-        const dist = 1.8 + Math.random() * 4.5;
-        rp[i*3] = Math.sin(phi)*Math.cos(theta)*dist;
-        rp[i*3+1] = Math.sin(phi)*Math.sin(theta)*dist*0.35;
-        rp[i*3+2] = Math.cos(phi)*dist;
-        hue.setHSL(0.08 + Math.random() * 0.06, 0.6, 0.7 + Math.random() * 0.3);
-        rc[i*3]=hue.r; rc[i*3+1]=hue.g; rc[i*3+2]=hue.b;
+        const dist = 1.5 + Math.random() * 5.0;
+        ePos[i*3] = Math.sin(phi)*Math.cos(theta)*dist;
+        ePos[i*3+1] = Math.sin(phi)*Math.sin(theta)*dist*0.4;
+        ePos[i*3+2] = Math.cos(phi)*dist;
+        hue.setHSL(0.06 + Math.random() * 0.06, 0.8, 0.3 + Math.random() * 0.3);
+        eCol[i*3]=hue.r; eCol[i*3+1]=hue.g; eCol[i*3+2]=hue.b;
       }
-      const rays = new THREE.Points(
-        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp, 3)).setAttribute("color", new THREE.BufferAttribute(rc, 3)),
-        new THREE.PointsMaterial({ size: 0.035, vertexColors: true, transparent: true, opacity: 0.25, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+      const embers = new THREE.Points(
+        new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(ePos, 3)).setAttribute("color", new THREE.BufferAttribute(eCol, 3)),
+        new THREE.PointsMaterial({ size: 0.03, vertexColors: true, transparent: true, opacity: 0.2, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      starGroup.add(rays);
+      starGroup.add(embers);
 
-      // Orbital particle ring (wide, scattered)
+      // Dark orbital ring — cold teal/purple
       const ringCount = 4000;
       const rp2 = new Float32Array(ringCount * 3);
       const rc2 = new Float32Array(ringCount * 3);
       for (let i = 0; i < ringCount; i++) {
-        const dist = 2.0 + Math.pow(Math.random(), 0.6) * 3.0;
+        const dist = 2.2 + Math.pow(Math.random(), 0.6) * 3.5;
         const angle = Math.random() * Math.PI * 2;
-        const height = (Math.random() - 0.5) * 0.6;
+        const height = (Math.random() - 0.5) * 0.5;
         rp2[i*3] = Math.cos(angle)*dist;
         rp2[i*3+1] = height;
         rp2[i*3+2] = Math.sin(angle)*dist;
         const t = Math.random();
-        if (t < 0.33) hue.setHSL(0.08, 0.7, 0.5 + Math.random()*0.3);
-        else if (t < 0.66) hue.setHSL(0.15, 0.6, 0.4 + Math.random()*0.3);
-        else hue.setHSL(0.04, 0.8, 0.6 + Math.random()*0.2);
+        if (t < 0.4) hue.setHSL(0.75, 0.6, 0.25 + Math.random()*0.2);
+        else if (t < 0.7) hue.setHSL(0.65, 0.5, 0.3 + Math.random()*0.2);
+        else hue.setHSL(0.85, 0.7, 0.2 + Math.random()*0.2);
         rc2[i*3]=hue.r; rc2[i*3+1]=hue.g; rc2[i*3+2]=hue.b;
       }
-      const orbitalRing = new THREE.Points(
+      const darkRing = new THREE.Points(
         new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(rp2, 3)).setAttribute("color", new THREE.BufferAttribute(rc2, 3)),
-        new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.4, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.PointsMaterial({ size: 0.035, vertexColors: true, transparent: true, opacity: 0.3, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       );
-      starGroup.add(orbitalRing);
+      starGroup.add(darkRing);
 
-      // Orbiting small bodies (moons/rocks)
+      // Dark orbiting bodies (cold dead moons / asteroids)
       const moonGroup = new THREE.Group();
-      for (let i = 0; i < 12; i++) {
-        const dist = 1.8 + Math.random() * 2.5;
+      for (let i = 0; i < 15; i++) {
+        const dist = 2.0 + Math.random() * 3.0;
         const ang = Math.random() * Math.PI * 2;
-        const sz = 0.03 + Math.random() * 0.07;
+        const sz = 0.02 + Math.random() * 0.05;
         const m = new THREE.Mesh(
           new THREE.SphereGeometry(sz, 6, 6),
-          new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(0.08, 0.4, 0.5 + Math.random()*0.3), emissive: 0x442200, emissiveIntensity: 0.2 })
+          new THREE.MeshStandardMaterial({ color: new THREE.Color().setHSL(0.75, 0.3, 0.15 + Math.random()*0.2), emissive: 0x442266, emissiveIntensity: 0.1 })
         );
-        m.userData = { dist, ang, speed: 0.15 + Math.random() * 0.3, yOff: (Math.random() - 0.5) * 0.2 };
+        m.userData = { dist, ang, speed: 0.08 + Math.random() * 0.15, yOff: (Math.random() - 0.5) * 0.25 };
         m.position.set(Math.cos(ang)*dist, m.userData.yOff, Math.sin(ang)*dist);
         moonGroup.add(m);
       }
@@ -573,23 +572,23 @@
 
       scene.add(starGroup);
 
-      // Subtle background stars
-      const sCount = 1500;
+      // Deep space background stars — very faint
+      const sCount = 2000;
       const sp = new Float32Array(sCount * 3);
       for (let i = 0; i < sCount; i++) {
-        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 20+Math.random()*40;
+        const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1), r = 15+Math.random()*50;
         sp[i*3]=Math.sin(phi)*Math.cos(theta)*r;
         sp[i*3+1]=Math.sin(phi)*Math.sin(theta)*r*0.45;
         sp[i*3+2]=Math.cos(phi)*r;
       }
       scene.add(new THREE.Points(
         new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(sp, 3)),
-        new THREE.PointsMaterial({ size: 0.015, color: 0x997755, transparent: true, opacity: 0.12, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
+        new THREE.PointsMaterial({ size: 0.01, color: 0x666688, transparent: true, opacity: 0.08, map: circleTexture, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true })
       ));
 
-      // Lights
-      scene.add(new THREE.AmbientLight(0x443322));
-      const dl = new THREE.DirectionalLight(0xffeedd, 2);
+      // Lights — dim, cool
+      scene.add(new THREE.AmbientLight(0x221133));
+      const dl = new THREE.DirectionalLight(0xcc8866, 0.8);
       dl.position.set(5, 5, 5);
       scene.add(dl);
 
@@ -621,22 +620,22 @@
         starGroup.rotation.y = targetX * 0.6;
         starGroup.rotation.x = 0.2 + targetY * 0.25;
 
-        starMesh.rotation.y += delta * 0.05;
-        coronaPts.rotation.y += delta * 0.03;
-        rays.rotation.y += delta * 0.008;
-        orbitalRing.rotation.y += delta * 0.04;
+        starMesh.rotation.y += delta * 0.08;
+        dmGlow.rotation.y += delta * 0.04;
+        embers.rotation.y += delta * 0.01;
+        darkRing.rotation.y += delta * 0.05;
 
         moonGroup.children.forEach((m, i) => {
           const ang = m.userData.ang + t * m.userData.speed;
           m.position.x = Math.cos(ang) * m.userData.dist;
           m.position.z = Math.sin(ang) * m.userData.dist;
-          m.position.y = m.userData.yOff + Math.sin(t * 0.5 + i) * 0.04;
+          m.position.y = m.userData.yOff + Math.sin(t * 0.4 + i) * 0.03;
         });
 
         glowLayers.forEach((g, i) => {
           const ph = g.userData.phase;
-          g.scale.setScalar(1 + Math.sin(t * (0.12 + i * 0.03) + ph) * (0.03 + i * 0.015));
-          g.material.opacity = [0.12, 0.08, 0.05, 0.025][i] + Math.sin(t * (0.18 - i * 0.02) + ph) * 0.03;
+          g.scale.setScalar(1 + Math.sin(t * (0.08 + i * 0.025) + ph) * (0.025 + i * 0.01));
+          g.material.opacity = g.userData.baseOp + Math.sin(t * (0.12 - i * 0.015) + ph) * 0.02;
         });
 
         renderer.render(scene, camera);
@@ -928,16 +927,38 @@
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     container.appendChild(renderer.domElement);
-    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambient);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    dirLight.position.set(1, 1, 1);
+    scene.add(dirLight);
     const group = new THREE.Group();
     scene.add(group);
-    const geo = new THREE.SphereGeometry(s * 0.08, 12, 12);
+    const radius = s * 0.08;
+    const geo = new THREE.SphereGeometry(radius, 16, 16);
     const mat = new THREE.MeshStandardMaterial({
-      color: opts.color || 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.25
+      color: opts.color || 0x1fe0b5,
+      emissive: opts.color || 0x1fe0b5,
+      emissiveIntensity: 0.15,
+      metalness: 0.3,
+      roughness: 0.4,
+      transparent: true,
+      opacity: 0.85
     });
     const mesh = new THREE.Mesh(geo, mat);
     group.add(mesh);
+    const wireGeo = new THREE.SphereGeometry(radius * 1.01, 12, 12);
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: opts.color || 0x1fe0b5, wireframe: true, transparent: true, opacity: 0.3
+    });
+    const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+    group.add(wireMesh);
+    const glowGeo = new THREE.SphereGeometry(radius * 1.8, 16, 16);
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: opts.color || 0x1fe0b5, transparent: true, opacity: 0.06, depthWrite: false
+    });
+    const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+    group.add(glowMesh);
     if (opts.ring) {
       const ring = makeOrbitRing(s * 0.14, opts.ringColor || 0x7c3aed, 0.5, 0, 0.2);
       group.add(ring.group);
@@ -954,11 +975,17 @@
         Math.sin(phi) * Math.sin(theta) * r * 0.5,
         Math.cos(phi) * r
       );
-      const pMat = new THREE.MeshBasicMaterial({ color: opts.color || 0xa8bbd9, transparent: true, opacity: 0.2 });
-      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(0.03, 4, 4), pMat);
+      const pMat = new THREE.MeshBasicMaterial({
+        color: opts.color || 0xa8bbd9, transparent: true, opacity: 0.15 + Math.random() * 0.15
+      });
+      const pSize = 0.02 + Math.random() * 0.03;
+      const pMesh = new THREE.Mesh(new THREE.SphereGeometry(pSize, 6, 6), pMat);
       pMesh.position.copy(pos);
       group.add(pMesh);
-      particles.push({ mesh: pMesh, speed: 0.1 + Math.random() * 0.2, phase: Math.random() * Math.PI * 2 });
+      particles.push({
+        mesh: pMesh, speed: 0.1 + Math.random() * 0.3, phase: Math.random() * Math.PI * 2,
+        r: r, theta: theta, phi: phi
+      });
     }
     function resize() {
       const w = container.clientWidth, h = container.clientHeight;
@@ -972,11 +999,27 @@
       const delta = clock.getDelta();
       const t = clock.getElapsedTime();
       group.rotation.y += delta * (opts.speed || 0.4);
-      group.rotation.x = Math.sin(t * 0.15) * 0.1;
-      mesh.rotation.x += delta * 0.2;
-      mesh.rotation.z += delta * 0.1;
-      particles.forEach(p => {
-        p.mesh.position.y += Math.sin(t * p.speed + p.phase) * 0.001;
+      group.rotation.x = Math.sin(t * 0.12) * 0.15;
+      mesh.rotation.x += delta * 0.3;
+      mesh.rotation.z += delta * 0.15;
+      wireMesh.rotation.x -= delta * 0.2;
+      wireMesh.rotation.y += delta * 0.1;
+      glowMat.opacity = 0.04 + Math.sin(t * 0.5) * 0.02;
+      const hueShift = Math.sin(t * 0.3) * 0.03;
+      if (!opts.fixedColor) {
+        const c = new THREE.Color(opts.color || 0x1fe0b5);
+        c.offsetHSL(hueShift, 0, 0);
+        mesh.material.color.set(c);
+        mesh.material.emissive.set(c);
+        wireMesh.material.color.set(c);
+        glowMesh.material.color.set(c);
+      }
+      particles.forEach((p, i) => {
+        const t2 = t * p.speed * 0.4 + p.phase;
+        p.mesh.position.x = Math.sin(p.phi) * Math.cos(p.theta + t2 * 0.15) * p.r;
+        p.mesh.position.y = Math.sin(p.phi) * Math.sin(p.theta + t2 * 0.15) * p.r * 0.5 + Math.sin(t * p.speed + p.phase) * 0.02;
+        p.mesh.position.z = Math.cos(p.phi + t2 * 0.1) * p.r;
+        p.mesh.material.opacity = 0.1 + Math.sin(t * p.speed + p.phase * 2) * 0.1 + 0.1;
       });
       renderer.render(scene, camera);
     }
@@ -1200,20 +1243,38 @@
     const closeBtn = modal?.querySelector(".pmb-close");
     const backdrop = modal?.querySelector(".portfolio-modal-backdrop");
     const externalBtn = document.getElementById("pmbExternal");
+    const prevBtn = document.getElementById("pmbPrev");
+    const nextBtn = document.getElementById("pmbNext");
+    const counter = document.getElementById("pmbCounter");
 
     if (!modal || !previewImg) return;
 
-    const openModal = (url) => {
+    let currentIndex = -1;
+
+    const getImageUrl = (url) => {
+      return url.includes("iodeck.ir")
+        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&force=true&embed=screenshot.url"
+        : "https://image.thum.io/get/width/1920/crop/1080/" + url;
+    };
+
+    const loadPreview = (url) => {
+      if (loading) loading.classList.remove("hidden");
+      previewImg.src = getImageUrl(url);
+      previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
+      previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
+    };
+
+    const openModal = (index) => {
+      if (index < 0 || index >= cards.length) return;
+      currentIndex = index;
+      const card = cards[index];
+      const url = card.dataset.url;
       urlText.textContent = url;
       if (externalBtn) externalBtn.href = url;
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
-      if (loading) loading.classList.remove("hidden");
-      previewImg.src = url.includes("iodeck.ir")
-        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&force=true&embed=screenshot.url"
-        : "https://image.thum.io/get/width/1920/crop/1080/" + url;
-      previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
-      previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
+      if (counter) counter.textContent = (index + 1) + " / " + cards.length;
+      loadPreview(url);
     };
 
     const closeModal = () => {
@@ -1222,17 +1283,22 @@
       setTimeout(() => { previewImg.src = ""; }, 300);
     };
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        const url = card.dataset.url;
-        if (url) openModal(url);
-      });
+    const goPrev = () => { if (currentIndex > 0) openModal(currentIndex - 1); };
+    const goNext = () => { if (currentIndex < cards.length - 1) openModal(currentIndex + 1); };
+
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => openModal(i));
     });
 
     closeBtn?.addEventListener("click", closeModal);
     backdrop?.addEventListener("click", closeModal);
+    prevBtn?.addEventListener("click", goPrev);
+    nextBtn?.addEventListener("click", goNext);
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+      if (!modal.classList.contains("active")) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     });
   }
 
