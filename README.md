@@ -14,11 +14,7 @@ graph TB
 ```
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
-    <img alt="3D contribution graph" src="./profile-3d-contrib/profile-night-rainbow.svg" width="90%" />
-  </picture>
+  <img alt="3D contribution graph" src="https://raw.githubusercontent.com/maddixmhn/mohammadmehrani/main/profile-3d-contrib/profile-night-rainbow.svg" width="90%" />
 </p>
 
 <p align="center">
@@ -106,7 +102,7 @@ about_me:
 </p>
 
 <p align="center">
-  <img src="./profile-3d-contrib/graphite-dark.svg" alt="3D contribution graph animated" width="90%" />
+  <img src="https://raw.githubusercontent.com/maddixmhn/mohammadmehrani/main/profile-3d-contrib/graphite-dark.svg" alt="3D contribution graph animated" width="90%" />
 </p>
 
 <details>
