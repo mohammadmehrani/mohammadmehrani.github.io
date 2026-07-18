@@ -2,6 +2,58 @@
 
 Auto-generated from conventional commits.
 
+### 2026-07-18
+
+Update username mohammadmehrani → maddixmhn across site
+
+### 2026-07-18
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-18
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-17
+
+chore: update CI status
+
+### 2026-07-17
+
+chore: update repo stats
+
+### 2026-07-17
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-17
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-16
+
+chore: update CI status
+
+### 2026-07-16
+
+chore: update repo stats
+
+### 2026-07-16
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-07-16
+
+rotate: 3D theme [skip ci]
+
+### 2026-07-15
+
+chore: update CI status
+
+### 2026-07-15
+
+chore: update changelog
+
 ### 2026-07-15
 
 Revert light-theme 3D to original bright star scene
@@ -150,55 +202,3 @@ feat: light theme redesign (warm multi-color) + animated Sun 3D scene
 - Dark theme untouched
 
 ### 2026-07-14
-
-chore: update CI status
-
-### 2026-07-14
-
-chore: update changelog
-
-### 2026-07-14
-
-chore: checkpoint before light theme rework
-
-### 2026-07-14
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-14
-
-rotate: 3D theme [skip ci]
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-feat: darker background, 900 orbs, 3000 haze particles for depth
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
-
-chore: update changelog
-
-### 2026-07-13
-
-fix: correct ring rotation axis for proper Saturn viewing angle
-
-### 2026-07-13
-
-chore: update CI status
-
-### 2026-07-13
