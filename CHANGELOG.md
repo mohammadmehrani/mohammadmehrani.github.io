@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-07-18
 
+Fix 3D contribution SVG paths in README
+
+### 2026-07-18
+
+chore: update CI status
+
+### 2026-07-18
+
+chore: update CI status
+
+### 2026-07-18
+
+chore: update changelog
+
+### 2026-07-18
+
 Update username mohammadmehrani → maddixmhn across site
 
 ### 2026-07-18
@@ -186,19 +202,3 @@ chore: update CI status
 
 chore: update CI status
 
-### 2026-07-14
-
-chore: update changelog
-
-### 2026-07-14
-
-feat: light theme redesign (warm multi-color) + animated Sun 3D scene
-- Light theme: warm earthy palette (--bg: #fcf4ea), multi-color accents
-- Body gradient: warm radial gradients (coral/gold/teal)
-- Light nav, cards, inputs, footer, profile chip colors
-- Sun 3D scene for light theme: glowing sphere, corona layers,
-  6000 corona particles, 2000 streak rays, 600 warm orbs
-- Theme toggle re-initializes 3D scene (themechange event)
-- Dark theme untouched
-
-### 2026-07-14
