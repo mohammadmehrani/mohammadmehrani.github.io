@@ -1,4 +1,4 @@
-﻿```mermaid
+```mermaid
 %%{init: {'theme':'dark', 'themeVariables': { 'primaryColor': '#0d1117', 'primaryTextColor': '#c9d1d9', 'lineColor': '#3fb950'}}}%%
 graph TB
   A["🧑‍💻 Mohammad Mehrani"] --> B["⚡ GitHub Actions"]
@@ -22,19 +22,19 @@ graph TB
 </p>
 
 <p align="center">
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani&label=Total&labelColor=%230d1117&countColor=%233fb950&style=flat-square" alt="Total views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmaddixmhn&label=Total&labelColor=%230d1117&countColor=%233fb950&style=flat-square" alt="Total views" />
   &nbsp;
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fmonth&label=Monthly&labelColor=%230d1117&countColor=%232196f3&style=flat-square" alt="Monthly views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmaddixmhn%2Fmonth&label=Monthly&labelColor=%230d1117&countColor=%232196f3&style=flat-square" alt="Monthly views" />
   &nbsp;
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fweek&label=Weekly&labelColor=%230d1117&countColor=%23ff9800&style=flat-square" alt="Weekly views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmaddixmhn%2Fweek&label=Weekly&labelColor=%230d1117&countColor=%23ff9800&style=flat-square" alt="Weekly views" />
   &nbsp;
-  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmohammadmehrani%2Fday&label=Today&labelColor=%230d1117&countColor=%23e74c3c&style=flat-square" alt="Today views" />
+  <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmaddixmhn%2Fday&label=Today&labelColor=%230d1117&countColor=%23e74c3c&style=flat-square" alt="Today views" />
   &nbsp;
-  <a href="https://mohammadmehrani.github.io/achievements">
+  <a href="https://maddixmhn.github.io/achievements">
     <img src="https://img.shields.io/badge/Achievements-🏆_View_All-6f42c1?style=flat-square&logo=github&logoColor=white" alt="Achievements" />
   </a>
   &nbsp;
-  <a href="https://skyline3d.in/mohammadmehrani" target="_blank">
+  <a href="https://skyline3d.in/maddixmhn" target="_blank">
     <img src="https://img.shields.io/badge/3D_Skyline-🌄_View-0a2351?style=flat-square&logo=github&logoColor=white" alt="3D Skyline" />
   </a>
 </p>
@@ -78,31 +78,31 @@ about_me:
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mohammadmehrani&theme=github_dark" alt="Profile details" width="90%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=maddixmhn&theme=github_dark" alt="Profile details" width="90%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=mohammadmehrani&bg_color=0d1117&color=58a6ff&line=3fb950&point=f78166&area=true&hide_border=true" alt="Activity graph" width="95%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=maddixmhn&bg_color=0d1117&color=58a6ff&line=3fb950&point=f78166&area=true&hide_border=true" alt="Activity graph" width="95%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=mohammadmehrani&show_icons=true&hide_border=true&theme=transparent" alt="GitHub stats" />
+  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=maddixmhn&show_icons=true&hide_border=true&theme=transparent" alt="GitHub stats" />
   &nbsp;
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=mohammadmehrani&layout=compact&hide_border=true&theme=transparent" alt="Top languages" />
+  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=maddixmhn&layout=compact&hide_border=true&theme=transparent" alt="Top languages" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=mohammadmehrani&theme=transparent&hide_border=true" alt="GitHub streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=maddixmhn&theme=transparent&hide_border=true" alt="GitHub streak" />
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mohammadmehrani&theme=github_dark" alt="Repos per language" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maddixmhn&theme=github_dark" alt="Repos per language" />
   &nbsp;
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=mohammadmehrani&theme=github_dark" alt="Most commit language" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=maddixmhn&theme=github_dark" alt="Most commit language" />
 </p>
 
 <p align="center">
-  <img src="https://github-profile-trophy-tawny.vercel.app/?username=mohammadmehrani&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" width="90%" />
+  <img src="https://github-profile-trophy-tawny.vercel.app/?username=maddixmhn&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" width="90%" />
 </p>
 
 <p align="center">
@@ -113,10 +113,10 @@ about_me:
   <summary><b>⚡ Connect & Links</b></summary>
   <br>
   <p align="center">
-    <a href="https://github.com/mohammadmehrani">
-      <img src="https://img.shields.io/badge/GitHub-mohammadmehrani-181717?style=for-the-badge&logo=github" alt="GitHub" />
+    <a href="https://github.com/maddixmhn">
+      <img src="https://img.shields.io/badge/GitHub-maddixmhn-181717?style=for-the-badge&logo=github" alt="GitHub" />
     </a>
-    <a href="https://www.linkedin.com/in/mohammadmehrani/">
+    <a href="https://www.linkedin.com/in/maddixmhn/">
       <img src="https://img.shields.io/badge/LinkedIn-Mohammad%20Mehrani-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
     </a>
     <a href="https://t.me/mohammad_mehrani">
@@ -128,18 +128,18 @@ about_me:
     <a href="mailto:mehrani1992@gmail.com">
       <img src="https://img.shields.io/badge/Email-mehrani1992%40gmail.com-D14836?style=for-the-badge&logo=gmail" alt="Email" />
     </a>
-    <a href="https://gitlab.com/mohammadmehrani">
-      <img src="https://img.shields.io/badge/GitLab-mohammadmehrani-FC6D26?style=for-the-badge&logo=gitlab" alt="GitLab" />
+    <a href="https://gitlab.com/maddixmhn">
+      <img src="https://img.shields.io/badge/GitLab-maddixmhn-FC6D26?style=for-the-badge&logo=gitlab" alt="GitLab" />
     </a>
   </p>
   <p align="center">
-    <img src="https://img.shields.io/github/followers/mohammadmehrani?style=for-the-badge&logo=github" alt="Followers" />
-    <img src="https://img.shields.io/github/stars/mohammadmehrani?style=for-the-badge&logo=github" alt="Stars" />
-    <a href="https://mohammadmehrani.github.io/">
-      <img src="https://img.shields.io/badge/Website-mohammadmehrani.github.io-000?style=for-the-badge&logo=githubpages" alt="Website" />
+    <img src="https://img.shields.io/github/followers/maddixmhn?style=for-the-badge&logo=github" alt="Followers" />
+    <img src="https://img.shields.io/github/stars/maddixmhn?style=for-the-badge&logo=github" alt="Stars" />
+    <a href="https://maddixmhn.github.io/">
+      <img src="https://img.shields.io/badge/Website-maddixmhn.github.io-000?style=for-the-badge&logo=githubpages" alt="Website" />
     </a>
-    <a href="https://mohammadmehrani.vercel.app/">
-      <img src="https://img.shields.io/badge/Vercel-mohammadmehrani.vercel.app-000?style=for-the-badge&logo=vercel" alt="Vercel" />
+    <a href="https://maddixmhn.vercel.app/">
+      <img src="https://img.shields.io/badge/Vercel-maddixmhn.vercel.app-000?style=for-the-badge&logo=vercel" alt="Vercel" />
     </a>
   </p>
 </details>
